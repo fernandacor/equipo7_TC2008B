@@ -1,4 +1,4 @@
-# **Dimensional Odyssey: The Abduction of Dr. Bicho**
+# **Dimensional Odyssey: The Abduction**
 
 ## _Game Design Document_
 
