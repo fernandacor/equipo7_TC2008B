@@ -61,7 +61,8 @@ Debido a que hay varios poderes y armas disponibles en el juego, el jugador debe
 
 ### **Mindset**
 
-What kind of mindset do you want to provoke in the player? Do you want them to feel powerful, or weak? Adventurous, or nervous? Hurried, or calm? How do you intend to provoke those emotions?
+~~What kind of mindset do you want to provoke in the player? Do you want them to feel powerful, or weak? Adventurous, or nervous? Hurried, or calm? How do you intend to provoke those emotions?~~
+Queremos que el jugador se sienta atraido por nuestras mecanicas y estilo de pelea, los cuales estan muy apegados al viaje entre dimensiones. Como cada nivel representa un nuevo reto por el entorno en el que esta.
 
 ## _Technical_
 
@@ -81,11 +82,14 @@ _(example)_
 
 ### **Controls**
 
-How will the player interact with the game? Will they be able to choose the controls? What kind of in-game events are they going to be able to trigger, and how? (e.g. pressing buttons, opening doors, etc.)
+~~How will the player interact with the game? Will they be able to choose the controls? What kind of in-game events are they going to be able to trigger, and how? (e.g. pressing buttons, opening doors, etc.)~~
+
+Utilizaremos el arreglo de teclado clásico de WASD para el movimiento del jugador; esto incluira moverse hacia el fente o hacia atras, poder agacharse para esquivar daño y finalmente saltar para llegar a puntos claves dentro de la dimension en la que se encuentra.
 
 ### **Mechanics**
 
-Are there any interesting mechanics? If so, how are you going to accomplish them? Physics, algorithms, etc.
+~~Are there any interesting mechanics? If so, how are you going to accomplish them? Physics, algorithms, etc.~~
+Nuestras mecanicas basicas inluyen un sistema de elementos como la electricdad, agua, fuego, etc. Que te daran ventaja sobre ciertos enemigos o te haran vulnerable a otros. Además de que dependiendo de cada dimension/nivel cambiaran ciertas leyes de la fisíca a las cuales el jugador tendra que adaptarse. 
 
 ## _Level Design_
 
