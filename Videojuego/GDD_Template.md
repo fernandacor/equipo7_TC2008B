@@ -88,7 +88,7 @@ Utilizaremos el arreglo de teclado clásico de WASD o con flechas para el movimi
 ### **Mechanics**
 
 ~~Are there any interesting mechanics? If so, how are you going to accomplish them? Physics, algorithms, etc.~~
-Nuestras mecanicas basicas inluyen un sistema de elementos como la electricdad, agua, fuego, etc. Que te daran ventaja sobre ciertos enemigos o te haran vulnerable a otros. Además de que dependiendo de cada dimension/nivel cambiaran ciertas leyes de la fisíca a las cuales el jugador tendra que adaptarse. 
+Nuestras mecánicas basicas incluyen un sistema de elementos como la electricidad, agua, fuego, etc. que te daran ventaja sobre ciertos enemigos o te haran vulnerable a otros. Además de que dependiendo de cada dimension/nivel cambiaran ciertas leyes de la fisíca a las cuales el jugador tendra que adaptarse. Al principio tienes la opción de elegir entre tres pócimas, y la que elijas te dará un poder distinto.
 
 ## _Level Design_
 
