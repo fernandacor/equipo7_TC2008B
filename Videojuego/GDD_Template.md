@@ -71,14 +71,13 @@ Queremos que el jugador se sienta atraido por nuestras mecanicas y estilo de pel
 ### **Screens**
 
 1. Title Screen
-   1. Options
-2. Level Select
-3. Game
-   1. Inventory
-   2. Assessment / Next Level
-4. End Credits
-
-_(example)_
+   1. Profile
+   2. Options
+2. Game
+   1. Story explanation
+   2. Inventory
+   3. Entering a new dimension
+3. End credits
 
 ### **Controls**
 
