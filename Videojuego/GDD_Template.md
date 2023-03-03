@@ -83,7 +83,7 @@ Queremos que el jugador se sienta atraido por nuestras mecanicas y estilo de pel
 
 ~~How will the player interact with the game? Will they be able to choose the controls? What kind of in-game events are they going to be able to trigger, and how? (e.g. pressing buttons, opening doors, etc.)~~
 
-Utilizaremos el arreglo de teclado clásico de WASD para el movimiento del jugador; esto incluira moverse hacia el fente o hacia atras, poder agacharse para esquivar daño y finalmente saltar para llegar a puntos claves dentro de la dimension en la que se encuentra.
+Utilizaremos el arreglo de teclado clásico de WASD o con flechas para el movimiento del jugador; esto incluira moverse hacia el frente o hacia atras, poder agacharse para esquivar daño y finalmente saltar para llegar a puntos claves dentro de la dimension en la que se encuentra.
 
 ### **Mechanics**
 
