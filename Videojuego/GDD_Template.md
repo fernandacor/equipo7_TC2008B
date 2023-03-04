@@ -4,7 +4,7 @@
 
 ---
 
-##### **Copyright notice / author information / boring legal stuff nobody likes**
+##### **Copyright notice / JJAFSS / boring legal stuff nobody likes**
 
 ##
 
