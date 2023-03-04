@@ -93,13 +93,13 @@ Nuestras mecánicas basicas incluyen un sistema de elementos como la electricida
 
 ## _Level Design_
 
-1. Explicación de la historia
+1. **Explicación de la historia: Sueño**
    Mientras te despiertas, ves entre pestañazos fragmentos muy vagos, tipo _flashes_, de lo que te sucedió pero no lo suficiente para entender bien lo que está pasando. La visión parece un sueño, y el sueño termina contigo cayendote en algo que asemeja un hoyo negro. 
 
-2. Nivel inicial: Laboratorio
+2. **Nivel inicial: Laboratorio**
    Abres los ojos y empiezas en un laboratorio. Te despiertas de golpe, mareado y confundido. Un señor te dice "Bienvenido de regreso doctor." Te das cuenta de que estas amarrado y necesitas picar _enter_ muchas veces para destruir la cuerda. Pierdes HP al hacer esto. Tan pronto como te desamarras, enfrentas tu primera pelea con el doctor. Una vez que lo vences, se abre un cofre donde se te presentan 3 pócimas en tubos de ensayo de las cuales tienes que elegir una, y cada una te otorgará un poder diferente. 
 
-   El objetivo de este nivel es escapar sin que te atrapen los monitos en bata. 
+   El objetivo de este nivel es escapar sin que te atrapen los monitos en bata y vencer al doctor principal. Una vez que logres esto, el doctor suelta la llave de la puerta y puedes salir.
 
 3.
 
