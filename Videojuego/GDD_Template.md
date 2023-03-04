@@ -126,7 +126,7 @@ _(example)_
 
 ### **Game Flow**
 
-1. Player starts in forest
+<!-- 1. Player starts in forest
 2. Pond to the left, must move right
 3. To the right is a hill, player jumps to traverse it (&quot;jump&quot; taught)
 4. Player encounters castle - door&#39;s shut and locked
@@ -134,7 +134,7 @@ _(example)_
 6. Player picks up rock and throws at glass (&quot;throw&quot; taught)
 7. … etc.
 
-_(example)_
+_(example)_ -->
 
  **Explicación de la historia: Sueño**
    Mientras te despiertas, ves entre pestañazos fragmentos muy vagos, tipo _flashes_, de lo que te sucedió pero no lo suficiente para entender bien lo que está pasando. La visión parece un sueño, y el sueño termina contigo cayendote en algo que asemeja un hoyo negro. 
