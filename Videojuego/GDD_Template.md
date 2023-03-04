@@ -77,6 +77,7 @@ Queremos que el jugador se sienta atraido por nuestras mecanicas y estilo de pel
    1. Story explanation
    2. Inventory
    3. Entering a new dimension
+   4. Losing all your life
 3. End credits
 
 ### **Controls**
