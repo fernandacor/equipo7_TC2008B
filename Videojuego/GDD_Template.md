@@ -49,7 +49,7 @@
 
 ~~Sum up your game idea in 2 sentences. A kind of elevator pitch. Keep it simple!~~
 
-Eres una maestra que fue secuestrada y llevada a un laboratorio, y cuando piensas que nada prodría empeorar te das cuenta que todo el mundo cambió.
+Te secuestraron y te llevaron a un laboratorio, y cuando piensas que nada podría empeorar te das cuenta que todo el mundo cambió y nada es lo que parece.
 
 ### **Gameplay**
 
