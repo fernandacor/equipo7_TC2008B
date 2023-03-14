@@ -103,15 +103,15 @@ _(Note : These sections can safely be skipped if they&#39;re not relevant, or yo
 2. Objects
    1. _Ambient_
       1. Fireflies
-      2. Beams of moonlight
-      3. Tall grass
+      2. Dependiendo del universo en el que estas cambiara el filtro de color del escenario
+      3. Edificios/Casas destruidas
    2. _Interactive_
-      1. Wolves
+      1. Podras interactuar con cofres/cajas fuertes para recger items  
       2. Goblins
       3. Rocks
-3. Castle
+3. Dimensiones
    1. Mood
-      1. Dangerous, tense, active
+      1. Cada mundo como mencionamos antes tendra la misma plantilla pero, entre más vayas avanzando en el juego más cambiara este y se volvera más obscuro y sombrío.  
    2. Objects
       1. _Ambient_
          1. Rodents
@@ -158,9 +158,9 @@ _(example)_ -->
 ### **Abstract Classes / Components**
 
 1. BasePhysics
-   1. BasePlayer
-   2. BaseEnemy
-   3. BaseObject
+   1. Jugador Base
+   2. Enemigo Base
+   3. Objeto BAse
 2. BaseObstacle
 3. BaseInteractable
 
