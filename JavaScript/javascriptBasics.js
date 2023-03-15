@@ -110,7 +110,6 @@ console.log(MCD(10, 100));
 
 // EJERCICIO 6
 function hackerSpeak(hackerString) {
-    hackerString = "JavaScript es divertido";
     let hS = { a: 4, b: 8, e: 3, g: 6, i: 1, l: 1, o: 0, s: 5, t: 7, z: 2 };
     const l = hackerString.length;
     for (let i = 0; i < l; i++) {
@@ -124,6 +123,7 @@ function hackerSpeak(hackerString) {
     }
 }
 
+hackerString = "JavaScript es divertido";
 console.log('EJERCICIO 6: Función que cambia una cadena de texto a Hacker Speak.');
 console.log("Cadena original: Javascript es divertido");
 console.log(hackerSpeak(hackerString));
