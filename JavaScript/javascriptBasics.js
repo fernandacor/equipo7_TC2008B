@@ -121,13 +121,29 @@ function MCD(x, y)
   console.log("Números: 10, 100");
   console.log(MCD(10,100));
 
-// 6.-Crea una función que cambie una cadena de texto a 'Hacker Speak'. Por ejemplo, para la cadena 'Javascript es divertido', su hacker speak es: 'J4v45c1pt 35 d1v3rt1d0'.
-function hackerSpeak()
+// EJERCICIO 6
+function hackerSpeak(hackerString)
 {
-    // if A existe, replace it por 4, E = 3, I = 1, o = 0, U = ??
-    // recorrer el array
-    // console.log(cadena.replace('A', '4'))
+    let hackerString = "JavaScript es divertido";
+    let hS = {a:4, b:8, e:3, g:6, i:1, l:1, o:0, s:5, t:7, z:2};
+    const l = hackerString.length;
+    for (let i = 0; i < l; i++)
+    {
+      let nuevoString = " ";
+      if (hS[hackerString[i].toLowerCase()]) 
+      {
+        nuevoString += hS[hackerString[i].toLowerCase()];
+      } 
+      else 
+      {
+        nuevoString += hackerString[i];
+      }
+    }
 }
+
+console.log('EJERCICIO 6: Función que cambia una cadena de texto a Hacker Speak.');
+console.log("Cadena original: Javascript es divertido");
+console.log(hackerSpeak(hackerString));
 
 // EJERCICIO 7
 function factoriza(num)
