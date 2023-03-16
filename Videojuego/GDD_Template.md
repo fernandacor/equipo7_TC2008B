@@ -72,13 +72,13 @@ Queremos que el jugador se sienta atraido por nuestras mecanicas y estilo de pel
 
 1. Pantalla Principal
    1. Iniciar Juego
-   2. Elegeir Perfil 
+   2. Elegir Perfil 
    3. Opciones
 2. Juego
-   1. Resume del juego hasta el moemnto 
+   1. Resumen del juego hasta el moemnto 
    2. Inventario
    3. Elegir "Power up" al acabar una de las dimensions
-   4. Pantalla de Muerto
+   4. Pantalla de que has Muerto
 3. End credits
 
 ### **Controls**
@@ -112,11 +112,13 @@ El jugador cuenta con los atributos:
 
 _(Note : These sections can safely be skipped if they&#39;re not relevant, or you&#39;d rather go about it another way. For most games, at least one of them should be useful. But I&#39;ll understand if you don&#39;t want to use them. It&#39;ll only hurt my feelings a little bit.)_
 
-### **Themes**
+### **Assets**
 
-1. Forest
-   1. Mood
-      1. Dark, calm, foreboding
+1. Edificios
+   1. Casa del jugador
+   2. Base Militar
+   3. Laboratorio 
+   4. Oxxo/Dr.Simi
 2. Objects
    1. _Ambient_
       1. Fireflies
@@ -124,8 +126,8 @@ _(Note : These sections can safely be skipped if they&#39;re not relevant, or yo
       3. Edificios/Casas destruidas
    2. _Interactive_
       1. Podras interactuar con cofres/cajas fuertes para recger items  
-      2. Goblins
-      3. Rocks
+      2. Entrar a partes de los edificios 
+      3. 
 3. Dimensiones
    1. Mood
       1. Cada mundo como mencionamos antes tendra la misma plantilla pero, entre más vayas avanzando en el juego más cambiara este y se volvera más obscuro y sombrío.  
