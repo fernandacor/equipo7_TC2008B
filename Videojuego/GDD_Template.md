@@ -47,7 +47,7 @@
 
 ### **Summary**
 
-~~Sum up your game idea in 2 sentences. A kind of elevator pitch. Keep it simple!~~
+<!-- ~~Sum up your game idea in 2 sentences. A kind of elevator pitch. Keep it simple!~~ -->
 
 Te secuestraron y te llevaron a un laboratorio, y cuando piensas que nada podría empeorar te das cuenta que todo el mundo cambió y nada es lo que parece.
 
@@ -55,14 +55,14 @@ Te secuestraron y te llevaron a un laboratorio, y cuando piensas que nada podrí
 
 ~~What should the gameplay be like? What is the goal of the game, and what kind of obstacles are in the way? What tactics should the player use to overcome them?~~
 
-Es un videojuego RPG de plataformas 2D que tiene por objetivo atravesar varios niveles llenos de enemigos para descubrir el secreto de quién fue la persona que te secuestró y por qué.
+Dimensional Oddyssey un videojuego RPG de plataforma 2D que tiene por objetivo atravesar varios niveles llenos de enemigos para descubrir el secreto de quién fue la persona que te secuestró y por qué.
 
 Debido a que hay varios poderes y armas disponibles en el juego, el jugador debe pensar en la mejor combinación entre ambas para hacer frente a sus enemigos.
 
 ### **Mindset**
 
 ~~What kind of mindset do you want to provoke in the player? Do you want them to feel powerful, or weak? Adventurous, or nervous? Hurried, or calm? How do you intend to provoke those emotions?~~
-Queremos que el jugador se sienta atraido por nuestras mecanicas y estilo de pelea, los cuales estan muy apegados al viaje entre dimensiones. Como cada nivel representa un nuevo reto por el entorno en el que esta.
+Queremos que el jugador se sienta atraido por nuestras mecanicas y estilo de pelea, los cuales estan muy apegados al viaje entre dimensiones, dado que cada nivel representa un nuevo reto por el entorno en el que esta.
 
 ## _Technical_
 
@@ -90,8 +90,22 @@ El mouse será utilizado para apuntar el arma del jugador y para cambiar entre l
 
 ### **Mechanics**
 
-~~Are there any interesting mechanics? If so, how are you going to accomplish them? Physics, algorithms, etc.~~
-Nuestras mecánicas basicas incluyen un sistema de elementos como la electricidad, agua, fuego, etc. que te daran ventaja sobre ciertos enemigos o te haran vulnerable a otros. Además de que dependiendo de cada dimension/nivel cambiaran ciertas leyes de la fisíca a las cuales el jugador tendra que adaptarse. Al principio tienes la opción de elegir entre tres pócimas, y la que elijas te dará un poder distinto.
+<!-- ~~Are there any interesting mechanics? If so, how are you going to accomplish them? Physics, algorithms, etc.~~ -->
+<!-- ~~Nuestras mecánicas basicas incluyen un sistema de elementos como la electricidad, agua, fuego, etc. que te daran ventaja sobre ciertos enemigos o te haran vulnerable a otros. Además de que dependiendo de cada dimension/nivel cambiaran ciertas leyes de la fisíca a las cuales el jugador tendra que adaptarse. Al principio tienes la opción de elegir entre tres pócimas, y la que elijas te dará un poder distinto.~~ -->
+
+Las mecánicas básicas del juego incluyen armas tipo shooters. Al principio del juego, el jugador puede elegir entre tres tipos de pistola diferentes, cada uno con atributos distintos. Estos atributos varían entre velocidad de ataque, cantidad de disparos, daño y alcance. El jugador puede coleccionar tokens que le agregan atributos al arma que haya elegido. 
+
+El jugador cuenta con los atributos:
+<ul>
+<li> Velocidad
+<li> Fuerza
+<li> Resistencia
+<li> Recuperación de puntos maná
+<li> Puntos de experiencia (XP)
+<li> Puntos de salud (HP)
+<li> Puntos de energía (MP)
+</ul>
+
 
 ## _Level Design_
 
