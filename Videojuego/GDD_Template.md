@@ -175,9 +175,15 @@ _(example)_ -->
 1. BasePhysics
    1. Jugador Base
    2. Enemigo Base
-   3. Objeto BAse
+   3. Objeto Base
 2. BaseObstacle
+   1. Rocas Base
+   2. Arboles Base
+   3. Carros Base
 3. BaseInteractable
+   1. Cofres Base
+   2. Token para subir de nivel base
+   3. Recoger Mejoras Base
 
 _(example)_
 
