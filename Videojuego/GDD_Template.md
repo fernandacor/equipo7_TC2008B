@@ -121,25 +121,17 @@ _(Note : These sections can safely be skipped if they&#39;re not relevant, or yo
    4. Oxxo/Dr.Simi
 2. Objects
    1. _Ambient_
-      1. Fireflies
+      1. Arboles
       2. Dependiendo del universo en el que estas cambiara el filtro de color del escenario
       3. Edificios/Casas destruidas
+      4. Carros
    2. _Interactive_
       1. Podras interactuar con cofres/cajas fuertes para recger items  
       2. Entrar a partes de los edificios 
-      3. 
+      3. Algún NPC dependiendo de la Dimensión
 3. Dimensiones
    1. Mood
-      1. Cada mundo como mencionamos antes tendra la misma plantilla pero, entre más vayas avanzando en el juego más cambiara este y se volvera más obscuro y sombrío.  
-   2. Objects
-      1. _Ambient_
-         1. Rodents
-         2. Torches
-         3. Suits of armor
-      2. _Interactive_
-         1. Guards
-         2. Giant rats
-         3. Chests
+      1. Cada mundo como mencionamos antes tendra la misma plantilla pero, entre más vayas avanzando en el juego más cambiara este y se volvera más obscuro y sombrío 
 
 _(example)_
 
