@@ -131,7 +131,11 @@ _(Note : These sections can safely be skipped if they&#39;re not relevant, or yo
       3. Algún NPC dependiendo de la Dimensión
 3. Dimensiones
    1. Mood
-      1. Cada mundo como mencionamos antes tendra la misma plantilla pero, entre más vayas avanzando en el juego más cambiara este y se volvera más obscuro y sombrío 
+      1. Cada mundo como mencionamos antes tendra la misma plantilla pero cada dimensión tiene un filtro distinto:
+         1. Mundo normal
+         2. Mundo colorido
+         3. Mundo postapocalítico
+         4. Mundo dorado
 
 _(example)_
 
