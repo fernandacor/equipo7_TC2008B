@@ -70,14 +70,15 @@ Queremos que el jugador se sienta atraido por nuestras mecanicas y estilo de pel
 
 ### **Screens**
 
-1. Title Screen
-   1. Profile
-   2. Options
-2. Game
-   1. Story explanation
-   2. Inventory
-   3. Entering a new dimension
-   4. Losing all your life
+1. Pantalla Principal
+   1. Iniciar Juego
+   2. Elegeir Perfil 
+   3. Opciones
+2. Juego
+   1. Resume del juego hasta el moemnto 
+   2. Inventario
+   3. Elegir "Power up" al acabar una de las dimensions
+   4. Pantalla de Muerto
 3. End credits
 
 ### **Controls**
