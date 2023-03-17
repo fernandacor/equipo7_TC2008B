@@ -77,14 +77,6 @@ Queremos que el jugador se sienta atraido por nuestras mecanicas y estilo de pel
    4. Pantalla de que has Muerto
 3. End credits
 
-### **Controls**
-
-<!-- ~~How will the player interact with the game? Will they be able to choose the controls? What kind of in-game events are they going to be able to trigger, and how? (e.g. pressing buttons, opening doors, etc.)~~ -->
-
-Utilizaremos el arreglo de teclado clásico de WASD o con flechas para el movimiento del jugador; esto incluira moverse en cuatro direcciones: arriba, abajo, derecho, izquierda. 
-
-El mouse será utilizado para apuntar el arma del jugador y para cambiar entre las dos armas que tiene el jugador en su inventario.
-
 ### **Mechanics**
 
 **Estilo de juego**
@@ -93,7 +85,7 @@ El juego es estilo RPG y Rogue-like
 
 **Jugabilidad principal**
 
-- **WASD:** Movimiento del jugador.
+- **WASD:** Movimiento del jugador hacia arriba, abajo, derecha e izquierda.
 - **Mouse:** Apuntado.
 - **Click izquierdo**: Disparo básico.
 - **Click derecho:** Disparo especial.
@@ -133,14 +125,14 @@ Al morir el jugador, todos sus niveles de experiencia y, por consiguiente, todos
 
 Cuando se acaben los puntos de vida el jugador muere y se reinicia el juego. La forma de conseguir puntos de vida es a través de:
 
-- El atributo “robo de vida”
+- El atributo "robo de vida"
 - Pociones escondidas en los niveles
 
 **Energía**
 
 Los puntos de energía servirán para poder hacer los disparos especiales, los cuales utilizan los atributos de los modificadores del arma. La forma de recuperar energía es a través de:
 
-- El atributo “recuperación de energía”
+- El atributo "recuperación de energía"
 - Pociones escondidas en los niveles
 
 **Velocidad de movimiento**
@@ -175,7 +167,7 @@ El arma va a ser la misma que se elija al principio del run, pero por el mapa y 
 
 Las armas que se van a poder elegir al principio de las runs son:
 
-|   | Pistola | Escopeta | Metralleta |
+|   | Pistola | Escopeta | Metralleta |
 | --- | --- | --- | --- |
 | **Daño** | Medio | Alto | Bajo |
 | **Velocidad de disparo** | Medio | Bajo | Alto |
