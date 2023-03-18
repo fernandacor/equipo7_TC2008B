@@ -223,10 +223,10 @@ El arma va a ser la misma que se elija al principio del run, pero por el mapa y 
 <img width ="60" src="../Videojuego/Images/Boss%20Final.png">
 
 ### Token Multi Disparo
-<img width="100" src="../Videojuego/Images/tokenMultiDisparo.png">
+<img width="200" src="../Videojuego/Images/tokenMultiDisparo.png">
 
 ### Token Doble Disparo
-<img width="100" src="../Videojuego/Images/tokenDobleDisparo.png">
+<img width="200" src="../Videojuego/Images/tokenDobleDisparo.png">
 
 
 ## _Development_
