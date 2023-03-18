@@ -6,8 +6,6 @@
 
 ##### **Copyright notice / JJAFSS / boring legal stuff nobody likes**
 
-##
-
 ## _Index_
 
 ---
@@ -19,8 +17,7 @@
    3. [Mindset](#mindset)
 3. [Technical](#technical)
    1. [Screens](#screens)
-   2. [Controls](#controls)
-   3. [Mechanics](#mechanics)
+   2. [Mechanics](#mechanics)
 4. [Level Design](#level-design)
    1. [Themes](#themes)
       1. Ambience
@@ -57,7 +54,6 @@ Debido a que hay varios poderes y armas disponibles en el juego, el jugador debe
 
 ### **Mindset**
 
-~~What kind of mindset do you want to provoke in the player? Do you want them to feel powerful, or weak? Adventurous, or nervous? Hurried, or calm? How do you intend to provoke those emotions?~~
 Queremos que el jugador se sienta atraido por nuestras mecanicas y estilo de pelea, los cuales estan muy apegados al viaje entre dimensiones, dado que cada nivel representa un nuevo reto por el entorno en el que esta.
 
 ## _Technical_
@@ -68,10 +64,10 @@ Queremos que el jugador se sienta atraido por nuestras mecanicas y estilo de pel
 
 1. Pantalla Principal
    1. Iniciar Juego
-   2. Elegeir Perfil 
+   2. Elegeir Perfil
    3. Opciones
 2. Juego
-   1. Resume del juego hasta el moemnto 
+   1. Resume del juego hasta el moemnto
    2. Inventario
    3. Elegir "Power up" al acabar una de las dimensions
    4. Pantalla de que has Muerto
@@ -167,11 +163,11 @@ El arma va a ser la misma que se elija al principio del run, pero por el mapa y 
 
 Las armas que se van a poder elegir al principio de las runs son:
 
-|   | Pistola | Escopeta | Metralleta |
-| --- | --- | --- | --- |
-| **Daño** | Medio | Alto | Bajo |
-| **Velocidad de disparo** | Medio | Bajo | Alto |
-| **Cantidad de disparos** | 1 | 3 | 1 |
+|                          | Pistola | Escopeta | Metralleta |
+| ------------------------ | ------- | -------- | ---------- |
+| **Daño**                 | Medio   | Alto     | Bajo       |
+| **Velocidad de disparo** | Medio   | Bajo     | Alto       |
+| **Cantidad de disparos** | 1       | 3        | 1          |
 
 **Atributos**
 
@@ -197,14 +193,12 @@ Además de estos 3 modificadores, el personaje va a tener espacio para un modifi
 
 ## _Level Design_
 
-_(Note : These sections can safely be skipped if they&#39;re not relevant, or you&#39;d rather go about it another way. For most games, at least one of them should be useful. But I&#39;ll understand if you don&#39;t want to use them. It&#39;ll only hurt my feelings a little bit.)_
-
 ### **Assets**
 
 1. Edificios
    1. Casa del jugador
    2. Base Militar
-   3. Laboratorio 
+   3. Laboratorio
    4. Oxxo/Dr.Simi
 2. Objects
    1. _Ambient_
@@ -213,8 +207,8 @@ _(Note : These sections can safely be skipped if they&#39;re not relevant, or yo
       3. Edificios/Casas destruidas
       4. Carros
    2. _Interactive_
-      1. Podras interactuar con cofres/cajas fuertes para recger items  
-      2. Entrar a partes de los edificios 
+      1. Podras interactuar con cofres/cajas fuertes para recger items
+      2. Entrar a partes de los edificios
       3. Algún NPC dependiendo de la Dimensión
 3. Dimensiones
    1. Mood
@@ -224,25 +218,13 @@ _(Note : These sections can safely be skipped if they&#39;re not relevant, or yo
          3. Mundo postapocalítico
          4. Mundo dorado
 
-_(example)_
-
 ### **Game Flow**
 
-<!-- 1. Player starts in forest
-2. Pond to the left, must move right
-3. To the right is a hill, player jumps to traverse it (&quot;jump&quot; taught)
-4. Player encounters castle - door&#39;s shut and locked
-5. There&#39;s a window within jump height, and a rock on the ground
-6. Player picks up rock and throws at glass (&quot;throw&quot; taught)
-7. … etc.
-
-_(example)_ -->
-
- **Explicación de la historia: Sueño**
-   Mientras te despiertas, ves entre pestañazos fragmentos muy vagos, tipo _flashes_, de lo que te sucedió pero no lo suficiente para entender bien lo que está pasando. La visión parece un sueño, y el sueño termina contigo cayendote en algo que asemeja un hoyo negro. 
+1. **Explicación de la historia: Sueño**
+   Mientras te despiertas, ves entre pestañazos fragmentos muy vagos, tipo _flashes_, de lo que te sucedió pero no lo suficiente para entender bien lo que está pasando. La visión parece un sueño, y el sueño termina contigo cayendote en algo que asemeja un hoyo negro.
 
 2. **Nivel inicial: Laboratorio**
-   Abres los ojos y empiezas en un laboratorio. Te despiertas de golpe, mareado y confundido. Un señor te dice "Bienvenido de regreso doctor." Te das cuenta de que estas amarrado y necesitas picar _enter_ muchas veces para destruir la cuerda. Pierdes HP al hacer esto. Tan pronto como te desamarras, enfrentas tu primera pelea con el doctor. Una vez que lo vences, se abre un cofre donde se te presentan 3 pócimas en tubos de ensayo de las cuales tienes que elegir una, y cada una te otorgará un poder diferente. 
+   Abres los ojos y empiezas en un laboratorio. Te despiertas de golpe, mareado y confundido. Un señor te dice "Bienvenido de regreso doctor." Te das cuenta de que estas amarrado y necesitas picar _enter_ muchas veces para destruir la cuerda. Pierdes HP al hacer esto. Tan pronto como te desamarras, enfrentas tu primera pelea con el doctor. Una vez que lo vences, se abre un cofre donde se te presentan 3 pócimas en tubos de ensayo de las cuales tienes que elegir una, y cada una te otorgará un poder diferente.
 
    El objetivo de este nivel es escapar sin que te atrapen los monitos en bata y vencer al doctor principal. Una vez que logres esto, el doctor suelta la llave de la puerta y puedes salir.
 
@@ -258,6 +240,7 @@ _(example)_ -->
 ---
 
 ### **Abstract Classes / Components**
+
  <!--
 1. BasePhysics
    1. Jugador Base
@@ -310,9 +293,9 @@ _(example)_
 - Movimiento de los bosses
 - Interacción con los NPCs
 - Interacción con objetos
-    - Tokens
-    - Armas
-    - XP
+  - Tokens
+  - Armas
+  - XP
 - Cambios de escena
 
 ## _Graphics_
