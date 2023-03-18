@@ -64,10 +64,10 @@ Queremos que el jugador se sienta atraido por nuestras mecanicas y estilo de pel
 
 1. Pantalla Principal
    1. Iniciar Juego
-   2. Elegeir Perfil 
+   2. Elegeir Perfil
    3. Opciones
 2. Juego
-   1. Resume del juego hasta el moemnto 
+   1. Resume del juego hasta el moemnto
    2. Inventario
    3. Elegir "Power up" al acabar una de las dimensions
    4. Pantalla de que has Muerto
@@ -163,11 +163,11 @@ El arma va a ser la misma que se elija al principio del run, pero por el mapa y 
 
 Las armas que se van a poder elegir al principio de las runs son:
 
-|   | Pistola | Escopeta | Metralleta |
-| --- | --- | --- | --- |
-| **Daño** | Medio | Alto | Bajo |
-| **Velocidad de disparo** | Medio | Bajo | Alto |
-| **Cantidad de disparos** | 1 | 3 | 1 |
+|                          | Pistola | Escopeta | Metralleta |
+| ------------------------ | ------- | -------- | ---------- |
+| **Daño**                 | Medio   | Alto     | Bajo       |
+| **Velocidad de disparo** | Medio   | Bajo     | Alto       |
+| **Cantidad de disparos** | 1       | 3        | 1          |
 
 **Atributos**
 
@@ -198,7 +198,7 @@ Además de estos 3 modificadores, el personaje va a tener espacio para un modifi
 1. Edificios
    1. Casa del jugador
    2. Base Militar
-   3. Laboratorio 
+   3. Laboratorio
    4. Oxxo/Dr.Simi
 2. Objects
    1. _Ambient_
@@ -207,8 +207,8 @@ Además de estos 3 modificadores, el personaje va a tener espacio para un modifi
       3. Edificios/Casas destruidas
       4. Carros
    2. _Interactive_
-      1. Podras interactuar con cofres/cajas fuertes para recger items  
-      2. Entrar a partes de los edificios 
+      1. Podras interactuar con cofres/cajas fuertes para recger items
+      2. Entrar a partes de los edificios
       3. Algún NPC dependiendo de la Dimensión
 3. Dimensiones
    1. Mood
@@ -221,10 +221,10 @@ Además de estos 3 modificadores, el personaje va a tener espacio para un modifi
 ### **Game Flow**
 
 1. **Explicación de la historia: Sueño**
-   Mientras te despiertas, ves entre pestañazos fragmentos muy vagos, tipo _flashes_, de lo que te sucedió pero no lo suficiente para entender bien lo que está pasando. La visión parece un sueño, y el sueño termina contigo cayendote en algo que asemeja un hoyo negro. 
+   Mientras te despiertas, ves entre pestañazos fragmentos muy vagos, tipo _flashes_, de lo que te sucedió pero no lo suficiente para entender bien lo que está pasando. La visión parece un sueño, y el sueño termina contigo cayendote en algo que asemeja un hoyo negro.
 
 2. **Nivel inicial: Laboratorio**
-   Abres los ojos y empiezas en un laboratorio. Te despiertas de golpe, mareado y confundido. Un señor te dice "Bienvenido de regreso doctor." Te das cuenta de que estas amarrado y necesitas picar _enter_ muchas veces para destruir la cuerda. Pierdes HP al hacer esto. Tan pronto como te desamarras, enfrentas tu primera pelea con el doctor. Una vez que lo vences, se abre un cofre donde se te presentan 3 pócimas en tubos de ensayo de las cuales tienes que elegir una, y cada una te otorgará un poder diferente. 
+   Abres los ojos y empiezas en un laboratorio. Te despiertas de golpe, mareado y confundido. Un señor te dice "Bienvenido de regreso doctor." Te das cuenta de que estas amarrado y necesitas picar _enter_ muchas veces para destruir la cuerda. Pierdes HP al hacer esto. Tan pronto como te desamarras, enfrentas tu primera pelea con el doctor. Una vez que lo vences, se abre un cofre donde se te presentan 3 pócimas en tubos de ensayo de las cuales tienes que elegir una, y cada una te otorgará un poder diferente.
 
    El objetivo de este nivel es escapar sin que te atrapen los monitos en bata y vencer al doctor principal. Una vez que logres esto, el doctor suelta la llave de la puerta y puedes salir.
 
@@ -234,3 +234,4 @@ Además de estos 3 modificadores, el personaje va a tener espacio para un modifi
 4. **Segundo nivel**
 
 5. **Último nivel**
+   $$
