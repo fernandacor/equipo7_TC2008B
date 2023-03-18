@@ -258,7 +258,7 @@ _(example)_ -->
 ---
 
 ### **Abstract Classes / Components**
-
+ <!--
 1. BasePhysics
    1. Jugador Base
    2. Enemigo Base
@@ -298,6 +298,22 @@ _(example)_
    1. InteractableButton
 
 _(example)_
+
+-->
+
+- Clase del jugador
+- Movimiento del jugador
+- Clase de los enemigos
+- Movimiento de los enemigos
+- Aparición de los enemigos
+- Clase de los bosses (cada uno con su respectiva clase)
+- Movimiento de los bosses
+- Interacción con los NPCs
+- Interacción con objetos
+    - Tokens
+    - Armas
+    - XP
+- Cambios de escena
 
 ## _Graphics_
 
