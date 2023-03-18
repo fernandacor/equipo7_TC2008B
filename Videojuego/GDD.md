@@ -205,6 +205,30 @@ El arma va a ser la misma que se elija al principio del run, pero por el mapa y 
          3. Mundo postapocalítico
          4. Mundo dorado
 
+## _Imagenes/Sprites_
+### Personaje Principal
+<img width ="60" src="../Videojuego/Images/Personaje.png">
+
+### Boss de la dimensión 1 (mundo post apocalíptico) - Base militar
+<img width ="60" src="../Videojuego/Images/Boss%20Soldado.png">
+
+### Boss de la dimensión 2 (mundo colorido) - Laboratorio
+<img width ="60" src="../Videojuego/Images/Boss%20Cientifico.png">
+
+## Boss de la dimensión 3 (mundo dorado) - Oxxo
+<img width ="60" src="../Videojuego/Images/Boss%20Triangulo.png">
+
+
+### Boss de la dimensión 4 - Regreso al mundo normal
+<img width ="60" src="../Videojuego/Images/Boss%20Final.png">
+
+### Token Multi Disparo
+<img src="../Videojuego/Images/tokenMultiDisparo.png">
+
+### Token Doble Disparo
+<img src="../Videojuego/Images/tokenDobleDisparo.png">
+
+
 ## _Development_
 
 ---
