@@ -215,7 +215,7 @@ El arma va a ser la misma que se elija al principio del run, pero por el mapa y 
 ### Boss de la dimensión 2 (mundo colorido) - Laboratorio
 <img width ="60" src="../Videojuego/Images/Boss%20Cientifico.png">
 
-## Boss de la dimensión 3 (mundo dorado) - Oxxo
+### Boss de la dimensión 3 (mundo dorado) - Oxxo
 <img width ="60" src="../Videojuego/Images/Boss%20Triangulo.png">
 
 
