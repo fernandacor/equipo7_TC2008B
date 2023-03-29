@@ -1,4 +1,4 @@
-# **Dimensional Odyssey: The Abduction**
+# **Game Name Here**
 
 ## _Game Design Document_
 
@@ -47,22 +47,15 @@
 
 ### **Summary**
 
-~~Sum up your game idea in 2 sentences. A kind of elevator pitch. Keep it simple!~~
-
-Eres una maestra que fue secuestrada y llevada a un laboratorio, y cuando piensas que nada prodría empeorar te das cuenta que todo el mundo cambió.
+Sum up your game idea in 2 sentences. A kind of elevator pitch. Keep it simple!
 
 ### **Gameplay**
 
-~~What should the gameplay be like? What is the goal of the game, and what kind of obstacles are in the way? What tactics should the player use to overcome them?~~
-
-Es un videojuego RPG de plataformas 2D que tiene por objetivo atravesar varios niveles llenos de enemigos para descubrir el secreto de quién fue la persona que te secuestró y por qué.
-
-Debido a que hay varios poderes y armas disponibles en el juego, el jugador debe pensar en la mejor combinación entre ambas para hacer frente a sus enemigos.
+What should the gameplay be like? What is the goal of the game, and what kind of obstacles are in the way? What tactics should the player use to overcome them?
 
 ### **Mindset**
 
-~~What kind of mindset do you want to provoke in the player? Do you want them to feel powerful, or weak? Adventurous, or nervous? Hurried, or calm? How do you intend to provoke those emotions?~~
-Queremos que el jugador se sienta atraido por nuestras mecanicas y estilo de pelea, los cuales estan muy apegados al viaje entre dimensiones. Como cada nivel representa un nuevo reto por el entorno en el que esta.
+What kind of mindset do you want to provoke in the player? Do you want them to feel powerful, or weak? Adventurous, or nervous? Hurried, or calm? How do you intend to provoke those emotions?
 
 ## _Technical_
 
@@ -82,14 +75,11 @@ _(example)_
 
 ### **Controls**
 
-~~How will the player interact with the game? Will they be able to choose the controls? What kind of in-game events are they going to be able to trigger, and how? (e.g. pressing buttons, opening doors, etc.)~~
-
-Utilizaremos el arreglo de teclado clásico de WASD para el movimiento del jugador; esto incluira moverse hacia el fente o hacia atras, poder agacharse para esquivar daño y finalmente saltar para llegar a puntos claves dentro de la dimension en la que se encuentra.
+How will the player interact with the game? Will they be able to choose the controls? What kind of in-game events are they going to be able to trigger, and how? (e.g. pressing buttons, opening doors, etc.)
 
 ### **Mechanics**
 
-~~Are there any interesting mechanics? If so, how are you going to accomplish them? Physics, algorithms, etc.~~
-Nuestras mecanicas basicas inluyen un sistema de elementos como la electricdad, agua, fuego, etc. Que te daran ventaja sobre ciertos enemigos o te haran vulnerable a otros. Además de que dependiendo de cada dimension/nivel cambiaran ciertas leyes de la fisíca a las cuales el jugador tendra que adaptarse. 
+Are there any interesting mechanics? If so, how are you going to accomplish them? Physics, algorithms, etc.
 
 ## _Level Design_
 
