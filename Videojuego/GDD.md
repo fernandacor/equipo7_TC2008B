@@ -48,7 +48,7 @@ Te secuestraron y te despiertas en un laboratorio, y cuando por fin logras salir
 
 ### **Gameplay**
 
-Dimensional Oddyssey un videojuego RPG y Roguelike 2D que tiene por objetivo atravesar varios niveles llenos de enemigos para descubrir el secreto de quién fue la persona que te secuestró y por qué.
+Dimensional Odyssey un videojuego RPG y Roguelike 2D que tiene por objetivo atravesar varios niveles llenos de enemigos para descubrir el secreto de quién fue la persona que te secuestró y por qué.
 
 Debido a que hay varias armas y modificadores para las mismas disponibles en el juego, el jugador debe pensar en la mejor estrategia para hacer frente a sus enemigos.
 
