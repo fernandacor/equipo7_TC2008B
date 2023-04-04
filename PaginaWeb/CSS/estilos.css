@@ -22,6 +22,12 @@ body {
     width: 100%;
 }
 
+.grid-container2 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+}
+
 .item-flex {
     padding: 15px;
     display: flex;
@@ -29,6 +35,17 @@ body {
     justify-content: center;
     align-items: center;
     background-color: transparent;
+}
+
+.item-flex1 {
+    margin-top: 2em;
+    padding: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: xx-large;
+    color: #ffff;
 }
 
 #Header{
@@ -40,4 +57,16 @@ body {
 #Im-Logo{
     width: 180px;
     height: 120px;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Bungee&display=swap');
+
+#Title {
+    grid-column: 1 / -1;
+    grid-row: 1 / span 8;
+    font-family: 'Bungee', sans-serif;
+    font-size: 3.1rem;
+    color: #b28fd9;
+    text-shadow: 6px 6px black;
+    text-align: center;
 }
