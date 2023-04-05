@@ -34,6 +34,7 @@ public class InventoryManager : MonoBehaviour
         pistolaInicial,
         escopetaInicial,
         metralletaInicial,
-        tokenMultiDisparos
+        tokenMultiDisparos,
+        llave1
     }
 }
