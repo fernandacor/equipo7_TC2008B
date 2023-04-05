@@ -24,14 +24,25 @@ public class abrirCofres : MonoBehaviour
         cajaCerrada.SetActive(true);
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    void Update()
     {
-        //if the player touches a trigger with the tag "enemy", health is lost
-        if(other.gameObject.tag == "Player" && Input.GetKeyDown(KeyCode.Space) && isOpen == false)
+        if (isOpen == true)
+        {
+            abrirCaja();
+        }
+    }
+
+    private void abrirCaja()
+    {
+        cajaAbierta.SetActive(true);
+        cajaCerrada.SetActive(false);
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "Player" && Input.GetKeyDown(KeyCode.Space))
         {
             isOpen = true;
-            cajaAbierta.SetActive(true);
-            cajaCerrada.SetActive(false);
         }
     }
 }
