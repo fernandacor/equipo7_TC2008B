@@ -33,6 +33,7 @@ public class InventoryManager : MonoBehaviour
     {
         pistolaInicial,
         escopetaInicial,
-        metralletaInicial
+        metralletaInicial,
+        tokenMultiDisparos
     }
 }
