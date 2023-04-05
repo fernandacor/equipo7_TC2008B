@@ -5,9 +5,9 @@ using UnityEngine;
 public class movimientoPersonaje : MonoBehaviour
 {
     //Define direction, speed, and that the object is a RigidBody2D
-    [SerializeField] public Vector2 direccion;
     [SerializeField] public float velocidadMovimiento;
-    Rigidbody2D rb2D;
+    Vector2 movimiento;
+    public Rigidbody2D rb2D;
 
     // Start is called before the first frame update
     void Start()
@@ -19,11 +19,14 @@ public class movimientoPersonaje : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        direccion = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
+        //Input
+        movimiento.x = Input.GetAxisRaw("Horizontal");
+        movimiento.y = Input.GetAxisRaw("Vertical");
     }
 
     void FixedUpdate()
     {
-        rb2D.MovePosition(rb2D.position + direccion * velocidadMovimiento * Time.fixedDeltaTime);
+        //Movement
+        rb2D.MovePosition(rb2D.position + movimiento * velocidadMovimiento * Time.fixedDeltaTime);
     }
 }
