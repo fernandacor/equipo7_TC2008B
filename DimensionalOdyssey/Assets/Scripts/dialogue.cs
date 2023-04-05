@@ -26,12 +26,19 @@ public class dialogue : MonoBehaviour
     //Wait for next boolean
     private bool waitForNext;
 
-    private void ToggleWindow(bool show)
+    private void Awake()
+    {
+        //Hide window and show indicator
+        ToggleWindow(false);
+        ToggleIndicator(false);
+    }
+
+    public void ToggleWindow(bool show)
     {
         window.SetActive(show);
     }
 
-    private void ToggleIndicator(bool show)
+    public void ToggleIndicator(bool show)
     {
         indicator.SetActive(show);
     }
@@ -65,13 +72,25 @@ public class dialogue : MonoBehaviour
     //End dialogue
     public void EndDialogue()
     {
-        //Hide window and show indicator
+        //Bool is disabled
+        started = false;
+        waitForNext = false;
+
+        //Stop coroutines, IENumerators
+        StopAllCoroutines();
+
+        //Hide window
         ToggleWindow(false);
+
     }
 
     //Writing logic
     IEnumerator Writing()
     {
+        //Wait x seconds
+        yield return new WaitForSeconds(writingSpeed);
+        //Restart the same process
+        StartCoroutine(Writing());
         string currentDialogue = dialogues[Index];
         //Write the character
         dialogueText.text += currentDialogue[charIndex];
@@ -90,27 +109,32 @@ public class dialogue : MonoBehaviour
             //End this sentence and wait for the next one
             waitForNext = true;
         }
-        //Wait x seconds
-        yield return new WaitForSeconds(writingSpeed);
-        //Restart the same process
-        StartCoroutine(Writing());
     }
-}
 
-private void Update()
-{  
-    if (waitForNext && Input.GetKeyDown(KeyCode.Space))
-    {
-        waitForNext = false;
-        index++;
-
-        if(index < dialogues.Count)
+    private void Update()
+    {  
+        if(!started)
         {
-            GetDialogue(index);
+            return;
         }
-        else
+
+        if (waitForNext && Input.GetKeyDown(KeyCode.Space))
         {
-            EndDialogue();
+            waitForNext = false;
+            Index++;
+
+            //Check if we are in the scope of dialogues List
+            if(Index < dialogues.Count)
+            {   
+                //If so, fetch next dialogue
+                GetDialogue(Index);
+            }
+            else
+            {
+                //If not, end dialogue process
+                EndDialogue();
+                ToggleIndicator(true);
+            }
         }
     }
 
