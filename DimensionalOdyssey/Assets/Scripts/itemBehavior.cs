@@ -25,6 +25,8 @@ public class itemBehavior : MonoBehaviour
             Destroy(gameObject);
             Debug.Log("Item destroyed");
         }
+
+
     }
 
 }
