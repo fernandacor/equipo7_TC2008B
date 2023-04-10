@@ -26,10 +26,10 @@ public class abrirCofres : MonoBehaviour
 
     void Update()
     {
-        if (isOpen == true)
+        if (isOpen == true && Input.GetKeyDown(KeyCode.O))
         {
             abrirCaja();
-        }
+        };
     }
 
     private void abrirCaja()
@@ -40,7 +40,7 @@ public class abrirCofres : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Player" && Input.GetKeyDown(KeyCode.Space))
+        if(collision.gameObject.tag == "Player")
         {
             isOpen = true;
         }
