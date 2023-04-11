@@ -6,6 +6,8 @@ public class doorBehavior : MonoBehaviour
 {
      [SerializeField] InventoryManager.AllItems requiredItem;
     public bool isDoorOpen = false;
+    public bool doorHorizontal = false;
+    public bool doorVertical = false;
     Vector3 doorClosedPos;
     Vector3 doorOpenPos;
     float doorOpenSpeed = 10f;
@@ -13,7 +15,14 @@ public class doorBehavior : MonoBehaviour
     void Awake()
     {
         doorClosedPos = transform.position;
-        doorOpenPos = new Vector3(transform.position.x + 3f, transform.position.y, transform.position.z);
+        if (doorHorizontal == true)
+        {
+            doorOpenPos = new Vector3(transform.position.x + 3f, transform.position.y, transform.position.z);
+        }
+        else if (doorVertical == true)
+        {
+            doorOpenPos = new Vector3(transform.position.x, transform.position.y + 3f, transform.position.z);
+        }
     }
 
     void OpenDoor()
@@ -53,6 +62,14 @@ public class doorBehavior : MonoBehaviour
             {
                 isDoorOpen = !isDoorOpen;
             }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if(collision.CompareTag("Player"))
+        {
+            isDoorOpen = !isDoorOpen;
         }
     }
 
