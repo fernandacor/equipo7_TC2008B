@@ -22,6 +22,11 @@ public class movimientoPersonaje : MonoBehaviour
         //Input
         movimiento.x = Input.GetAxisRaw("Horizontal");
         movimiento.y = Input.GetAxisRaw("Vertical");
+
+        Vector2 direccionMovimiento = new Vector2(movimiento.x, movimiento.y).normalized;
+        //float inputMagnitude = Math.Clamp01(direccionMovimiento.magnitude);
+
+        //transform.Translate(direccionMovimiento * velocidadMovimiento * inputMagnitude * Time.deltaTime);
     }
 
     void FixedUpdate()
