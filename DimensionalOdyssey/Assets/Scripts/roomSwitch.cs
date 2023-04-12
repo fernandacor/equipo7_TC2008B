@@ -20,11 +20,11 @@ public class roomSwitch : MonoBehaviour
     {
         if (playerDetected)
         {
-            //if (Input.GetKeyDown(KeyCode.E))
-            //{
+            if (Input.GetKeyDown(KeyCode.E))
+            {
                 playerGO.transform.position = posToGo.position;
                 playerDetected = false;
-            //}
+            }
         }
         
     }
