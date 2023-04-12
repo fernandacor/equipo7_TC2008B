@@ -4,54 +4,92 @@ using UnityEngine;
 
 public class shooting : MonoBehaviour
 {
-    [SerializeField] InventoryManager.AllItems requiredItem;
-    public bool canShoot = true;
-    public GameObject shootingItem;
-    public Transform shootingPoint;
+    // [SerializeField] InventoryManager.AllItems requiredItem;
+    // public bool canShoot = true;
+    // public GameObject shootingItem;
+    // public Transform shootingPoint;
 
-    public bool hasRequiredItem(InventoryManager.AllItems itemRequired)
+    // public bool hasRequiredItem(InventoryManager.AllItems itemRequired)
+    // {
+    //     if(InventoryManager.Instance._inventoryItems.Contains(itemRequired))
+    //     {
+    //         Debug.Log("hasRequiredItem = true");
+    //         return true;
+    //     }
+    //     else
+    //     {
+    //         return false;
+    //     }
+    // }
+
+    // private void OnTriggerEnter2D(Collider2D collision)
+    // {
+    //     if(collision.CompareTag("Gun"))
+    //     {
+    //         if(hasRequiredItem(requiredItem) == true)
+    //         {
+    //             Debug.Log("Se tiene el elemento");
+    //             canShoot = !canShoot;
+    //             Debug.Log("canShoot = true");
+    //         }
+    //     }
+    // }
+
+    // void Shoot()
+    // {
+    //     if(canShoot == false)
+    //         return;
+
+    //     GameObject disparable = Instantiate(shootingItem, shootingPoint);
+    //     disparable.transform.parent = null;
+    // }
+
+    // private void Update()
+    // {
+    //     if (canShoot == true)
+    //     {
+    //         if(Input.GetKeyDown(KeyCode.Return))
+    //         {
+    //             Shoot();
+    //         }
+    //     }
+    // }
+
+    //Aim with mouse
+    private Camera mainCam;
+    private Vector3 mousePos;
+    public GameObject bullet;
+    public Transform bulletTransform;
+    public bool canFire;
+    private float timer;
+    public float timeBetweenFiring;
+
+    private void Start()
     {
-        if(InventoryManager.Instance._inventoryItems.Contains(itemRequired))
-        {
-            Debug.Log("hasRequiredItem = true");
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    void Update()
     {
-        if(collision.CompareTag("Gun"))
+        mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 rotation = mousePos - transform.position;
+        float rotZ = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0f, 0f, rotZ);
+
+        if(!canFire)
         {
-            if(hasRequiredItem(requiredItem) == true)
+            timer += Time.deltaTime;
+            if(timer >= timeBetweenFiring)
             {
-                Debug.Log("Se tiene el elemento");
-                canShoot = !canShoot;
-                Debug.Log("canShoot = true");
+                canFire = true;
+                timer = 0;
             }
         }
-    }
 
-    void Shoot()
-    {
-        if(canShoot == false)
-            return;
-
-        GameObject disparable = Instantiate(shootingItem, shootingPoint);
-        disparable.transform.parent = null;
-    }
-
-    private void Update()
-    {
-        if (canShoot == true)
+        if(Input.GetMouseButton(0) && canFire == true)
         {
-            if(Input.GetKeyDown(KeyCode.Return))
-            {
-                Shoot();
-            }
+            Instantiate(bullet, bulletTransform.position, Quaternion.identity);
         }
     }
+
 }
