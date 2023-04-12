@@ -10,7 +10,7 @@ public class abrirCofres : MonoBehaviour
     //[SerializeField] GameObject Player; //defines object to whom the script applies to
 
     //allows to change the number of health and hearts the game starts with (from 0-10)
-    private bool isOpen;
+    public bool isOpen;
 
     //defines sprites that belong to a full life and an empty life
     //public Image[] cajas;
@@ -43,6 +43,15 @@ public class abrirCofres : MonoBehaviour
         if(collision.gameObject.tag == "Player")
         {
             isOpen = true;
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            isOpen = false;
+            cajaCerrada.SetActive(true);
         }
     }
 }
