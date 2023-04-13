@@ -8,6 +8,8 @@ public class enemyBehavior : MonoBehaviour
     private Rigidbody2D rb2D;
     private Vector2 movimiento;
     public float velocidad = 5f;
+    public Animator animator;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,9 +21,13 @@ public class enemyBehavior : MonoBehaviour
     {
         Vector3 direction = player.position - transform.position;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        rb2D.rotation = angle;
+        //rb2D.rotation = angle;
         direction.Normalize();
         movimiento = direction;
+
+        animator.SetFloat("Horizontal", movimiento.x);
+        animator.SetFloat("Vertical", movimiento.y);
+        animator.SetFloat("Speed", movimiento.sqrMagnitude);
     }
 
     void FixedUpdate()
