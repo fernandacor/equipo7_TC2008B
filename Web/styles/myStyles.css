@@ -52,3 +52,24 @@ body {
     background-color: transparent;
     border: 0px;
 }
+
+.containerHistoria{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+
+.Item-Historia {
+    padding: 45px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#HeaderHistoria{
+    font-family: 'OCR A Extended', monospace;
+    color: var(--color-2);
+    font-weight: bolder;
+}
