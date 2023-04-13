@@ -1,24 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class roomSwitch : MonoBehaviour
+public class portalBehavior : MonoBehaviour
 {
+    private Rigidbody2D rb2D;
+
+    public bool switchScene = false;
+    public string sceneName;
+
+    public bool switchRoom = false;
     private bool playerDetected;
     [SerializeField] Transform posToGo;
     public GameObject player;
 
-    // Start is called before the first frame update
+
     void Start()
     {
-        playerDetected = false;   
-        
+        rb2D = GetComponent<Rigidbody2D>();
+        rb2D.rotation = 0f;
+        playerDetected = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (playerDetected)
+        if (playerDetected && switchRoom == true)
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
@@ -26,14 +33,21 @@ public class roomSwitch : MonoBehaviour
                 playerDetected = false;
             }
         }
-
-        
-        
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    void FixedUpdate()
     {
-        if (collision.gameObject.tag == "Player")
+        rb2D.rotation += 1.0f;
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player" && switchScene == true)
+        {
+            SceneManager.LoadScene(sceneName);
+        }
+
+        if (collision.gameObject.tag == "Player" && switchRoom == true)
         {
             playerDetected = true;
             player = collision.gameObject;
