@@ -14,6 +14,15 @@ public class movimientoPersonaje : MonoBehaviour
         movimiento.x = Input.GetAxisRaw("Horizontal");
         movimiento.y = Input.GetAxisRaw("Vertical");
 
+        if (Mathf.Abs(movimiento.x) > Mathf.Abs(movimiento.y))
+        {
+            movimiento.y = 0;
+        }
+        else
+        {
+            movimiento.x = 0;
+        }
+
         animator.SetFloat("Horizontal", movimiento.x);
         animator.SetFloat("Vertical", movimiento.y);
         animator.SetFloat("Speed", movimiento.sqrMagnitude);
