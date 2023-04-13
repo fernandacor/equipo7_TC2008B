@@ -8,6 +8,7 @@ public class enemyBehavior : MonoBehaviour
     private Rigidbody2D rb2D;
     private Vector2 movimiento;
     public float velocidad = 5f;
+    public bool activeEnemy = false;
     public Animator animator;
 
     // Start is called before the first frame update
@@ -19,15 +20,18 @@ public class enemyBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 direction = player.position - transform.position;
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        //rb2D.rotation = angle;
-        direction.Normalize();
-        movimiento = direction;
+        if (activeEnemy == true)
+        {
+            Vector3 direction = player.position - transform.position;
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            //rb2D.rotation = angle;
+            direction.Normalize();
+            movimiento = direction;
 
-        animator.SetFloat("Horizontal", movimiento.x);
-        animator.SetFloat("Vertical", movimiento.y);
-        animator.SetFloat("Speed", movimiento.sqrMagnitude);
+            animator.SetFloat("Horizontal", movimiento.x);
+            animator.SetFloat("Vertical", movimiento.y);
+            animator.SetFloat("Speed", movimiento.sqrMagnitude);
+        }
     }
 
     void FixedUpdate()
@@ -38,5 +42,13 @@ public class enemyBehavior : MonoBehaviour
     void moveCharacter(Vector2 direction)
     {
         rb2D.MovePosition((Vector2)transform.position + (direction * velocidad * Time.deltaTime));
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            activeEnemy = true;
+        }
     }
 }
