@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/creditos.unity
     guid: 14b4c5e7232c5c44c9914073d52b4e0e
   - enabled: 1
-    path: Assets/Scenes/mapa1.unity
+    path: Assets/Scenes/prototipo.unity
     guid: e6fb0a92edaa5064daee35284dc39ec6
   - enabled: 1
     path: Assets/Scenes/options.unity
