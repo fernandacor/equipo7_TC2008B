@@ -31,7 +31,7 @@ INSERT INTO dimensionalOdyssey.tokens VALUES (NULL, 'Multidisparo', 0, 1), (NULL
             (NULL, 'Multidisparo', 0, 5), (NULL, 'Disparo doble', 0, 5), (NULL, 'Disparo trasero', 0, 5), (NULL, 'Disparo Rebote', 0, 5),
             (NULL, 'Multidisparo', 1, 6), (NULL, 'Disparo doble', 1, 6), (NULL, 'Disparo trasero', 1, 6), (NULL, 'Disparo Rebote', 1, 6);
             
-INSERT INTO dimensionOdyssey.atributos VALUES (NULL, 10, 0, 100, 60, 25, 10, 1, NULL), (NULL, 15, 5, 85, 35, 40, 5, 2, NULL), (NULL, 5, 7, 90, 30, 55, 8, 3, NULL),
+INSERT INTO dimensionalOdyssey.atributos VALUES (NULL, 10, 0, 100, 60, 25, 10, 1, NULL), (NULL, 15, 5, 85, 35, 40, 5, 2, NULL), (NULL, 5, 7, 90, 30, 55, 8, 3, NULL),
 			(NULL, 20, 5, 100, 50, 15, 10, 4, NULL), (NULL, 10, 6, 80, 40, 50, 10, 5, NULL), (NULL, 10, 3, 75, 70, 45, 3, 6, NULL),
             (NULL, 10, 0, 100, 60, 25, 10, NULL, 1), (NULL, 15, 5, 85, 35, 40, 5, NULL, 2), (NULL, 5, 7, 90, 30, 55, 8, NULL, 3),
             (NULL, 8, 0, 100, 60, 25, 10, NULL, 4), (NULL, 10, 10, 500, 35, 40, 15, NULL, 5), (NULL, 20, 9, 500, 30, 55, 15, NULL, 6),
