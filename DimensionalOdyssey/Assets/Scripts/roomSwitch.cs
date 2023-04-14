@@ -6,7 +6,7 @@ public class roomSwitch : MonoBehaviour
 {
     private bool playerDetected;
     [SerializeField] Transform posToGo;
-    public GameObject playerGO;
+    public GameObject player;
 
     // Start is called before the first frame update
     void Start()
@@ -22,10 +22,12 @@ public class roomSwitch : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-                playerGO.transform.position = posToGo.position;
+                player.transform.position = posToGo.position;
                 playerDetected = false;
             }
         }
+
+        
         
     }
 
@@ -34,7 +36,7 @@ public class roomSwitch : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             playerDetected = true;
-            playerGO = collision.gameObject;
+            player = collision.gameObject;
         }
     }
 
