@@ -6,19 +6,16 @@ using UnityEngine.UI;
 
 public class abrirCofres : MonoBehaviour
 {
-    //defines object to whom the script applies to
-    //[SerializeField] GameObject Player; //defines object to whom the script applies to
+    public bool isOpen; // Se vuelve verdad si el trigger reconoce al jugador
+    //Es publica para poder ver desde el inspector si se puede abrir el cofre o no
 
-    //allows to change the number of health and hearts the game starts with (from 0-10)
-    public bool isOpen;
-
-    //defines sprites that belong to a full life and an empty life
-    //public Image[] cajas;
-    public GameObject cajaAbierta;
-    public GameObject cajaCerrada;
+    public GameObject cajaAbierta; // Objeto que se activa cuando el cofre está abierto
+    public GameObject cajaCerrada; // Objeto que se activa cuando el cofre está cerrado
+    //Son publicas para poner las imagenes de los cofres en el inspector
 
     void Start()
     {
+        //Inicialmente, el cofre esta cerrado
         isOpen = false;
         cajaAbierta.SetActive(false);
         cajaCerrada.SetActive(true);
@@ -26,13 +23,14 @@ public class abrirCofres : MonoBehaviour
 
     void Update()
     {
-        if (isOpen == true && Input.GetKeyDown(KeyCode.O))
+        //Si el cofre reconoce al jugador y se presiona la tecla E, se abre
+        if (isOpen == true && Input.GetKeyDown(KeyCode.E))
         {
             abrirCaja();
         };
     }
 
-    private void abrirCaja()
+    private void abrirCaja() // Función que activa la imagen de cofre abierto y desactiva el cofre cerrado
     {
         cajaAbierta.SetActive(true);
         cajaCerrada.SetActive(false);
@@ -40,7 +38,7 @@ public class abrirCofres : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Player")
+        if(collision.gameObject.tag == "Player") // Si el jugador entra en el trigger, se activa la variable isOpen
         {
             isOpen = true;
         }
@@ -48,7 +46,7 @@ public class abrirCofres : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player") // Si el jugador sale del trigger, se desactiva la variable isOpen y se muestra el cofre cerrado
         {
             isOpen = false;
             cajaCerrada.SetActive(true);
