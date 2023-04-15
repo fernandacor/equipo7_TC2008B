@@ -493,7 +493,7 @@ GameObject:
   - component: {fileID: 1178577618859507537}
   m_Layer: 0
   m_Name: PasilloHorizontal
-  m_TagString: Room
+  m_TagString: Aisle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

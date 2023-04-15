@@ -37,7 +37,7 @@ public class movimientoObjeto : MonoBehaviour
         //float inputMagnitude = Math.Clamp01(direccionMovimiento.magnitude);
 
         //transform.Translate(direccionMovimiento * velocidadMovimiento * inputMagnitude * Time.deltaTime);
-        print(cuartoActual.GetComponent<Tilemap>().cellBounds);
+        // print(cuartoActual.GetComponent<Tilemap>().cellBounds);
     }
 
     void FixedUpdate()

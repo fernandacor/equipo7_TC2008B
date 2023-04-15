@@ -8,6 +8,7 @@ TagManager:
   - Key
   - Token
   - Room
+  - Aisle
   layers:
   - Default
   - TransparentFX
