@@ -54,42 +54,7 @@ public class movimientoObjeto : MonoBehaviour
         // print(collision.GetComponent<Tilemap>().GetTile(new Vector3Int(17, 0)).name);
         // print(collision.transform.TransformPoint(collision.transform.position));
         // enterPositionInTrigger = new Vector2(transform.position.x, transform.position.y);
-        if (collision.tag == "Room")
-        {
-            cuartoActual = collision.gameObject;
-            if (!collision.GetComponent<CuartoScript>().descubierto)
-            {
-                collision.GetComponent<CuartoScript>().descubierto = true;
 
-                Tilemap cuarto = collision.GetComponent<Tilemap>();
-                // print(cuarto.transform.position);
-
-                Vector3Int[] positions = new Vector3Int[7];
-                TileBase[] tileArray = new TileBase[positions.Length];
-
-                for (int index = 0; index < positions.Length; index++)
-                {
-                    positions[index] = cuarto.WorldToCell(cuarto.transform.position) + new Vector3Int(cuarto.cellBounds.xMax - 1, index - 5, 0);
-                    tileArray[index] = paredDerecha;
-                }
-
-                cuarto.SetTiles(positions, tileArray);
-
-                positions = new Vector3Int[3];
-                tileArray = new TileBase[positions.Length];
-
-                for (int index = 0; index < positions.Length; index++)
-                {
-                    positions[index] = cuarto.WorldToCell(cuarto.transform.position) + new Vector3Int(cuarto.cellBounds.xMax - 1, index, 0);
-                    tileArray[index] = null;
-                }
-
-                cuarto.SetTiles(positions, tileArray);
-
-            }
-            // if (collision.gameObject.descubierto)
-            //     // Instantiate(cuarto, collision.transform.position, Quaternion.identity);
-        }
         // transform.position = new Vector2(transform.position.x - 17f, 0f);
     }
 
@@ -100,5 +65,42 @@ public class movimientoObjeto : MonoBehaviour
 
 
     }
+
+    // if (collision.tag == "Room")
+    //     {
+    //         cuartoActual = collision.gameObject;
+    //         if (!collision.GetComponent<CuartoScript>().descubierto)
+    //         {
+    //             collision.GetComponent<CuartoScript>().descubierto = true;
+
+    //             Tilemap cuarto = collision.GetComponent<Tilemap>();
+    //             // print(cuarto.transform.position);
+
+    //             Vector3Int[] positions = new Vector3Int[7];
+    //             TileBase[] tileArray = new TileBase[positions.Length];
+
+    //             for (int index = 0; index < positions.Length; index++)
+    //             {
+    //                 positions[index] = cuarto.WorldToCell(cuarto.transform.position) + new Vector3Int(cuarto.cellBounds.xMax - 1, index - 5, 0);
+    //                 tileArray[index] = paredDerecha;
+    //             }
+
+    //             cuarto.SetTiles(positions, tileArray);
+
+    //             positions = new Vector3Int[3];
+    //             tileArray = new TileBase[positions.Length];
+
+    //             for (int index = 0; index < positions.Length; index++)
+    //             {
+    //                 positions[index] = cuarto.WorldToCell(cuarto.transform.position) + new Vector3Int(cuarto.cellBounds.xMax - 1, index, 0);
+    //                 tileArray[index] = null;
+    //             }
+
+    //             cuarto.SetTiles(positions, tileArray);
+
+    //         }
+    //         // if (collision.gameObject.descubierto)
+    //         //     // Instantiate(cuarto, collision.transform.position, Quaternion.identity);
+    //     }
 
 }

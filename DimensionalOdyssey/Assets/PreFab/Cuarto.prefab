@@ -9039,5 +9039,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   descubierto: 0
-  piso: {fileID: 11400000, guid: c76d8973336672b46a40245c4feb1a42, type: 2}
-  esquinaDA: {fileID: 0}
+  esquinaDerechaArriba: {fileID: 11400000, guid: 25c373bac4c47f64ab96e2a31cded5cc, type: 2}
+  esquinaDerechaAbajo: {fileID: 11400000, guid: d0a49c209d75b5442b0d66b5ebb995c5, type: 2}
+  esquinaIzquierdaArriba: {fileID: 11400000, guid: c44504e8b987e324b814de4a2ccceca7, type: 2}
+  esquinaIzquierdaAbajo: {fileID: 11400000, guid: a3fccca61ad9fb641babff5572c2d4bb, type: 2}

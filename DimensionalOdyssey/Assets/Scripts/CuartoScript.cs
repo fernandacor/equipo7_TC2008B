@@ -8,8 +8,10 @@ public class CuartoScript : MonoBehaviour
     public bool descubierto;
     Tilemap cuarto;
     GameObject pasillos;
-    public TileBase piso;
-    public TileBase esquinaDA;
+    public TileBase esquinaDerechaArriba;
+    public TileBase esquinaDerechaAbajo;
+    public TileBase esquinaIzquierdaArriba;
+    public TileBase esquinaIzquierdaAbajo;
 
     // Start is called before the first frame update
     void Start()
@@ -18,10 +20,6 @@ public class CuartoScript : MonoBehaviour
         pasillos = GameObject.FindGameObjectWithTag("Aisle");
 
         DibujarEntradas();
-        // print(cuarto.cellBounds.xMax + 1);
-        print(pasillos.GetComponent<Tilemap>().GetTile(new Vector3Int(((int)transform.position.x + cuarto.cellBounds.xMax + 1), (int)transform.position.y, 0)));
-
-
     }
 
     // Update is called once per frame
@@ -33,46 +31,119 @@ public class CuartoScript : MonoBehaviour
 
     void DibujarEntradas()
     {
-        int cuartoXMax = cuarto.cellBounds.xMax;
+        Tilemap pisoPasillos = pasillos.transform.Find("Piso").GetComponent<Tilemap>();
 
-        if (pasillos.GetComponent<Tilemap>().GetTile(new Vector3Int(((int)transform.position.x + cuarto.cellBounds.xMax + 1), (int)transform.position.y, 0)) != null)
+        setTilesDerecha(pisoPasillos);
+        setTilesIzquierda(pisoPasillos);
+        setTilesArriba(pisoPasillos);
+        setTilesAbajo(pisoPasillos);
+    }
+
+    void setTilesDerecha(Tilemap pisoPasillos)
+    {
+        Vector3Int afueraDelCuarto = new Vector3Int((int)transform.position.x + cuarto.cellBounds.xMax + 1, (int)transform.position.y, 0);
+
+        if (pisoPasillos.GetTile(afueraDelCuarto) != null)
         {
-            Vector3Int[] positions = new Vector3Int[10];
-            TileBase[] tileArray = new TileBase[positions.Length];
+            int anchoPasillo = 10;
+            Vector3Int[] posiciones = new Vector3Int[anchoPasillo];
+            TileBase[] tileArray = new TileBase[posiciones.Length];
 
-            for (int index = 0; index < positions.Length; index++)
+            for (int i = 0; i < posiciones.Length; i++)
             {
-                positions[index] = cuarto.WorldToCell(cuarto.transform.position) + new Vector3Int(cuarto.cellBounds.xMax - 1, (int)cuarto.cellBounds.center.y + index - 5, 0);
-                print(positions[index]);
-                tileArray[index] = null;
+                Vector3Int posicionPared = new Vector3Int(cuarto.cellBounds.xMax - 1, (int)cuarto.cellBounds.center.y - (anchoPasillo / 2) + i, 0);
+                posiciones[i] = cuarto.WorldToCell(cuarto.transform.position) + posicionPared;
+
+                if (i == 0)
+                    tileArray[i] = esquinaDerechaAbajo;
+                else if (i == posiciones.Length - 1)
+                    tileArray[i] = esquinaDerechaArriba;
+                else
+                    tileArray[i] = null;
             }
 
-
-            transform.Find("Paredes").GetComponent<Tilemap>().SetTiles(positions, tileArray);
+            transform.Find("Paredes").GetComponent<Tilemap>().SetTiles(posiciones, tileArray);
         }
+    }
 
-        // Vector2 position = new Vector2(transform.position.x + 18, transform.position.y); // replace x and y with the position coordinates
-        // Collider2D collider = Physics2D.OverlapPoint(position);
-        // print(position);
-        // print(gameObject.name);
-        // if (collider != null)
-        // {
-        //     GameObject gameObject = collider.gameObject;
-        //     // Use the gameObject
-        //     if (gameObject.tag == "Aisle")
-        //     {
-        //         Vector3Int[] positionsV = new Vector3Int[10];
-        //         TileBase[] tileArrayV = new TileBase[positionsV.Length];
+    void setTilesIzquierda(Tilemap pisoPasillos)
+    {
+        Vector3Int afueraDelCuarto = new Vector3Int((int)transform.position.x + cuarto.cellBounds.xMin - 1, (int)transform.position.y, 0);
 
-        //         for (int index = 0; index < positionsV.Length; index++)
-        //         {
-        //             positionsV[index] = cuarto.WorldToCell(cuarto.transform.position) + new Vector3Int(cuarto.cellBounds.xMax - 1, index - 5, 0);
-        //             tileArrayV[index] = piso;
-        //         }
+        if (pisoPasillos.GetTile(afueraDelCuarto) != null)
+        {
+            int anchoPasillo = 10;
+            Vector3Int[] posiciones = new Vector3Int[anchoPasillo];
+            TileBase[] tileArray = new TileBase[posiciones.Length];
 
-        //         cuarto.SetTiles(positionsV, tileArrayV);
-        //     }
-        // }
+            for (int i = 0; i < posiciones.Length; i++)
+            {
+                Vector3Int posicionPared = new Vector3Int(cuarto.cellBounds.xMin, (int)cuarto.cellBounds.center.y - (anchoPasillo / 2) + i, 0);
+                posiciones[i] = cuarto.WorldToCell(cuarto.transform.position) + posicionPared;
 
+                if (i == 0)
+                    tileArray[i] = esquinaIzquierdaAbajo;
+                else if (i == posiciones.Length - 1)
+                    tileArray[i] = esquinaIzquierdaArriba;
+                else
+                    tileArray[i] = null;
+            }
+
+            transform.Find("Paredes").GetComponent<Tilemap>().SetTiles(posiciones, tileArray);
+        }
+    }
+
+    void setTilesArriba(Tilemap pisoPasillos)
+    {
+        Vector3Int afueraDelCuarto = new Vector3Int((int)transform.position.x, (int)transform.position.y + cuarto.cellBounds.yMax + 1, 0);
+
+        if (pisoPasillos.GetTile(afueraDelCuarto) != null)
+        {
+            int anchoPasillo = 10;
+            Vector3Int[] posiciones = new Vector3Int[anchoPasillo];
+            TileBase[] tileArray = new TileBase[posiciones.Length];
+
+            for (int i = 0; i < posiciones.Length; i++)
+            {
+                Vector3Int posicionPared = new Vector3Int((int)cuarto.cellBounds.center.x - (anchoPasillo / 2) + i, (int)cuarto.cellBounds.yMax - 1, 0);
+                posiciones[i] = cuarto.WorldToCell(cuarto.transform.position) + posicionPared;
+
+                if (i == 0)
+                    tileArray[i] = esquinaIzquierdaArriba;
+                else if (i == posiciones.Length - 1)
+                    tileArray[i] = esquinaDerechaArriba;
+                else
+                    tileArray[i] = null;
+            }
+
+            transform.Find("Paredes").GetComponent<Tilemap>().SetTiles(posiciones, tileArray);
+        }
+    }
+
+    void setTilesAbajo(Tilemap pisoPasillos)
+    {
+        Vector3Int afueraDelCuarto = new Vector3Int((int)transform.position.x, (int)transform.position.y + cuarto.cellBounds.yMin - 1, 0);
+
+        if (pisoPasillos.GetTile(afueraDelCuarto) != null)
+        {
+            int anchoPasillo = 10;
+            Vector3Int[] posiciones = new Vector3Int[anchoPasillo];
+            TileBase[] tileArray = new TileBase[posiciones.Length];
+
+            for (int i = 0; i < posiciones.Length; i++)
+            {
+                Vector3Int posicionPared = new Vector3Int((int)cuarto.cellBounds.center.x - (anchoPasillo / 2) + i, (int)cuarto.cellBounds.yMin, 0);
+                posiciones[i] = cuarto.WorldToCell(cuarto.transform.position) + posicionPared;
+
+                if (i == 0)
+                    tileArray[i] = esquinaIzquierdaAbajo;
+                else if (i == posiciones.Length - 1)
+                    tileArray[i] = esquinaDerechaAbajo;
+                else
+                    tileArray[i] = null;
+            }
+
+            transform.Find("Paredes").GetComponent<Tilemap>().SetTiles(posiciones, tileArray);
+        }
     }
 }
