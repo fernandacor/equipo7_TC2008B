@@ -20,6 +20,8 @@ public class CuartoScript : MonoBehaviour
     {
         cuarto = gameObject.GetComponent<Tilemap>();
         pasillos = GameObject.FindGameObjectWithTag("Aisle");
+
+        DibujarEntradas();
     }
 
     // Update is called once per frame
