@@ -12,6 +12,8 @@ public class CuartoScript : MonoBehaviour
     public TileBase esquinaDerechaAbajo;
     public TileBase esquinaIzquierdaArriba;
     public TileBase esquinaIzquierdaAbajo;
+    public int anchoPasillos = 10;
+
 
     // Start is called before the first frame update
     void Start()
@@ -19,7 +21,13 @@ public class CuartoScript : MonoBehaviour
         cuarto = gameObject.GetComponent<Tilemap>();
         pasillos = GameObject.FindGameObjectWithTag("Aisle");
 
-        DibujarEntradas();
+        Tilemap pisoPasillos = pasillos.transform.Find("Piso").GetComponent<Tilemap>();
+
+        DibujarEntradaDerecha(pisoPasillos);
+        DibujarEntradaIzquierda(pisoPasillos);
+        DibujarEntradaArriba(pisoPasillos);
+        DibujarEntradaAbajo(pisoPasillos);
+
     }
 
     // Update is called once per frame
@@ -28,122 +36,61 @@ public class CuartoScript : MonoBehaviour
 
     }
 
-
-    void DibujarEntradas()
+    void DibujarEntradas(Tilemap pisoPasillos, Vector3Int afueraDelCuarto, Vector3Int posicionPared, TileBase tileInicio, TileBase tileFin, bool vertical)
     {
-        Tilemap pisoPasillos = pasillos.transform.Find("Piso").GetComponent<Tilemap>();
+        if (pisoPasillos.GetTile(afueraDelCuarto) != null)
+        {
+            Vector3Int[] posiciones = new Vector3Int[anchoPasillos];
+            TileBase[] tileArray = new TileBase[posiciones.Length];
 
-        setTilesDerecha(pisoPasillos);
-        setTilesIzquierda(pisoPasillos);
-        setTilesArriba(pisoPasillos);
-        setTilesAbajo(pisoPasillos);
+            for (int i = 0; i < posiciones.Length; i++)
+            {
+                if (vertical)
+                    posiciones[i] = cuarto.WorldToCell(cuarto.transform.position) + new Vector3Int(posicionPared.x + i, posicionPared.y, posicionPared.z);
+                else
+                    posiciones[i] = cuarto.WorldToCell(cuarto.transform.position) + new Vector3Int(posicionPared.x, posicionPared.y + i, posicionPared.z);
+
+                if (i == 0)
+                    tileArray[i] = tileInicio;
+                else if (i == posiciones.Length - 1)
+                    tileArray[i] = tileFin;
+                else
+                    tileArray[i] = null;
+            }
+
+            transform.Find("Paredes").GetComponent<Tilemap>().SetTiles(posiciones, tileArray);
+        }
     }
 
-    void setTilesDerecha(Tilemap pisoPasillos)
+    void DibujarEntradaDerecha(Tilemap pisoPasillos)
     {
         Vector3Int afueraDelCuarto = new Vector3Int((int)transform.position.x + cuarto.cellBounds.xMax + 1, (int)transform.position.y, 0);
+        Vector3Int posicionPared = new Vector3Int(cuarto.cellBounds.xMax - 1, (int)cuarto.cellBounds.center.y - (anchoPasillos / 2), 0);
 
-        if (pisoPasillos.GetTile(afueraDelCuarto) != null)
-        {
-            int anchoPasillo = 10;
-            Vector3Int[] posiciones = new Vector3Int[anchoPasillo];
-            TileBase[] tileArray = new TileBase[posiciones.Length];
-
-            for (int i = 0; i < posiciones.Length; i++)
-            {
-                Vector3Int posicionPared = new Vector3Int(cuarto.cellBounds.xMax - 1, (int)cuarto.cellBounds.center.y - (anchoPasillo / 2) + i, 0);
-                posiciones[i] = cuarto.WorldToCell(cuarto.transform.position) + posicionPared;
-
-                if (i == 0)
-                    tileArray[i] = esquinaDerechaAbajo;
-                else if (i == posiciones.Length - 1)
-                    tileArray[i] = esquinaDerechaArriba;
-                else
-                    tileArray[i] = null;
-            }
-
-            transform.Find("Paredes").GetComponent<Tilemap>().SetTiles(posiciones, tileArray);
-        }
+        DibujarEntradas(pisoPasillos, afueraDelCuarto, posicionPared, esquinaDerechaAbajo, esquinaDerechaArriba, false);
     }
 
-    void setTilesIzquierda(Tilemap pisoPasillos)
+    void DibujarEntradaIzquierda(Tilemap pisoPasillos)
     {
         Vector3Int afueraDelCuarto = new Vector3Int((int)transform.position.x + cuarto.cellBounds.xMin - 1, (int)transform.position.y, 0);
+        Vector3Int posicionPared = new Vector3Int(cuarto.cellBounds.xMin, (int)cuarto.cellBounds.center.y - (anchoPasillos / 2), 0);
 
-        if (pisoPasillos.GetTile(afueraDelCuarto) != null)
-        {
-            int anchoPasillo = 10;
-            Vector3Int[] posiciones = new Vector3Int[anchoPasillo];
-            TileBase[] tileArray = new TileBase[posiciones.Length];
-
-            for (int i = 0; i < posiciones.Length; i++)
-            {
-                Vector3Int posicionPared = new Vector3Int(cuarto.cellBounds.xMin, (int)cuarto.cellBounds.center.y - (anchoPasillo / 2) + i, 0);
-                posiciones[i] = cuarto.WorldToCell(cuarto.transform.position) + posicionPared;
-
-                if (i == 0)
-                    tileArray[i] = esquinaIzquierdaAbajo;
-                else if (i == posiciones.Length - 1)
-                    tileArray[i] = esquinaIzquierdaArriba;
-                else
-                    tileArray[i] = null;
-            }
-
-            transform.Find("Paredes").GetComponent<Tilemap>().SetTiles(posiciones, tileArray);
-        }
+        DibujarEntradas(pisoPasillos, afueraDelCuarto, posicionPared, esquinaIzquierdaAbajo, esquinaIzquierdaArriba, false);
     }
 
-    void setTilesArriba(Tilemap pisoPasillos)
+    void DibujarEntradaArriba(Tilemap pisoPasillos)
     {
         Vector3Int afueraDelCuarto = new Vector3Int((int)transform.position.x, (int)transform.position.y + cuarto.cellBounds.yMax + 1, 0);
+        Vector3Int posicionPared = new Vector3Int((int)cuarto.cellBounds.center.x - (anchoPasillos / 2), (int)cuarto.cellBounds.yMax - 1, 0);
 
-        if (pisoPasillos.GetTile(afueraDelCuarto) != null)
-        {
-            int anchoPasillo = 10;
-            Vector3Int[] posiciones = new Vector3Int[anchoPasillo];
-            TileBase[] tileArray = new TileBase[posiciones.Length];
-
-            for (int i = 0; i < posiciones.Length; i++)
-            {
-                Vector3Int posicionPared = new Vector3Int((int)cuarto.cellBounds.center.x - (anchoPasillo / 2) + i, (int)cuarto.cellBounds.yMax - 1, 0);
-                posiciones[i] = cuarto.WorldToCell(cuarto.transform.position) + posicionPared;
-
-                if (i == 0)
-                    tileArray[i] = esquinaIzquierdaArriba;
-                else if (i == posiciones.Length - 1)
-                    tileArray[i] = esquinaDerechaArriba;
-                else
-                    tileArray[i] = null;
-            }
-
-            transform.Find("Paredes").GetComponent<Tilemap>().SetTiles(posiciones, tileArray);
-        }
+        DibujarEntradas(pisoPasillos, afueraDelCuarto, posicionPared, esquinaIzquierdaArriba, esquinaDerechaArriba, true);
     }
 
-    void setTilesAbajo(Tilemap pisoPasillos)
+    void DibujarEntradaAbajo(Tilemap pisoPasillos)
     {
         Vector3Int afueraDelCuarto = new Vector3Int((int)transform.position.x, (int)transform.position.y + cuarto.cellBounds.yMin - 1, 0);
+        Vector3Int posicionPared = new Vector3Int((int)cuarto.cellBounds.center.x - (anchoPasillos / 2), (int)cuarto.cellBounds.yMin, 0);
 
-        if (pisoPasillos.GetTile(afueraDelCuarto) != null)
-        {
-            int anchoPasillo = 10;
-            Vector3Int[] posiciones = new Vector3Int[anchoPasillo];
-            TileBase[] tileArray = new TileBase[posiciones.Length];
-
-            for (int i = 0; i < posiciones.Length; i++)
-            {
-                Vector3Int posicionPared = new Vector3Int((int)cuarto.cellBounds.center.x - (anchoPasillo / 2) + i, (int)cuarto.cellBounds.yMin, 0);
-                posiciones[i] = cuarto.WorldToCell(cuarto.transform.position) + posicionPared;
-
-                if (i == 0)
-                    tileArray[i] = esquinaIzquierdaAbajo;
-                else if (i == posiciones.Length - 1)
-                    tileArray[i] = esquinaDerechaAbajo;
-                else
-                    tileArray[i] = null;
-            }
-
-            transform.Find("Paredes").GetComponent<Tilemap>().SetTiles(posiciones, tileArray);
-        }
+        DibujarEntradas(pisoPasillos, afueraDelCuarto, posicionPared, esquinaIzquierdaAbajo, esquinaDerechaAbajo, true);
     }
 }
