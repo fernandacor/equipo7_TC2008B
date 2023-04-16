@@ -20,14 +20,6 @@ public class CuartoScript : MonoBehaviour
     {
         cuarto = gameObject.GetComponent<Tilemap>();
         pasillos = GameObject.FindGameObjectWithTag("Aisle");
-
-        Tilemap pisoPasillos = pasillos.transform.Find("Piso").GetComponent<Tilemap>();
-
-        DibujarEntradaDerecha(pisoPasillos);
-        DibujarEntradaIzquierda(pisoPasillos);
-        DibujarEntradaArriba(pisoPasillos);
-        DibujarEntradaAbajo(pisoPasillos);
-
     }
 
     // Update is called once per frame
@@ -36,7 +28,17 @@ public class CuartoScript : MonoBehaviour
 
     }
 
-    void DibujarEntradas(Tilemap pisoPasillos, Vector3Int afueraDelCuarto, Vector3Int posicionPared, TileBase tileInicio, TileBase tileFin, bool vertical)
+    void DibujarEntradas()
+    {
+        Tilemap pisoPasillos = pasillos.transform.Find("Piso").GetComponent<Tilemap>();
+
+        DibujarEntradaDerecha(pisoPasillos);
+        DibujarEntradaIzquierda(pisoPasillos);
+        DibujarEntradaArriba(pisoPasillos);
+        DibujarEntradaAbajo(pisoPasillos);
+    }
+
+    void DibujarEntrada(Tilemap pisoPasillos, Vector3Int afueraDelCuarto, Vector3Int posicionPared, TileBase tileInicio, TileBase tileFin, bool vertical)
     {
         if (pisoPasillos.GetTile(afueraDelCuarto) != null)
         {
@@ -67,7 +69,7 @@ public class CuartoScript : MonoBehaviour
         Vector3Int afueraDelCuarto = new Vector3Int((int)transform.position.x + cuarto.cellBounds.xMax + 1, (int)transform.position.y, 0);
         Vector3Int posicionPared = new Vector3Int(cuarto.cellBounds.xMax - 1, (int)cuarto.cellBounds.center.y - (anchoPasillos / 2), 0);
 
-        DibujarEntradas(pisoPasillos, afueraDelCuarto, posicionPared, esquinaDerechaAbajo, esquinaDerechaArriba, false);
+        DibujarEntrada(pisoPasillos, afueraDelCuarto, posicionPared, esquinaDerechaAbajo, esquinaDerechaArriba, false);
     }
 
     void DibujarEntradaIzquierda(Tilemap pisoPasillos)
@@ -75,7 +77,7 @@ public class CuartoScript : MonoBehaviour
         Vector3Int afueraDelCuarto = new Vector3Int((int)transform.position.x + cuarto.cellBounds.xMin - 1, (int)transform.position.y, 0);
         Vector3Int posicionPared = new Vector3Int(cuarto.cellBounds.xMin, (int)cuarto.cellBounds.center.y - (anchoPasillos / 2), 0);
 
-        DibujarEntradas(pisoPasillos, afueraDelCuarto, posicionPared, esquinaIzquierdaAbajo, esquinaIzquierdaArriba, false);
+        DibujarEntrada(pisoPasillos, afueraDelCuarto, posicionPared, esquinaIzquierdaAbajo, esquinaIzquierdaArriba, false);
     }
 
     void DibujarEntradaArriba(Tilemap pisoPasillos)
@@ -83,7 +85,7 @@ public class CuartoScript : MonoBehaviour
         Vector3Int afueraDelCuarto = new Vector3Int((int)transform.position.x, (int)transform.position.y + cuarto.cellBounds.yMax + 1, 0);
         Vector3Int posicionPared = new Vector3Int((int)cuarto.cellBounds.center.x - (anchoPasillos / 2), (int)cuarto.cellBounds.yMax - 1, 0);
 
-        DibujarEntradas(pisoPasillos, afueraDelCuarto, posicionPared, esquinaIzquierdaArriba, esquinaDerechaArriba, true);
+        DibujarEntrada(pisoPasillos, afueraDelCuarto, posicionPared, esquinaIzquierdaArriba, esquinaDerechaArriba, true);
     }
 
     void DibujarEntradaAbajo(Tilemap pisoPasillos)
@@ -91,6 +93,6 @@ public class CuartoScript : MonoBehaviour
         Vector3Int afueraDelCuarto = new Vector3Int((int)transform.position.x, (int)transform.position.y + cuarto.cellBounds.yMin - 1, 0);
         Vector3Int posicionPared = new Vector3Int((int)cuarto.cellBounds.center.x - (anchoPasillos / 2), (int)cuarto.cellBounds.yMin, 0);
 
-        DibujarEntradas(pisoPasillos, afueraDelCuarto, posicionPared, esquinaIzquierdaAbajo, esquinaDerechaAbajo, true);
+        DibujarEntrada(pisoPasillos, afueraDelCuarto, posicionPared, esquinaIzquierdaAbajo, esquinaDerechaAbajo, true);
     }
 }
