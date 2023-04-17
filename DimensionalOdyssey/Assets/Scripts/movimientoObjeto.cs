@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class movimientoObjeto : MonoBehaviour
+public class MovimientoObjeto : MonoBehaviour
 {
     //Define direction, speed, and that the object is a RigidBody2D
     public float velocidadMovimiento;
