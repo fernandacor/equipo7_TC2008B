@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: -8673249065724493565}
   - component: {fileID: -2639355373225145550}
   - component: {fileID: 7510325293825033273}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BulletProto1
-  m_TagString: Untagged
+  m_TagString: Players Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -160,4 +160,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae8ca531870464f4c8493a78cce1b098, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitEffect: {fileID: 0}
