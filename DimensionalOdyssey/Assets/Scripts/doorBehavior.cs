@@ -17,11 +17,11 @@ public class doorBehavior : MonoBehaviour
         doorClosedPos = transform.position;
         if (doorHorizontal == true)
         {
-            doorOpenPos = new Vector3(transform.position.x + 3f, transform.position.y, transform.position.z);
+            doorOpenPos = new Vector3(transform.position.x + 9f, transform.position.y, transform.position.z);
         }
         else if (doorVertical == true)
         {
-            doorOpenPos = new Vector3(transform.position.x, transform.position.y + 3f, transform.position.z);
+            doorOpenPos = new Vector3(transform.position.x, transform.position.y + 9f, transform.position.z);
         }
     }
 
