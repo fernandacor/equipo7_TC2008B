@@ -26,11 +26,19 @@ public class dialogue : MonoBehaviour
     //Wait for next boolean
     private bool waitForNext;
 
+    public bool escupeItem;
+    public GameObject itemEscupido;
+
     private void Awake()
     {
         //Hide window and show indicator
         ToggleWindow(false);
         ToggleIndicator(false);
+
+        if(escupeItem == true)
+        {
+            itemEscupido.SetActive(false);
+        }
     }
 
     public void ToggleWindow(bool show)
@@ -81,6 +89,11 @@ public class dialogue : MonoBehaviour
 
         //Hide window
         ToggleWindow(false);
+
+        if (escupeItem == true)
+        {
+            itemEscupido.SetActive(true);
+        }
 
     }
 
@@ -137,5 +150,4 @@ public class dialogue : MonoBehaviour
             }
         }
     }
-
 }
