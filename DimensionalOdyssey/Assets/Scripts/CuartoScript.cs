@@ -16,6 +16,8 @@ public class CuartoScript : MonoBehaviour
     public TileBase esquinaDerechaAbajo;
     public TileBase esquinaIzquierdaArriba;
     public TileBase esquinaIzquierdaAbajo;
+    public TileBase piso;
+    public TileBase fondo;
     int anchoPasillos = 10;
 
     // Start is called before the first frame update
@@ -41,6 +43,9 @@ public class CuartoScript : MonoBehaviour
         CambiarEntradaIzquierda(pisoPasillos, true);
         CambiarEntradaArriba(pisoPasillos, true);
         CambiarEntradaAbajo(pisoPasillos, true);
+
+        pisoPasillos.gameObject.GetComponent<Renderer>().sortingOrder = -1;
+        pisoPasillos.SwapTile(fondo, piso);
     }
 
     public void CerrarCuarto()
@@ -51,6 +56,9 @@ public class CuartoScript : MonoBehaviour
         CambiarEntradaIzquierda(pisoPasillos, false);
         CambiarEntradaArriba(pisoPasillos, false);
         CambiarEntradaAbajo(pisoPasillos, false);
+
+        pisoPasillos.gameObject.GetComponent<Renderer>().sortingOrder = 1;
+        pisoPasillos.SwapTile(piso, fondo);
     }
 
     void CambiarEntradaDerecha(Tilemap pisoPasillos, bool abrir)
@@ -61,7 +69,7 @@ public class CuartoScript : MonoBehaviour
         if (abrir)
             DibujarEntrada(pisoPasillos, afueraDelCuarto, posicionPared, esquinaDerechaAbajo, null, esquinaDerechaArriba, false);
         else
-            DibujarEntrada(pisoPasillos, afueraDelCuarto, posicionPared, esquinaDerechaAbajo, paredDerecha, esquinaDerechaArriba, false);
+            DibujarEntrada(pisoPasillos, afueraDelCuarto, posicionPared, paredDerecha, paredDerecha, paredDerecha, false);
     }
 
     void CambiarEntradaIzquierda(Tilemap pisoPasillos, bool abrir)
@@ -72,7 +80,7 @@ public class CuartoScript : MonoBehaviour
         if (abrir)
             DibujarEntrada(pisoPasillos, afueraDelCuarto, posicionPared, esquinaIzquierdaAbajo, null, esquinaIzquierdaArriba, false);
         else
-            DibujarEntrada(pisoPasillos, afueraDelCuarto, posicionPared, esquinaIzquierdaAbajo, paredIzquierda, esquinaIzquierdaArriba, false);
+            DibujarEntrada(pisoPasillos, afueraDelCuarto, posicionPared, paredIzquierda, paredIzquierda, paredIzquierda, false);
     }
 
     void CambiarEntradaArriba(Tilemap pisoPasillos, bool abrir)
@@ -83,7 +91,7 @@ public class CuartoScript : MonoBehaviour
         if (abrir)
             DibujarEntrada(pisoPasillos, afueraDelCuarto, posicionPared, esquinaIzquierdaArriba, null, esquinaDerechaArriba, true);
         else
-            DibujarEntrada(pisoPasillos, afueraDelCuarto, posicionPared, esquinaIzquierdaArriba, paredArriba, esquinaDerechaArriba, true);
+            DibujarEntrada(pisoPasillos, afueraDelCuarto, posicionPared, paredArriba, paredArriba, paredArriba, true);
     }
 
     void CambiarEntradaAbajo(Tilemap pisoPasillos, bool abrir)
@@ -94,7 +102,7 @@ public class CuartoScript : MonoBehaviour
         if (abrir)
             DibujarEntrada(pisoPasillos, afueraDelCuarto, posicionPared, esquinaIzquierdaAbajo, null, esquinaDerechaAbajo, true);
         else
-            DibujarEntrada(pisoPasillos, afueraDelCuarto, posicionPared, esquinaIzquierdaAbajo, paredAbajo, esquinaDerechaAbajo, true);
+            DibujarEntrada(pisoPasillos, afueraDelCuarto, posicionPared, paredAbajo, paredAbajo, paredAbajo, true);
     }
 
     void DibujarEntrada(Tilemap pisoPasillos, Vector3Int afueraDelCuarto, Vector3Int posicionPared, TileBase tileInicio, TileBase tilesMedio, TileBase tileFin, bool vertical)
