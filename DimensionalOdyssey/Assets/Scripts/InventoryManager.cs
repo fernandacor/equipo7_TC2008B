@@ -31,10 +31,16 @@ public class InventoryManager : MonoBehaviour
 
     public enum AllItems //All available inventory items in game
     {
+        //Armas
         pistolaInicial,
-        escopetaInicial,
-        metralletaInicial,
+
+        //Tokens
         tokenMultiDisparos,
-        llave1
+
+        //Llaves
+        llaveRosa,
+        llaveTurquesa,
+        llaveCafe,
+        llaveNaranja
     }
 }
