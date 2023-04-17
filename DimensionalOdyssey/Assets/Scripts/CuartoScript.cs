@@ -6,21 +6,36 @@ using UnityEngine.Tilemaps;
 public class CuartoScript : MonoBehaviour
 {
     public bool descubierto;
+    public GameObject esceneManager;
 
     private Tilemap cuarto;
     private GameObject pasillos;
     private int anchoPasillos = 10;
 
-    [SerializeField] TileBase paredArriba;
-    [SerializeField] TileBase paredDerecha;
-    [SerializeField] TileBase paredAbajo;
-    [SerializeField] TileBase paredIzquierda;
-    [SerializeField] TileBase esquinaDerechaArriba;
-    [SerializeField] TileBase esquinaDerechaAbajo;
-    [SerializeField] TileBase esquinaIzquierdaArriba;
-    [SerializeField] TileBase esquinaIzquierdaAbajo;
-    [SerializeField] TileBase piso;
-    [SerializeField] TileBase fondo;
+    TileBase paredArriba;
+    TileBase paredDerecha;
+    TileBase paredAbajo;
+    TileBase paredIzquierda;
+    TileBase esquinaArribaDerecha;
+    TileBase esquinaArribaIzquierda;
+    TileBase esquinaAbajoDerecha;
+    TileBase esquinaAbajoIzquierda;
+    TileBase piso;
+    TileBase fondo;
+
+    private void Awake()
+    {
+        paredArriba = esceneManager.GetComponent<EsceneManagerScript>().tileParedArriba;
+        paredDerecha = esceneManager.GetComponent<EsceneManagerScript>().tileParedDerecha;
+        paredAbajo = esceneManager.GetComponent<EsceneManagerScript>().tileParedAbajo;
+        paredIzquierda = esceneManager.GetComponent<EsceneManagerScript>().tileParedIzquierda;
+        esquinaArribaDerecha = esceneManager.GetComponent<EsceneManagerScript>().tileEsquinaArribaDerecha;
+        esquinaArribaIzquierda = esceneManager.GetComponent<EsceneManagerScript>().tileEsquinaArribaIzquierda;
+        esquinaAbajoDerecha = esceneManager.GetComponent<EsceneManagerScript>().tileEsquinaAbajoDerecha;
+        esquinaAbajoIzquierda = esceneManager.GetComponent<EsceneManagerScript>().tileEsquinaAbajoIzquierda;
+        piso = esceneManager.GetComponent<EsceneManagerScript>().tilePiso;
+        fondo = esceneManager.GetComponent<EsceneManagerScript>().tileFondo;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -61,28 +76,8 @@ public class CuartoScript : MonoBehaviour
 
         pisoPasillos.gameObject.GetComponent<Renderer>().sortingOrder = 1;
         pisoPasillos.SwapTile(piso, fondo);
-    }
 
-    void AbrirEntradaDerecha(Tilemap pisoPasillos, bool abrir)
-    {
-        Vector3Int afueraDelCuarto = new Vector3Int((int)transform.position.x + cuarto.cellBounds.xMax + 1, (int)transform.position.y, 0);
-        Vector3Int posicionPared = new Vector3Int(cuarto.cellBounds.xMax - 1, (int)cuarto.cellBounds.center.y - (anchoPasillos / 2), 0);
-
-        if (abrir)
-            DibujarEntrada(pisoPasillos, afueraDelCuarto, posicionPared, esquinaDerechaAbajo, null, esquinaDerechaArriba, false);
-        else
-            DibujarEntrada(pisoPasillos, afueraDelCuarto, posicionPared, paredDerecha, paredDerecha, paredDerecha, false);
-    }
-
-    void AbrirEntradaIzquierda(Tilemap pisoPasillos, bool abrir)
-    {
-        Vector3Int afueraDelCuarto = new Vector3Int((int)transform.position.x + cuarto.cellBounds.xMin - 1, (int)transform.position.y, 0);
-        Vector3Int posicionPared = new Vector3Int(cuarto.cellBounds.xMin, (int)cuarto.cellBounds.center.y - (anchoPasillos / 2), 0);
-
-        if (abrir)
-            DibujarEntrada(pisoPasillos, afueraDelCuarto, posicionPared, esquinaIzquierdaAbajo, null, esquinaIzquierdaArriba, false);
-        else
-            DibujarEntrada(pisoPasillos, afueraDelCuarto, posicionPared, paredIzquierda, paredIzquierda, paredIzquierda, false);
+        // Generar enemigos
     }
 
     void AbrirEntradaArriba(Tilemap pisoPasillos, bool abrir)
@@ -91,7 +86,7 @@ public class CuartoScript : MonoBehaviour
         Vector3Int posicionPared = new Vector3Int((int)cuarto.cellBounds.center.x - (anchoPasillos / 2), (int)cuarto.cellBounds.yMax - 1, 0);
 
         if (abrir)
-            DibujarEntrada(pisoPasillos, afueraDelCuarto, posicionPared, esquinaIzquierdaArriba, null, esquinaDerechaArriba, true);
+            DibujarEntrada(pisoPasillos, afueraDelCuarto, posicionPared, esquinaArribaIzquierda, null, esquinaArribaDerecha, true);
         else
             DibujarEntrada(pisoPasillos, afueraDelCuarto, posicionPared, paredArriba, paredArriba, paredArriba, true);
     }
@@ -102,12 +97,34 @@ public class CuartoScript : MonoBehaviour
         Vector3Int posicionPared = new Vector3Int((int)cuarto.cellBounds.center.x - (anchoPasillos / 2), (int)cuarto.cellBounds.yMin, 0);
 
         if (abrir)
-            DibujarEntrada(pisoPasillos, afueraDelCuarto, posicionPared, esquinaIzquierdaAbajo, null, esquinaDerechaAbajo, true);
+            DibujarEntrada(pisoPasillos, afueraDelCuarto, posicionPared, esquinaAbajoIzquierda, null, esquinaAbajoDerecha, true);
         else
             DibujarEntrada(pisoPasillos, afueraDelCuarto, posicionPared, paredAbajo, paredAbajo, paredAbajo, true);
     }
 
-    void DibujarEntrada(Tilemap pisoPasillos, Vector3Int afueraDelCuarto, Vector3Int posicionPared, TileBase tileInicio, TileBase tilesMedio, TileBase tileFin, bool vertical)
+    void AbrirEntradaDerecha(Tilemap pisoPasillos, bool abrir)
+    {
+        Vector3Int afueraDelCuarto = new Vector3Int((int)transform.position.x + cuarto.cellBounds.xMax + 1, (int)transform.position.y, 0);
+        Vector3Int posicionPared = new Vector3Int(cuarto.cellBounds.xMax - 1, (int)cuarto.cellBounds.center.y - (anchoPasillos / 2), 0);
+
+        if (abrir)
+            DibujarEntrada(pisoPasillos, afueraDelCuarto, posicionPared, esquinaAbajoDerecha, null, esquinaArribaDerecha, false);
+        else
+            DibujarEntrada(pisoPasillos, afueraDelCuarto, posicionPared, paredDerecha, paredDerecha, paredDerecha, false);
+    }
+
+    void AbrirEntradaIzquierda(Tilemap pisoPasillos, bool abrir)
+    {
+        Vector3Int afueraDelCuarto = new Vector3Int((int)transform.position.x + cuarto.cellBounds.xMin - 1, (int)transform.position.y, 0);
+        Vector3Int posicionPared = new Vector3Int(cuarto.cellBounds.xMin, (int)cuarto.cellBounds.center.y - (anchoPasillos / 2), 0);
+
+        if (abrir)
+            DibujarEntrada(pisoPasillos, afueraDelCuarto, posicionPared, esquinaAbajoIzquierda, null, esquinaArribaIzquierda, false);
+        else
+            DibujarEntrada(pisoPasillos, afueraDelCuarto, posicionPared, paredIzquierda, paredIzquierda, paredIzquierda, false);
+    }
+
+    void DibujarEntrada(Tilemap pisoPasillos, Vector3Int afueraDelCuarto, Vector3Int posicionPared, TileBase tileInicio, TileBase tilesMedio, TileBase fin, bool vertical)
     {
         if (pisoPasillos.GetTile(afueraDelCuarto) != null)
         {
@@ -124,7 +141,7 @@ public class CuartoScript : MonoBehaviour
                 if (i == 0)
                     tileArray[i] = tileInicio;
                 else if (i == posiciones.Length - 1)
-                    tileArray[i] = tileFin;
+                    tileArray[i] = fin;
                 else
                     tileArray[i] = tilesMedio;
             }

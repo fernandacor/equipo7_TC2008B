@@ -5,7 +5,7 @@ using UnityEngine;
 public class enemyBehavior : MonoBehaviour
 {
     public Transform player;
-    private Rigidbody2D rb2D;
+    private Rigidbody2D enemy;
     private Vector2 movimiento;
     public float velocidad = 5f;
     public bool activeEnemy = false;
@@ -14,7 +14,7 @@ public class enemyBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rb2D = GetComponent<Rigidbody2D>(); 
+        enemy = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -24,7 +24,7 @@ public class enemyBehavior : MonoBehaviour
         {
             Vector3 direction = player.position - transform.position;
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            //rb2D.rotation = angle;
+            //enemy.rotation = angle;
             direction.Normalize();
             movimiento = direction;
 
@@ -41,7 +41,7 @@ public class enemyBehavior : MonoBehaviour
 
     void moveCharacter(Vector2 direction)
     {
-        rb2D.MovePosition((Vector2)transform.position + (direction * velocidad * Time.deltaTime));
+        enemy.MovePosition((Vector2)transform.position + (direction * velocidad * Time.deltaTime));
     }
 
     void OnTriggerEnter2D(Collider2D collision)
