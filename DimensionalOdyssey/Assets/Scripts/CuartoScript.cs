@@ -8,12 +8,15 @@ public class CuartoScript : MonoBehaviour
     public bool descubierto;
     Tilemap cuarto;
     GameObject pasillos;
+    public TileBase paredArriba;
+    public TileBase paredDerecha;
+    public TileBase paredAbajo;
+    public TileBase paredIzquierda;
     public TileBase esquinaDerechaArriba;
     public TileBase esquinaDerechaAbajo;
     public TileBase esquinaIzquierdaArriba;
     public TileBase esquinaIzquierdaAbajo;
-    public int anchoPasillos = 10;
-
+    int anchoPasillos = 10;
 
     // Start is called before the first frame update
     void Start()
@@ -21,7 +24,7 @@ public class CuartoScript : MonoBehaviour
         cuarto = gameObject.GetComponent<Tilemap>();
         pasillos = GameObject.FindGameObjectWithTag("Aisle");
 
-        DibujarEntradas();
+        AbrirCuarto();
     }
 
     // Update is called once per frame
@@ -30,17 +33,71 @@ public class CuartoScript : MonoBehaviour
 
     }
 
-    void DibujarEntradas()
+    public void AbrirCuarto()
     {
         Tilemap pisoPasillos = pasillos.transform.Find("Piso").GetComponent<Tilemap>();
 
-        DibujarEntradaDerecha(pisoPasillos);
-        DibujarEntradaIzquierda(pisoPasillos);
-        DibujarEntradaArriba(pisoPasillos);
-        DibujarEntradaAbajo(pisoPasillos);
+        CambiarEntradaDerecha(pisoPasillos, true);
+        CambiarEntradaIzquierda(pisoPasillos, true);
+        CambiarEntradaArriba(pisoPasillos, true);
+        CambiarEntradaAbajo(pisoPasillos, true);
     }
 
-    void DibujarEntrada(Tilemap pisoPasillos, Vector3Int afueraDelCuarto, Vector3Int posicionPared, TileBase tileInicio, TileBase tileFin, bool vertical)
+    public void CerrarCuarto()
+    {
+        Tilemap pisoPasillos = pasillos.transform.Find("Piso").GetComponent<Tilemap>();
+
+        CambiarEntradaDerecha(pisoPasillos, false);
+        CambiarEntradaIzquierda(pisoPasillos, false);
+        CambiarEntradaArriba(pisoPasillos, false);
+        CambiarEntradaAbajo(pisoPasillos, false);
+    }
+
+    void CambiarEntradaDerecha(Tilemap pisoPasillos, bool abrir)
+    {
+        Vector3Int afueraDelCuarto = new Vector3Int((int)transform.position.x + cuarto.cellBounds.xMax + 1, (int)transform.position.y, 0);
+        Vector3Int posicionPared = new Vector3Int(cuarto.cellBounds.xMax - 1, (int)cuarto.cellBounds.center.y - (anchoPasillos / 2), 0);
+
+        if (abrir)
+            DibujarEntrada(pisoPasillos, afueraDelCuarto, posicionPared, esquinaDerechaAbajo, null, esquinaDerechaArriba, false);
+        else
+            DibujarEntrada(pisoPasillos, afueraDelCuarto, posicionPared, esquinaDerechaAbajo, paredDerecha, esquinaDerechaArriba, false);
+    }
+
+    void CambiarEntradaIzquierda(Tilemap pisoPasillos, bool abrir)
+    {
+        Vector3Int afueraDelCuarto = new Vector3Int((int)transform.position.x + cuarto.cellBounds.xMin - 1, (int)transform.position.y, 0);
+        Vector3Int posicionPared = new Vector3Int(cuarto.cellBounds.xMin, (int)cuarto.cellBounds.center.y - (anchoPasillos / 2), 0);
+
+        if (abrir)
+            DibujarEntrada(pisoPasillos, afueraDelCuarto, posicionPared, esquinaIzquierdaAbajo, null, esquinaIzquierdaArriba, false);
+        else
+            DibujarEntrada(pisoPasillos, afueraDelCuarto, posicionPared, esquinaIzquierdaAbajo, paredIzquierda, esquinaIzquierdaArriba, false);
+    }
+
+    void CambiarEntradaArriba(Tilemap pisoPasillos, bool abrir)
+    {
+        Vector3Int afueraDelCuarto = new Vector3Int((int)transform.position.x, (int)transform.position.y + cuarto.cellBounds.yMax + 1, 0);
+        Vector3Int posicionPared = new Vector3Int((int)cuarto.cellBounds.center.x - (anchoPasillos / 2), (int)cuarto.cellBounds.yMax - 1, 0);
+
+        if (abrir)
+            DibujarEntrada(pisoPasillos, afueraDelCuarto, posicionPared, esquinaIzquierdaArriba, null, esquinaDerechaArriba, true);
+        else
+            DibujarEntrada(pisoPasillos, afueraDelCuarto, posicionPared, esquinaIzquierdaArriba, paredArriba, esquinaDerechaArriba, true);
+    }
+
+    void CambiarEntradaAbajo(Tilemap pisoPasillos, bool abrir)
+    {
+        Vector3Int afueraDelCuarto = new Vector3Int((int)transform.position.x, (int)transform.position.y + cuarto.cellBounds.yMin - 1, 0);
+        Vector3Int posicionPared = new Vector3Int((int)cuarto.cellBounds.center.x - (anchoPasillos / 2), (int)cuarto.cellBounds.yMin, 0);
+
+        if (abrir)
+            DibujarEntrada(pisoPasillos, afueraDelCuarto, posicionPared, esquinaIzquierdaAbajo, null, esquinaDerechaAbajo, true);
+        else
+            DibujarEntrada(pisoPasillos, afueraDelCuarto, posicionPared, esquinaIzquierdaAbajo, paredAbajo, esquinaDerechaAbajo, true);
+    }
+
+    void DibujarEntrada(Tilemap pisoPasillos, Vector3Int afueraDelCuarto, Vector3Int posicionPared, TileBase tileInicio, TileBase tilesMedio, TileBase tileFin, bool vertical)
     {
         if (pisoPasillos.GetTile(afueraDelCuarto) != null)
         {
@@ -59,42 +116,10 @@ public class CuartoScript : MonoBehaviour
                 else if (i == posiciones.Length - 1)
                     tileArray[i] = tileFin;
                 else
-                    tileArray[i] = null;
+                    tileArray[i] = tilesMedio;
             }
 
             transform.Find("Paredes").GetComponent<Tilemap>().SetTiles(posiciones, tileArray);
         }
-    }
-
-    void DibujarEntradaDerecha(Tilemap pisoPasillos)
-    {
-        Vector3Int afueraDelCuarto = new Vector3Int((int)transform.position.x + cuarto.cellBounds.xMax + 1, (int)transform.position.y, 0);
-        Vector3Int posicionPared = new Vector3Int(cuarto.cellBounds.xMax - 1, (int)cuarto.cellBounds.center.y - (anchoPasillos / 2), 0);
-
-        DibujarEntrada(pisoPasillos, afueraDelCuarto, posicionPared, esquinaDerechaAbajo, esquinaDerechaArriba, false);
-    }
-
-    void DibujarEntradaIzquierda(Tilemap pisoPasillos)
-    {
-        Vector3Int afueraDelCuarto = new Vector3Int((int)transform.position.x + cuarto.cellBounds.xMin - 1, (int)transform.position.y, 0);
-        Vector3Int posicionPared = new Vector3Int(cuarto.cellBounds.xMin, (int)cuarto.cellBounds.center.y - (anchoPasillos / 2), 0);
-
-        DibujarEntrada(pisoPasillos, afueraDelCuarto, posicionPared, esquinaIzquierdaAbajo, esquinaIzquierdaArriba, false);
-    }
-
-    void DibujarEntradaArriba(Tilemap pisoPasillos)
-    {
-        Vector3Int afueraDelCuarto = new Vector3Int((int)transform.position.x, (int)transform.position.y + cuarto.cellBounds.yMax + 1, 0);
-        Vector3Int posicionPared = new Vector3Int((int)cuarto.cellBounds.center.x - (anchoPasillos / 2), (int)cuarto.cellBounds.yMax - 1, 0);
-
-        DibujarEntrada(pisoPasillos, afueraDelCuarto, posicionPared, esquinaIzquierdaArriba, esquinaDerechaArriba, true);
-    }
-
-    void DibujarEntradaAbajo(Tilemap pisoPasillos)
-    {
-        Vector3Int afueraDelCuarto = new Vector3Int((int)transform.position.x, (int)transform.position.y + cuarto.cellBounds.yMin - 1, 0);
-        Vector3Int posicionPared = new Vector3Int((int)cuarto.cellBounds.center.x - (anchoPasillos / 2), (int)cuarto.cellBounds.yMin, 0);
-
-        DibujarEntrada(pisoPasillos, afueraDelCuarto, posicionPared, esquinaIzquierdaAbajo, esquinaDerechaAbajo, true);
     }
 }

@@ -9,6 +9,7 @@ TagManager:
   - Token
   - Room
   - Aisle
+  - Boton
   layers:
   - Default
   - TransparentFX
