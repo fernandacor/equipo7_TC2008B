@@ -56,3 +56,6 @@ TagManager:
   - name: puertas
     uniqueID: 1801314825
     locked: 0
+  - name: agarrables
+    uniqueID: 2001966221
+    locked: 0

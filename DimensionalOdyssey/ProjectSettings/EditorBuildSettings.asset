@@ -27,6 +27,6 @@ EditorBuildSettings:
     path: Assets/Scenes/level_Lab.unity
     guid: 9062f6358fd3028429c3d4ff79d7c703
   - enabled: 1
-    path: Assets/Scenes/mapa1.unity
+    path: Assets/Scenes/prototipo.unity
     guid: e6fb0a92edaa5064daee35284dc39ec6
   m_configObjects: {}
