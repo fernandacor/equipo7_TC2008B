@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class bullet : MonoBehaviour
 {
-    // Start is called before the first frame update
     void OnCollisionEnter2D(Collision2D collision){
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            return; // Si el objeto colisionado es el jugador, no se destruirá el objeto
+        }
         Destroy(gameObject);
     }
+
 }
