@@ -10,7 +10,7 @@ CREATE TABLE enemigos(
 	idEnemigo SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
     nombreEnemigo VARCHAR(25) NOT NULL,
     PRIMARY KEY (idEnemigo)
-);
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Table structure for table 'Armas'
@@ -24,7 +24,7 @@ CREATE TABLE armas(
     velocidadDisparo SMALLINT UNSIGNED NOT NULL,
     cantDisparo SMALLINT UNSIGNED NOT NULL,
     PRIMARY KEY (idArma)
-);
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Table structure for table 'usuario'
@@ -37,7 +37,7 @@ CREATE TABLE usuario(
     nombre VARCHAR(30) NOT NULL,
     apellido VARCHAR(50) NOT NULL,
     PRIMARY KEY (username)
-);
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Table strucure for table 'Partida'
@@ -50,7 +50,7 @@ CREATE TABLE partida(
     idPersonaje SMALLINT UNSIGNED NOT NULL,
     PRIMARY KEY (idPartida),
     CONSTRAINT `fk_username_partida`FOREIGN KEY (username) REFERENCES usuario(username) ON DELETE RESTRICT ON UPDATE CASCADE
-);
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Table structure for table 'Personaje'
@@ -65,7 +65,7 @@ CREATE TABLE personajes(
     PRIMARY KEY (idPersonaje),
     CONSTRAINT `fk_armaPersonaje` FOREIGN KEY (idArma) REFERENCES armas(idArma) ON DELETE RESTRICT ON UPDATE CASCADE,
     CONSTRAINT `fk_partidaPersonaje` FOREIGN KEY (idPartida) REFERENCES partida(idPartida) ON DELETE RESTRICT ON UPDATE CASCADE
-);
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Table structure for table 'Tokens'
@@ -78,7 +78,7 @@ CREATE TABLE tokens(
     idPersonaje SMALLINT UNSIGNED NOT NULL,
     PRIMARY KEY (idToken),
     CONSTRAINT `fk_personaje_tokens` FOREIGN KEY (idPersonaje) REFERENCES personajes(idPersonaje) ON DELETE RESTRICT ON UPDATE CASCADE
-);
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Table structure for table 'Atributos'
@@ -97,4 +97,4 @@ CREATE TABLE atributos(
     PRIMARY KEY (idAtributo),
     CONSTRAINT `fk_personaje_atributos` FOREIGN KEY (idPersonaje) REFERENCES personajes(idPersonaje) ON DELETE RESTRICT ON UPDATE CASCADE,
     CONSTRAINT `fk_enemigos_atributos` FOREIGN KEY (idEnemigo) REFERENCES enemigos(idEnemigo) ON DELETE RESTRICT ON UPDATE CASCADE
-);
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
