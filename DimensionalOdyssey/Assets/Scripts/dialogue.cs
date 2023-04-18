@@ -26,11 +26,19 @@ public class dialogue : MonoBehaviour
     //Wait for next boolean
     private bool waitForNext;
 
+    public bool escupeItem;
+    public GameObject itemEscupido;
+
     private void Awake()
     {
         //Hide window and show indicator
         ToggleWindow(false);
         ToggleIndicator(false);
+
+        if(escupeItem == true)
+        {
+            itemEscupido.SetActive(false);
+        }
     }
 
     public void ToggleWindow(bool show)
@@ -58,7 +66,7 @@ public class dialogue : MonoBehaviour
         GetDialogue(0);
     }
 
-    private void GetDialogue(int i)
+    public void GetDialogue(int i)
     {
         //Start index at 0
         Index = i;
@@ -81,7 +89,6 @@ public class dialogue : MonoBehaviour
 
         //Hide window
         ToggleWindow(false);
-
     }
 
     //Writing logic
@@ -134,8 +141,11 @@ public class dialogue : MonoBehaviour
                 //If not, end dialogue process
                 EndDialogue();
                 ToggleIndicator(true);
+                if (escupeItem == true)
+                {
+                    itemEscupido.SetActive(true);
+                }
             }
         }
     }
-
 }
