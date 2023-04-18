@@ -15,23 +15,24 @@ public class enemyBehavior : MonoBehaviour
     void Start()
     {
         enemy = GetComponent<Rigidbody2D>();
+        player = GameObject.Find("Player 1").transform;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (activeEnemy == true)
-        {
-            Vector3 direction = player.position - transform.position;
-            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            //enemy.rotation = angle;
-            direction.Normalize();
-            movimiento = direction;
+        // if (activeEnemy == true)
+        // {
+        Vector3 direction = player.position - transform.position;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        //enemy.rotation = angle;
+        direction.Normalize();
+        movimiento = direction;
 
-            animator.SetFloat("Horizontal", movimiento.x);
-            animator.SetFloat("Vertical", movimiento.y);
-            animator.SetFloat("Speed", movimiento.sqrMagnitude);
-        }
+        // animator.SetFloat("Horizontal", movimiento.x);
+        // animator.SetFloat("Vertical", movimiento.y);
+        // animator.SetFloat("Speed", movimiento.sqrMagnitude);
+        // }
     }
 
     void FixedUpdate()
@@ -44,11 +45,11 @@ public class enemyBehavior : MonoBehaviour
         enemy.MovePosition((Vector2)transform.position + (direction * velocidad * Time.deltaTime));
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            activeEnemy = true;
-        }
-    }
+    // void OnTriggerEnter2D(Collider2D collision)
+    // {
+    //     if (collision.gameObject.tag == "Player")
+    //     {
+    //         activeEnemy = true;
+    //     }
+    // }
 }

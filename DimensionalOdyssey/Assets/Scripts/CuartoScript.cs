@@ -6,7 +6,7 @@ using UnityEngine.Tilemaps;
 public class CuartoScript : MonoBehaviour
 {
     public bool descubierto;
-    public GameObject esceneManager;
+    public GameObject sceneManager;
 
     private Tilemap cuarto;
     private GameObject pasillos;
@@ -25,16 +25,16 @@ public class CuartoScript : MonoBehaviour
 
     private void Awake()
     {
-        paredArriba = esceneManager.GetComponent<EsceneManagerScript>().tileParedArriba;
-        paredDerecha = esceneManager.GetComponent<EsceneManagerScript>().tileParedDerecha;
-        paredAbajo = esceneManager.GetComponent<EsceneManagerScript>().tileParedAbajo;
-        paredIzquierda = esceneManager.GetComponent<EsceneManagerScript>().tileParedIzquierda;
-        esquinaArribaDerecha = esceneManager.GetComponent<EsceneManagerScript>().tileEsquinaArribaDerecha;
-        esquinaArribaIzquierda = esceneManager.GetComponent<EsceneManagerScript>().tileEsquinaArribaIzquierda;
-        esquinaAbajoDerecha = esceneManager.GetComponent<EsceneManagerScript>().tileEsquinaAbajoDerecha;
-        esquinaAbajoIzquierda = esceneManager.GetComponent<EsceneManagerScript>().tileEsquinaAbajoIzquierda;
-        piso = esceneManager.GetComponent<EsceneManagerScript>().tilePiso;
-        fondo = esceneManager.GetComponent<EsceneManagerScript>().tileFondo;
+        paredArriba = sceneManager.GetComponent<SceneManagerScript>().tileParedArriba;
+        paredDerecha = sceneManager.GetComponent<SceneManagerScript>().tileParedDerecha;
+        paredAbajo = sceneManager.GetComponent<SceneManagerScript>().tileParedAbajo;
+        paredIzquierda = sceneManager.GetComponent<SceneManagerScript>().tileParedIzquierda;
+        esquinaArribaDerecha = sceneManager.GetComponent<SceneManagerScript>().tileEsquinaArribaDerecha;
+        esquinaArribaIzquierda = sceneManager.GetComponent<SceneManagerScript>().tileEsquinaArribaIzquierda;
+        esquinaAbajoDerecha = sceneManager.GetComponent<SceneManagerScript>().tileEsquinaAbajoDerecha;
+        esquinaAbajoIzquierda = sceneManager.GetComponent<SceneManagerScript>().tileEsquinaAbajoIzquierda;
+        piso = sceneManager.GetComponent<SceneManagerScript>().tilePiso;
+        fondo = sceneManager.GetComponent<SceneManagerScript>().tileFondo;
     }
 
     // Start is called before the first frame update
@@ -77,6 +77,7 @@ public class CuartoScript : MonoBehaviour
         pisoPasillos.gameObject.GetComponent<Renderer>().sortingOrder = 1;
         pisoPasillos.SwapTile(piso, fondo);
 
+        GetComponent<EnemySpawn>().GenerarEnemigos();
         // Generar enemigos
     }
 

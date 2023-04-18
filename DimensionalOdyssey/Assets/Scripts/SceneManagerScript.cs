@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class EsceneManagerScript : MonoBehaviour
+public class SceneManagerScript : MonoBehaviour
 {
 
     public TileBase tileParedArriba;
