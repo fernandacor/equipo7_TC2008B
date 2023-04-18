@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class roomSwitch : MonoBehaviour
+public class RoomSwitch : MonoBehaviour
 {
     private bool playerDetected;
     [SerializeField] Transform posToGo;
@@ -11,8 +11,8 @@ public class roomSwitch : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerDetected = false;   
-        
+        playerDetected = false;
+
     }
 
     // Update is called once per frame
@@ -27,8 +27,8 @@ public class roomSwitch : MonoBehaviour
             }
         }
 
-        
-        
+
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

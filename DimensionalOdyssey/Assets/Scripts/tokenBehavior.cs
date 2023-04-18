@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class tokenBehavior : MonoBehaviour
+public class TokenBehavior : MonoBehaviour
 {
     [SerializeField] public float numBullets;
     [SerializeField] public float range;
@@ -11,12 +11,12 @@ public class tokenBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

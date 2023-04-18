@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class movimientoPersonaje : MonoBehaviour
+public class MovimientoPersonaje : MonoBehaviour
 {
     [SerializeField] public float velocidadMovimiento;
     Vector2 movimiento;

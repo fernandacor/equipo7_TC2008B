@@ -5,7 +5,7 @@ using UnityEngine;
 //Script to move an object in a sine wave
 // by: Fernanda Cantú Ortega A01782232 10/03/2023
 
-public class movimientoSineEnemigos : MonoBehaviour
+public class MovimientoSineEnemigos : MonoBehaviour
 {
     [SerializeField] float amplitude;
     [SerializeField] float speed;

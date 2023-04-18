@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class dialogue : MonoBehaviour
+public class Dialogue : MonoBehaviour
 {
     //Fields
     //Window
@@ -35,7 +35,7 @@ public class dialogue : MonoBehaviour
         ToggleWindow(false);
         ToggleIndicator(false);
 
-        if(escupeItem == true)
+        if (escupeItem == true)
         {
             itemEscupido.SetActive(false);
         }
@@ -119,8 +119,8 @@ public class dialogue : MonoBehaviour
     }
 
     private void Update()
-    {  
-        if(!started)
+    {
+        if (!started)
         {
             return;
         }
@@ -131,8 +131,8 @@ public class dialogue : MonoBehaviour
             Index++;
 
             //Check if we are in the scope of dialogues List
-            if(Index < dialogues.Count)
-            {   
+            if (Index < dialogues.Count)
+            {
                 //If so, fetch next dialogue
                 GetDialogue(Index);
             }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class portalBehavior : MonoBehaviour
+public class PortalBehavior : MonoBehaviour
 {
     private Rigidbody2D rb2D;
 

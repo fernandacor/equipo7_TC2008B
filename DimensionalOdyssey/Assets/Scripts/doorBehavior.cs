@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class doorBehavior : MonoBehaviour
+public class DoorBehavior : MonoBehaviour
 {
-     [SerializeField] InventoryManager.AllItems requiredItem;
+    [SerializeField] InventoryManager.AllItems requiredItem;
     public bool isDoorOpen = false;
     public bool doorHorizontal = false;
     public bool doorVertical = false;
@@ -26,8 +26,8 @@ public class doorBehavior : MonoBehaviour
     }
 
     void OpenDoor()
-    {   
-        if(transform.position != doorOpenPos)
+    {
+        if (transform.position != doorOpenPos)
         {
             transform.position = Vector3.MoveTowards(transform.position, doorOpenPos, doorOpenSpeed * Time.deltaTime);
         }
@@ -36,15 +36,15 @@ public class doorBehavior : MonoBehaviour
 
     void CloseDoor()
     {
-        if(transform.position != doorClosedPos)
+        if (transform.position != doorClosedPos)
         {
             transform.position = Vector3.MoveTowards(transform.position, doorClosedPos, doorOpenSpeed * Time.deltaTime);
         }
     }
 
-    public bool hasRequiredItem(InventoryManager.AllItems itemRequired)
+    public bool HasRequiredItem(InventoryManager.AllItems itemRequired)
     {
-        if(InventoryManager.Instance._inventoryItems.Contains(itemRequired))
+        if (InventoryManager.Instance._inventoryItems.Contains(itemRequired))
         {
             return true;
         }
@@ -56,9 +56,9 @@ public class doorBehavior : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag("Player"))
+        if (collision.CompareTag("Player"))
         {
-            if(hasRequiredItem(requiredItem) == true)
+            if (HasRequiredItem(requiredItem) == true)
             {
                 isDoorOpen = !isDoorOpen;
             }
@@ -74,6 +74,6 @@ public class doorBehavior : MonoBehaviour
         else
         {
             CloseDoor();
-        }   
+        }
     }
 }

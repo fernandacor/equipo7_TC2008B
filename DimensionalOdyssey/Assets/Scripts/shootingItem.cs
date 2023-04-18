@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class shootingItem : MonoBehaviour
+public class ShootingItem : MonoBehaviour
 {
     // public float speed;
 
@@ -28,7 +28,7 @@ public class shootingItem : MonoBehaviour
     private Rigidbody2D rb2D;
     public float force;
 
-    void Start ()
+    void Start()
     {
         mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         rb2D = GetComponent<Rigidbody2D>();

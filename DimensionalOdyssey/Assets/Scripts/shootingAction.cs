@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class shootingAction : MonoBehaviour
+public class ShootingAction : MonoBehaviour
 {
     public UnityEvent action;
     public void Action()

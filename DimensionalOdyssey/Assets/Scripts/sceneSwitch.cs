@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class sceneSwitch : MonoBehaviour
+public class SceneSwitch : MonoBehaviour
 {
     public string sceneName;
     private Rigidbody2D rb2D;

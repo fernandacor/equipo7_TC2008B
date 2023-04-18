@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class shooting : MonoBehaviour
+public class Shooting : MonoBehaviour
 {
     [SerializeField] InventoryManager.AllItems requiredItem;
     public bool canShoot = true;
@@ -25,11 +25,11 @@ public class shooting : MonoBehaviour
         mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
     }
 
-    public bool hasRequiredItem(InventoryManager.AllItems itemRequired)
+    public bool HasRequiredItem(InventoryManager.AllItems itemRequired)
     {
-        if(InventoryManager.Instance._inventoryItems.Contains(itemRequired))
+        if (InventoryManager.Instance._inventoryItems.Contains(itemRequired))
         {
-            Debug.Log("hasRequiredItem = true");
+            Debug.Log("HasRequiredItem = true");
             return true;
         }
         else
@@ -40,9 +40,9 @@ public class shooting : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag("Gun"))
+        if (collision.CompareTag("Gun"))
         {
-            if(hasRequiredItem(requiredItem) == true)
+            if (HasRequiredItem(requiredItem) == true)
             {
                 Debug.Log("Se tiene el elemento");
                 canShoot = !canShoot;
@@ -70,10 +70,10 @@ public class shooting : MonoBehaviour
 
         if (canShoot == true)
         {
-            if(!canFire)
+            if (!canFire)
             {
                 timer += Time.deltaTime;
-                if(timer >= timeBetweenFiring)
+                if (timer >= timeBetweenFiring)
                 {
                     canFire = true;
                     timer = 0;
@@ -81,7 +81,7 @@ public class shooting : MonoBehaviour
             }
         }
 
-        if(Input.GetMouseButton(0) && canFire == true)
+        if (Input.GetMouseButton(0) && canFire == true)
         {
             Instantiate(bullet, bulletTransform.position, Quaternion.identity);
         }

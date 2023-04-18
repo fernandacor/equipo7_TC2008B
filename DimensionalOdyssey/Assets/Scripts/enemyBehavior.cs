@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class enemyBehavior : MonoBehaviour
+public class EnemyBehavior : MonoBehaviour
 {
     private Transform player;
     private Rigidbody2D enemy;
@@ -37,10 +37,10 @@ public class enemyBehavior : MonoBehaviour
 
     void FixedUpdate()
     {
-        moveCharacter(movimiento);
+        MoveCharacter(movimiento);
     }
 
-    void moveCharacter(Vector2 direction)
+    void MoveCharacter(Vector2 direction)
     {
         enemy.MovePosition((Vector2)transform.position + (direction * velocidad * Time.deltaTime));
     }

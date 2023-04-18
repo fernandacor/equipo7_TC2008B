@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class abrirCofres : MonoBehaviour
+public class AbrirCofres : MonoBehaviour
 {
     public bool isOpen; // Se vuelve verdad si el trigger reconoce al jugador
     //Es publica para poder ver desde el inspector si se puede abrir el cofre o no
@@ -29,12 +29,12 @@ public class abrirCofres : MonoBehaviour
         //Si el cofre reconoce al jugador y se presiona la tecla E, se abre
         if (isOpen == true && Input.GetKeyDown(KeyCode.E))
         {
-            abrirCaja();
+            AbrirCaja();
             itemEscupido.SetActive(true);
         };
     }
 
-    private void abrirCaja() // Función que activa la imagen de cofre abierto y desactiva el cofre cerrado
+    private void AbrirCaja() // Función que activa la imagen de cofre abierto y desactiva el cofre cerrado
     {
         cajaAbierta.SetActive(true);
         cajaCerrada.SetActive(false);
@@ -42,7 +42,7 @@ public class abrirCofres : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Player") // Si el jugador entra en el trigger, se activa la variable isOpen
+        if (collision.gameObject.tag == "Player") // Si el jugador entra en el trigger, se activa la variable isOpen
         {
             isOpen = true;
         }

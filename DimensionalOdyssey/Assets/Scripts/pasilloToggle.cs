@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class pasilloToggle : MonoBehaviour
+public class PasilloToggle : MonoBehaviour
 {
     [SerializeField] InventoryManager.AllItems requiredItem;
     public GameObject pasillo;
@@ -11,10 +11,10 @@ public class pasilloToggle : MonoBehaviour
     {
         pasillo.SetActive(false);
     }
-    
-    public bool hasRequiredItem(InventoryManager.AllItems itemRequired)
+
+    public bool HasRequiredItem(InventoryManager.AllItems itemRequired)
     {
-        if(InventoryManager.Instance != null && InventoryManager.Instance._inventoryItems.Contains(itemRequired))
+        if (InventoryManager.Instance != null && InventoryManager.Instance._inventoryItems.Contains(itemRequired))
         {
             Debug.Log("Tiene el item");
             return true;
@@ -27,9 +27,9 @@ public class pasilloToggle : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag("Player"))
-        {      
-            if (hasRequiredItem(requiredItem) == true)
+        if (collision.CompareTag("Player"))
+        {
+            if (HasRequiredItem(requiredItem) == true)
             {
                 Debug.Log("Se activo el pasillo");
                 pasillo.SetActive(true);

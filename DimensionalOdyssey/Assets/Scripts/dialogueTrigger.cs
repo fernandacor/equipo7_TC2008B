@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class dialogueTrigger : MonoBehaviour
+public class DialogueTrigger : MonoBehaviour
 {
-    public dialogue dialogueScript;
+    public Dialogue dialogueScript;
     private bool playerDetected;
 
     //Detect trigger with player
@@ -14,7 +14,7 @@ public class dialogueTrigger : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             //If detected, show indicator
-            playerDetected=true;
+            playerDetected = true;
             dialogueScript.ToggleIndicator(playerDetected);
         }
     }
@@ -25,12 +25,12 @@ public class dialogueTrigger : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             //If not detected, hide indicator
-            playerDetected=false;
+            playerDetected = false;
             dialogueScript.ToggleIndicator(playerDetected);
             dialogueScript.EndDialogue();
         }
     }
-    //While detected, if space is pressed, start dialogue
+    //While detected, if space is pressed, start Dialogue
     private void Update()
     {
         if (playerDetected && Input.GetKeyDown(KeyCode.Space))
