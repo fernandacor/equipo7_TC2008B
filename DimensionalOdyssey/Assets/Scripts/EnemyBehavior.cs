@@ -8,7 +8,7 @@ public class EnemyBehavior : MonoBehaviour
     private Rigidbody2D enemy;
     private Vector2 movimiento;
     public float velocidad = 5f;
-    public bool activeEnemy = false;
+    // public bool activeEnemy = false;
     public Animator animator;
 
     // Start is called before the first frame update
