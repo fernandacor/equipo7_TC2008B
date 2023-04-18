@@ -32,10 +32,11 @@ public class MovimientoObjeto1 : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        CuartoScript cuartoScript;
         if (collision.tag == "Room")
         {
             cuartoActual = collision.gameObject;
-            CuartoScript cuartoScript = cuartoActual.GetComponent<CuartoScript>();
+            cuartoScript = cuartoActual.GetComponent<CuartoScript>();
             if (!cuartoScript.descubierto)
             {
                 cuartoScript.descubierto = true;
@@ -44,9 +45,8 @@ public class MovimientoObjeto1 : MonoBehaviour
         }
         else if (collision.tag == "Boton")
         {
-            CuartoScript cuartoScript = cuartoActual.GetComponent<CuartoScript>();
+            cuartoScript = cuartoActual.GetComponent<CuartoScript>();
             cuartoScript.AbrirCuarto();
         }
-
     }
 }
