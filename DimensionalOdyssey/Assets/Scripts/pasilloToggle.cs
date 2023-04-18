@@ -14,8 +14,9 @@ public class pasilloToggle : MonoBehaviour
     
     public bool hasRequiredItem(InventoryManager.AllItems itemRequired)
     {
-        if(InventoryManager.Instance._inventoryItems.Contains(itemRequired))
+        if(InventoryManager.Instance != null && InventoryManager.Instance._inventoryItems.Contains(itemRequired))
         {
+            Debug.Log("Tiene el item");
             return true;
         }
         else
@@ -24,12 +25,15 @@ public class pasilloToggle : MonoBehaviour
         }
     }
 
-    void Update()
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        if (hasRequiredItem(requiredItem))
-        {
-            Debug.Log("Se activo el pasillo");
-            pasillo.SetActive(true);
+        if(collision.CompareTag("Player"))
+        {      
+            if (hasRequiredItem(requiredItem) == true)
+            {
+                Debug.Log("Se activo el pasillo");
+                pasillo.SetActive(true);
+            }
         }
     }
 }

@@ -192,7 +192,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  velocidad: 5
+  velocidad: 4
+  activeEnemy: 0
   animator: {fileID: 7841751103899561772}
 --- !u!95 &7841751103899561772
 Animator:

@@ -10,6 +10,8 @@ TagManager:
   - Room
   - Aisle
   - Boton
+  - Event
+  - Coin
   layers:
   - Default
   - TransparentFX
@@ -44,18 +46,24 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
   - name: piso
     uniqueID: 2376597277
     locked: 0
   - name: portales
     uniqueID: 4112790805
     locked: 0
-  - name: Default
-    uniqueID: 0
-    locked: 0
   - name: puertas
     uniqueID: 1801314825
     locked: 0
+  - name: jugador
+    uniqueID: 1858232225
+    locked: 0
   - name: agarrables
     uniqueID: 2001966221
+    locked: 0
+  - name: 
+    uniqueID: 2738762623
     locked: 0
