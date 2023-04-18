@@ -13,12 +13,15 @@ public class abrirCofres : MonoBehaviour
     public GameObject cajaCerrada; // Objeto que se activa cuando el cofre está cerrado
     //Son publicas para poner las imagenes de los cofres en el inspector
 
+    public GameObject itemEscupido; // Objeto que sale cuando se abre el cofre
+
     void Start()
     {
         //Inicialmente, el cofre esta cerrado
         isOpen = false;
         cajaAbierta.SetActive(false);
         cajaCerrada.SetActive(true);
+        itemEscupido.SetActive(false);
     }
 
     void Update()
@@ -27,6 +30,7 @@ public class abrirCofres : MonoBehaviour
         if (isOpen == true && Input.GetKeyDown(KeyCode.E))
         {
             abrirCaja();
+            itemEscupido.SetActive(true);
         };
     }
 
