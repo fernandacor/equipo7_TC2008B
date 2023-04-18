@@ -2,7 +2,8 @@
   "name": "dim_ody_server",
   "version": "1.0.0",
   "description": "servidor para conectar base de datos con web",
-  "main": "index.js",
+  "main": "js/api_DimOd.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -17,6 +18,7 @@
   },
   "homepage": "https://github.com/fernandacor/equipo7_TC2008B#readme",
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "mysql2": "^3.2.3"
   }
 }

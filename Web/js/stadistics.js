@@ -7,7 +7,7 @@ function main()
         const data = new FormData(formSelectUser)
         const dataObj = Object.fromEntries(data.entries())
 
-        let response = await fetch(`http://127.0.0.1:5235/api/users/${dataObj['userID']}`,{
+        let response = await fetch(`http://127.0.0.1:5235/api/usuario/${dataObj['username']}`,{
             method: 'GET'
         })
         
