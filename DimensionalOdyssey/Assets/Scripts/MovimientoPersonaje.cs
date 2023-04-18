@@ -4,36 +4,36 @@ using UnityEngine;
 
 public class MovimientoPersonaje : MonoBehaviour
 {
-    [SerializeField] public float velocidadMovimiento;
-    Vector2 movimiento;
-    public Rigidbody2D rb2D;
-    public Animator animator;
+
+    // Mover al personaje
+    public float velocidadMovimiento;
+    private Vector2 movimiento;
+    private Rigidbody2D playerRB;
+
+    // Apuntar - Shooter
+    private Vector2 mousePos;
     public Camera cam;
-    Vector2 mousePos;
+    private GameObject firePoint;
+
+    // Animación
+    public Animator animator;
+
+    // Comportamiento de los cuartos
     private GameObject cuartoActual;
 
-    // // Start is called before the first frame update
-    // void Start()
-    // {
-    //     //Look for the object
-    //     objectToMove = GetComponent<Rigidbody2D>();
-    // }
+    private void Awake()
+    {
+        playerRB = GetComponent<Rigidbody2D>();
+        firePoint = transform.Find("FirePoint").gameObject;
+    }
 
     void Update()
     {
         movimiento.x = Input.GetAxisRaw("Horizontal");
         movimiento.y = Input.GetAxisRaw("Vertical");
+        movimiento = movimiento.normalized;
 
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
-
-        if (Mathf.Abs(movimiento.x) > Mathf.Abs(movimiento.y))
-        {
-            movimiento.y = 0;
-        }
-        else
-        {
-            movimiento.x = 0;
-        }
 
         animator.SetFloat("Horizontal", movimiento.x);
         animator.SetFloat("Vertical", movimiento.y);
@@ -42,11 +42,16 @@ public class MovimientoPersonaje : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb2D.MovePosition(rb2D.position + movimiento * velocidadMovimiento * Time.fixedDeltaTime);
+        playerRB.MovePosition(playerRB.position + movimiento * velocidadMovimiento * Time.fixedDeltaTime);
 
-        Vector2 lookDir = mousePos - rb2D.position;
+        Vector2 lookDir = mousePos - playerRB.position;
+        firePoint.transform.position = playerRB.position + lookDir.normalized;
+        if (movimiento.y > 0)
+            firePoint.GetComponent<Renderer>().sortingOrder = 1;
+        else
+            firePoint.GetComponent<Renderer>().sortingOrder = 3;
+
         float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
-        //rb.rotation = angle;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
