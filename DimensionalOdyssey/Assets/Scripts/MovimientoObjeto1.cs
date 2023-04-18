@@ -3,7 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
+<<<<<<< HEAD:DimensionalOdyssey/Assets/Scripts/MovimientoObjeto1.cs
 public class MovimientoObjeto1 : MonoBehaviour
+=======
+public class movimientoObjeto : MonoBehaviour
+>>>>>>> inventario:DimensionalOdyssey/Assets/Scripts/movimientoObjeto.cs
 {
     //Define direction, speed, and that the object is a RigidBody2D
     public float velocidadMovimiento;
