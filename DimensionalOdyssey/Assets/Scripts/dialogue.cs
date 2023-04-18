@@ -66,7 +66,7 @@ public class dialogue : MonoBehaviour
         GetDialogue(0);
     }
 
-    private void GetDialogue(int i)
+    public void GetDialogue(int i)
     {
         //Start index at 0
         Index = i;
@@ -89,12 +89,6 @@ public class dialogue : MonoBehaviour
 
         //Hide window
         ToggleWindow(false);
-
-        if (escupeItem == true)
-        {
-            itemEscupido.SetActive(true);
-        }
-
     }
 
     //Writing logic
@@ -147,6 +141,10 @@ public class dialogue : MonoBehaviour
                 //If not, end dialogue process
                 EndDialogue();
                 ToggleIndicator(true);
+                if (escupeItem == true)
+                {
+                    itemEscupido.SetActive(true);
+                }
             }
         }
     }
