@@ -12,17 +12,18 @@ TagManager:
   - Boton
   - Event
   - Coin
+  - Players Bullet
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
   - Interactuables
   - Estaticos
   - Dialogo
-  - 
+  - Player Bullet
   - 
   - 
   - 
