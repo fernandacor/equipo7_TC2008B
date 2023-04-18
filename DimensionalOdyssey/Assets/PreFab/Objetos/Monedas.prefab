@@ -2081,7 +2081,7 @@ GameObject:
   - component: {fileID: 4889690192926794682}
   - component: {fileID: 4889690192926794683}
   m_Layer: 0
-  m_Name: --- MONEDAS ---
+  m_Name: Monedas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
