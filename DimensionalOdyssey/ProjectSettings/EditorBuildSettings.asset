@@ -9,10 +9,10 @@ EditorBuildSettings:
     path: Assets/Scenes/mainMenu.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/level_Lab.unity
+    path: Assets/Scenes/LevelLab.unity
     guid: 9062f6358fd3028429c3d4ff79d7c703
-  - enabled: 1
-    path: Assets/Scenes/creditos.unity
+  - enabled: 0
+    path: Assets/Scenes/labTile.unity
     guid: 14b4c5e7232c5c44c9914073d52b4e0e
   - enabled: 1
     path: Assets/Scenes/prototipo.unity
@@ -24,8 +24,11 @@ EditorBuildSettings:
     path: "Assets/Scenes/sue\xF1o.unity"
     guid: 7cb57272b8c41a1458602c23d4793299
   - enabled: 1
-    path: Assets/Scenes/level_Lab.unity
+    path: Assets/Scenes/LevelLab.unity
     guid: 9062f6358fd3028429c3d4ff79d7c703
+  - enabled: 1
+    path: Assets/Scenes/mapa1.unity
+    guid: 2f69e732b630616409bbc736d4a6767b
   - enabled: 1
     path: Assets/Scenes/prototipo.unity
     guid: e6fb0a92edaa5064daee35284dc39ec6

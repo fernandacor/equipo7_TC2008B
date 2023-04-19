@@ -8989,8 +8989,8 @@ TilemapRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1918370019
+  m_SortingLayer: -2
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -9039,13 +9039,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   descubierto: 0
-  paredArriba: {fileID: 11400000, guid: e97de338b536ab04d98c5070e187c67e, type: 2}
-  paredDerecha: {fileID: 11400000, guid: f2efaa8a6b19f3a43976fd92513aa3d2, type: 2}
-  paredAbajo: {fileID: 11400000, guid: 5b7d4f58726ec254b9778aad2a36c790, type: 2}
-  paredIzquierda: {fileID: 11400000, guid: bba443aadf3e8f94bb979596942ab1d6, type: 2}
-  esquinaDerechaArriba: {fileID: 11400000, guid: 25c373bac4c47f64ab96e2a31cded5cc, type: 2}
-  esquinaDerechaAbajo: {fileID: 11400000, guid: d0a49c209d75b5442b0d66b5ebb995c5, type: 2}
-  esquinaIzquierdaArriba: {fileID: 11400000, guid: c44504e8b987e324b814de4a2ccceca7, type: 2}
-  esquinaIzquierdaAbajo: {fileID: 11400000, guid: a3fccca61ad9fb641babff5572c2d4bb, type: 2}
-  piso: {fileID: 11400000, guid: c76d8973336672b46a40245c4feb1a42, type: 2}
-  fondo: {fileID: 11400000, guid: 391115785b5d43a428f09d4b66535844, type: 2}
+  gameManager: {fileID: 3391778815778814433, guid: d7e9b560ee9e69b4aa1429e42a94770c, type: 3}
