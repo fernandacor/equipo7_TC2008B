@@ -45,13 +45,17 @@ public class MovimientoPersonaje : MonoBehaviour
         playerRB.MovePosition(playerRB.position + movimiento * velocidadMovimiento * Time.fixedDeltaTime);
 
         Vector2 lookDir = mousePos - playerRB.position;
-        firePoint.transform.position = playerRB.position + lookDir.normalized;
+        firePoint.transform.position = playerRB.position + lookDir.normalized * transform.localScale.x * 0.6f;
         if (movimiento.y > 0)
             firePoint.GetComponent<Renderer>().sortingOrder = 1;
         else
             firePoint.GetComponent<Renderer>().sortingOrder = 3;
 
-        float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
+        float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
+        if (angle <= 90 && angle >= -90)
+            firePoint.transform.rotation = Quaternion.Euler(0, 0, angle);
+        else
+            firePoint.transform.rotation = Quaternion.Euler(180, 0, 360 - angle);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
