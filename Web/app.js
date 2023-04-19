@@ -56,7 +56,6 @@ app.get('/api/usuario', async (request, response)=>{
     }
 })
 
-/*
 
 app.get('/api/usuario/:id', async (request, response)=>
 {
@@ -79,7 +78,7 @@ app.get('/api/usuario/:id', async (request, response)=>
     }
     finally
     {
-        if(connection!==null) 
+        if(connection!==null)
         {
             connection.end()
             console.log("Connection closed succesfully!")
@@ -87,7 +86,6 @@ app.get('/api/usuario/:id', async (request, response)=>
     }
 })
 
-*/
 
 app.post('/api/usuario', async (request, response)=>{
 
