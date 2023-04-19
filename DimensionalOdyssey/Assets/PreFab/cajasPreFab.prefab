@@ -101,7 +101,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 15
+  m_Radius: 1
 --- !u!114 &7139955961056252608
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117,6 +117,7 @@ MonoBehaviour:
   isOpen: 0
   cajaAbierta: {fileID: 7139955962052697975}
   cajaCerrada: {fileID: 7139955961056252614}
+  itemEscupido: {fileID: 0}
 --- !u!1 &7139955962052697975
 GameObject:
   m_ObjectHideFlags: 0

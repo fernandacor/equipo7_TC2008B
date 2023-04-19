@@ -14,12 +14,16 @@ public class portalBehavior : MonoBehaviour
     private bool playerDetected;
     [SerializeField] Transform posToGo;
     public GameObject player;
-
+    public bool rotates;
 
     void Start()
     {
-        rb2D = GetComponent<Rigidbody2D>();
-        rb2D.rotation = 0f;
+        if(rotates == true)
+        {
+            rb2D = GetComponent<Rigidbody2D>();
+            rb2D.rotation = 0f;
+        }
+
         playerDetected = false;
     }
 
@@ -37,7 +41,10 @@ public class portalBehavior : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb2D.rotation += 1.0f;
+        if(rotates == true)
+        {
+            rb2D.rotation += 1.0f;
+        }
     }
 
     void OnTriggerEnter2D(Collider2D collision)

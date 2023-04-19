@@ -1,18 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ManaBar : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public Slider slider;
+    public Gradient gradient;
+    public Image fill;
+
+    public void SetMaxEnergy(int energy)
     {
-        
+        slider.maxValue = energy;
+        slider.value = energy;
+
+        fill.color = gradient.Evaluate(1f);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetEnergy(int energy)
     {
-        
+        slider.value = energy;
+
+        fill.color = gradient.Evaluate(slider.normalizedValue);
     }
 }
