@@ -24,7 +24,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 53784
+  controlID: 57374
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -141,7 +141,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 53785
+  controlID: 57375
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -166,7 +166,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 53786
+  controlID: 57352
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -224,9 +224,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 72160200
-      m_LastClickedID: 136818
-      m_ExpandedIDs: 24b2feff08f5fefff6f2ffff76f4ffff10fbffffa67800000c7a0000d07b000012150200
+      m_SelectedIDs: 444e0200
+      m_LastClickedID: 0
+      m_ExpandedIDs: 24b2feff08f5fefff6f2ffff76f4ffff10fbffffa67800000c7a0000d07b00001215020072160200
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -799,22 +799,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/PreFab/Personajes/Laboratory
+    - Assets/Sprites/Objetos
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
-  m_StartGridSize: 16
+  m_StartGridSize: 87
   m_LastFolders:
-  - Assets/PreFab/Personajes/Laboratory
-  m_LastFoldersGridSize: 16
+  - Assets/Sprites/Objetos
+  m_LastFoldersGridSize: 87
   m_LastProjectPath: C:\Users\sebas\OneDrive\Documents\Tec\TC2005B - Videojuego web\Equipo
     7\DimensionalOdyssey
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 101.33353}
-    m_SelectedIDs: e8c50000
-    m_LastClickedID: 50664
+    scrollPos: {x: 0, y: 306.33328}
+    m_SelectedIDs: 707c0000
+    m_LastClickedID: 31856
     m_ExpandedIDs: 00000000425b0000465b0000485b00004a5b00008c6d00002c6f00006c7c0000467d0000601e010000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -843,7 +843,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000425b0000465b0000485b00004a5b00006c7c000000ca9a3b
+    m_ExpandedIDs: 00000000425b0000465b0000485b00004a5b00008c6d00002c6f00006c7c0000467d0000601e010000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -868,8 +868,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 72160200
-    m_LastClickedInstanceID: 136818
+    m_SelectedInstanceIDs: 444e0200
+    m_LastClickedInstanceID: 151108
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000
     m_RenameOverlay:
@@ -896,7 +896,7 @@ MonoBehaviour:
       m_ResourceFile: 
     m_NewAssetIndexInList: -1
     m_ScrollPosition: {x: 0, y: 0}
-    m_GridSize: 16
+    m_GridSize: 87
   m_SkipHiddenPackages: 0
   m_DirectoriesAreaWidth: 207
 --- !u!114 &13
