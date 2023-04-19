@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class abrirCofres : MonoBehaviour
 {
+    [SerializeField] InventoryManager.AllItems requiredItem;
+
     public bool isOpen; // Se vuelve verdad si el trigger reconoce al jugador
     //Es publica para poder ver desde el inspector si se puede abrir el cofre o no
 
@@ -14,6 +16,8 @@ public class abrirCofres : MonoBehaviour
     //Son publicas para poner las imagenes de los cofres en el inspector
 
     public GameObject itemEscupido; // Objeto que sale cuando se abre el cofre
+
+    public bool requiereLlave;
 
     void Start()
     {
@@ -34,6 +38,18 @@ public class abrirCofres : MonoBehaviour
         };
     }
 
+    public bool hasRequiredItem(InventoryManager.AllItems itemRequired)
+    {
+        if(InventoryManager.Instance._inventoryItems.Contains(itemRequired))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     private void abrirCaja() // Función que activa la imagen de cofre abierto y desactiva el cofre cerrado
     {
         cajaAbierta.SetActive(true);
@@ -44,7 +60,21 @@ public class abrirCofres : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player") // Si el jugador entra en el trigger, se activa la variable isOpen
         {
-            isOpen = true;
+            if(requiereLlave == true)
+            {
+                if(hasRequiredItem(requiredItem))
+                {
+                    isOpen = true;
+                }
+                else
+                {
+                    isOpen = false;
+                }
+            }
+            else
+            {
+                isOpen = true;
+            }
         }
     }
 
