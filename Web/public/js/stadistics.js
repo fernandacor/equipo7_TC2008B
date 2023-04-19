@@ -57,3 +57,5 @@ function main()
         }
     }
 }
+
+main()

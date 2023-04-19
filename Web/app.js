@@ -28,6 +28,16 @@ app.get('/', (request,response)=>{
     })
 })
 
+/*
+app.get('/statistics', (request,response)=>{
+    fs.readFile('./public/html/statistics.html', 'utf8', (err, html)=>{
+        if(err) response.status(500).send('There was an error: ' + err)
+        console.log('Loading page...')
+        response.send(html)
+    })
+})
+*/
+
 app.get('/api/usuario', async (request, response)=>{
     let connection = null
 
@@ -37,6 +47,7 @@ app.get('/api/usuario', async (request, response)=>{
         const [results, fields] = await connection.execute('select * from usuario')
 
         console.log("QWERTY")
+        console.log(results)
         response.json(results)
     }
     catch(error)
@@ -55,7 +66,7 @@ app.get('/api/usuario', async (request, response)=>{
     }
 })
 
-app.get('/api/usuario/:username', async (request, response)=>
+app.get('/api/usuario/:id', async (request, response)=>
 {
     let connection = null
 
@@ -63,7 +74,7 @@ app.get('/api/usuario/:username', async (request, response)=>
     {
         connection = await connectToDB()
 
-        const [results, fields] = await connection.query('select * from users where username= ?', [request.params.username])
+        const [results, fields] = await connection.query('select * from usuario where username= ?', [request.params.id])
         
         console.log("ADASDA")
         response.json(results)
@@ -84,7 +95,7 @@ app.get('/api/usuario/:username', async (request, response)=>
     }
 })
 
-/*
+
 app.post('/api/usuario', async (request, response)=>{
 
     let connection = null
@@ -112,7 +123,7 @@ app.post('/api/usuario', async (request, response)=>{
         }
     }
 })
-
+/*
 app.put('/api/usuario', async (request, response)=>{
 
     let connection = null

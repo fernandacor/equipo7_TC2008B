@@ -17,6 +17,7 @@
         integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
         crossorigin="anonymous"></script>
     <script src="../js/htmlManagement.js"></script>
+    <script type="module" defer src="../js/stadistics.js"></script>
 
     <!-- Fonts -->
     <link href="https://fonts.cdnfonts.com/css/ocr-a-extended" rel="stylesheet">
@@ -98,6 +99,22 @@
                 card's content.     Some quick example text to build on the card title and make up the bulk of the
                 card's content.
             </p>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="formInput">
+            <h1>Show users</h1>
+            <form id="formSelectUser">
+                <input type="text" name="username" placeholder="Type your username, or nothing to show all users">
+
+                <input type="submit" value="Show users">
+            </form>
+        </div>
+        <div class="resultDisplay">
+            <h1>Result</h1>
+            <p>When the request ends, the result will be displayed here.</p>
+            <div id="getResultsID"></div>
         </div>
     </div>
 
