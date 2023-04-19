@@ -28,16 +28,6 @@ app.get('/', (request,response)=>{
     })
 })
 
-/*
-app.get('/statistics', (request,response)=>{
-    fs.readFile('./public/html/statistics.html', 'utf8', (err, html)=>{
-        if(err) response.status(500).send('There was an error: ' + err)
-        console.log('Loading page...')
-        response.send(html)
-    })
-})
-*/
-
 app.get('/api/usuario', async (request, response)=>{
     let connection = null
 
@@ -66,6 +56,7 @@ app.get('/api/usuario', async (request, response)=>{
     }
 })
 
+
 app.get('/api/usuario/:id', async (request, response)=>
 {
     let connection = null
@@ -87,7 +78,7 @@ app.get('/api/usuario/:id', async (request, response)=>
     }
     finally
     {
-        if(connection!==null) 
+        if(connection!==null)
         {
             connection.end()
             console.log("Connection closed succesfully!")
@@ -123,6 +114,7 @@ app.post('/api/usuario', async (request, response)=>{
         }
     }
 })
+
 /*
 app.put('/api/usuario', async (request, response)=>{
 
@@ -131,7 +123,7 @@ app.put('/api/usuario', async (request, response)=>{
     try{
         connection = await connectToDB()
 
-        const [results, fields] = await connection.query('update users set name = ?, surname = ? where id_users= ?', [request.body['name'], request.body['surname'], request.body['userID']])
+        const [results, fields] = await connection.query('update usuario set nombre = ?, apellido = ?, contrasena = ?, correo = ?, where username = ?', [request.body['nombre'], request.body['apellido'], request.body['contrasena'], request.body['email'], request.body['username']])
         
         response.json({'message': "Data updated correctly."})
     }
@@ -150,8 +142,8 @@ app.put('/api/usuario', async (request, response)=>{
         }
     }
 })
-
 */
+
 
 app.listen(port, ()=>
 {
