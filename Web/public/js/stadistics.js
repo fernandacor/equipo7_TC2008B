@@ -1,5 +1,6 @@
 function main()
 {
+    /*
     document.getElementById('formSelectUser').onsubmit = async (e) =>
     {
         e.preventDefault()
@@ -56,6 +57,7 @@ function main()
             getResults.innerHTML = response.status
         }
     }
+    */
 
     document.getElementById('formInsert').onsubmit = async(e)=>
     {

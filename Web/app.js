@@ -28,16 +28,6 @@ app.get('/', (request,response)=>{
     })
 })
 
-/*
-app.get('/statistics', (request,response)=>{
-    fs.readFile('./public/html/statistics.html', 'utf8', (err, html)=>{
-        if(err) response.status(500).send('There was an error: ' + err)
-        console.log('Loading page...')
-        response.send(html)
-    })
-})
-*/
-
 app.get('/api/usuario', async (request, response)=>{
     let connection = null
 
@@ -65,6 +55,8 @@ app.get('/api/usuario', async (request, response)=>{
         }
     }
 })
+
+/*
 
 app.get('/api/usuario/:id', async (request, response)=>
 {
@@ -95,6 +87,7 @@ app.get('/api/usuario/:id', async (request, response)=>
     }
 })
 
+*/
 
 app.post('/api/usuario', async (request, response)=>{
 
