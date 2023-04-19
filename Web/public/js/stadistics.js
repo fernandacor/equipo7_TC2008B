@@ -56,6 +56,31 @@ function main()
             getResults.innerHTML = response.status
         }
     }
+
+    document.getElementById('formInsert').onsubmit = async(e)=>
+    {
+        e.preventDefault()
+
+        const data = new FormData(formInsert)
+        const dataObj = Object.fromEntries(data.entries())
+
+        let response = await fetch('http://127.0.0.1:5235/api/usuario',{
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(dataObj)
+        })
+        
+        if(response.ok)
+        {
+            let results = await response.json()
+        
+            console.log(results)
+            postResults.innerHTML = results.message
+        }
+        else{
+            postResults.innerHTML = response.status
+        }
+    }
 }
 
 main()

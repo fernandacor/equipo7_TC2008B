@@ -104,17 +104,19 @@
 
     <div class="section">
         <div class="formInput">
-            <h1>Show users</h1>
-            <form id="formSelectUser">
-                <input type="text" name="username" placeholder="Type your username, or nothing to show all users">
-
-                <input type="submit" value="Show users">
+            <h1>Add user</h1>
+            <form id="formInsert">
+                <input type="text" name="username" placeholder="Type your username">
+                <input type="text" name="contrasena" placeholder="Type your password">
+                <input type="text" name="email" placeholder="Type your email">
+                <input type="text" name="nombre" placeholder="Type your first name">
+                <input type="text" name="apellido" placeholder="Type your last name">
+                <input type="submit" value="Add User">
             </form>
         </div>
         <div class="resultDisplay">
             <h1>Result</h1>
-            <p>When the request ends, the result will be displayed here.</p>
-            <div id="getResultsID"></div>
+            <p id="postResults">When the request ends, the result will be displayed here.</p>
         </div>
     </div>
 
