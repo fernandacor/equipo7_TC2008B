@@ -1,0 +1,26 @@
+{
+  "name": "videogame_server",
+  "version": "1.0.0",
+  "description": "conexion con base de datos y pagina web",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fernandacor/equipo7_TC2008B.git"
+  },
+  "author": "Samuel Acevedo, Sebastian Moncada, Fernanda Cantú, Alina Rosas, Juan pablo Moreno, Juan Pablo Ruiz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fernandacor/equipo7_TC2008B/issues"
+  },
+  "homepage": "https://github.com/fernandacor/equipo7_TC2008B#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "fs": "^0.0.1-security",
+    "mysql": "^2.18.1",
+    "mysql2": "^3.2.3"
+  }
+}
