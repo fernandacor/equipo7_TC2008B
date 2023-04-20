@@ -17,7 +17,7 @@ public class InventoryUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Inventory"))
+        if (Input.GetKeyDown(KeyCode.Q))
         {
             inventoryUI.SetActive(!inventoryUI.activeSelf);
         }

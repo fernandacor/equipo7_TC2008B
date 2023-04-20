@@ -33,14 +33,23 @@ public class InventoryManager : MonoBehaviour
     {
         //Armas
         pistolaInicial,
+        escopetaInicial,
+        metralletaInicial,
 
         //Tokens
         tokenMultiDisparos,
+        tokenDobleDisparo,
 
         //Llaves
         llaveRosa,
         llaveTurquesa,
         llaveCafe,
-        llaveNaranja
+        llaveNaranja,
+
+        //Traje
+        trajeInicial
+
+        //Pociones
+
     }
 }
