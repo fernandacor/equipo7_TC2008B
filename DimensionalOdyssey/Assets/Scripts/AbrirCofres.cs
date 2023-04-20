@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class abrirCofres : MonoBehaviour
+public class AbrirCofres : MonoBehaviour
 {
     public bool isOpen; // Se vuelve verdad si el trigger reconoce al jugador
     //Es publica para poder ver desde el inspector si se puede abrir el cofre o no
@@ -47,4 +47,3 @@ public class abrirCofres : MonoBehaviour
             isOpen = true;
         }
     }
-}
