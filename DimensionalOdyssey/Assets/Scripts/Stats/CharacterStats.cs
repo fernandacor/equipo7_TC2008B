@@ -16,6 +16,8 @@ public class CharacterStats : MonoBehaviour
      public Stats velocidadDisparo;
      public Stats robodeVida;
 
+     public Animator animator;
+
     void Start()
     {
           //Health Bar
@@ -31,6 +33,11 @@ public class CharacterStats : MonoBehaviour
      {
            currentHealth -= damage;
            healthBar.SetHealth(currentHealth);
+
+           if (currentHealth <= 0)
+           {
+               Destroy(gameObject, 2);
+           }
      }
 
      void LoseEnergy(int lostEnergy)
@@ -43,6 +50,7 @@ public class CharacterStats : MonoBehaviour
      {
           currentMana += recoverEnergy;
           manaBar.SetEnergy(currentMana);
+
      }
 
      void Update()
@@ -61,13 +69,16 @@ public class CharacterStats : MonoBehaviour
           {
                RecoverEnergy(10);
           }
+
+          animator.SetFloat("Health", currentHealth);
      }
 
-         void OnTriggerEnter2D(Collider2D collision)
-    {
-         if (collision.CompareTag("Enemy"))
+     void OnTriggerEnter2D(Collider2D collision)
+     {
+         if (collision.CompareTag("Enemy") || collision.CompareTag("Enemys Bullet"))
          {
              TakeDamage(10);
          }
-    }
+     }
 }
+
