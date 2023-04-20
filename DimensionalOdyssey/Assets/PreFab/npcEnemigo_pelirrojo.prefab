@@ -124,6 +124,7 @@ MonoBehaviour:
   velocidad: 5
   activeEnemy: 0
   animator: {fileID: 8019724624063288624}
+  currentHealth: 5
 --- !u!50 &8019724624063288626
 Rigidbody2D:
   serializedVersion: 4
@@ -162,7 +163,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.4545455, y: 1.4545455}
+    oldSize: {x: 1.3333334, y: 1.3333334}
     newSize: {x: 1.3333334, y: 1.3333334}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -188,7 +189,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.4545455, y: 1.4545455}
+    oldSize: {x: 1.3333334, y: 1.3333334}
     newSize: {x: 1.3333334, y: 1.3333334}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
