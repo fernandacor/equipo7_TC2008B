@@ -13,6 +13,9 @@ TagManager:
   - Event
   - Coin
   - Players Bullet
+  - Enemies Bullet
+  - Boss
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -24,11 +27,11 @@ TagManager:
   - Estaticos
   - Dialogo
   - Player Bullet
+  - Enemies
+  - Enemy Bullet
   - 
   - 
-  - 
-  - 
-  - 
+  - Enemy Bullet
   - 
   - 
   - 
