@@ -29,12 +29,12 @@ public class AbrirCofres : MonoBehaviour
         //Si el cofre reconoce al jugador y se presiona la tecla E, se abre
         if (isOpen == true && Input.GetKeyDown(KeyCode.E))
         {
-            abrirCaja();
+            AbrirCaja();
             itemEscupido.SetActive(true);
         };
     }
 
-    private void abrirCaja() // Función que activa la imagen de cofre abierto y desactiva el cofre cerrado
+    private void AbrirCaja() // Función que activa la imagen de cofre abierto y desactiva el cofre cerrado
     {
         cajaAbierta.SetActive(true);
         cajaCerrada.SetActive(false);

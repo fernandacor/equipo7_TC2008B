@@ -50,5 +50,6 @@ public class InventoryManager : MonoBehaviour
         trajeInicial
 
         //Pociones
+
     }
 }
