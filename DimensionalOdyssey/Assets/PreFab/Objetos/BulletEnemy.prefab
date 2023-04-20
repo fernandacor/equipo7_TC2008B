@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6054177785103936846}
   - component: {fileID: -5809769876244285342}
   - component: {fileID: -2894659743249637467}
-  - component: {fileID: 4969540718567055911}
+  - component: {fileID: -4843232085314619388}
   m_Layer: 14
   m_Name: BulletEnemy
   m_TagString: Untagged
@@ -134,16 +134,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!114 &4969540718567055911
+--- !u!114 &-4843232085314619388
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9159830189984056075}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7827e2aa57761a48a8c0576da8c7323, type: 3}
+  m_Script: {fileID: 11500000, guid: 666b967fa0bd34c5982d98700aa85f96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 10

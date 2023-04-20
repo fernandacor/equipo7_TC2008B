@@ -6,10 +6,11 @@ public class EnemyBullet : MonoBehaviour
 {
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Enemy"))
         {
-            Destroy(gameObject); // Si el objeto colisionado es el jugador, no se destruirá el objeto
+            return; // Si el objeto colisionado es el mismo enemigo, no se destruirá el objeto
         }
+        Destroy(gameObject);
     }
 
 }
