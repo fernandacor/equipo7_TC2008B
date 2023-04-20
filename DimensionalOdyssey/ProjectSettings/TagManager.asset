@@ -62,12 +62,12 @@ TagManager:
   - name: puertas
     uniqueID: 1801314825
     locked: 0
+  - name: decoracion
+    uniqueID: 2738762623
+    locked: 0
   - name: jugador
     uniqueID: 1858232225
     locked: 0
   - name: agarrables
     uniqueID: 2001966221
-    locked: 0
-  - name: 
-    uniqueID: 2738762623
     locked: 0
