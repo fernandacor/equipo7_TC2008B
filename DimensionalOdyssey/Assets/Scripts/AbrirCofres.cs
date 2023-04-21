@@ -47,3 +47,4 @@ public class AbrirCofres : MonoBehaviour
             isOpen = true;
         }
     }
+}

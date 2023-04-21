@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Disparar : MonoBehaviour
 {
+    public ManaBar manaBar;
     public Transform firePoint;
     public GameObject bulletPrefab;
 
