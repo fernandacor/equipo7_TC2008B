@@ -13,9 +13,8 @@ TagManager:
   - Event
   - Coin
   - Players Bullet
-  - Enemies Bullet
-  - Boss
   - Enemy
+  - Boss
   layers:
   - Default
   - TransparentFX
@@ -27,8 +26,8 @@ TagManager:
   - Estaticos
   - Dialogo
   - Player Bullet
-  - Enemies
-  - Enemy Bullet
+  - 
+  - 
   - 
   - 
   - 
@@ -55,9 +54,6 @@ TagManager:
     locked: 0
   - name: piso
     uniqueID: 2376597277
-    locked: 0
-  - name: portales
-    uniqueID: 4112790805
     locked: 0
   - name: puertas
     uniqueID: 1801314825

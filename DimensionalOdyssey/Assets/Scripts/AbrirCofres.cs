@@ -47,13 +47,4 @@ public class AbrirCofres : MonoBehaviour
             isOpen = true;
         }
     }
-
-    void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Player") // Si el jugador sale del trigger, se desactiva la variable isOpen y se muestra el cofre cerrado
-        {
-            isOpen = false;
-            cajaCerrada.SetActive(true);
-        }
-    }
 }
