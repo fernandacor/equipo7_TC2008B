@@ -37,7 +37,7 @@ public class EnemyBehavior : MonoBehaviour
 
         animator.SetFloat("Horizontal", direction.x);
         animator.SetFloat("Vertical", direction.y);
-        // animator.SetFloat("Speed", movimiento.sqrMagnitude);
+        animator.SetFloat("Speed", movimiento.sqrMagnitude);
         }
     }
 
@@ -68,7 +68,7 @@ public class EnemyBehavior : MonoBehaviour
 
      void OnTriggerEnter2D(Collider2D collision)
      {
-         if (collision.CompareTag("Player") || collision.CompareTag("Players Bullet"))
+         if (collision.CompareTag("Players Bullet"))
          {
             activeEnemy = true;
              TakeDamage(10);
