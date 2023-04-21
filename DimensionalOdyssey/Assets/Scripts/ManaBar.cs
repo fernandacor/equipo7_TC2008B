@@ -26,6 +26,4 @@ public class ManaBar : MonoBehaviour
         slider.value = energy;
         fill.color = gradient.Evaluate(slider.normalizedValue);
     }
-
-
 }

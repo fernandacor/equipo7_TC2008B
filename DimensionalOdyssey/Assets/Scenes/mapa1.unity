@@ -123,85 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &1702048550
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 7841751103899561764, guid: e82e25890ab674443b49d0253c14e081, type: 3}
-      propertyPath: m_Name
-      value: enemigoProto
-      objectReference: {fileID: 0}
-    - target: {fileID: 7841751103899561766, guid: e82e25890ab674443b49d0253c14e081, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7841751103899561771, guid: e82e25890ab674443b49d0253c14e081, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7841751103899561771, guid: e82e25890ab674443b49d0253c14e081, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -9.07
-      objectReference: {fileID: 0}
-    - target: {fileID: 7841751103899561771, guid: e82e25890ab674443b49d0253c14e081, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -2.47
-      objectReference: {fileID: 0}
-    - target: {fileID: 7841751103899561771, guid: e82e25890ab674443b49d0253c14e081, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.039324224
-      objectReference: {fileID: 0}
-    - target: {fileID: 7841751103899561771, guid: e82e25890ab674443b49d0253c14e081, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7841751103899561771, guid: e82e25890ab674443b49d0253c14e081, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7841751103899561771, guid: e82e25890ab674443b49d0253c14e081, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7841751103899561771, guid: e82e25890ab674443b49d0253c14e081, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7841751103899561771, guid: e82e25890ab674443b49d0253c14e081, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7841751103899561771, guid: e82e25890ab674443b49d0253c14e081, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7841751103899561771, guid: e82e25890ab674443b49d0253c14e081, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7841751103899561773, guid: e82e25890ab674443b49d0253c14e081, type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 1923112042}
-    - target: {fileID: 7841751103899561773, guid: e82e25890ab674443b49d0253c14e081, type: 3}
-      propertyPath: velocidad
-      value: 7
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: e82e25890ab674443b49d0253c14e081, type: 3}
---- !u!95 &1923112037 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 8180215382163779898, guid: 7d1c46c58a9800643b082233c48f0d7c, type: 3}
-  m_PrefabInstance: {fileID: 8180215383013109087}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1923112042 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8180215382163779894, guid: 7d1c46c58a9800643b082233c48f0d7c, type: 3}
-  m_PrefabInstance: {fileID: 8180215383013109087}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2105152328
 GameObject:
   m_ObjectHideFlags: 0
@@ -285,7 +206,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2105152332
 MonoBehaviour:
@@ -299,8 +220,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7486e3043f4060c4b91d53d9dcbea68c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FollowSpeed: 2
-  target: {fileID: 1923112042}
+  followSpeed: 2
+  objectToFollow: {fileID: 0}
   yOffset: 1
 --- !u!1001 &8180215383013109087
 PrefabInstance:
@@ -368,7 +289,7 @@ PrefabInstance:
     - target: {fileID: 8180215382163779896, guid: 7d1c46c58a9800643b082233c48f0d7c, type: 3}
       propertyPath: animator
       value: 
-      objectReference: {fileID: 1923112037}
+      objectReference: {fileID: 0}
     - target: {fileID: 8180215382163779899, guid: 7d1c46c58a9800643b082233c48f0d7c, type: 3}
       propertyPath: m_Name
       value: animatedPlayer
