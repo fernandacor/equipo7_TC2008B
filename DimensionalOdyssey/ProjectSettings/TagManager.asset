@@ -16,6 +16,7 @@ TagManager:
   - Enemy
   - Boss
   - Enemys Bullet
+  - Traje
   layers:
   - Default
   - TransparentFX
