@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Disparar : MonoBehaviour
+public class EnemyShoot : MonoBehaviour
 {
     public Transform firePoint;
     public GameObject bulletPrefab;

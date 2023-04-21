@@ -5,8 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class PortalBehavior : MonoBehaviour
 {
-    private Rigidbody2D rb2D;
-
     public bool switchScene = false;
     public string sceneName;
 
@@ -18,8 +16,6 @@ public class PortalBehavior : MonoBehaviour
 
     void Start()
     {
-        rb2D = GetComponent<Rigidbody2D>();
-        rb2D.rotation = 0f;
         playerDetected = false;
     }
 
@@ -33,11 +29,6 @@ public class PortalBehavior : MonoBehaviour
                 playerDetected = false;
             }
         }
-    }
-
-    void FixedUpdate()
-    {
-        rb2D.rotation += 1.0f;
     }
 
     void OnTriggerEnter2D(Collider2D collision)
