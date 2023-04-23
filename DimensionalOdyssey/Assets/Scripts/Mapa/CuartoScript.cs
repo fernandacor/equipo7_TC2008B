@@ -6,7 +6,7 @@ using UnityEngine.Tilemaps;
 public class CuartoScript : MonoBehaviour
 {
     public bool descubierto;
-    public GameObject sceneManager;
+    GameObject sceneManager;
 
     private Tilemap cuarto;
     private GameObject pasillos;
@@ -25,6 +25,8 @@ public class CuartoScript : MonoBehaviour
 
     private void Awake()
     {
+        sceneManager = GameObject.Find("SceneManager");
+
         paredArriba = sceneManager.GetComponent<SceneManagerScript>().tileParedArriba;
         paredDerecha = sceneManager.GetComponent<SceneManagerScript>().tileParedDerecha;
         paredAbajo = sceneManager.GetComponent<SceneManagerScript>().tileParedAbajo;
