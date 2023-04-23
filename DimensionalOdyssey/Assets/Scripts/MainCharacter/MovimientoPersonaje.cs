@@ -12,11 +12,12 @@ public class MovimientoPersonaje : MonoBehaviour
 
     // Apuntar - Shooter
     private Vector2 mousePos;
-    public Camera cam;
+    private Camera cam;
     private GameObject firePoint;
+    private Renderer playerRenderer;
 
     // Animación
-    public Animator animator;
+    private Animator playerAnimator;
 
     // Comportamiento de los cuartos
     private GameObject cuartoActual;
@@ -24,7 +25,10 @@ public class MovimientoPersonaje : MonoBehaviour
     private void Awake()
     {
         playerRB = GetComponent<Rigidbody2D>();
+        playerRenderer = GetComponent<Renderer>();
+        playerAnimator = GetComponent<Animator>();
         firePoint = transform.Find("FirePoint").gameObject;
+        cam = GameObject.Find("Main Camera").gameObject.GetComponent<Camera>();
     }
 
     void Update()
@@ -35,9 +39,9 @@ public class MovimientoPersonaje : MonoBehaviour
 
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
 
-        animator.SetFloat("Horizontal", movimiento.x);
-        animator.SetFloat("Vertical", movimiento.y);
-        animator.SetFloat("Speed", movimiento.sqrMagnitude);
+        playerAnimator.SetFloat("Horizontal", movimiento.x);
+        playerAnimator.SetFloat("Vertical", movimiento.y);
+        playerAnimator.SetFloat("Speed", movimiento.sqrMagnitude);
     }
 
     void FixedUpdate()
@@ -47,9 +51,9 @@ public class MovimientoPersonaje : MonoBehaviour
         Vector2 lookDir = mousePos - playerRB.position;
         firePoint.transform.position = playerRB.position + lookDir.normalized * transform.localScale.x * 0.6f;
         if (movimiento.y > 0)
-            firePoint.GetComponent<Renderer>().sortingOrder = 1;
+            firePoint.GetComponent<Renderer>().sortingOrder = playerRenderer.sortingOrder - 1;
         else
-            firePoint.GetComponent<Renderer>().sortingOrder = 3;
+            firePoint.GetComponent<Renderer>().sortingOrder = playerRenderer.sortingOrder + 1;
 
         float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
         if (angle <= 90 && angle >= -90)
@@ -58,12 +62,12 @@ public class MovimientoPersonaje : MonoBehaviour
             firePoint.transform.rotation = Quaternion.Euler(180, 0, 360 - angle);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D trigger)
     {
         CuartoScript cuartoScript;
-        if (collision.tag == "Room")
+        if (trigger.tag == "Room")
         {
-            cuartoActual = collision.gameObject;
+            cuartoActual = trigger.gameObject;
             cuartoScript = cuartoActual.GetComponent<CuartoScript>();
             if (!cuartoScript.descubierto)
             {
@@ -71,7 +75,7 @@ public class MovimientoPersonaje : MonoBehaviour
                 cuartoScript.CerrarCuarto();
             }
         }
-        else if (collision.tag == "Boton")
+        else if (trigger.tag == "Boton")
         {
             cuartoScript = cuartoActual.GetComponent<CuartoScript>();
             cuartoScript.AbrirCuarto();

@@ -28,7 +28,7 @@ TagManager:
   - Estaticos
   - Dialogo
   - Player Bullet
-  - 
+  - Mapa
   - 
   - 
   - 
@@ -51,21 +51,27 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Piso
+    uniqueID: 2376597277
+    locked: 0
+  - name: Paredes
+    uniqueID: 471508147
+    locked: 0
+  - name: Puertas
+    uniqueID: 1801314825
+    locked: 0
+  - name: Decoracion
+    uniqueID: 2738762623
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: piso
-    uniqueID: 2376597277
-    locked: 0
-  - name: puertas
-    uniqueID: 1801314825
-    locked: 0
-  - name: decoracion
-    uniqueID: 2738762623
-    locked: 0
-  - name: jugador
+  - name: Jugador
     uniqueID: 1858232225
     locked: 0
-  - name: agarrables
+  - name: Agarrables
     uniqueID: 2001966221
+    locked: 0
+  - name: UI
+    uniqueID: 83467667
     locked: 0

@@ -13,12 +13,13 @@ public class Disparar : MonoBehaviour
     public float bulletForce = 20f;
 
     private bool canShoot;
-
-    void Awake()
+    
+    void Start()
     {
         canShoot = false;
+        firePoint = transform.Find("FirePoint").transform;
     }
-    
+
     void Update()
     {
         if (characterStats.currentMana <= 0)
@@ -56,8 +57,8 @@ public class Disparar : MonoBehaviour
     public void Shoot()
     {
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-        rb.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);
+        Rigidbody2D bulletRB = bullet.GetComponent<Rigidbody2D>();
+        bulletRB.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);
     }
 
     //Token Behavior
