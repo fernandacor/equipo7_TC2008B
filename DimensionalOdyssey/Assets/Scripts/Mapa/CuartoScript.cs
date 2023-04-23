@@ -7,15 +7,15 @@ public class CuartoScript : MonoBehaviour
 {
     private Tilemap cuarto;
 
-    private GameObject salidaU;
-    private GameObject salidaD;
-    private GameObject salidaR;
-    private GameObject salidaL;
+    private GameObject salidaUp;
+    private GameObject salidaDown;
+    private GameObject salidaRight;
+    private GameObject salidaLeft;
 
-    public GameObject pasilloU;
-    public GameObject pasilloD;
-    public GameObject pasilloR;
-    public GameObject pasilloL;
+    public GameObject pasilloUp;
+    public GameObject pasilloDown;
+    public GameObject pasilloRight;
+    public GameObject pasilloLeft;
 
     public bool descubierto;
 
@@ -23,46 +23,46 @@ public class CuartoScript : MonoBehaviour
     {
         cuarto = gameObject.GetComponent<Tilemap>();
 
-        salidaU = transform.Find("SalidaU").gameObject;
-        salidaD = transform.Find("SalidaD").gameObject;
-        salidaR = transform.Find("SalidaR").gameObject;
-        salidaL = transform.Find("SalidaL").gameObject;
+        salidaUp = transform.Find("Salida Up").gameObject;
+        salidaDown = transform.Find("Salida Down").gameObject;
+        salidaRight = transform.Find("Salida Right").gameObject;
+        salidaLeft = transform.Find("Salida Left").gameObject;
 
         AbrirCuarto();
     }
 
     public void AbrirCuarto()
     {
-        if (pasilloU == null)
-            salidaU.SetActive(true);
+        if (pasilloUp == null)
+            salidaUp.SetActive(true);
         else
         {
-            salidaU.SetActive(false);
-            pasilloU.SetActive(true);
+            salidaUp.SetActive(false);
+            pasilloUp.SetActive(true);
         }
 
-        if (pasilloD == null)
-            salidaD.SetActive(true);
+        if (pasilloDown == null)
+            salidaDown.SetActive(true);
         else
         {
-            salidaD.SetActive(false);
-            pasilloD.SetActive(true);
+            salidaDown.SetActive(false);
+            pasilloDown.SetActive(true);
         }
 
-        if (pasilloR == null)
-            salidaR.SetActive(true);
+        if (pasilloRight == null)
+            salidaRight.SetActive(true);
         else
         {
-            salidaR.SetActive(false);
-            pasilloR.SetActive(true);
+            salidaRight.SetActive(false);
+            pasilloRight.SetActive(true);
         }
 
-        if (pasilloL == null)
-            salidaL.SetActive(true);
+        if (pasilloLeft == null)
+            salidaLeft.SetActive(true);
         else
         {
-            salidaL.SetActive(false);
-            pasilloL.SetActive(true);
+            salidaLeft.SetActive(false);
+            pasilloLeft.SetActive(true);
         }
     }
 
@@ -70,18 +70,18 @@ public class CuartoScript : MonoBehaviour
     {
         GetComponent<EnemySpawn>().GenerarEnemigos();
 
-        salidaU.SetActive(true);
-        salidaD.SetActive(true);
-        salidaR.SetActive(true);
-        salidaL.SetActive(true);
+        salidaUp.SetActive(true);
+        salidaDown.SetActive(true);
+        salidaRight.SetActive(true);
+        salidaLeft.SetActive(true);
 
-        if (pasilloU != null)
-            pasilloU.SetActive(false);
-        if (pasilloD != null)
-            pasilloD.SetActive(false);
-        if (pasilloR != null)
-            pasilloR.SetActive(false);
-        if (pasilloL != null)
-            pasilloL.SetActive(false);
+        if (pasilloUp != null)
+            pasilloUp.SetActive(false);
+        if (pasilloDown != null)
+            pasilloDown.SetActive(false);
+        if (pasilloRight != null)
+            pasilloRight.SetActive(false);
+        if (pasilloLeft != null)
+            pasilloLeft.SetActive(false);
     }
 }

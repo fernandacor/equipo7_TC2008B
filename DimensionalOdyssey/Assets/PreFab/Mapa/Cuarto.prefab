@@ -208,7 +208,7 @@ GameObject:
   - component: {fileID: 1128977469419129821}
   - component: {fileID: 1128977469419129820}
   m_Layer: 10
-  m_Name: BotonAbrirCuarto
+  m_Name: Boton Abrir
   m_TagString: Boton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28848,7 +28848,7 @@ GameObject:
   - component: {fileID: 7397614287901986705}
   - component: {fileID: 7397614287901986706}
   m_Layer: 10
-  m_Name: SalidaR
+  m_Name: Salida Right
   m_TagString: Room
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29141,7 +29141,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1858232225
   m_SortingLayer: 1
-  m_SortingOrder: 10
+  m_SortingOrder: 15
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -29228,7 +29228,7 @@ GameObject:
   - component: {fileID: 7397614288719462409}
   - component: {fileID: 7397614288719462410}
   m_Layer: 10
-  m_Name: SalidaU
+  m_Name: Salida Up
   m_TagString: Room
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29769,7 +29769,7 @@ GameObject:
   - component: {fileID: 7397614289134206667}
   - component: {fileID: 7397614289134206660}
   m_Layer: 10
-  m_Name: SalidaL
+  m_Name: Salida Left
   m_TagString: Room
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30062,7 +30062,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1858232225
   m_SortingLayer: 1
-  m_SortingOrder: 10
+  m_SortingOrder: 15
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -30149,7 +30149,7 @@ GameObject:
   - component: {fileID: 6442110619686916312}
   - component: {fileID: 2643069481246213854}
   m_Layer: 10
-  m_Name: SalidaD
+  m_Name: Salida Down
   m_TagString: Room
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
