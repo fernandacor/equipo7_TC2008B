@@ -68,13 +68,13 @@ public class MovimientoPersonaje : MonoBehaviour
             if (!cuartoScript.descubierto)
             {
                 cuartoScript.descubierto = true;
-                cuartoScript.CerrarCuarto();
+                cuartoScript.CerrarCuarto2();
             }
         }
         else if (collision.tag == "Boton")
         {
             cuartoScript = cuartoActual.GetComponent<CuartoScript>();
-            cuartoScript.AbrirCuarto();
+            cuartoScript.AbrirCuarto2();
         }
     }
 }
