@@ -5,25 +5,21 @@ using UnityEngine.UI;
 
 public class ManaBar : MonoBehaviour
 {
-    //ManaBar
     public Slider slider;
     public Gradient gradient;
     public Image fill;
 
-    //ManaPoints
-
-    public void SetMaxEnergy(int energy)
+    public void SetEnergy(int mana)
     {
-        //ManaBar
-        slider.maxValue = energy;
-        slider.value = energy;
-        fill.color = gradient.Evaluate(1f);
+        slider.value = mana;
+        fill.color = gradient.Evaluate(slider.normalizedValue);
     }
 
-    public void SetEnergy(int energy)
+    public void SetMaxEnergy(int mana)
     {
-        //ManaBar
-        slider.value = energy;
-        fill.color = gradient.Evaluate(slider.normalizedValue);
+        slider.maxValue = mana;
+        slider.value = mana;
+
+        fill.color = gradient.Evaluate(1f);
     }
 }
