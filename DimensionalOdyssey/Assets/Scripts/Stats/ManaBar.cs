@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class ManaBar : MonoBehaviour
 {
+    //Script para el comportamiento de la barra de maná/energía
     public Slider slider;
     public Gradient gradient;
     public Image fill;
