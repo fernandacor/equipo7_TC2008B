@@ -9,6 +9,7 @@ public class CharacterStats : MonoBehaviour
      public ManaBar manaBar;
      public int maxMana = 100;
      public int currentMana;
+     public int useMana;
      public int recuperacionMana;
 
      public Stats resistencia;
@@ -33,11 +34,6 @@ public class CharacterStats : MonoBehaviour
      {
            currentHealth -= damage;
            healthBar.SetHealth(currentHealth);
-
-           if (currentHealth <= 0)
-           {
-               Destroy(gameObject, 2);
-           }
      }
 
      void LoseEnergy(int lostEnergy)
@@ -50,16 +46,10 @@ public class CharacterStats : MonoBehaviour
      {
           currentMana += recoverEnergy;
           manaBar.SetEnergy(currentMana);
-
      }
 
      void Update()
      {
-          // if (Input.GetKeyDown(KeyCode.T))
-          // {
-          //      TakeDamage(10);
-          // }
-
           if (Input.GetKeyDown(KeyCode.Y))
           {
                LoseEnergy(10);
@@ -75,9 +65,15 @@ public class CharacterStats : MonoBehaviour
 
      void OnTriggerEnter2D(Collider2D collision)
      {
-         if (collision.CompareTag("Enemy") || collision.CompareTag("Enemys Bullet"))
+         if (collision.CompareTag("Enemys Bullet"))
          {
              TakeDamage(10);
+         }
+
+         if (collision.CompareTag("Enemy"))
+         {
+             TakeDamage(5);
+             LoseEnergy(3);
          }
      }
 }
