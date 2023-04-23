@@ -37,8 +37,14 @@ public class InventoryManager : MonoBehaviour
         metralletaInicial,
 
         //Tokens
-        tokenMultiDisparos,
-        tokenDobleDisparo,
+        tokenMultidisparoDoble,
+        tokenMultidisparoTriple,
+        tokenMultidisparoCuadruple,
+        tokenDisparoDoble,
+        tokenDisparoTriple,
+        tokenReboteBalas,
+        tokenCombo,
+        tolenAtaqueDirigido,
 
         //Llaves
         llaveRosa,
@@ -47,9 +53,17 @@ public class InventoryManager : MonoBehaviour
         llaveNaranja,
 
         //Traje
-        trajeInicial
+        trajeInicial,
 
         //Pociones
-
+        pocionVelocidad,
+        pocionEnergia,
+        pocionSuperEnergia,
+        pocionVida,
+        pocionSuperVida,
+        pocionInmunidad,
+        pocionProteccion,
+        pocionIman,
+        pocionMystery
     }
 }

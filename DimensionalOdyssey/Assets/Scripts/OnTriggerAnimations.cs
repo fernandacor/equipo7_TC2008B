@@ -5,38 +5,26 @@ using UnityEngine;
 public class OnTriggerAnimations : MonoBehaviour
 {
     private Animator animator;
-    //CambioOutfit
-    public bool TrajePuesto;
-    public GameObject traje;
+    public CharacterStats characterStats;
 
-
-    // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
-        TrajePuesto = false;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Traje")
         {
-            // Destroy(traje, 2);
             animator.SetBool("CambioOutfit", true);
-            animator.SetBool("TrajePuesto", true);
-            Debug.Log("Pirueta");
-            // TrajePuesto = true;
-            // Debug.Log("TrajePuesto = true");
         }
     }
 
-    // void Update()
-    // {
-    //     if (TrajePuesto == true)
-    //     {
-    //         animator.SetBool("TrajePuesto", true);
-    //         animator.SetBool("CambioOutfit", false);
-    //         Debug.Log("TrajePuesto");
-    //     }
-    // }
+    void Update()
+    {
+        if (characterStats.currentHealth <= 0)
+        {
+            animator.SetBool("Death", true);
+        }
+    }
 }
