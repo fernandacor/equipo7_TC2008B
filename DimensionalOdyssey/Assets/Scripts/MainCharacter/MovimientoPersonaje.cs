@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class MovimientoPersonaje : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class MovimientoPersonaje : MonoBehaviour
     public float velocidadMovimiento;
     private Vector2 movimiento;
     private Rigidbody2D playerRB;
+    private PlayerInput playerInput;
 
     // Apuntar
     private GameObject firePoint;
@@ -26,13 +28,12 @@ public class MovimientoPersonaje : MonoBehaviour
         playerRenderer = GetComponent<Renderer>();
         playerAnimator = GetComponent<Animator>();
         firePoint = transform.Find("Fire Point").gameObject;
+        playerInput = GetComponent<PlayerInput>();
     }
 
     void Update()
     {
-        movimiento.x = Input.GetAxisRaw("Horizontal");
-        movimiento.y = Input.GetAxisRaw("Vertical");
-        movimiento = movimiento.normalized;
+        movimiento = playerInput.actions["Move"].ReadValue<Vector2>().normalized;
 
         playerAnimator.SetFloat("Horizontal", movimiento.x);
         playerAnimator.SetFloat("Vertical", movimiento.y);

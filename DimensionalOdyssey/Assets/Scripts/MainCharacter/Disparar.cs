@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Disparar : MonoBehaviour
 {
     public ManaBar manaBar;
     public GameObject bulletPrefab;
     public float bulletForce = 20f;
+    private PlayerInput playerInput;
 
     private Vector2 mousePos;
     private Camera cam;
@@ -17,13 +19,14 @@ public class Disparar : MonoBehaviour
     {
         player = transform.parent.gameObject;
         cam = GameObject.Find("Main Camera").gameObject.GetComponent<Camera>();
+        playerInput = transform.parent.GetComponent<PlayerInput>();
     }
 
     void Update()
     {
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
 
-        if (Input.GetButtonDown("Fire1"))
+        if (playerInput.actions["BasicShot"].WasPressedThisFrame())
         {
             Shoot();
         }
