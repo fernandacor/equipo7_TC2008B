@@ -9,14 +9,13 @@ public class MovimientoPersonaje : MonoBehaviour
     // Mover al personaje
     private CharacterStats characterStats;
     private Vector2 movimiento;
-    private Rigidbody2D playerRB;
     private PlayerInput playerInput;
 
     // Apuntar
     private GameObject firePoint;
     private Renderer playerRenderer;
 
-    // Animación
+    // Animación de movimiento
     private Animator playerAnimator;
 
     // Comportamiento de los cuartos
@@ -25,7 +24,6 @@ public class MovimientoPersonaje : MonoBehaviour
     private void Awake()
     {
         characterStats = GetComponent<CharacterStats>();
-        playerRB = GetComponent<Rigidbody2D>();
         playerRenderer = GetComponent<Renderer>();
         playerAnimator = GetComponent<Animator>();
         firePoint = transform.Find("Fire Point").gameObject;
@@ -43,6 +41,7 @@ public class MovimientoPersonaje : MonoBehaviour
 
     void FixedUpdate()
     {
+        Rigidbody2D playerRB = GetComponent<Rigidbody2D>();
         playerRB.MovePosition(playerRB.position + movimiento * characterStats.velocidadMovimiento * Time.fixedDeltaTime);
 
         if (movimiento.y > 0)
