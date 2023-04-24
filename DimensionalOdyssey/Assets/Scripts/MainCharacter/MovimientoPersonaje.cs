@@ -6,7 +6,7 @@ public class MovimientoPersonaje : MonoBehaviour
 {
 
     // Mover al personaje
-    public float velocidadMovimiento;
+    public CharacterStats characterStats;
     private Vector2 movimiento;
     private Rigidbody2D playerRB;
 
@@ -24,6 +24,7 @@ public class MovimientoPersonaje : MonoBehaviour
 
     private void Awake()
     {
+        characterStats = GetComponent<CharacterStats>();
         playerRB = GetComponent<Rigidbody2D>();
         playerRenderer = GetComponent<Renderer>();
         playerAnimator = GetComponent<Animator>();
@@ -46,7 +47,7 @@ public class MovimientoPersonaje : MonoBehaviour
 
     void FixedUpdate()
     {
-        playerRB.MovePosition(playerRB.position + movimiento * velocidadMovimiento * Time.fixedDeltaTime);
+        playerRB.MovePosition(playerRB.position + movimiento * characterStats.velocidadMovimiento * Time.fixedDeltaTime);
 
         Vector2 lookDir = mousePos - playerRB.position;
         firePoint.transform.position = playerRB.position + lookDir.normalized * transform.localScale.x * 0.6f;
