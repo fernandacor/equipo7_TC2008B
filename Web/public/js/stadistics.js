@@ -1,4 +1,14 @@
-function main()
+/**
+ * @param {number} alpha Indicated the transparency of the color
+ * @returns {string} A string of the form 'rgba(240, 50, 123, 1.0)' that represents a color
+ */
+ function random_color(alpha=1.0)
+ {
+     const r_c = () => Math.round(Math.random() * 255)
+     return `rgba(${r_c()}, ${r_c()}, ${r_c()}, ${alpha}`
+ }
+
+async function main()
 {
     /*
     document.getElementById('formSelectUser').onsubmit = async (e) =>
@@ -83,6 +93,57 @@ function main()
             postResults.innerHTML = response.status
         }
     }
+
 }
 
 main()
+
+try
+{
+    const levels_response = await fetch('http://127.0.0.1:5235/api/partidas',{
+        method: 'GET'
+    })
+
+    console.log('Got a response correctly')
+
+    if(levels_response.ok){
+        console.log('Response is ok. Converting to JSON.')
+
+        let results = await levels_response.json()
+
+        console.log(results)
+        console.log('Data converted correctly. Plotting chart.')
+            
+        const values = Object.values(results)
+
+        // In this case, we just separate the data into different arrays using the map method of the values array. This creates new arrays that hold only the data that we need.
+        const level_names = values.map(e => e['username'])
+        const level_colors = values.map(e => random_color(0.8))
+        const level_borders = values.map(e => 'rgba(0, 0, 0, 1.0)')
+        const level_completion = values.map(e => e['COUNT(idPartida)'])
+
+
+        const ctx_levels2 = document.getElementById('apiChart2').getContext('2d');
+        const levelChart2 = new Chart(ctx_levels2, 
+        {
+            type: 'bar',
+            data: {
+                labels: level_names,
+                datasets: [
+                    {
+                        label: 'Usuarios con más partidas',
+                        backgroundColor: level_colors,
+                        borderColor: level_borders,
+                        borderWidth: 2,
+                        data: level_completion
+                    }
+                ]
+            }
+        })
+    }
+
+}
+catch(error)
+{
+    console.log(error)
+}
