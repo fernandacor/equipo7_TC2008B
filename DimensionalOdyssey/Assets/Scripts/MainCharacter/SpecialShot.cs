@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Disparar : MonoBehaviour
+public class SpecialShot : MonoBehaviour
 {
     [SerializeField] InventoryManager.AllItems reqItem1, reqItem2, reqItem3;
     private ManaBar manaBar;
