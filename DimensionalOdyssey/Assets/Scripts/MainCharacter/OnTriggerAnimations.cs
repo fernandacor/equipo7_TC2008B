@@ -5,11 +5,12 @@ using UnityEngine;
 public class OnTriggerAnimations : MonoBehaviour
 {
     private Animator animator;
-    public CharacterStats characterStats;
+    private CharacterStats characterStats;
 
     void Start()
     {
         animator = GetComponent<Animator>();
+        characterStats = GetComponent<CharacterStats>();
     }
 
     void OnTriggerEnter2D(Collider2D collision)
