@@ -10,9 +10,7 @@ public class MovimientoPersonaje : MonoBehaviour
     private Vector2 movimiento;
     private Rigidbody2D playerRB;
 
-    // Apuntar - Shooter
-    private Vector2 mousePos;
-    private Camera cam;
+    // Apuntar
     private GameObject firePoint;
     private Renderer playerRenderer;
 
@@ -27,8 +25,7 @@ public class MovimientoPersonaje : MonoBehaviour
         playerRB = GetComponent<Rigidbody2D>();
         playerRenderer = GetComponent<Renderer>();
         playerAnimator = GetComponent<Animator>();
-        firePoint = transform.Find("FirePoint").gameObject;
-        cam = GameObject.Find("Main Camera").gameObject.GetComponent<Camera>();
+        firePoint = transform.Find("Fire Point").gameObject;
     }
 
     void Update()
@@ -36,8 +33,6 @@ public class MovimientoPersonaje : MonoBehaviour
         movimiento.x = Input.GetAxisRaw("Horizontal");
         movimiento.y = Input.GetAxisRaw("Vertical");
         movimiento = movimiento.normalized;
-
-        mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
 
         playerAnimator.SetFloat("Horizontal", movimiento.x);
         playerAnimator.SetFloat("Vertical", movimiento.y);
@@ -48,18 +43,10 @@ public class MovimientoPersonaje : MonoBehaviour
     {
         playerRB.MovePosition(playerRB.position + movimiento * velocidadMovimiento * Time.fixedDeltaTime);
 
-        Vector2 lookDir = mousePos - playerRB.position;
-        firePoint.transform.position = playerRB.position + lookDir.normalized * transform.localScale.x * 0.6f;
         if (movimiento.y > 0)
             firePoint.GetComponent<Renderer>().sortingOrder = playerRenderer.sortingOrder - 1;
         else
             firePoint.GetComponent<Renderer>().sortingOrder = playerRenderer.sortingOrder + 1;
-
-        float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
-        if (angle <= 90 && angle >= -90)
-            firePoint.transform.rotation = Quaternion.Euler(0, 0, angle);
-        else
-            firePoint.transform.rotation = Quaternion.Euler(180, 0, 360 - angle);
     }
 
     private void OnTriggerEnter2D(Collider2D trigger)

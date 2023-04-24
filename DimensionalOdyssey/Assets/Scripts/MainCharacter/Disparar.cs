@@ -9,19 +9,26 @@ public class Disparar : MonoBehaviour
     public CharacterStats characterStats;
     public Transform firePoint;
     public GameObject bulletPrefab;
-
     public float bulletForce = 20f;
 
     private bool canShoot;
-    
-    void Start()
+
+    private Vector2 mousePos;
+    private Camera cam;
+    private GameObject player;
+    private float shotAngle = 0f;
+
+    void Awake()
     {
         canShoot = false;
-        firePoint = transform.Find("FirePoint").transform;
+        player = transform.parent.gameObject;
+        cam = GameObject.Find("Main Camera").gameObject.GetComponent<Camera>();
     }
 
     void Update()
     {
+        mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
+
         if (characterStats.currentMana <= 0)
         {
             canShoot = false;
@@ -44,7 +51,7 @@ public class Disparar : MonoBehaviour
     //If mana = 0, canShoot = false
     public bool HasRequiredItem(InventoryManager.AllItems reqItem1, InventoryManager.AllItems reqItem2, InventoryManager.AllItems reqItem3)
     {
-        if(InventoryManager.Instance._inventoryItems.Contains(reqItem1) || InventoryManager.Instance._inventoryItems.Contains(reqItem2) || InventoryManager.Instance._inventoryItems.Contains(reqItem3))
+        if (InventoryManager.Instance._inventoryItems.Contains(reqItem1) || InventoryManager.Instance._inventoryItems.Contains(reqItem2) || InventoryManager.Instance._inventoryItems.Contains(reqItem3))
         {
             return true;
         }
@@ -56,10 +63,25 @@ public class Disparar : MonoBehaviour
 
     public void Shoot()
     {
-        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-        Rigidbody2D bulletRB = bullet.GetComponent<Rigidbody2D>();
-        bulletRB.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);
+        Quaternion shotRotation = Quaternion.Euler(0f, 0f, shotAngle + 90f);
+
+        GameObject bullet = Instantiate(bulletPrefab, transform.position, shotRotation);
+        bullet.GetComponent<Rigidbody2D>().AddForce(transform.right * bulletForce, ForceMode2D.Impulse);
     }
+
+    void FixedUpdate()
+    {
+        Rigidbody2D playerRB = player.GetComponent<Rigidbody2D>();
+        Vector2 lookDirection = mousePos - playerRB.position;
+        transform.position = playerRB.position + lookDirection.normalized * player.transform.localScale.x * 0.6f;
+
+        shotAngle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg;
+        if (shotAngle <= 90 && shotAngle >= -90)
+            transform.rotation = Quaternion.Euler(0, 0, shotAngle);
+        else
+            transform.rotation = Quaternion.Euler(180, 0, 360 - shotAngle);
+    }
+
 
     //Token Behavior
     void TokenBehavior(int token)
