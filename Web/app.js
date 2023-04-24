@@ -86,6 +86,25 @@ app.get('/api/usuario/:id', async (request, response)=>
     }
 })
 
+app.get('/api/partidas', (request, response) => {
+    let connection = connectToDB()
+
+    try{
+        connection.connect()
+        connection.query('select * from contPartidas_usuarios', (error, results, fields) => {
+            if(error) console.log(error)
+            console.log("Sending data correctly.")
+            response.status(200)
+            response.json(results)
+        })
+        connection.end()
+    }
+    catch(error){
+        response.status(500)
+        response.json(error)
+        console.log(error)
+    }
+})
 
 app.post('/api/usuario', async (request, response)=>{
 
