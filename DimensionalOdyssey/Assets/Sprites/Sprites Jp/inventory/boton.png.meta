@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:DimensionalOdyssey/Assets/Sprites/Interactuables/rayo.png.meta
-guid: 4de27e6c443c7df41971ba2721f959b6
-========
-guid: fb4c1521b99ccbf47b61e09e87600c96
->>>>>>>> jpUltraCommit:DimensionalOdyssey/Assets/Animations/Animacion fondo/animation/frame_03_delay-0.08s.gif.meta
+guid: b067218dbb58ee84a9d2a0d5287f8259
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
