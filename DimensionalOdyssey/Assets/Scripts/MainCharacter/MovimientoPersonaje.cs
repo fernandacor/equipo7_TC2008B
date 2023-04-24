@@ -7,7 +7,7 @@ public class MovimientoPersonaje : MonoBehaviour
 {
 
     // Mover al personaje
-    public CharacterStats characterStats;
+    private CharacterStats characterStats;
     private Vector2 movimiento;
     private Rigidbody2D playerRB;
     private PlayerInput playerInput;
