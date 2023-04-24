@@ -2,18 +2,20 @@ using UnityEngine;
 
 public class CharacterStats : MonoBehaviour
 {
-     public HealthBar healthBar;
+     private HealthBar healthBar;
      public int maxHealth = 100;
      public int currentHealth;
 
-     public ManaBar manaBar;
+     private ManaBar manaBar;
      public int maxMana = 100;
      public int currentMana;
      public int useMana;
      public int recuperacionMana;
 
+     //public MovimientoPersonaje movimientoPersonaje;
+     public float velocidadMovimiento;
+     
      public Stats resistencia;
-     public Stats velocidadMovimiento;
      public Stats velocidadDisparo;
      public Stats robodeVida;
 
@@ -22,18 +24,20 @@ public class CharacterStats : MonoBehaviour
     void Start()
     {
           //Health Bar
-         currentHealth = maxHealth;
-         healthBar.SetMaxHealth(maxHealth);
+          healthBar = GameObject.FindGameObjectWithTag("HealthBar").GetComponent<HealthBar>();
+          currentHealth = maxHealth;
+          healthBar.SetMaxHealth(maxHealth);
          
-         //Mana Bar
-         currentMana = maxMana;
-         manaBar.SetMaxEnergy(maxMana);
+          //Mana Bar
+          manaBar = GameObject.FindGameObjectWithTag("ManaBar").GetComponent<ManaBar>();
+          currentMana = maxMana;
+          manaBar.SetMaxEnergy(maxMana);
     }
 
      void TakeDamage(int damage)
      {
-           currentHealth -= damage;
-           healthBar.SetHealth(currentHealth);
+          currentHealth -= damage;
+          healthBar.SetHealth(currentHealth);
      }
 
      void LoseEnergy(int lostEnergy)
