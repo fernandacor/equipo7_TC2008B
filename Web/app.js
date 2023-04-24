@@ -86,23 +86,31 @@ app.get('/api/usuario/:id', async (request, response)=>
     }
 })
 
-app.get('/api/partidas', (request, response) => {
-    let connection = connectToDB()
+app.get('/api/partidas', async (request, response)=>{
+    let connection = null
 
-    try{
-        connection.connect()
-        connection.query('select * from contPartidas_usuarios', (error, results, fields) => {
-            if(error) console.log(error)
-            console.log("Sending data correctly.")
-            response.status(200)
-            response.json(results)
-        })
-        connection.end()
+    try
+    {
+        connection = await connectToDB()
+        const [results, fields] = await connection.execute('select * from contPartidas_usuarios')
+
+        console.log("QWERTY")
+        console.log(results)
+        response.json(results)
     }
-    catch(error){
+    catch(error)
+    {
         response.status(500)
         response.json(error)
         console.log(error)
+    }
+    finally
+    {
+        if(connection!==null) 
+        {
+            connection.end()
+            console.log("Connection closed succesfully!")
+        }
     }
 })
 
