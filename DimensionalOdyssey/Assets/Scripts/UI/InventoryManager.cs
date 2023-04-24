@@ -44,6 +44,27 @@ public class InventoryManager : MonoBehaviour
 
         //Traje
         trajeInicial,
+
+        //Tokens
+        tokenMultidisparoDoble,
+        tokenMultidisparoTriple,
+        tokenMultidisparoCuadruple,
+        tokenDisparoDoble,
+        tokenDisparoTriple,
+        tokenReboteBalas,
+        tokenCombo,
+        tokenAtaqueDirigido,
+
+        //Pociones
+        pocionVelocidad,
+        pocionEnergia,
+        pocionSuperEnergia,
+        pocionVida,
+        pocionSuperVida,
+        pocionInmunidad,
+        pocionProteccion,
+        pocionIman,
+        pocionMystery
     }
 
     public enum Tokens
@@ -69,5 +90,13 @@ public class InventoryManager : MonoBehaviour
         pocionProteccion,
         pocionIman,
         pocionMystery
+    }
+
+    public enum Llaves
+    {
+        llaveRosa,
+        llaveTurquesa,
+        llaveCafe,
+        llaveNaranja
     }
 }
