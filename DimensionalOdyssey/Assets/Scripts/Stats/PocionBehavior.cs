@@ -4,56 +4,48 @@ using UnityEngine;
 
 public class PocionBehavior : MonoBehaviour
 {
-    // public CharacterStats characterStats;
-    // public InventoryManager inventoryManager;
-    // [SerializeField] InventoryManager.AllItems itemType;
+    [SerializeField] InventoryManager.Pociones tipoPocion;
+    private GameObject player;
+    private CharacterStats characterStats;
 
-    // void Start()
-    // {
-    //     characterStats = GameObject.Find("Player").GetComponent<CharacterStats>();
-    //     inventoryManager = GameObject.Find("InventoryManager").GetComponent<InventoryManager>();
-    // }
+    void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+        characterStats = player.GetComponent<CharacterStats>();
+    }
 
-    //     // pocionVelocidad,
-    //     // pocionEnergia,
-    //     // pocionSuperEnergia,
-    //     // pocionVida,
-    //     // pocionSuperVida,
-    //     // pocionInmunidad,
-    //     // pocionProteccion,
-    //     // pocionIman,
-    //     // pocionMystery
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            Debug.Log("player detected");
+            PickUp(collision);
+        }
+    }
 
-    // public void Update()
-    // {
-    //     if (inventoryManager.pocionVelocidad == true)
-    //     {
-    //         characterStats.velocidadMovimiento +=3;
-    //         pocionVelocidad = false;
-    //     }
+    public void PickUp(Collider2D player)
+    {
+        switch (tipoPocion)
+        {
+            case InventoryManager.Pociones.pocionVelocidad:
+                characterStats.velocidadMovimiento += 3;
+                break;
+            case InventoryManager.Pociones.pocionEnergia:
+                characterStats.currentMana += 10;
+                break;
+            case InventoryManager.Pociones.pocionSuperEnergia:
+                characterStats.currentMana += 20;
+                break;
+            case InventoryManager.Pociones.pocionVida:
+                characterStats.currentHealth += 10;
+                break;
+            case InventoryManager.Pociones.pocionSuperVida:
+                characterStats.currentHealth += 20;
+                break;
+            default:
+                break;
+        }
 
-    //     if (pocionEnergia == true)
-    //     {
-    //         characterStats.currentMana += 10;
-    //         pocionEnergia = false;
-    //     }
-
-    //     if (pocionSuperEnergia == true)
-    //     {
-    //         characterStats.currentMana = characterStats.maxMana;
-    //         pocionSuperEnergia = false;
-    //     }
-
-    //     if (pocionVida == true)
-    //     {
-    //         characterStats.currentHealth += 10;
-    //         pocionVida = false;
-    //     }
-
-    //     if (inventoryManager.pocionSuperVida == true)
-    //     {
-    //         characterStats.currentHealth = characterStats.maxHealth;
-    //         inventoryManager.pocionSuperVida = false;
-    //     }
-    // }
+        Destroy(gameObject);
+    }
 }
