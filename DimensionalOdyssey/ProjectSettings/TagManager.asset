@@ -66,11 +66,17 @@ TagManager:
   - name: Decoracion
     uniqueID: 2738762623
     locked: 0
+  - name: Mapa Abajo
+    uniqueID: 3388316297
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
   - name: Jugador
     uniqueID: 1858232225
+    locked: 0
+  - name: Mapa Arriba
+    uniqueID: 4137680071
     locked: 0
   - name: Agarrables
     uniqueID: 2001966221
