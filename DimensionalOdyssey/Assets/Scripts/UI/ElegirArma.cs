@@ -8,15 +8,12 @@ public class ElegirArma : MonoBehaviour
     public GameObject pistola;
     public GameObject escopeta;
     public GameObject metralladora;
-    public bool options;
 
     void Start()
     {
-        // cajita.SetActive(false);
         pistola.SetActive(false);
         escopeta.SetActive(false);
         metralladora.SetActive(false);
-        options = false;
     }
 
     public void Update()

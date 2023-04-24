@@ -36,16 +36,6 @@ public class InventoryManager : MonoBehaviour
         escopetaInicial,
         metralletaInicial,
 
-        //Tokens
-        tokenMultidisparoDoble,
-        tokenMultidisparoTriple,
-        tokenMultidisparoCuadruple,
-        tokenDisparoDoble,
-        tokenDisparoTriple,
-        tokenReboteBalas,
-        tokenCombo,
-        tolenAtaqueDirigido,
-
         //Llaves
         llaveRosa,
         llaveTurquesa,
@@ -54,6 +44,16 @@ public class InventoryManager : MonoBehaviour
 
         //Traje
         trajeInicial,
+
+        //Tokens
+        tokenMultidisparoDoble,
+        tokenMultidisparoTriple,
+        tokenMultidisparoCuadruple,
+        tokenDisparoDoble,
+        tokenDisparoTriple,
+        tokenReboteBalas,
+        tokenCombo,
+        tokenAtaqueDirigido,
 
         //Pociones
         pocionVelocidad,
@@ -65,5 +65,38 @@ public class InventoryManager : MonoBehaviour
         pocionProteccion,
         pocionIman,
         pocionMystery
+    }
+
+    public enum Tokens
+    {
+        tokenMultidisparoDoble,
+        tokenMultidisparoTriple,
+        tokenMultidisparoCuadruple,
+        tokenDisparoDoble,
+        tokenDisparoTriple,
+        tokenReboteBalas,
+        tokenCombo,
+        tokenAtaqueDirigido
+    }
+
+    public enum Pociones
+    {
+        pocionVelocidad,
+        pocionEnergia,
+        pocionSuperEnergia,
+        pocionVida,
+        pocionSuperVida,
+        pocionInmunidad,
+        pocionProteccion,
+        pocionIman,
+        pocionMystery
+    }
+
+    public enum Llaves
+    {
+        llaveRosa,
+        llaveTurquesa,
+        llaveCafe,
+        llaveNaranja
     }
 }

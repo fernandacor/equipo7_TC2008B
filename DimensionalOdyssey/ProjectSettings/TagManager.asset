@@ -17,6 +17,9 @@ TagManager:
   - Boss
   - Enemys Bullet
   - Traje
+  - Pocion
+  - HealthBar
+  - ManaBar
   layers:
   - Default
   - TransparentFX
