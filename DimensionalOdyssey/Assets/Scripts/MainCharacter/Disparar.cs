@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Disparar : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class Disparar : MonoBehaviour
     public Transform firePoint;
     public GameObject bulletPrefab;
     public float bulletForce = 20f;
+    private PlayerInput playerInput;
 
     private bool canShoot;
 
@@ -23,6 +25,7 @@ public class Disparar : MonoBehaviour
         canShoot = false;
         player = transform.parent.gameObject;
         cam = GameObject.Find("Main Camera").gameObject.GetComponent<Camera>();
+        playerInput = transform.parent.GetComponent<PlayerInput>();
     }
 
     void Update()
@@ -34,7 +37,7 @@ public class Disparar : MonoBehaviour
             canShoot = false;
         }
 
-        if (Input.GetButtonDown("Fire1") && canShoot == true)
+        if (playerInput.actions["BasicShot"].WasPressedThisFrame() && canShoot == true)
         {
             Shoot();
         }
