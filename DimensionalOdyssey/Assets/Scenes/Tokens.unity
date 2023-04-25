@@ -11988,34 +11988,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5033380921045303496, guid: d04d2c3101f20384594690533097f34e, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 54e9c6efd1398e444a354c6e51ddd006, type: 3}
-    - target: {fileID: 5033380921045303496, guid: d04d2c3101f20384594690533097f34e, type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5033380921045303497, guid: d04d2c3101f20384594690533097f34e, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.65
-      objectReference: {fileID: 0}
-    - target: {fileID: 5033380921045303497, guid: d04d2c3101f20384594690533097f34e, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.65
-      objectReference: {fileID: 0}
-    - target: {fileID: 5033380921045303497, guid: d04d2c3101f20384594690533097f34e, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.65
-      objectReference: {fileID: 0}
-    - target: {fileID: 6708852101857463221, guid: d04d2c3101f20384594690533097f34e, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6708852101857463222, guid: d04d2c3101f20384594690533097f34e, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6708852101857463246, guid: d04d2c3101f20384594690533097f34e, type: 3}
       propertyPath: m_RootOrder
       value: 2

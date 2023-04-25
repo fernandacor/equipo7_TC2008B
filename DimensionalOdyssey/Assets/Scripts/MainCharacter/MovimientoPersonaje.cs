@@ -13,7 +13,6 @@ public class MovimientoPersonaje : MonoBehaviour
 
     // Apuntar
     private GameObject firePoint;
-    private Renderer playerRenderer;
 
     // Animación de movimiento
     private Animator playerAnimator;
@@ -24,7 +23,6 @@ public class MovimientoPersonaje : MonoBehaviour
     private void Awake()
     {
         characterStats = GetComponent<CharacterStats>();
-        playerRenderer = GetComponent<Renderer>();
         playerAnimator = GetComponent<Animator>();
         firePoint = transform.Find("Fire Point").gameObject;
         playerInput = GetComponent<PlayerInput>();
@@ -44,6 +42,7 @@ public class MovimientoPersonaje : MonoBehaviour
         Rigidbody2D playerRB = GetComponent<Rigidbody2D>();
         playerRB.MovePosition(playerRB.position + movimiento * characterStats.velocidadMovimiento * Time.fixedDeltaTime);
 
+        Renderer playerRenderer = GetComponent<Renderer>();
         if (movimiento.y > 0)
             firePoint.GetComponent<Renderer>().sortingOrder = playerRenderer.sortingOrder - 1;
         else

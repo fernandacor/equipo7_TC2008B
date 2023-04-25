@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 1858232225
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d4aef419ca210694c8cd171656976dab, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 54e9c6efd1398e444a354c6e51ddd006, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -129,7 +129,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6708852101857463247}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 1
@@ -290,9 +290,8 @@ MonoBehaviour:
   recuperacionMana: 0
   velocidadMovimiento: 25
   resistencia: 0
-  velocidadDisparo: 0
+  velocidadDisparo: 0.7
   robodeVida: 0
-  animator: {fileID: 6708852101857463242}
 --- !u!61 &6708852101857463222
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -300,7 +299,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6708852101857463247}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -326,7 +325,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6708852101857463247}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b35fee9a80daeb648ae9234999262bc9, type: 3}
   m_Name: 
@@ -371,7 +370,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6708852103101021398}
   - component: {fileID: 6708852103101021397}
-  - component: {fileID: 6708852103101021385}
+  - component: {fileID: 8013252731999675715}
+  - component: {fileID: 1347307670}
   m_Layer: 3
   m_Name: Fire Point
   m_TagString: Untagged
@@ -446,23 +446,31 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6708852103101021385
+--- !u!114 &8013252731999675715
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6708852103101021399}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b689abbd201c42e1bc51ad145a8658f, type: 3}
+  m_Script: {fileID: 11500000, guid: e89744cc99d11b24987382d53605e1d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reqItem1: 0
-  reqItem2: 0
-  reqItem3: 0
-  manaBar: {fileID: 0}
-  characterStats: {fileID: 0}
-  firePoint: {fileID: 0}
   bulletPrefab: {fileID: 8276870004398191856, guid: c378bd37172feeb4eb7438440654aec0, type: 3}
-  bulletForce: 25
+  bulletSpeed: 20
+--- !u!114 &1347307670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6708852103101021399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5db425bfb8f986b44a1795cb21758b5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 8276870004398191856, guid: c378bd37172feeb4eb7438440654aec0, type: 3}
+  bulletSpeed: 20

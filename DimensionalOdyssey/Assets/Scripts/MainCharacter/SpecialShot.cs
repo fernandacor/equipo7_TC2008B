@@ -5,74 +5,91 @@ using UnityEngine.InputSystem;
 
 public class SpecialShot : MonoBehaviour
 {
-    [SerializeField] InventoryManager.AllItems reqItem1, reqItem2, reqItem3;
-    private ManaBar manaBar;
-    private CharacterStats characterStats;
     public GameObject bulletPrefab;
-    public float bulletForce = 20f;
+    public float bulletSpeed = 20f;
+
+    private GameObject player;
+    private CharacterStats characterStats;
     private PlayerInput playerInput;
-
-    private bool canShoot;
-
     private Vector2 mousePos;
     private Camera cam;
-    private GameObject player;
-    private float shotAngle = 0f;
+
+    private float gunAngle = 0f;
+    private float entreDisparos = 0f;
 
     void Awake()
     {
-        canShoot = false;
         player = transform.parent.gameObject;
+        characterStats = player.GetComponent<CharacterStats>();
+        playerInput = player.GetComponent<PlayerInput>();
         cam = GameObject.Find("Main Camera").gameObject.GetComponent<Camera>();
-        playerInput = transform.parent.GetComponent<PlayerInput>();
-
-        characterStats = transform.parent.GetComponent<CharacterStats>();
-        manaBar = GameObject.Find("ManaBar").GetComponent<ManaBar>();
     }
 
     void Update()
     {
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
 
-        if (characterStats.currentMana <= 0)
+        if (playerInput.actions["SpecialShot"].IsPressed())
         {
-            canShoot = false;
+            if (entreDisparos > 0f)
+                entreDisparos -= Time.deltaTime;
+            else
+            {
+                entreDisparos = characterStats.velocidadDisparo;
+                Shoot();
+            }
         }
-
-        if (playerInput.actions["BasicShot"].WasPressedThisFrame() && canShoot == true)
-        {
-            Shoot();
-        }
-
-        // if (HasRequiredItem(reqItem1, reqItem2, reqItem3) == true)
-        // {
-        //     canShoot = true;
-        //     Debug.Log("canShoot = true porque tienes el item requerido");
-        // }
     }
-
-    //If tiene alguna de las pistolas, canShoot = true
-    //If canShoot = true, significa que mana > 0
-    //If mana = 0, canShoot = false
-    // public bool HasRequiredItem(InventoryManager.AllItems reqItem1, InventoryManager.AllItems reqItem2, InventoryManager.AllItems reqItem3)
-    // {
-    //     if (InventoryManager.Instance._inventoryItems.Contains(reqItem1) || InventoryManager.Instance._inventoryItems.Contains(reqItem2) || InventoryManager.Instance._inventoryItems.Contains(reqItem3))
-    //     {
-    //         return true;
-    //     }
-    //     else
-    //     {
-    //         return false;
-    //     }
-    // }
 
     public void Shoot()
     {
-        Quaternion shotRotation = Quaternion.Euler(0f, 0f, shotAngle + 90f);
+        Quaternion shotRotation;
+        float shotAngle;
+        Vector2 shotVector;
 
-        GameObject bullet = Instantiate(bulletPrefab, transform.position, shotRotation);
-        bullet.GetComponent<Rigidbody2D>().AddForce(transform.right * bulletForce, ForceMode2D.Impulse);
+        GameObject bullet;
+
+        int cantidadDisparos = 3;
+        float anguloMenor = 80;
+        float anguloMayor = 100;
+        float diferenciaAngulos = (anguloMayor - anguloMenor) / (cantidadDisparos - 1);
+
+        for (int i = 0; i < cantidadDisparos; i++)
+        {
+            shotRotation = Quaternion.Euler(0f, 0f, gunAngle + (anguloMenor + diferenciaAngulos * i));
+            shotAngle = (transform.rotation.z + gunAngle + (-diferenciaAngulos + diferenciaAngulos * i)) * Mathf.Deg2Rad;
+            shotVector = new Vector2(Mathf.Cos(shotAngle), Mathf.Sin(shotAngle));
+
+            bullet = Instantiate(bulletPrefab, transform.position, shotRotation);
+            bullet.GetComponent<Rigidbody2D>().AddForce(shotVector * bulletSpeed, ForceMode2D.Impulse);
+        }
     }
+
+    // public void Shoot()
+    // {
+    //     Quaternion shotRotation;
+    //     float shotAngle;
+    //     Vector2 shotVector;
+
+    //     GameObject bullet;
+
+    //     int cantidadDisparos = 2;
+    //     int rangoAngulos = 60;
+    //     float diferenciaAngulos;
+
+    //     if (cantidadDisparos % 2 == 1)
+    //         diferenciaAngulos = rangoAngulos / (cantidadDisparos - 1);
+
+    //     for (int i = 0; i < cantidadDisparos; i++)
+    //     {
+    //         shotRotation = Quaternion.Euler(0f, 0f, gunAngle + (anguloMenor + diferenciaAngulos * i));
+    //         shotAngle = (transform.rotation.z + gunAngle + (-diferenciaAngulos + diferenciaAngulos * i)) * Mathf.Deg2Rad;
+    //         shotVector = new Vector2(Mathf.Cos(shotAngle), Mathf.Sin(shotAngle));
+
+    //         bullet = Instantiate(bulletPrefab, transform.position, shotRotation);
+    //         bullet.GetComponent<Rigidbody2D>().AddForce(shotVector * bulletSpeed, ForceMode2D.Impulse);
+    //     }
+    // }
 
     void FixedUpdate()
     {
@@ -80,25 +97,10 @@ public class SpecialShot : MonoBehaviour
         Vector2 lookDirection = mousePos - playerRB.position;
         transform.position = playerRB.position + lookDirection.normalized * player.transform.localScale.x * 0.6f;
 
-        shotAngle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg;
-        if (shotAngle <= 90 && shotAngle >= -90)
-            transform.rotation = Quaternion.Euler(0, 0, shotAngle);
+        gunAngle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg;
+        if (gunAngle <= 90 && gunAngle >= -90)
+            transform.rotation = Quaternion.Euler(0, 0, gunAngle);
         else
-            transform.rotation = Quaternion.Euler(180, 0, 360 - shotAngle);
-    }
-
-
-    //Token Behavior
-    void TokenBehavior(int token)
-    {
-        Debug.Log("sisi");
-        // tokenMultidisparoDoble - dos disparos en distintas direcciones
-        // tokenMultidisparoTriple - tres disparos en distintas direcciones
-        // tokenMultidisparoCuadruple - cuatro disparos en distintas direcciones
-        // tokenDisparoDoble - dos disparos en la misma dirección
-        // tokenDisparoTriple - tres disparos en la misma dirección
-        // tokenReboteBalas - balas rebotan de las paredes
-        // tokenCombo - balas rebotan del enemigo y se dirigen a otro
-        // tolenAtaqueDirigido - balas persiguen al enemigo
+            transform.rotation = Quaternion.Euler(180, 0, 360 - gunAngle);
     }
 }
