@@ -135,7 +135,6 @@ public class SpecialShot : MonoBehaviour
         transform.position = playerRB.position + lookingDirection.normalized * player.transform.localScale.x * 0.6f;
 
         gunAngle = Mathf.Atan2(lookingDirection.y, lookingDirection.x) * Mathf.Rad2Deg;
-        Debug.Log(gunAngle);
         if (gunAngle <= 90 && gunAngle >= -90)
             transform.rotation = Quaternion.Euler(0, 0, gunAngle);
         else
