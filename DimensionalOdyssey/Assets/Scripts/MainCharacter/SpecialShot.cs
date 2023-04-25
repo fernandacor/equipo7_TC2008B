@@ -7,6 +7,7 @@ public class SpecialShot : MonoBehaviour
 {
     public GameObject bulletPrefab;
     public float bulletSpeed = 20f;
+    Vector2 lookingDirection;
 
     private GameObject player;
     private CharacterStats characterStats;
@@ -45,59 +46,40 @@ public class SpecialShot : MonoBehaviour
     {
         Quaternion shotRotation;
         float shotAngle;
-        Vector2 shotVector;
+        Vector2 shotDirection;
 
         GameObject bullet;
 
         int cantidadDisparos = 3;
-        float anguloMenor = 80;
-        float anguloMayor = 100;
-        float diferenciaAngulos = (anguloMayor - anguloMenor) / (cantidadDisparos - 1);
+        int rangoAngulos = 60;
+
+        cantidadDisparos = cantidadDisparos * 2 + 1;
+        float diferenciaAngulos = rangoAngulos / (cantidadDisparos - 1);
 
         for (int i = 0; i < cantidadDisparos; i++)
         {
-            shotRotation = Quaternion.Euler(0f, 0f, gunAngle + (anguloMenor + diferenciaAngulos * i));
-            shotAngle = (transform.rotation.z + gunAngle + (-diferenciaAngulos + diferenciaAngulos * i)) * Mathf.Deg2Rad;
-            shotVector = new Vector2(Mathf.Cos(shotAngle), Mathf.Sin(shotAngle));
+            if (i % 2 == 1)
+            {
+                float anguloActual = -rangoAngulos / 2 + diferenciaAngulos * i;
+                shotRotation = Quaternion.Euler(0f, 0f, gunAngle + 90 + anguloActual);
+                shotAngle = (gunAngle + anguloActual) * Mathf.Deg2Rad;
+                shotDirection = new Vector2(Mathf.Cos(shotAngle), Mathf.Sin(shotAngle));
 
-            bullet = Instantiate(bulletPrefab, transform.position, shotRotation);
-            bullet.GetComponent<Rigidbody2D>().AddForce(shotVector * bulletSpeed, ForceMode2D.Impulse);
+                bullet = Instantiate(bulletPrefab, transform.position, shotRotation);
+                bullet.GetComponent<Rigidbody2D>().AddForce(shotDirection * bulletSpeed, ForceMode2D.Impulse);
+            }
         }
     }
-
-    // public void Shoot()
-    // {
-    //     Quaternion shotRotation;
-    //     float shotAngle;
-    //     Vector2 shotVector;
-
-    //     GameObject bullet;
-
-    //     int cantidadDisparos = 2;
-    //     int rangoAngulos = 60;
-    //     float diferenciaAngulos;
-
-    //     if (cantidadDisparos % 2 == 1)
-    //         diferenciaAngulos = rangoAngulos / (cantidadDisparos - 1);
-
-    //     for (int i = 0; i < cantidadDisparos; i++)
-    //     {
-    //         shotRotation = Quaternion.Euler(0f, 0f, gunAngle + (anguloMenor + diferenciaAngulos * i));
-    //         shotAngle = (transform.rotation.z + gunAngle + (-diferenciaAngulos + diferenciaAngulos * i)) * Mathf.Deg2Rad;
-    //         shotVector = new Vector2(Mathf.Cos(shotAngle), Mathf.Sin(shotAngle));
-
-    //         bullet = Instantiate(bulletPrefab, transform.position, shotRotation);
-    //         bullet.GetComponent<Rigidbody2D>().AddForce(shotVector * bulletSpeed, ForceMode2D.Impulse);
-    //     }
-    // }
 
     void FixedUpdate()
     {
         Rigidbody2D playerRB = player.GetComponent<Rigidbody2D>();
-        Vector2 lookDirection = mousePos - playerRB.position;
-        transform.position = playerRB.position + lookDirection.normalized * player.transform.localScale.x * 0.6f;
+        lookingDirection = mousePos - playerRB.position;
+        // Mover el arma en un círculo alrededor del jugador dependiendo de a donde apunte
+        transform.position = playerRB.position + lookingDirection.normalized * player.transform.localScale.x * 0.6f;
 
-        gunAngle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg;
+        gunAngle = Mathf.Atan2(lookingDirection.y, lookingDirection.x) * Mathf.Rad2Deg;
+        Debug.Log(gunAngle);
         if (gunAngle <= 90 && gunAngle >= -90)
             transform.rotation = Quaternion.Euler(0, 0, gunAngle);
         else

@@ -16,6 +16,7 @@ public class BasicShot : MonoBehaviour
 
     private float gunAngle = 0f;
     private float entreDisparos = 0f;
+    Vector2 lookingDirection;
 
     void Awake()
     {
@@ -45,16 +46,16 @@ public class BasicShot : MonoBehaviour
     {
         Quaternion shotRotation = Quaternion.Euler(0f, 0f, gunAngle + 90f);
         GameObject bullet = Instantiate(bulletPrefab, transform.position, shotRotation);
-        bullet.GetComponent<Rigidbody2D>().AddForce(transform.right * bulletSpeed, ForceMode2D.Impulse);
+        bullet.GetComponent<Rigidbody2D>().AddForce(lookingDirection.normalized * bulletSpeed, ForceMode2D.Impulse);
     }
 
     void FixedUpdate()
     {
         Rigidbody2D playerRB = player.GetComponent<Rigidbody2D>();
-        Vector2 lookDirection = mousePos - playerRB.position;
-        transform.position = playerRB.position + lookDirection.normalized * player.transform.localScale.x * 0.6f;
+        lookingDirection = mousePos - playerRB.position;
+        transform.position = playerRB.position + lookingDirection.normalized * player.transform.localScale.x * 0.6f;
 
-        gunAngle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg;
+        gunAngle = Mathf.Atan2(lookingDirection.y, lookingDirection.x) * Mathf.Rad2Deg;
         if (gunAngle <= 90 && gunAngle >= -90)
             transform.rotation = Quaternion.Euler(0, 0, gunAngle);
         else
