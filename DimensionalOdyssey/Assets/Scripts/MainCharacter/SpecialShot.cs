@@ -21,7 +21,7 @@ public class SpecialShot : MonoBehaviour
     private int repeat = 0;
     private int shotsAmount = 0;
     private bool useMultiShot = false;
-    private int cantidadDisparos;
+    private int initialCantidadDisparos;
     private int rangoAngulos;
 
     void Awake()
@@ -85,10 +85,10 @@ public class SpecialShot : MonoBehaviour
         bulletSpeed = initialBulletSpeed + (initialBulletSpeed * porcentajeMejora * 0.01f);
     }
 
-    public void UseMultiShot(bool useMultiShot_, int cantidadDisparos_, int rangoAngulos_)
+    public void UseMultiShot(bool useMultiShot_, int initialCantidadDisparos_, int rangoAngulos_)
     {
         useMultiShot = useMultiShot_;
-        cantidadDisparos = cantidadDisparos_;
+        initialCantidadDisparos = initialCantidadDisparos_;
         rangoAngulos = rangoAngulos_;
     }
 
@@ -107,7 +107,7 @@ public class SpecialShot : MonoBehaviour
 
         GameObject bullet;
 
-        cantidadDisparos = cantidadDisparos * 2 + 1;
+        int cantidadDisparos = initialCantidadDisparos * 2 + 1;
         float diferenciaAngulos = rangoAngulos / (cantidadDisparos - 1);
 
         for (int i = 0; i < cantidadDisparos; i++)

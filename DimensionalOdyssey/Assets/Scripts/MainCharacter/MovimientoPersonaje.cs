@@ -52,7 +52,7 @@ public class MovimientoPersonaje : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D trigger)
     {
         CuartoScript cuartoScript;
-        if (trigger.tag == "Room")
+        if (trigger.CompareTag("Room"))
         {
             cuartoActual = trigger.gameObject;
             cuartoScript = cuartoActual.GetComponent<CuartoScript>();
@@ -62,10 +62,22 @@ public class MovimientoPersonaje : MonoBehaviour
                 cuartoScript.CerrarCuarto();
             }
         }
-        else if (trigger.tag == "Boton")
+        else if (trigger.CompareTag("Boton"))
         {
             cuartoScript = cuartoActual.GetComponent<CuartoScript>();
             cuartoScript.AbrirCuarto();
+        }
+        else if (trigger.name == "Multishot Button")
+        {
+            firePoint.GetComponent<SpecialShot>().UseMultiShot(true, 4, 60);
+        }
+        else if (trigger.name == "Repeatshot Button")
+        {
+            firePoint.GetComponent<SpecialShot>().RepeatShot(3);
+        }
+        else if (trigger.name == "Powershot Button")
+        {
+            firePoint.GetComponent<SpecialShot>().PowerShot(100);
         }
     }
 }
