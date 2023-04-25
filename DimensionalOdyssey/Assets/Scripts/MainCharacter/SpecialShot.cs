@@ -17,9 +17,12 @@ public class SpecialShot : MonoBehaviour
 
     private float gunAngle = 0f;
     private float tiempoEntreDisparos = 0f;
-    private int repeat = 0;
     private float initialBulletSpeed;
+    private int repeat = 0;
     private int shotsAmount = 0;
+    private bool useMultiShot = false;
+    private int cantidadDisparos;
+    private int rangoAngulos;
 
     void Awake()
     {
@@ -28,6 +31,10 @@ public class SpecialShot : MonoBehaviour
         playerInput = player.GetComponent<PlayerInput>();
         cam = GameObject.Find("Main Camera").gameObject.GetComponent<Camera>();
         initialBulletSpeed = bulletSpeed;
+
+        RepeatShot(1);
+        PowerShot(0);
+        UseMultiShot(false, 4, 60);
     }
 
     void Update()
@@ -36,52 +43,38 @@ public class SpecialShot : MonoBehaviour
 
         if (playerInput.actions["SpecialShot"].IsPressed())
         {
-            // if (repeat == 0)
-            // {
-            if (tiempoEntreDisparos > 0f)
-                tiempoEntreDisparos -= Time.deltaTime;
-            else
-            {
-                RepeatShot(2);
-                tiempoEntreDisparos = characterStats.velocidadDisparo;
-            }
-            // }
-        }
-    }
-
-    public void Shoot()
-    {
-        // if está el token de power shot
-        // PowerShot(150);
-
-        // if está el token de multishot
-        MultiShot(3, 45);
-
-        // else
-        // BasicShot();
-    }
-
-    public void BasicShot()
-    {
-        Quaternion shotRotation = Quaternion.Euler(0f, 0f, gunAngle + 90f);
-        GameObject bullet = Instantiate(bulletPrefab, transform.position, shotRotation);
-        bullet.GetComponent<Rigidbody2D>().AddForce(lookingDirection.normalized * bulletSpeed, ForceMode2D.Impulse);
-    }
-
-    public void RepeatShot(int shotsAmount)
-    {
-        int i = 0;
-        while (i < shotsAmount)
-        {
             if (tiempoEntreDisparos > 0f)
                 tiempoEntreDisparos -= Time.deltaTime;
             else
             {
                 Shoot();
-                tiempoEntreDisparos = 0.1f;
-                i++;
+                if (repeat > 0)
+                {
+                    tiempoEntreDisparos = 0.1f;
+                    repeat -= 1;
+                }
+                else
+                {
+                    tiempoEntreDisparos = characterStats.velocidadDisparo;
+                    repeat = shotsAmount;
+                }
+
             }
         }
+    }
+
+    void Shoot()
+    {
+        if (useMultiShot == true)
+            MultiShot();
+        else
+            BasicShot();
+    }
+
+    public void RepeatShot(int shotsAmount_)
+    {
+        shotsAmount = shotsAmount_ - 1;
+        repeat = shotsAmount;
     }
 
     public void PowerShot(int porcentajeMejora)
@@ -89,16 +82,27 @@ public class SpecialShot : MonoBehaviour
         bulletSpeed = initialBulletSpeed + (initialBulletSpeed * porcentajeMejora * 0.01f);
     }
 
-    public void MultiShot(int cantidadDisparos, int rangoAngulos)
+    public void UseMultiShot(bool useMultiShot_, int cantidadDisparos_, int rangoAngulos_)
+    {
+        useMultiShot = useMultiShot_;
+        cantidadDisparos = cantidadDisparos_;
+        rangoAngulos = rangoAngulos_;
+    }
+
+    void BasicShot()
+    {
+        Quaternion shotRotation = Quaternion.Euler(0f, 0f, gunAngle + 90f);
+        GameObject bullet = Instantiate(bulletPrefab, transform.position, shotRotation);
+        bullet.GetComponent<Rigidbody2D>().AddForce(lookingDirection.normalized * bulletSpeed, ForceMode2D.Impulse);
+    }
+
+    void MultiShot()
     {
         Quaternion shotRotation;
         float shotAngle;
         Vector2 shotDirection;
 
         GameObject bullet;
-
-        // int cantidadDisparos = 2;
-        // int rangoAngulos = 45;
 
         cantidadDisparos = cantidadDisparos * 2 + 1;
         float diferenciaAngulos = rangoAngulos / (cantidadDisparos - 1);
