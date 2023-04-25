@@ -44,27 +44,27 @@ public class Disparar : MonoBehaviour
             Shoot();
         }
 
-        // if (HasRequiredItem(reqItem1, reqItem2, reqItem3) == true)
-        // {
-        //     canShoot = true;
-        //     Debug.Log("canShoot = true porque tienes el item requerido");
-        // }
+        if (HasRequiredItem(reqItem1, reqItem2, reqItem3) == true)
+        {
+            canShoot = true;
+            Debug.Log("canShoot = true porque tienes el item requerido");
+        }
     }
 
     //If tiene alguna de las pistolas, canShoot = true
     //If canShoot = true, significa que mana > 0
     //If mana = 0, canShoot = false
-    // public bool HasRequiredItem(InventoryManager.AllItems reqItem1, InventoryManager.AllItems reqItem2, InventoryManager.AllItems reqItem3)
-    // {
-    //     if (InventoryManager.Instance._inventoryItems.Contains(reqItem1) || InventoryManager.Instance._inventoryItems.Contains(reqItem2) || InventoryManager.Instance._inventoryItems.Contains(reqItem3))
-    //     {
-    //         return true;
-    //     }
-    //     else
-    //     {
-    //         return false;
-    //     }
-    // }
+    public bool HasRequiredItem(InventoryManager.AllItems reqItem1, InventoryManager.AllItems reqItem2, InventoryManager.AllItems reqItem3)
+    {
+        if (InventoryManager.Instance._inventoryItems.Contains(reqItem1) || InventoryManager.Instance._inventoryItems.Contains(reqItem2) || InventoryManager.Instance._inventoryItems.Contains(reqItem3))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 
     public void Shoot()
     {

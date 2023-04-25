@@ -8,6 +8,7 @@ public class SpecialShot : MonoBehaviour
     public GameObject bulletPrefab;
     public float bulletSpeed = 20f;
     Vector2 lookingDirection;
+    private ManaBar manaBar;
 
     private GameObject player;
     private CharacterStats characterStats;
@@ -31,6 +32,7 @@ public class SpecialShot : MonoBehaviour
         playerInput = player.GetComponent<PlayerInput>();
         cam = GameObject.Find("Main Camera").gameObject.GetComponent<Camera>();
         initialBulletSpeed = bulletSpeed;
+        manaBar = GameObject.Find("ManaBar").GetComponent<ManaBar>();
 
         RepeatShot(1);
         PowerShot(0);
