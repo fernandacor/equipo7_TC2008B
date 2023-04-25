@@ -119,3 +119,17 @@ th
 {
     font-weight:bold;
 }
+
+.chartContainer{
+    border: 0;
+    justify-content: center;
+    display: flex;
+    width: 100%;
+}
+
+.chartContainer canvas{
+    flex-grow: 1;
+    max-width: 30%; 
+    max-height: 600px;
+    border: 1px solid black;
+}
