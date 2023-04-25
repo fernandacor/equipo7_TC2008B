@@ -89,7 +89,7 @@ public class TestApi: MonoBehaviour
 
             if (www.result == UnityWebRequest.Result.Success) {
                 Debug.Log("Response: " + www.downloadHandler.text);
-                if (errorText != null) errorText.text = "";
+                if (errorText != null) errorText.text = "Se han insertado los datos correctamente";
             } else {
                 Debug.Log("Error: " + www.error);
                 if (errorText != null) errorText.text = "Error: " + www.error;
@@ -104,7 +104,7 @@ public class TestApi: MonoBehaviour
         errorText.text = "Usuarios: " + allUsers.usuarios.Count + "\n";
         for(int i = 0; i < allUsers.usuarios.Count; i++)
         {
-            errorText.text += x + "-. " + allUsers.usuarios[i].username + "\t";
+            errorText.text += x + "-." + allUsers.usuarios[i].username + "\t";
             x++;
         }
     }
