@@ -31,3 +31,6 @@ INSERT INTO dimensionalOdyssey.tokens (nombreToken, valor, idPersonaje) VALUES (
             ('Multidisparo', 1, 4), ('Disparo doble', 1, 4), ('Disparo trasero', 1, 4), ('Disparo Rebote', 0, 4),
             ('Multidisparo', 0, 5), ('Disparo doble', 0, 5), ('Disparo trasero', 0, 5), ('Disparo Rebote', 0, 5),
             ('Multidisparo', 1, 6), ('Disparo doble', 1, 6), ('Disparo trasero', 1, 6), ('Disparo Rebote', 1, 6);
+
+INSERT INTO dimensionalOdyssey.partida (username, fecha) VALUES ('sebas21mg', NOW());
+INSERT INTO dimensionalOdyssey.personajes (energia, xp, idArma, idPartida, velocidadMov, velocidadDis, vida, resistencia, recuperacionEn, roboVida) VALUES (100, 3500, 2, LAST_INSERT_ID(), 10, 0, 100, 60, 25, 10);
