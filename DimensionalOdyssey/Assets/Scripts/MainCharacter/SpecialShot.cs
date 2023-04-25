@@ -73,8 +73,11 @@ public class SpecialShot : MonoBehaviour
 
     public void RepeatShot(int shotsAmount_)
     {
-        shotsAmount = shotsAmount_ - 1;
-        repeat = shotsAmount;
+        if (shotsAmount_ != shotsAmount)
+        {
+            shotsAmount = shotsAmount_ - 1;
+            repeat = shotsAmount;
+        }
     }
 
     public void PowerShot(int porcentajeMejora)
