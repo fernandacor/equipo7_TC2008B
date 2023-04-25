@@ -16,7 +16,10 @@ public class SpecialShot : MonoBehaviour
     private Camera cam;
 
     private float gunAngle = 0f;
-    private float entreDisparos = 0f;
+    private float tiempoEntreDisparos = 0f;
+    private int repeat = 0;
+    private float initialBulletSpeed;
+    private int shotsAmount = 0;
 
     void Awake()
     {
@@ -24,6 +27,7 @@ public class SpecialShot : MonoBehaviour
         characterStats = player.GetComponent<CharacterStats>();
         playerInput = player.GetComponent<PlayerInput>();
         cam = GameObject.Find("Main Camera").gameObject.GetComponent<Camera>();
+        initialBulletSpeed = bulletSpeed;
     }
 
     void Update()
@@ -32,17 +36,60 @@ public class SpecialShot : MonoBehaviour
 
         if (playerInput.actions["SpecialShot"].IsPressed())
         {
-            if (entreDisparos > 0f)
-                entreDisparos -= Time.deltaTime;
+            // if (repeat == 0)
+            // {
+            if (tiempoEntreDisparos > 0f)
+                tiempoEntreDisparos -= Time.deltaTime;
             else
             {
-                entreDisparos = characterStats.velocidadDisparo;
-                Shoot();
+                RepeatShot(2);
+                tiempoEntreDisparos = characterStats.velocidadDisparo;
             }
+            // }
         }
     }
 
     public void Shoot()
+    {
+        // if está el token de power shot
+        // PowerShot(150);
+
+        // if está el token de multishot
+        MultiShot(3, 45);
+
+        // else
+        // BasicShot();
+    }
+
+    public void BasicShot()
+    {
+        Quaternion shotRotation = Quaternion.Euler(0f, 0f, gunAngle + 90f);
+        GameObject bullet = Instantiate(bulletPrefab, transform.position, shotRotation);
+        bullet.GetComponent<Rigidbody2D>().AddForce(lookingDirection.normalized * bulletSpeed, ForceMode2D.Impulse);
+    }
+
+    public void RepeatShot(int shotsAmount)
+    {
+        int i = 0;
+        while (i < shotsAmount)
+        {
+            if (tiempoEntreDisparos > 0f)
+                tiempoEntreDisparos -= Time.deltaTime;
+            else
+            {
+                Shoot();
+                tiempoEntreDisparos = 0.1f;
+                i++;
+            }
+        }
+    }
+
+    public void PowerShot(int porcentajeMejora)
+    {
+        bulletSpeed = initialBulletSpeed + (initialBulletSpeed * porcentajeMejora * 0.01f);
+    }
+
+    public void MultiShot(int cantidadDisparos, int rangoAngulos)
     {
         Quaternion shotRotation;
         float shotAngle;
@@ -50,8 +97,8 @@ public class SpecialShot : MonoBehaviour
 
         GameObject bullet;
 
-        int cantidadDisparos = 3;
-        int rangoAngulos = 60;
+        // int cantidadDisparos = 2;
+        // int rangoAngulos = 45;
 
         cantidadDisparos = cantidadDisparos * 2 + 1;
         float diferenciaAngulos = rangoAngulos / (cantidadDisparos - 1);
