@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class EnemyBehavior : MonoBehaviour
 {
-    private Transform player;
     private Rigidbody2D enemy;
+    public bool activeEnemy = false;
+    public Transform player;
     private Vector2 movimiento;
     public float velocidad = 5f;
-    public bool activeEnemy = false;
     public Animator animator;
-    public bool dropItems;
     public int currentHealth;
     public int maxHealth = 100;
+    public bool dropItems;
     public GameObject droppedItem;
+    public bool isBoss = false;
 
     // Start is called before the first frame update
     void Start()
@@ -21,7 +22,10 @@ public class EnemyBehavior : MonoBehaviour
         enemy = GetComponent<Rigidbody2D>();
         player = GameObject.Find("Player").transform;
         currentHealth = maxHealth;
-        droppedItem.SetActive(false);
+        if (dropItems == true)
+        {
+            droppedItem.SetActive(false);
+        }
     }
 
     // Update is called once per frame
@@ -31,13 +35,15 @@ public class EnemyBehavior : MonoBehaviour
         {
         Vector3 direction = player.position - transform.position;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        //enemy.rotation = angle;
         direction.Normalize();
         movimiento = direction;
-
-        animator.SetFloat("Horizontal", direction.x);
-        animator.SetFloat("Vertical", direction.y);
-        animator.SetFloat("Speed", movimiento.sqrMagnitude);
+        
+            if (isBoss == true)
+            {
+                animator.SetFloat("Horizontal", direction.x);
+                animator.SetFloat("Vertical", direction.y);
+                animator.SetFloat("Speed", movimiento.sqrMagnitude);
+            }
         }
     }
 
@@ -71,7 +77,7 @@ public class EnemyBehavior : MonoBehaviour
          if (collision.CompareTag("Players Bullet"))
          {
             activeEnemy = true;
-             TakeDamage(10);
+            TakeDamage(10);
          }
      }
 }

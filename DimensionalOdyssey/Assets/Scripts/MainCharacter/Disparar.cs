@@ -11,6 +11,7 @@ public class Disparar : MonoBehaviour
     public GameObject bulletPrefab;
     public float bulletForce = 20f;
     private PlayerInput playerInput;
+    public GameObject Apuntador;
 
     private bool canShoot;
 
@@ -25,6 +26,7 @@ public class Disparar : MonoBehaviour
         player = transform.parent.gameObject;
         cam = GameObject.Find("Main Camera").gameObject.GetComponent<Camera>();
         playerInput = transform.parent.GetComponent<PlayerInput>();
+        Apuntador.SetActive(false);
 
         characterStats = transform.parent.GetComponent<CharacterStats>();
         manaBar = GameObject.Find("ManaBar").GetComponent<ManaBar>();
@@ -32,11 +34,20 @@ public class Disparar : MonoBehaviour
 
     void Update()
     {
-        mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
+            mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
+
+        if (HasRequiredItem(reqItem1, reqItem2, reqItem3) == true)
+        {
+            canShoot = true;
+            Debug.Log("canShoot = true porque tienes el item requerido");
+            Apuntador.SetActive(true);
+            Debug.Log("apuntador activado");
+        }
 
         if (characterStats.currentMana <= 0)
         {
             canShoot = false;
+            Debug.Log("cannot shoot, no mana left");
         }
 
         if (playerInput.actions["BasicShot"].WasPressedThisFrame() && canShoot == true)
@@ -44,11 +55,11 @@ public class Disparar : MonoBehaviour
             Shoot();
         }
 
-        if (HasRequiredItem(reqItem1, reqItem2, reqItem3) == true)
+        if (playerInput.actions["BasicShot"].WasPressedThisFrame() && canShoot == false)
         {
-            canShoot = true;
-            Debug.Log("canShoot = true porque tienes el item requerido");
+            Debug.Log("cannot shoot, no item");
         }
+
     }
 
     //If tiene alguna de las pistolas, canShoot = true
@@ -68,6 +79,7 @@ public class Disparar : MonoBehaviour
 
     public void Shoot()
     {
+        characterStats.LoseEnergy(10);
         Quaternion shotRotation = Quaternion.Euler(0f, 0f, shotAngle + 90f);
 
         GameObject bullet = Instantiate(bulletPrefab, transform.position, shotRotation);
@@ -85,20 +97,5 @@ public class Disparar : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, 0, shotAngle);
         else
             transform.rotation = Quaternion.Euler(180, 0, 360 - shotAngle);
-    }
-
-
-    //Token Behavior
-    void TokenBehavior(int token)
-    {
-        Debug.Log("sisi");
-        // tokenMultidisparoDoble - dos disparos en distintas direcciones
-        // tokenMultidisparoTriple - tres disparos en distintas direcciones
-        // tokenMultidisparoCuadruple - cuatro disparos en distintas direcciones
-        // tokenDisparoDoble - dos disparos en la misma dirección
-        // tokenDisparoTriple - tres disparos en la misma dirección
-        // tokenReboteBalas - balas rebotan de las paredes
-        // tokenCombo - balas rebotan del enemigo y se dirigen a otro
-        // tolenAtaqueDirigido - balas persiguen al enemigo
     }
 }

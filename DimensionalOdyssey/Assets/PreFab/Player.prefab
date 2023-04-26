@@ -288,7 +288,7 @@ MonoBehaviour:
   currentMana: 0
   useMana: 0
   recuperacionMana: 0
-  velocidadMovimiento: 25
+  velocidadMovimiento: 18
   resistencia: 0
   velocidadDisparo: 0.7
   robodeVida: 0
@@ -360,7 +360,28 @@ MonoBehaviour:
   m_DefaultActionMap: Dungeons
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!1 &7699777664027465124
+--- !u!114 &3754595045858942580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6708852101857463247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b689abbd201c42e1bc51ad145a8658f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reqItem1: 0
+  reqItem2: 1
+  reqItem3: 2
+  manaBar: {fileID: 0}
+  characterStats: {fileID: 6708852101857463223}
+  firePoint: {fileID: 6708852103101021398}
+  bulletPrefab: {fileID: 8276870004398191856, guid: c378bd37172feeb4eb7438440654aec0, type: 3}
+  bulletForce: 20
+  Apuntador: {fileID: 5033380921045303510}
+--- !u!1 &6708852103101021399
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -435,7 +456,7 @@ SpriteRenderer:
   m_SortingLayerID: 1858232225
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ff3e03252961c5749b76f8ca6df005b2, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -443,7 +464,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &5209811132649090230
@@ -473,4 +494,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 8276870004398191856, guid: c378bd37172feeb4eb7438440654aec0, type: 3}
-  bulletSpeed: 20
+  bulletForce: 25
+  Apuntador: {fileID: 0}
