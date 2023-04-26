@@ -4411,8 +4411,8 @@ MonoBehaviour:
   emailInput: {fileID: 449415303}
   nameInput: {fileID: 1216745762}
   lastNameInput: {fileID: 1145954281}
-  addButton: {fileID: 0}
-  getUsersButton: {fileID: 0}
+  addButton: {fileID: 734385512}
+  getUsersButton: {fileID: 816516560}
 --- !u!1 &1988889495
 GameObject:
   m_ObjectHideFlags: 0
