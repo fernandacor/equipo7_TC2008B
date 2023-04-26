@@ -122,13 +122,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activeEnemy: 1
-  player: {fileID: 1954990463663649767, guid: cdf812735d301ff4cb07c1aff17f901c, type: 3}
+  player: {fileID: 4740222513982999656, guid: d04d2c3101f20384594690533097f34e, type: 3}
   velocidad: 5
   animator: {fileID: 8019724624063288624}
   currentHealth: 0
   maxHealth: 50
   dropItems: 1
-  droppedItem: {fileID: 4803897638681198669, guid: 7209c3390d1f7f246925b2d33fb0b698, type: 3}
+  droppedItem: {fileID: 8621693034304978426, guid: 1a1ea7ecd24d59c499717910dcf53565, type: 3}
   isBoss: 0
 --- !u!50 &8019724624063288626
 Rigidbody2D:

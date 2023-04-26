@@ -17,7 +17,11 @@ public class CharacterStats : MonoBehaviour
 
     public float resistencia;
     public float velocidadDisparo;
-    public float robodeVida;
+
+    public float enemigosMatados; //counter de cuantos enemigos mata
+    public float dañoInfligido; //contados de daño hecho a enemigos
+    public float dañoRecibido; //
+    public float monedasTiene; //cuantas monedas tiene
 
     // Animación de muerte
     private Animator animator;
