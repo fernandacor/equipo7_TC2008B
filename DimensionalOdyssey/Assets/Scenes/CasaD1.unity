@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 24198781}
   - component: {fileID: 24198780}
   m_Layer: 0
-  m_Name: Furniture_props_12 (2)
+  m_Name: EstanteDelgadoDer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -179,7 +179,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1556204673
-  m_SortingLayer: 4
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: d903b632d22b6e04eb269576a4d71921, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -218,7 +218,7 @@ GameObject:
   - component: {fileID: 83762139}
   - component: {fileID: 83762138}
   m_Layer: 0
-  m_Name: BedTable (1)
+  m_Name: BedTableIzq
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -262,8 +262,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1556204673
-  m_SortingLayer: 4
+  m_SortingLayerID: -157287225
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: d903b632d22b6e04eb269576a4d71921, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -346,8 +346,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1556204673
-  m_SortingLayer: 4
+  m_SortingLayerID: -157287225
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: d0f0ec28fe58eda45b0506c22fd9793f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -386,7 +386,7 @@ GameObject:
   - component: {fileID: 284344084}
   - component: {fileID: 284344083}
   m_Layer: 0
-  m_Name: Furniture_props_23 (2)
+  m_Name: ArbolOfi
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -430,8 +430,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1556204673
-  m_SortingLayer: 4
+  m_SortingLayerID: -157287225
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: a027688b0782bcd4493a7f7e46f98ca8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -470,7 +470,7 @@ GameObject:
   - component: {fileID: 358396901}
   - component: {fileID: 358396900}
   m_Layer: 0
-  m_Name: Furniture_props_23
+  m_Name: ArbolDer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -514,7 +514,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1556204673
+  m_SortingLayerID: 2001966221
   m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: a027688b0782bcd4493a7f7e46f98ca8, type: 3}
@@ -615,7 +615,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1918370019
-  m_SortingLayer: 1
+  m_SortingLayer: 0
   m_SortingOrder: -3
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -2678,7 +2678,7 @@ GameObject:
   - component: {fileID: 496485762}
   - component: {fileID: 496485761}
   m_Layer: 0
-  m_Name: Furniture_props_16
+  m_Name: SillaOfi
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2723,7 +2723,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1556204673
-  m_SortingLayer: 4
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 8a5a850cd095b524ab5a55c9b92096d8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -2762,7 +2762,7 @@ GameObject:
   - component: {fileID: 610427150}
   - component: {fileID: 610427149}
   m_Layer: 0
-  m_Name: Furniture_props_18
+  m_Name: Basura
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2807,7 +2807,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1556204673
-  m_SortingLayer: 4
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 5c00a7973e2807b4e984a81a160577bf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -2846,7 +2846,7 @@ GameObject:
   - component: {fileID: 729422216}
   - component: {fileID: 729422215}
   m_Layer: 0
-  m_Name: Furniture_props_22
+  m_Name: Reloj
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2890,8 +2890,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1556204673
-  m_SortingLayer: 4
+  m_SortingLayerID: -157287225
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: bf205dedba5a0c04e952879913240f84, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -2930,7 +2930,7 @@ GameObject:
   - component: {fileID: 866350754}
   - component: {fileID: 866350753}
   m_Layer: 0
-  m_Name: Furniture_props_23 (1)
+  m_Name: ArbolIzq
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2975,7 +2975,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1556204673
-  m_SortingLayer: 4
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: a027688b0782bcd4493a7f7e46f98ca8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -3014,7 +3014,7 @@ GameObject:
   - component: {fileID: 934494310}
   - component: {fileID: 934494309}
   m_Layer: 0
-  m_Name: Furniture_props_15
+  m_Name: AlformbraAzul
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3059,7 +3059,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1556204673
-  m_SortingLayer: 4
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 8f92ff5c0f137a04aa9476bf55d144f6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -3098,7 +3098,7 @@ GameObject:
   - component: {fileID: 944824931}
   - component: {fileID: 944824930}
   m_Layer: 0
-  m_Name: Furniture_props_08 (1)
+  m_Name: LibreroAzulDer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3142,7 +3142,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1556204673
+  m_SortingLayerID: 2001966221
   m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 557e6b7b88f078b448a654df859f66ee, type: 3}
@@ -3182,7 +3182,7 @@ GameObject:
   - component: {fileID: 950544679}
   - component: {fileID: 950544678}
   m_Layer: 0
-  m_Name: Furniture_props_08
+  m_Name: LibreroAzulIzq
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3226,7 +3226,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1556204673
+  m_SortingLayerID: 2001966221
   m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 557e6b7b88f078b448a654df859f66ee, type: 3}
@@ -3266,7 +3266,7 @@ GameObject:
   - component: {fileID: 1018309129}
   - component: {fileID: 1018309128}
   m_Layer: 0
-  m_Name: Furniture_props_17 (1)
+  m_Name: SillonIzq
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3311,7 +3311,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1556204673
-  m_SortingLayer: 4
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 90fcb4c7a339e8743b274291cdeb8a70, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -3350,7 +3350,7 @@ GameObject:
   - component: {fileID: 1168822936}
   - component: {fileID: 1168822935}
   m_Layer: 0
-  m_Name: Furniture_props_19
+  m_Name: TV
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3394,7 +3394,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1556204673
+  m_SortingLayerID: 2001966221
   m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 5314fe58cfe72a04a951d0e283821995, type: 3}
@@ -3479,7 +3479,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1556204673
-  m_SortingLayer: 4
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: ab6b39f94fe9a244cbe69ad310fcf33c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -3568,7 +3568,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2001966221
-  m_SortingLayer: 6
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: c387c2d96cad5374ebe1676f51a60faf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -3607,7 +3607,7 @@ GameObject:
   - component: {fileID: 1440619333}
   - component: {fileID: 1440619332}
   m_Layer: 0
-  m_Name: Furniture_props_12 (1)
+  m_Name: EstanteDelgadoIzq
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3652,7 +3652,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1556204673
-  m_SortingLayer: 4
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: d903b632d22b6e04eb269576a4d71921, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -3846,7 +3846,7 @@ GameObject:
   - component: {fileID: 1506672941}
   - component: {fileID: 1506672940}
   m_Layer: 0
-  m_Name: Furniture_props_17 (3)
+  m_Name: SillonAtras
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3891,7 +3891,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1556204673
-  m_SortingLayer: 4
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 90fcb4c7a339e8743b274291cdeb8a70, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -9690,7 +9690,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1556204673
-  m_SortingLayer: 4
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 0fb323fec5002184380f35519f332a73, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -9829,7 +9829,7 @@ GameObject:
   - component: {fileID: 1652766537}
   - component: {fileID: 1652766536}
   m_Layer: 0
-  m_Name: BedTable
+  m_Name: BedTableDer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9873,8 +9873,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1556204673
-  m_SortingLayer: 4
+  m_SortingLayerID: -157287225
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: d903b632d22b6e04eb269576a4d71921, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -9913,7 +9913,7 @@ GameObject:
   - component: {fileID: 2052486233}
   - component: {fileID: 2052486232}
   m_Layer: 0
-  m_Name: Furniture_props_17 (2)
+  m_Name: SillonDer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9958,7 +9958,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1556204673
-  m_SortingLayer: 4
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 90fcb4c7a339e8743b274291cdeb8a70, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
