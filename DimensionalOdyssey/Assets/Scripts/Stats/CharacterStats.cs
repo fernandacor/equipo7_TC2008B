@@ -19,10 +19,13 @@ public class CharacterStats : MonoBehaviour
     public float velocidadDisparo;
     public float robodeVida;
 
-    public Animator animator;
+    // Animación de muerte
+    private Animator animator;
 
-    void Start()
+    void Awake()
     {
+        animator = GetComponent<Animator>();
+
         //Health Bar
         healthBar = GameObject.FindGameObjectWithTag("HealthBar").GetComponent<HealthBar>();
         currentHealth = maxHealth;

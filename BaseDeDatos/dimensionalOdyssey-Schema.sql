@@ -59,7 +59,8 @@ CREATE TABLE personajes(
     roboVida SMALLINT UNSIGNED NOT NULL,
     PRIMARY KEY (idPersonaje),
     CONSTRAINT `fk_armaPersonaje` FOREIGN KEY (idArma) REFERENCES armas(idArma) ON DELETE RESTRICT ON UPDATE CASCADE,
-    CONSTRAINT `fk_partidaPersonaje` FOREIGN KEY (idPartida) REFERENCES partida(idPartida) ON DELETE RESTRICT ON UPDATE CASCADE
+    CONSTRAINT `fk_partidaPersonaje` FOREIGN KEY (idPartida) REFERENCES partida(idPartida) ON DELETE RESTRICT ON UPDATE CASCADE,
+    KEY idx_fk_partidaPersonaje (idPartida)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --

@@ -9,14 +9,12 @@ public class MovimientoPersonaje : MonoBehaviour
     // Mover al personaje
     private CharacterStats characterStats;
     private Vector2 movimiento;
-    private Rigidbody2D playerRB;
     private PlayerInput playerInput;
 
     // Apuntar
     private GameObject firePoint;
-    private Renderer playerRenderer;
 
-    // Animación
+    // Animación de movimiento
     private Animator playerAnimator;
 
     // Comportamiento de los cuartos
@@ -25,8 +23,6 @@ public class MovimientoPersonaje : MonoBehaviour
     private void Awake()
     {
         characterStats = GetComponent<CharacterStats>();
-        playerRB = GetComponent<Rigidbody2D>();
-        playerRenderer = GetComponent<Renderer>();
         playerAnimator = GetComponent<Animator>();
         firePoint = transform.Find("Fire Point").gameObject;
         playerInput = GetComponent<PlayerInput>();
@@ -43,8 +39,10 @@ public class MovimientoPersonaje : MonoBehaviour
 
     void FixedUpdate()
     {
+        Rigidbody2D playerRB = GetComponent<Rigidbody2D>();
         playerRB.MovePosition(playerRB.position + movimiento * characterStats.velocidadMovimiento * Time.fixedDeltaTime);
 
+        Renderer playerRenderer = GetComponent<Renderer>();
         if (movimiento.y > 0)
             firePoint.GetComponent<Renderer>().sortingOrder = playerRenderer.sortingOrder - 1;
         else
@@ -54,7 +52,7 @@ public class MovimientoPersonaje : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D trigger)
     {
         CuartoScript cuartoScript;
-        if (trigger.tag == "Room")
+        if (trigger.CompareTag("Room"))
         {
             cuartoActual = trigger.gameObject;
             cuartoScript = cuartoActual.GetComponent<CuartoScript>();
@@ -64,10 +62,22 @@ public class MovimientoPersonaje : MonoBehaviour
                 cuartoScript.CerrarCuarto();
             }
         }
-        else if (trigger.tag == "Boton")
+        else if (trigger.CompareTag("Boton"))
         {
             cuartoScript = cuartoActual.GetComponent<CuartoScript>();
             cuartoScript.AbrirCuarto();
+        }
+        else if (trigger.name == "Multishot Button")
+        {
+            firePoint.GetComponent<SpecialShot>().UseMultiShot(true, 4, 60);
+        }
+        else if (trigger.name == "Repeatshot Button")
+        {
+            firePoint.GetComponent<SpecialShot>().RepeatShot(3);
+        }
+        else if (trigger.name == "Powershot Button")
+        {
+            firePoint.GetComponent<SpecialShot>().PowerShot(100);
         }
     }
 }

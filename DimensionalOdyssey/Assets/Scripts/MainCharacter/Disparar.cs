@@ -6,9 +6,8 @@ using UnityEngine.InputSystem;
 public class Disparar : MonoBehaviour
 {
     [SerializeField] InventoryManager.AllItems reqItem1, reqItem2, reqItem3;
-    public ManaBar manaBar;
-    public CharacterStats characterStats;
-    public Transform firePoint;
+    private ManaBar manaBar;
+    private CharacterStats characterStats;
     public GameObject bulletPrefab;
     public float bulletForce = 20f;
     private PlayerInput playerInput;
@@ -28,6 +27,9 @@ public class Disparar : MonoBehaviour
         cam = GameObject.Find("Main Camera").gameObject.GetComponent<Camera>();
         playerInput = transform.parent.GetComponent<PlayerInput>();
         Apuntador.SetActive(false);
+
+        characterStats = transform.parent.GetComponent<CharacterStats>();
+        manaBar = GameObject.Find("ManaBar").GetComponent<ManaBar>();
     }
 
     void Update()
