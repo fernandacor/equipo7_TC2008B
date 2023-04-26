@@ -509,6 +509,8 @@ MonoBehaviour:
   dialogueText: {fileID: 1347695058539399264}
   dialogues: []
   writingSpeed: 0.3
+  escupeItem: 0
+  itemEscupido: {fileID: 0}
 --- !u!1 &7482106248891101928
 GameObject:
   m_ObjectHideFlags: 0

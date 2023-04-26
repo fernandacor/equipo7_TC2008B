@@ -122,8 +122,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   switchScene: 0
   sceneName: 
-  switchRoom: 0
-  posToGo: {fileID: 0}
+  switchRoom: 1
+  posToGo: {fileID: 7157572555540457980}
   player: {fileID: 0}
 --- !u!50 &102401776554427822
 Rigidbody2D:
