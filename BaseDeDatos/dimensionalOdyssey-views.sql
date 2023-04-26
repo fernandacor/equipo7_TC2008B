@@ -15,3 +15,4 @@ GROUP BY username;
 CREATE VIEW contEnemiesKilled AS SELECT a.username, b.enemiesKilled 
 FROM dimensionalOdyssey.partida as a INNER JOIN dimensionalOdyssey.personajes as b
 ON a.idPartida=b.idPartida
+
