@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyBehavior : MonoBehaviour
 {
     private Rigidbody2D enemy;
-    public bool activeEnemy = false;
+    public bool activeEnemy = true;
     public Transform player;
     private Vector2 movimiento;
     public float velocidad = 5f;
