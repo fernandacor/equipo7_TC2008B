@@ -234,7 +234,7 @@ app.put('/api/personajes', async (request, response)=>{
     try{
         connection = await connectToDB()
 
-        const [results, fields] = await connection.query('update personajes set energia = valor_nuevo_energia, xp = valor_nuevo_xp, velocidadMov = valor_nuevo_velocidadMov, velocidadDis = valor_nuevo_velocidadDis, vida = valor_nuevo_vida, resistencia = valor_nuevo_resistencia, recuperacionEn = valor_nuevo_recuperacionEn, roboVida = valor_nuevo_roboVida WHERE idPartida = valor_idPartida', [request.body['energia'], request.body['xp'], request.body['velocidadMov'], request.body['velocidadDis'], request.body['vida'], request.body['resistencia'], request.body['recuperacionEn'], request.body['roboVida'], request.body['idPartida']])
+        const [results, fields] = await connection.query('update personajes set energia = ?, xp = ?, velocidadMov = ?, velocidadDis = ?, vida = ?, resistencia = ?, recuperacionEn = ?, roboVida = ? WHERE idPartida = ?', [request.body['energia'], request.body['xp'], request.body['velocidadMov'], request.body['velocidadDis'], request.body['vida'], request.body['resistencia'], request.body['recuperacionEn'], request.body['roboVida'], request.body['idPartida']])
         
         response.json({'message': "Data updated correctly."})
     }
