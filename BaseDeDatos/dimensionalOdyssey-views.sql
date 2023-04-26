@@ -1,6 +1,8 @@
 USE dimensionalOdyssey;
 SELECT * FROM partidas_usuarios;
 SELECT * FROM contPartidas_usuarios;
+SELECT * FROM contEnemiesKilled;
+SELECT * FROM usersDamage;
 
 DESC personajes;
 DESC partida;
@@ -14,5 +16,12 @@ GROUP BY username;
 
 CREATE VIEW contEnemiesKilled AS SELECT a.username, b.enemiesKilled 
 FROM dimensionalOdyssey.partida as a INNER JOIN dimensionalOdyssey.personajes as b
-ON a.idPartida=b.idPartida
+ON a.idPartida=b.idPartida;
 
+CREATE VIEW usersDamage AS SELECT a.username, b.damageDealt
+FROM dimensionalOdyssey.partida as a INNER JOIN dimensionalOdyssey.personajes as b
+ON a.idPartida=b.idPartida;
+
+SELECT a.username, b.coinstaken
+FROM dimensionalOdyssey.partida as a INNER JOIN dimensionalOdyssey.personajes as b
+ON a.idPartida=b.idPartida

@@ -21,8 +21,8 @@ INSERT INTO dimensionalOdyssey.partida (username, fecha) VALUES ('samacesan_sam'
 INSERT INTO dimensionalOdyssey.armas (nombreArma, descripcion, damage, velocidadDisparo, cantDisparo) VALUES ('Pistola', 'Pistola de corto alcance', 15, 3, 1), ('Escopeta', 'Escopeta de corto alcance', 30, 1, 3), 
 			('Ametralladora', 'Ametralladora de mediano alcance', 23, 5, 1);
             
-INSERT INTO dimensionalOdyssey.personajes (energia, xp, idArma, idPartida, velocidadMov, velocidadDis, vida, resistencia, recuperacionEn, roboVida, enemiesKilled) VALUES (100, 3500, 2, 1,10, 0, 100, 60, 25, 10,45), (85, 2500, 3, 2,15, 5, 85, 35, 40, 5,30), 
-(98, 5500, 2, 3, 5, 7, 90, 30, 55, 8,55), (100, 500, 3, 4,20, 5, 100, 50, 15, 10, 40), (44, 10500, 3, 5,10, 6, 80, 40, 50, 10,70), (60, 5000, 1, 6,10, 3, 75, 70, 45, 3, 33);
+INSERT INTO dimensionalOdyssey.personajes (energia, xp, idArma, idPartida, velocidadMov, velocidadDis, vida, resistencia, recuperacionEn, enemiesKilled, damageDealt, coinsTaken) VALUES (100, 3500, 2, 1,10, 0, 100, 60, 25, 45, 750, 15), (85, 2500, 3, 2,15, 5, 85, 35, 40, 30, 500, 10), 
+(98, 5500, 2, 3, 5, 7, 90, 30, 55, 55, 900, 20), (100, 500, 3, 4,20, 5, 100, 50, 15, 40, 625, 12), (44, 10500, 3, 5,10, 6, 80, 40, 50, 70, 1200, 25), (60, 5000, 1, 6,10, 3, 75, 70, 45, 33, 560, 8);
             
 
 INSERT INTO dimensionalOdyssey.tokens (nombreToken, valor, idPersonaje) VALUES ('Multidisparo', 0, 1), ('Disparo doble', 1, 1), ('Disparo trasero', 1, 1), ('Disparo Rebote', 0, 1),

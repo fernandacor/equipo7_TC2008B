@@ -2,11 +2,10 @@
  * @param {number} alpha Indicated the transparency of the color
  * @returns {string} A string of the form 'rgba(240, 50, 123, 1.0)' that represents a color
  */
- function random_color(alpha=1.0)
- {
-     const r_c = () => Math.round(Math.random() * 255)
-     return `rgba(${r_c()}, ${r_c()}, ${r_c()}, ${alpha}`
- }
+ function random_color(alpha = 1.0) {
+    const r_c = () => Math.round(Math.random() * 127) + 128;
+    return `rgba(${r_c()}, 0, ${r_c()}, ${alpha})`;
+}
 
 async function main()
 {
@@ -159,9 +158,9 @@ try
         const values = Object.values(resultsEnemiesKilled)
 
         // In this case, we just separate the data into different arrays using the map method of the values array. This creates new arrays that hold only the data that we need.
-        const usernames2 = values.map(e => e['username'])
-        const level_colors2 = values.map(e => random_color(0.8))
-        const level_borders2 = values.map(e => 'rgba(0, 0, 0, 1.0)')
+        const username = values.map(e => e['username'])
+        const level_colors = values.map(e => random_color(0.8))
+        const level_borders = values.map(e => 'rgba(0, 0, 0, 1.0)')
         const EnemiesKilled = values.map(e => e['enemiesKilled'])
 
         
@@ -170,16 +169,77 @@ try
         {
             type: 'pie',
             data: {
-                labels: usernames2,
+                labels: username,
                 datasets: [
                     {
                         label: 'Usuarios con más enemigos matados',
-                        backgroundColor: level_colors2,
-                        borderColor: level_borders2,
+                        backgroundColor: level_colors,
+                        borderColor: level_borders,
                         borderWidth: 2,
                         data: EnemiesKilled
                     }
                 ]
+            }
+        })
+    }
+
+    const damageDealtByUser = await fetch('http://127.0.0.1:5235/api/damage',{
+        method: 'GET'
+    })
+
+    console.log('Got a response correctly')
+
+    if(damageDealtByUser.ok){
+        console.log('Response is ok. Converting to JSON.')
+
+        let resultsDamageByUser = await damageDealtByUser.json()
+
+        console.log(resultsDamageByUser)
+        console.log('Data converted correctly. Plotting chart.')
+
+        const values = Object.values(resultsDamageByUser)
+
+        const username = values.map(e => e['username'])
+        const level_colors = values.map(e => random_color(0.8))
+        const level_borders = values.map(e => 'rgba(0, 0, 0, 1.0)')
+        const damageDealt = values.map(e => e['damageDealt'])
+
+        const ctx_damage = document.getElementById('apiChart3').getContext('2d');
+        const DamageChart = new Chart(ctx_damage,
+        {
+            type: 'bar',
+            data: {
+                labels: username,
+                datasets: [
+                    {
+                        label: 'Daño infligido',
+                        backgroundColor: level_colors,
+                        borderColor: level_borders,
+                        data: damageDealt,
+                        fontFamily: "'OCR A Extended', monospace"
+                    }
+                ]
+            },
+            options: {
+                indexAxis: 'y',
+                // Elements options apply to all of the options unless overridden in a dataset
+                // In this case, we are setting the border of each horizontal bar to be 2px wide
+                elements: {
+                  bar: {
+                    borderWidth: 2,
+                  }
+                },
+                responsive: true,
+                plugins: {
+                  legend: {
+                    position: 'right',
+                  },
+                  title: {
+                    display: true,
+                    text: 'Daño infligido',
+                    fontFamily: "'OCR A Extended', monospace"
+                  }
+                }
             }
         })
     }
