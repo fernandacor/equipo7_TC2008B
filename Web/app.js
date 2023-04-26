@@ -227,6 +227,33 @@ app.put('/api/usuario', async (request, response)=>{
 })
 */
 
+app.put('/api/personajes', async (request, response)=>{
+
+    let connection = null
+
+    try{
+        connection = await connectToDB()
+
+        const [results, fields] = await connection.query('update personajes set energia = ?, xp = ?, velocidadMov = ?, velocidadDis = ?, vida = ?, resistencia = ?, recuperacionEn = ?, roboVida = ? WHERE idPartida = ?', [request.body['energia'], request.body['xp'], request.body['velocidadMov'], request.body['velocidadDis'], request.body['vida'], request.body['resistencia'], request.body['recuperacionEn'], request.body['roboVida'], request.body['idPartida']])
+        
+        response.json({'message': "Data updated correctly."})
+    }
+    catch(error)
+    {
+        response.status(500)
+        response.json(error)
+        console.log(error)
+    }
+    finally
+    {
+        if(connection!==null) 
+        {
+            connection.end()
+            console.log("Connection closed succesfully!")
+        }
+    }
+})
+
 
 app.listen(port, ()=>
 {

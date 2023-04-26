@@ -15,9 +15,29 @@ public class User
     public string apellido;
 }
 
+public class Personaje
+{
+    public int idPersonaje;
+    public int energia;
+    public int xp;
+    public int idArma;
+    public int idPartida;
+    public int velocidadMov;
+    public int velocidadDis;
+    public int vida;
+    public int resistencia;
+    public int recuperacionEn;
+    public int roboVida; 
+}
+
 public class UserList
 {
     public List<User> usuarios;
+}
+
+public class PersonajeList
+{
+    public List<Personaje> personajes;
 }
 
 public class TestApi: MonoBehaviour
@@ -34,6 +54,7 @@ public class TestApi: MonoBehaviour
     [SerializeField] Button getUsersButton;
 
     public UserList allUsers;
+    public PersonajeList allPersonajes;
 
     void Start()
     {
@@ -90,6 +111,24 @@ public class TestApi: MonoBehaviour
             if (www.result == UnityWebRequest.Result.Success) {
                 Debug.Log("Response: " + www.downloadHandler.text);
                 if (errorText != null) errorText.text = "Se han insertado los datos correctamente";
+            } else {
+                Debug.Log("Error: " + www.error);
+                if (errorText != null) errorText.text = "Error: " + www.error;
+            }
+        }
+    }
+
+    IEnumerator UpdatePersonaje(int characterId, string jsonData)
+    {
+        using (UnityWebRequest www = UnityWebRequest.Put(url + "/" + characterId, jsonData))
+        {
+            www.method = "PUT";
+            www.SetRequestHeader("Content-Type", "application/json");
+            yield return www.SendWebRequest();
+
+            if (www.result == UnityWebRequest.Result.Success) {
+                Debug.Log("Response: " + www.downloadHandler.text);
+                if (errorText != null) errorText.text = "Los datos del personaje se han actualizado correctamente";
             } else {
                 Debug.Log("Error: " + www.error);
                 if (errorText != null) errorText.text = "Error: " + www.error;

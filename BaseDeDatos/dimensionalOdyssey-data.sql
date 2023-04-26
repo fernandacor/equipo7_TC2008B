@@ -34,3 +34,14 @@ INSERT INTO dimensionalOdyssey.tokens (nombreToken, valor, idPersonaje) VALUES (
 
 INSERT INTO dimensionalOdyssey.partida (username, fecha) VALUES ('sebas21mg', NOW());
 INSERT INTO dimensionalOdyssey.personajes (energia, xp, idArma, idPartida, velocidadMov, velocidadDis, vida, resistencia, recuperacionEn, roboVida) VALUES (100, 3500, 2, LAST_INSERT_ID(), 10, 0, 100, 60, 25, 10);
+
+UPDATE personajes
+SET energia = 85,
+    xp = 500,
+    velocidadMov = 13,
+    velocidadDis = 3,
+    vida = 50,
+    resistencia = 70,
+    recuperacionEn = 28,
+    roboVida = 15
+WHERE idPartida = 1;
