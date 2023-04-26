@@ -24,6 +24,7 @@ public class ElegirArma : MonoBehaviour
             pistola.SetActive(true);
             escopeta.SetActive(false);
             metralladora.SetActive(false);
+            Debug.Log("Escogiste la pistola");
         }
 
         if(Input.GetKeyDown(KeyCode.Alpha2))
@@ -32,6 +33,7 @@ public class ElegirArma : MonoBehaviour
             pistola.SetActive(false);
             escopeta.SetActive(true);
             metralladora.SetActive(false);
+            Debug.Log("Escogiste la escopeta");
         }
 
         if(Input.GetKeyDown(KeyCode.Alpha3))
@@ -40,6 +42,7 @@ public class ElegirArma : MonoBehaviour
             pistola.SetActive(false);
             escopeta.SetActive(false);
             metralladora.SetActive(true);
+            Debug.Log("Escogiste la metralladora");
         }
     }
 }

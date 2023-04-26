@@ -19,6 +19,21 @@ public class OnTriggerAnimations : MonoBehaviour
         {
             animator.SetBool("CambioOutfit", true);
         }
+
+        if(collision.gameObject.tag == "Pistola")
+        {
+            animator.SetBool("Pistola", true);
+        }
+
+        if(collision.gameObject.tag == "Escopeta")
+        {
+            animator.SetBool("Escopeta", true);
+        }
+
+        if(collision.gameObject.tag == "Metralleta")
+        {
+            animator.SetBool("Metralleta", true);
+        }
     }
 
     void Update()

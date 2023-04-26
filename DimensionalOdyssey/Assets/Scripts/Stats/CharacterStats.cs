@@ -34,19 +34,19 @@ public class CharacterStats : MonoBehaviour
         manaBar.SetMaxEnergy(maxMana);
     }
 
-    void TakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
     }
 
-    void LoseEnergy(int lostEnergy)
+    public void LoseEnergy(int lostEnergy)
     {
         currentMana -= lostEnergy;
         manaBar.SetEnergy(currentMana);
     }
 
-    void RecoverEnergy(int recoverEnergy)
+    public void RecoverEnergy(int recoverEnergy)
     {
         currentMana += recoverEnergy;
         manaBar.SetEnergy(currentMana);
@@ -64,6 +64,11 @@ public class CharacterStats : MonoBehaviour
             RecoverEnergy(10);
         }
 
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            TakeDamage(10);
+        }
+
         animator.SetFloat("Health", currentHealth);
     }
 
@@ -77,7 +82,6 @@ public class CharacterStats : MonoBehaviour
         if (collision.CompareTag("Enemy"))
         {
             TakeDamage(5);
-            LoseEnergy(3);
         }
     }
 }
