@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -42,12 +42,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 2048
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -115,7 +115,889 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: level 1 boss_0
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 3566
+        width: 308
+        height: 516
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6cbc24a908e28134f80d24fad69d34e9
+      internalID: -1730175096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: level 1 boss_1
+      rect:
+        serializedVersion: 2
+        x: 346
+        y: 3566
+        width: 308
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e789b2fe9bbce1f4da1c3967047526d8
+      internalID: 435289126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: level 1 boss_2
+      rect:
+        serializedVersion: 2
+        x: 690
+        y: 3566
+        width: 308
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d37080db644e9e49a8b93f028e2e529
+      internalID: 1066848407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: level 1 boss_3
+      rect:
+        serializedVersion: 2
+        x: 1022
+        y: 3566
+        width: 308
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15064741912a698499f914ea2dca1fcd
+      internalID: -243283685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: level 1 boss_4
+      rect:
+        serializedVersion: 2
+        x: 1362
+        y: 3566
+        width: 308
+        height: 516
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b04797877563ec498b32c6e8fe66b52
+      internalID: 1975193847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: level 1 boss_5
+      rect:
+        serializedVersion: 2
+        x: 1686
+        y: 3566
+        width: 308
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f96f2b3f7b02b2f429b9202304e2d294
+      internalID: -1165499698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: level 1 boss_6
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 2974
+        width: 308
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 293a1a42b167781479c7cbdddb054642
+      internalID: 1199160607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: level 1 boss_7
+      rect:
+        serializedVersion: 2
+        x: 350
+        y: 2974
+        width: 308
+        height: 516
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c138d6ddae18a8c47b8e0dc9654edcfe
+      internalID: 628766195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: level 1 boss_8
+      rect:
+        serializedVersion: 2
+        x: 694
+        y: 2974
+        width: 308
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7d57375ae6b7be43abfc13691ae8f1c
+      internalID: 1428176439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: level 1 boss_9
+      rect:
+        serializedVersion: 2
+        x: 1020
+        y: 2974
+        width: 306
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1bf2b1b89ff9b2d4daaa314c0f549f00
+      internalID: -572088523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: level 1 boss_10
+      rect:
+        serializedVersion: 2
+        x: 1366
+        y: 2974
+        width: 306
+        height: 516
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6897c21a9358dab47a4bfd95cbf669ef
+      internalID: 1047043328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: level 1 boss_11
+      rect:
+        serializedVersion: 2
+        x: 1686
+        y: 2974
+        width: 308
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 552bfa31d4162b3479b37886d7fef243
+      internalID: -1397001278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: level 1 boss_12
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 2362
+        width: 388
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52ff932c77a735a4b906a9fd6ff62bca
+      internalID: -1917271625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: level 1 boss_13
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 2362
+        width: 306
+        height: 516
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f88f5e41c46f10f4aa5128a30cbb4c6b
+      internalID: -1028439019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: level 1 boss_14
+      rect:
+        serializedVersion: 2
+        x: 714
+        y: 2362
+        width: 420
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32d849f94dcd1f849bdff84606fddddd
+      internalID: 1932123286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: level 1 boss_15
+      rect:
+        serializedVersion: 2
+        x: 1134
+        y: 2362
+        width: 308
+        height: 516
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75ffc2e08a5212945af0b58947d9b0ec
+      internalID: -1620979922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: level 1 boss_16
+      rect:
+        serializedVersion: 2
+        x: 1450
+        y: 2362
+        width: 420
+        height: 502
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70a55f885820df64581b1f96900607e4
+      internalID: 358757870
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: level 1 boss_17
+      rect:
+        serializedVersion: 2
+        x: 1858
+        y: 2362
+        width: 308
+        height: 516
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42916bd3d5269c04c86353024e0eb3c2
+      internalID: 709205697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: level 1 boss_18
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 1780
+        width: 420
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb42458d61307a64f92a5edfad40eb51
+      internalID: 2025471640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: level 1 boss_19
+      rect:
+        serializedVersion: 2
+        x: 426
+        y: 1780
+        width: 306
+        height: 516
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e82724a2faf1a794f90b668e8175b14d
+      internalID: -963634422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: level 1 boss_20
+      rect:
+        serializedVersion: 2
+        x: 772
+        y: 1780
+        width: 420
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49eb84e0159eb8a4084be5c89eed1ee8
+      internalID: 1791863540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: level 1 boss_21
+      rect:
+        serializedVersion: 2
+        x: 1192
+        y: 2166
+        width: 10
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25ff7babf660b4e47808e5df47ac84ef
+      internalID: -368273222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: level 1 boss_22
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2070
+        width: 8
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0967a923f6dd9e24d9502c0affaae9dc
+      internalID: 30142889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: level 1 boss_23
+      rect:
+        serializedVersion: 2
+        x: 754
+        y: 2070
+        width: 8
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 040782f32f147eb4b994e29541cc2fd3
+      internalID: 1495443401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: level 1 boss_24
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 1210
+        width: 308
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30bf500f85fd4114b9f568155947b7e2
+      internalID: -1947919523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: level 1 boss_25
+      rect:
+        serializedVersion: 2
+        x: 510
+        y: 1210
+        width: 308
+        height: 516
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b35b6544bd68e04f9869b2992724489
+      internalID: 795476812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: level 1 boss_26
+      rect:
+        serializedVersion: 2
+        x: 850
+        y: 1210
+        width: 308
+        height: 498
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a2d17dc979aeb84e8d2089924b9f969
+      internalID: 582792021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: level 1 boss_27
+      rect:
+        serializedVersion: 2
+        x: 1182
+        y: 1210
+        width: 308
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8922ce41ed6b3ae4882da392bb294e88
+      internalID: 953880277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: level 1 boss_28
+      rect:
+        serializedVersion: 2
+        x: 1526
+        y: 1210
+        width: 308
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 719a5c371fef81f49b2f84ee8781f136
+      internalID: 683878871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: level 1 boss_29
+      rect:
+        serializedVersion: 2
+        x: 1846
+        y: 1210
+        width: 308
+        height: 516
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bfe39a8191ff67d47be9143968d7cfb6
+      internalID: 1212061571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: level 1 boss_30
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 618
+        width: 308
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f286f8a797c3a8e488f2c97f2f81621f
+      internalID: -641608608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: level 1 boss_31
+      rect:
+        serializedVersion: 2
+        x: 508
+        y: 618
+        width: 306
+        height: 516
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 226a43b0745568b41b20c143dd2136a5
+      internalID: -1528670699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: level 1 boss_32
+      rect:
+        serializedVersion: 2
+        x: 854
+        y: 618
+        width: 306
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5203b3cdb2138a49b2016419126b10d
+      internalID: 1456365616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: level 1 boss_33
+      rect:
+        serializedVersion: 2
+        x: 1178
+        y: 618
+        width: 308
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9286406970ec6df47a7f66339b881edd
+      internalID: 1018041680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: level 1 boss_34
+      rect:
+        serializedVersion: 2
+        x: 1522
+        y: 618
+        width: 308
+        height: 516
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb9abc6fa5465fc4d8c1e394257dd89b
+      internalID: 1138700959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: level 1 boss_35
+      rect:
+        serializedVersion: 2
+        x: 1860
+        y: 618
+        width: 306
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d274cc946f76b96428055162b08c0c33
+      internalID: 134221814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: level 1 boss_36
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 6
+        width: 308
+        height: 516
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 412558c717ea90647bbf67becda70237
+      internalID: 742078674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: level 1 boss_37
+      rect:
+        serializedVersion: 2
+        x: 310
+        y: 6
+        width: 420
+        height: 502
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79ac6ef46b74d4247b9929f9181d6026
+      internalID: -665440265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: level 1 boss_38
+      rect:
+        serializedVersion: 2
+        x: 738
+        y: 6
+        width: 308
+        height: 516
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 569c5584e54a82542baea659d8008e40
+      internalID: 2067909056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: level 1 boss_39
+      rect:
+        serializedVersion: 2
+        x: 1046
+        y: 6
+        width: 420
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76cab5c067fe5d040979da252c67d686
+      internalID: -1610526873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: level 1 boss_40
+      rect:
+        serializedVersion: 2
+        x: 1476
+        y: 6
+        width: 306
+        height: 516
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f047066cbd99514bac6d0e49e131779
+      internalID: -725334007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: level 1 boss_41
+      rect:
+        serializedVersion: 2
+        x: 1790
+        y: 6
+        width: 388
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 620cbeafb466caf45a866f958673b8bf
+      internalID: -1776244964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -126,7 +1008,49 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      level 1 boss_0: -1730175096
+      level 1 boss_1: 435289126
+      level 1 boss_10: 1047043328
+      level 1 boss_11: -1397001278
+      level 1 boss_12: -1917271625
+      level 1 boss_13: -1028439019
+      level 1 boss_14: 1932123286
+      level 1 boss_15: -1620979922
+      level 1 boss_16: 358757870
+      level 1 boss_17: 709205697
+      level 1 boss_18: 2025471640
+      level 1 boss_19: -963634422
+      level 1 boss_2: 1066848407
+      level 1 boss_20: 1791863540
+      level 1 boss_21: -368273222
+      level 1 boss_22: 30142889
+      level 1 boss_23: 1495443401
+      level 1 boss_24: -1947919523
+      level 1 boss_25: 795476812
+      level 1 boss_26: 582792021
+      level 1 boss_27: 953880277
+      level 1 boss_28: 683878871
+      level 1 boss_29: 1212061571
+      level 1 boss_3: -243283685
+      level 1 boss_30: -641608608
+      level 1 boss_31: -1528670699
+      level 1 boss_32: 1456365616
+      level 1 boss_33: 1018041680
+      level 1 boss_34: 1138700959
+      level 1 boss_35: 134221814
+      level 1 boss_36: 742078674
+      level 1 boss_37: -665440265
+      level 1 boss_38: 2067909056
+      level 1 boss_39: -1610526873
+      level 1 boss_4: 1975193847
+      level 1 boss_40: -725334007
+      level 1 boss_41: -1776244964
+      level 1 boss_5: -1165499698
+      level 1 boss_6: 1199160607
+      level 1 boss_7: 628766195
+      level 1 boss_8: 1428176439
+      level 1 boss_9: -572088523
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
