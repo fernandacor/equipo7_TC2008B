@@ -13,7 +13,8 @@ CREATE TABLE armas(
     damage SMALLINT UNSIGNED NOT NULL,
     velocidadDisparo SMALLINT UNSIGNED NOT NULL,
     cantDisparo SMALLINT UNSIGNED NOT NULL,
-    PRIMARY KEY (idArma)
+    PRIMARY KEY (idArma),
+    KEY idx_idArma (idArma)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -26,7 +27,8 @@ CREATE TABLE usuario(
     correo VARCHAR(50) NOT NULL,
     nombre VARCHAR(30) NOT NULL,
     apellido VARCHAR(50) NOT NULL,
-    PRIMARY KEY (username)
+    PRIMARY KEY (username),
+    KEY idx_username (username)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -38,7 +40,8 @@ CREATE TABLE partida(
     username VARCHAR(20) NOT NULL,
     fecha TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     PRIMARY KEY (idPartida),
-    CONSTRAINT `fk_username_partida`FOREIGN KEY (username) REFERENCES usuario(username) ON DELETE RESTRICT ON UPDATE CASCADE
+    CONSTRAINT `fk_username_partida`FOREIGN KEY (username) REFERENCES usuario(username) ON DELETE RESTRICT ON UPDATE CASCADE,
+    KEY idx_idPartida (idPartida)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -57,6 +60,7 @@ CREATE TABLE personajes(
     resistencia SMALLINT UNSIGNED NOT NULL,
     recuperacionEn SMALLINT UNSIGNED NOT NULL,
     roboVida SMALLINT UNSIGNED NOT NULL,
+	enemiesKilled SMALLINT UNSIGNED NOT NULL,
     PRIMARY KEY (idPersonaje),
     CONSTRAINT `fk_armaPersonaje` FOREIGN KEY (idArma) REFERENCES armas(idArma) ON DELETE RESTRICT ON UPDATE CASCADE,
     CONSTRAINT `fk_partidaPersonaje` FOREIGN KEY (idPartida) REFERENCES partida(idPartida) ON DELETE RESTRICT ON UPDATE CASCADE,
