@@ -1,32 +1,39 @@
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class CharacterStats : MonoBehaviour
 {
+    private ExperienceBar experienceBar;
+    public int level;
+    public int experiencePoints;
+
     private HealthBar healthBar;
-    public int maxHealth = 100;
-    public int currentHealth;
+    public float maxHealth = 100;
+    public float currentHealth;
 
     private ManaBar manaBar;
-    public int maxMana = 100;
-    public int currentMana;
-    public int useMana;
-    public int recuperacionMana;
+    public float maxMana = 100;
+    public float currentMana;
+    public float useMana;
+    public float recoverEnergy = 30;
 
     //public MovimientoPersonaje movimientoPersonaje;
     public float velocidadMovimiento = 20;
 
-    public float resistencia;
+    public float resistencia; //
     public float velocidadDisparo;
 
     public float enemigosMatados; //counter de cuantos enemigos mata
-    public float dañoInfligido; //contados de daño hecho a enemigos
-    public float dañoRecibido; //
+    public float dañoInfligido; //contador de daño hecho a enemigos
+    public float dañoRecibido; // contador de daño recibido
     public float monedasTiene; //cuantas monedas tiene
 
     // Animación de muerte
     private Animator animator;
 
-    void Awake()
+    public void Start()
     {
         animator = GetComponent<Animator>();
 
@@ -39,27 +46,44 @@ public class CharacterStats : MonoBehaviour
         manaBar = GameObject.FindGameObjectWithTag("ManaBar").GetComponent<ManaBar>();
         currentMana = maxMana;
         manaBar.SetMaxEnergy(maxMana);
+
+        //Experience Bar
+        experienceBar = GameObject.FindGameObjectWithTag("ExperienceBar").GetComponent<ExperienceBar>();
+
+        StartCoroutine(ManaRecovery());
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
+        damage = damage - resistencia;
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
+        dañoRecibido += damage;
     }
 
-    public void LoseEnergy(int lostEnergy)
+    public void LoseEnergy(float lostEnergy)
     {
         currentMana -= lostEnergy;
         manaBar.SetEnergy(currentMana);
     }
 
-    public void RecoverEnergy(int recoverEnergy)
+    public void RecoverEnergy(float recoverEnergy)
     {
         currentMana += recoverEnergy;
         manaBar.SetEnergy(currentMana);
     }
 
-    void Update()
+    public void MatarEnemigos(int cantidad)
+    {
+        enemigosMatados += cantidad;
+    }
+
+    public void ExperienceBehavior()
+    {
+        return;
+    }
+
+    public void Update()
     {
         if (Input.GetKeyDown(KeyCode.Y))
         {
@@ -79,7 +103,7 @@ public class CharacterStats : MonoBehaviour
         animator.SetFloat("Health", currentHealth);
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
+    public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Enemys Bullet"))
         {
@@ -89,6 +113,23 @@ public class CharacterStats : MonoBehaviour
         if (collision.CompareTag("Enemy"))
         {
             TakeDamage(5);
+        }
+
+        if (collision.CompareTag("Coin"))
+        {
+            monedasTiene += 1;
+        }
+    }
+
+    public IEnumerator ManaRecovery()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1f);
+            if (currentMana < maxMana)
+            {
+                RecoverEnergy(recoverEnergy);
+            }
         }
     }
 }

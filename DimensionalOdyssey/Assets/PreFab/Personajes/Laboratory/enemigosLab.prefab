@@ -121,11 +121,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 865200163a9152945876bf73a2e24aad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeEnemy: 1
+  characterStats: {fileID: 8370881042124701569, guid: 5f1677c34fed95d4ba52a81d20c47102, type: 3}
+  activeEnemy: 0
   player: {fileID: 4740222513982999656, guid: d04d2c3101f20384594690533097f34e, type: 3}
   velocidad: 5
   animator: {fileID: 8019724624063288624}
-  currentHealth: 0
+  currentHealth: 10
   maxHealth: 50
   dropItems: 1
   droppedItem: {fileID: 8621693034304978426, guid: 1a1ea7ecd24d59c499717910dcf53565, type: 3}

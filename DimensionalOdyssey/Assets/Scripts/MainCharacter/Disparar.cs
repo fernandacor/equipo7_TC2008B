@@ -34,7 +34,7 @@ public class Disparar : MonoBehaviour
 
     void Update()
     {
-            mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
+        mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
 
         if (HasRequiredItem(reqItem1, reqItem2, reqItem3) == true)
         {
