@@ -5,6 +5,10 @@ using UnityEngine.UI;
 
 public class CharacterStats : MonoBehaviour
 {
+    private ExperienceBar experienceBar;
+    public int level;
+    public int experiencePoints;
+
     private HealthBar healthBar;
     public float maxHealth = 100;
     public float currentHealth;
@@ -18,12 +22,12 @@ public class CharacterStats : MonoBehaviour
     //public MovimientoPersonaje movimientoPersonaje;
     public float velocidadMovimiento = 20;
 
-    public float resistencia;
+    public float resistencia; //
     public float velocidadDisparo;
 
     public float enemigosMatados; //counter de cuantos enemigos mata
-    public float dañoInfligido; //contados de daño hecho a enemigos
-    public float dañoRecibido; //
+    public float dañoInfligido; //contador de daño hecho a enemigos
+    public float dañoRecibido; // contador de daño recibido
     public float monedasTiene; //cuantas monedas tiene
 
     // Animación de muerte
@@ -43,13 +47,18 @@ public class CharacterStats : MonoBehaviour
         currentMana = maxMana;
         manaBar.SetMaxEnergy(maxMana);
 
+        //Experience Bar
+        experienceBar = GameObject.FindGameObjectWithTag("ExperienceBar").GetComponent<ExperienceBar>();
+
         StartCoroutine(ManaRecovery());
     }
 
     public void TakeDamage(float damage)
     {
+        damage = damage - resistencia;
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
+        dañoRecibido += damage;
     }
 
     public void LoseEnergy(float lostEnergy)
@@ -67,6 +76,11 @@ public class CharacterStats : MonoBehaviour
     public void MatarEnemigos(int cantidad)
     {
         enemigosMatados += cantidad;
+    }
+
+    public void ExperienceBehavior()
+    {
+        return;
     }
 
     public void Update()
@@ -99,6 +113,11 @@ public class CharacterStats : MonoBehaviour
         if (collision.CompareTag("Enemy"))
         {
             TakeDamage(5);
+        }
+
+        if (collision.CompareTag("Coin"))
+        {
+            monedasTiene += 1;
         }
     }
 
