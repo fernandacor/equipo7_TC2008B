@@ -1,6 +1,10 @@
 :root {
-    --color-1: #5515B5;
+    --color-1: #2E0C61;
     --color-2: #D975FE;
+}
+
+* {
+    box-sizing: border-box;
 }
 
 body {
@@ -8,30 +12,51 @@ body {
     font-family: 'Ubuntu', sans-serif;
 }
 
-@media (min-width: 576px) {
-    .container-fluid {
-        padding: 0 10%;
-    }
-}
-
-@media (max-width: 575px) {
-    .container-fluid {
-        padding: 0 5%;
-    }
-}
-
-#header {
-    background-image: url(../assets/img/titleBackground.gif);
+#main-background {
     background-size: cover;
     background-position: bottom center;
-    padding: 15%;
+    filter: brightness(0.3);
+
+    position: absolute;
+    top: 2.5vh;
+    left: 2.5%;
+    height: 95vh;
+    height: 95svh;
+    width: 95%;
+    border-radius: 50px;
 }
 
-#header-logo {
-    max-width: 100%;
-    max-height: 35vh;
+
+main {
+    position: relative;
+    height: 100vh;
+    height: 100svh;
+    width: 100%;
+    padding: 5vh 2.5%;
     margin: 0;
 }
+
+main .main-container {
+    height: 100%;
+    /* overflow: scroll; */
+}
+
+/* * Index */
+
+#logo {
+    max-width: 50%;
+    margin: 0;
+}
+
+.container-fluid {
+    padding: 1rem 2.5%;
+}
+
+#info {
+    height: 90%;
+    margin: 0;
+}
+
 
 .bg-main {
     background-color: var(--color-1);
@@ -43,17 +68,22 @@ body {
     font-weight: bolder;
 }
 
+.nav-row,
 .row {
+    margin: 0;
+}
+
+/* .row {
     margin-top: 5%;
     margin-bottom: 5%;
-}
+} */
 
 .card {
     background-color: transparent;
     border: 0px;
 }
 
-.containerHistoria{
+.containerHistoria {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     grid-template-rows: repeat(2, 1fr);
@@ -68,14 +98,13 @@ body {
 
 }
 
-#HeaderHistoria{
+#HeaderHistoria {
     font-family: 'OCR A Extended', monospace;
     color: var(--color-2);
     font-weight: bolder;
 }
 
-.section
-{
+.section {
     margin: 1em;
     padding: 1em;
     border: 1px solid black;
@@ -87,28 +116,29 @@ body {
     font-weight: bolder;
 }
 
-.formInput, .resultDisplay
-{
+.formInput,
+.resultDisplay {
     flex: 2;
 }
 
-.section form{
+.section form {
     padding: 1em;
     display: flex;
     flex-direction: column;
 }
 
-.section form input{
+.section form input {
     margin: 0.2em;
     max-width: 90%;
 }
 
-.resultDisplay p{
+.resultDisplay p {
     margin: 1em;
 }
 
-table, th, td 
-{
+table,
+th,
+td {
     border: solid 1px #DDD;
     border-collapse: collapse;
     padding: 2px 3px;

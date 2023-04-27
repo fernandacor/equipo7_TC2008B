@@ -20,7 +20,7 @@ public class EnemyBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        characterStats = GetComponent<CharacterStats>();
+        characterStats = GameObject.Find("Player").GetComponent<CharacterStats>();
         enemy = GetComponent<Rigidbody2D>();
 
         player = GameObject.Find("Player").transform;
