@@ -86,6 +86,34 @@ app.get('/api/usuario/:id', async (request, response)=>
     }
 })
 
+app.get('/api/partida', async (request, response)=>{
+    let connection = null
+
+    try
+    {
+        connection = await connectToDB()
+        const [results, fields] = await connection.execute('select * from partida')
+
+        console.log("QWERTY")
+        console.log(results)
+        response.json(results)
+    }
+    catch(error)
+    {
+        response.status(500)
+        response.json(error)
+        console.log(error)
+    }
+    finally
+    {
+        if(connection!==null) 
+        {
+            connection.end()
+            console.log("Connection closed succesfully!")
+        }
+    }
+})
+
 app.get('/api/partidas', async (request, response)=>{
     let connection = null
 
@@ -97,6 +125,34 @@ app.get('/api/partidas', async (request, response)=>{
         console.log("QWERTY")
         console.log(results)
         response.json(results)
+    }
+    catch(error)
+    {
+        response.status(500)
+        response.json(error)
+        console.log(error)
+    }
+    finally
+    {
+        if(connection!==null) 
+        {
+            connection.end()
+            console.log("Connection closed succesfully!")
+        }
+    }
+})
+
+app.post('/api/partidas', async (request, response)=>{
+
+    let connection = null
+
+    try
+    {    
+        connection = await connectToDB()
+
+        const [results, fields] = await connection.query('insert into partida values (?, NOW())', request.body['username'])
+        
+        response.json({'message': "Data inserted correctly."})
     }
     catch(error)
     {
@@ -197,6 +253,8 @@ app.get('/api/coins', async (request, response)=>{
         }
     }
 })
+
+
 
 app.post('/api/usuario', async (request, response)=>{
 
