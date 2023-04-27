@@ -3,8 +3,14 @@
  * @returns {string} A string of the form 'rgba(240, 50, 123, 1.0)' that represents a color
  */
  function random_color(alpha = 1.0) {
-    const r_c = () => Math.round(Math.random() * 127) + 128;
-    return `rgba(${r_c()}, 0, ${r_c()}, ${alpha})`;
+    const r_c = () => Math.round(Math.random() * 255);
+    let r, g, b;
+    do {
+        r = r_c();
+        g = r_c();
+        b = r_c();
+    } while (g > r * 0.8 && g > b * 0.8);
+    return `rgba(${r}, ${g}, ${b}, ${alpha})`;
 }
 
 async function main()
@@ -125,7 +131,7 @@ try
         const ctx_levels2 = document.getElementById('apiChart2').getContext('2d');
         const levelChart2 = new Chart(ctx_levels2, 
         {
-            type: 'bar',
+            type: 'polarArea',
             data: {
                 labels: level_names,
                 datasets: [
@@ -216,7 +222,7 @@ try
                         backgroundColor: level_colors,
                         borderColor: level_borders,
                         data: damageDealt,
-                        fontFamily: "'OCR A Extended', monospace"
+                        family: "'OCR A Extended', monospace"
                     }
                 ]
             },
@@ -237,13 +243,68 @@ try
                   title: {
                     display: true,
                     text: 'Daño infligido',
-                    fontFamily: "'OCR A Extended', monospace"
+                    family: "'OCR A Extended', monospace"
                   }
                 }
             }
         })
     }
 
+    const coinsByUser = await fetch('http://127.0.0.1:5235/api/coins',{
+        method: 'GET'
+    })
+
+    console.log('Got a response correctly')
+
+    if(coinsByUser.ok){
+        console.log('Response is ok. Converting to JSON.')
+
+        let resultsCoinsByUser = await coinsByUser.json()
+
+        console.log(resultsCoinsByUser)
+        console.log('Data converted correctly. Plotting chart.')
+
+        const values = Object.values(resultsCoinsByUser)
+
+        const username2 = values.map(e => e['username'])
+        const level_colors = values.map(e => random_color(0.8))
+        //const level_borders = values.map(e => 'rgba(0, 0, 0, 1.0)')
+        const coinsTaken = values.map(e => e['coinstaken'])
+
+        const ctx_coins = document.getElementById('apiChart4').getContext('2d');
+        const coinsChart = new Chart(ctx_coins,
+        {
+            type: 'line',
+            data: {
+                labels: username2,
+                datasets: [
+                    {
+                        label: 'Usuarios con más monedas',
+                        backgroundColor: level_colors,
+                        pointRadius: 10,
+                        data: coinsTaken
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                  title: {
+                    display: true,
+                    text: 'Coins taken by users'
+                  },
+                  legend: {
+                    labels: {
+                        // This more specific font property overrides the global property
+                        font: {
+                            family: "'OCR A Extended', monospace"
+                        }
+                    }
+                }
+                },  
+            } 
+        })
+    }
 }
 catch(error)
 {
