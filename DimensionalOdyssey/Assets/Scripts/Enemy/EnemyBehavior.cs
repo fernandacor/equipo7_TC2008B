@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class EnemyBehavior : MonoBehaviour
 {
+    public CharacterStats characterStats;
     private Rigidbody2D enemy;
-    public bool activeEnemy = false;
+    public bool activeEnemy = true;
     public Transform player;
     private Vector2 movimiento;
     public float velocidad = 5f;
@@ -19,6 +20,7 @@ public class EnemyBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        characterStats = GetComponent<CharacterStats>();
         enemy = GetComponent<Rigidbody2D>();
         player = GameObject.Find("Player").transform;
         currentHealth = maxHealth;
@@ -63,7 +65,8 @@ public class EnemyBehavior : MonoBehaviour
 
            if (currentHealth <= 0)
            {
-               Destroy(gameObject);
+                characterStats.enemigosMatados += 1;
+                Destroy(gameObject);
 
                if(dropItems == true)
                {
