@@ -29,7 +29,7 @@ public class CharacterStats : MonoBehaviour
     // Animación de muerte
     private Animator animator;
 
-    void Start()
+    public void Start()
     {
         animator = GetComponent<Animator>();
 
@@ -64,7 +64,12 @@ public class CharacterStats : MonoBehaviour
         manaBar.SetEnergy(currentMana);
     }
 
-    void Update()
+    public void MatarEnemigos(int cantidad)
+    {
+        enemigosMatados += cantidad;
+    }
+
+    public void Update()
     {
         if (Input.GetKeyDown(KeyCode.Y))
         {
@@ -84,7 +89,7 @@ public class CharacterStats : MonoBehaviour
         animator.SetFloat("Health", currentHealth);
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
+    public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Enemys Bullet"))
         {
@@ -97,7 +102,7 @@ public class CharacterStats : MonoBehaviour
         }
     }
 
-    IEnumerator ManaRecovery()
+    public IEnumerator ManaRecovery()
     {
         while (true)
         {
