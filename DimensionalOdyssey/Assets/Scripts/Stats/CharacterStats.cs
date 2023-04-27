@@ -1,16 +1,19 @@
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class CharacterStats : MonoBehaviour
 {
     private HealthBar healthBar;
-    public int maxHealth = 100;
-    public int currentHealth;
+    public float maxHealth = 100;
+    public float currentHealth;
 
     private ManaBar manaBar;
-    public int maxMana = 100;
-    public int currentMana;
-    public int useMana;
-    public int recuperacionMana;
+    public float maxMana = 100;
+    public float currentMana;
+    public float useMana;
+    public float recoverEnergy = 30;
 
     //public MovimientoPersonaje movimientoPersonaje;
     public float velocidadMovimiento = 20;
@@ -26,7 +29,7 @@ public class CharacterStats : MonoBehaviour
     // Animación de muerte
     private Animator animator;
 
-    void Awake()
+    public void Start()
     {
         animator = GetComponent<Animator>();
 
@@ -39,27 +42,34 @@ public class CharacterStats : MonoBehaviour
         manaBar = GameObject.FindGameObjectWithTag("ManaBar").GetComponent<ManaBar>();
         currentMana = maxMana;
         manaBar.SetMaxEnergy(maxMana);
+
+        StartCoroutine(ManaRecovery());
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
     }
 
-    public void LoseEnergy(int lostEnergy)
+    public void LoseEnergy(float lostEnergy)
     {
         currentMana -= lostEnergy;
         manaBar.SetEnergy(currentMana);
     }
 
-    public void RecoverEnergy(int recoverEnergy)
+    public void RecoverEnergy(float recoverEnergy)
     {
         currentMana += recoverEnergy;
         manaBar.SetEnergy(currentMana);
     }
 
-    void Update()
+    public void MatarEnemigos(int cantidad)
+    {
+        enemigosMatados += cantidad;
+    }
+
+    public void Update()
     {
         if (Input.GetKeyDown(KeyCode.Y))
         {
@@ -79,7 +89,7 @@ public class CharacterStats : MonoBehaviour
         animator.SetFloat("Health", currentHealth);
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
+    public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Enemys Bullet"))
         {
@@ -89,6 +99,18 @@ public class CharacterStats : MonoBehaviour
         if (collision.CompareTag("Enemy"))
         {
             TakeDamage(5);
+        }
+    }
+
+    public IEnumerator ManaRecovery()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1f);
+            if (currentMana < maxMana)
+            {
+                RecoverEnergy(recoverEnergy);
+            }
         }
     }
 }
