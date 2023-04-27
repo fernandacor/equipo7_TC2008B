@@ -8,10 +8,9 @@ public class PortalBehavior : MonoBehaviour
     public bool switchScene;
     public string sceneName;
 
-    public bool switchRoom;
     private bool playerDetected;
     [SerializeField] Transform posToGo;
-    public GameObject player;
+    private GameObject player;
 
 
     void Start()
@@ -21,7 +20,7 @@ public class PortalBehavior : MonoBehaviour
 
     void Update()
     {
-        if (playerDetected && switchRoom == true)
+        if (playerDetected && !switchScene)
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
@@ -33,12 +32,11 @@ public class PortalBehavior : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player" && switchScene == true)
+        if (collision.gameObject.CompareTag("Player") && switchScene)
         {
             SceneManager.LoadScene(sceneName);
         }
-
-        if (collision.gameObject.tag == "Player" && switchRoom == true)
+        else if (collision.gameObject.CompareTag("Player") && !switchScene)
         {
             playerDetected = true;
             player = collision.gameObject;
