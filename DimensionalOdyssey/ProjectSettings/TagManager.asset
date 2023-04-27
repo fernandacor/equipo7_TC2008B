@@ -20,6 +20,7 @@ TagManager:
   - Pocion
   - HealthBar
   - ManaBar
+  - ExperienceBar
   layers:
   - Default
   - TransparentFX
