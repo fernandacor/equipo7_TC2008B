@@ -34,14 +34,17 @@ main {
     width: 100%;
     padding: 5vh 2.5%;
     margin: 0;
+}
+
+main .main-container {
+    height: 100%;
     /* overflow: scroll; */
 }
 
 /* * Index */
 
 #logo {
-    max-width: 80%;
-    /* max-height: 35vh; */
+    max-width: 50%;
     margin: 0;
 }
 
