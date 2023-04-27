@@ -83,27 +83,7 @@ main .main-container {
     border: 0px;
 }
 
-.containerHistoria {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-}
-
-.Item-Historia {
-    padding: 45px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-}
-
-#HeaderHistoria {
-    font-family: 'OCR A Extended', monospace;
-    color: var(--color-2);
-    font-weight: bolder;
-}
-
+/*
 .section {
     margin: 1em;
     padding: 1em;
@@ -115,6 +95,7 @@ main .main-container {
     color: var(--color-2);
     font-weight: bolder;
 }
+
 
 .formInput,
 .resultDisplay {
@@ -149,7 +130,11 @@ th
 {
     font-weight:bold;
 }
+*/
 
+.space{
+    height: 80px;
+}
 .chartContainer{
     border: 0;
     justify-content: center;
@@ -163,4 +148,6 @@ th
     max-height: 600px;
     border: 1px solid black;
     margin: 20px;
+    background-color: var(--color-1);
+    background: linear-gradient(hsla(270, 60%, 85%, 0.8), hsla(270, 60%, 85%, 0.2)), url("imagen-de-fondo.jpg");
 }
