@@ -10,13 +10,13 @@ public class ManaBar : MonoBehaviour
     public Gradient gradient;
     public Image fill;
 
-    public void SetEnergy(int mana)
+    public void SetEnergy(float mana)
     {
         slider.value = mana;
         fill.color = gradient.Evaluate(slider.normalizedValue);
     }
 
-    public void SetMaxEnergy(int mana)
+    public void SetMaxEnergy(float mana)
     {
         slider.maxValue = mana;
         slider.value = mana;

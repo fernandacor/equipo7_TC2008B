@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class EnemyBehavior : MonoBehaviour
 {
+    public CharacterStats characterStats;
     private Rigidbody2D enemy;
-    public bool activeEnemy = false;
+    public bool activeEnemy = true;
     public Transform player;
     private Vector2 movimiento;
     public float velocidad = 5f;
@@ -19,9 +20,13 @@ public class EnemyBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        characterStats = GameObject.Find("Player").GetComponent<CharacterStats>();
         enemy = GetComponent<Rigidbody2D>();
+
         player = GameObject.Find("Player").transform;
+
         currentHealth = maxHealth;
+
         if (dropItems == true)
         {
             droppedItem.SetActive(false);
@@ -57,27 +62,30 @@ public class EnemyBehavior : MonoBehaviour
         enemy.MovePosition((Vector2)transform.position + (direction * velocidad * Time.deltaTime));
     }
 
-    void TakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
            currentHealth -= damage;
 
            if (currentHealth <= 0)
            {
-               Destroy(gameObject);
+                characterStats.MatarEnemigos(1);
+                Debug.Log("Enemigo muerto");
 
                if(dropItems == true)
                {
                 droppedItem.SetActive(true);
                }
+
+                Destroy(gameObject);
            }
     }
 
      void OnTriggerEnter2D(Collider2D collision)
      {
-         if (collision.CompareTag("Players Bullet"))
-         {
-            activeEnemy = true;
+        if (collision.CompareTag("Player") || collision.CompareTag("Players Bullet"))
+        {
             TakeDamage(10);
-         }
+            characterStats.dañoInfligido += 10;
+        }
      }
 }

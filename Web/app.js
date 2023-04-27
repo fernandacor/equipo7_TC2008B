@@ -114,6 +114,90 @@ app.get('/api/partidas', async (request, response)=>{
     }
 })
 
+app.get('/api/enemigos', async (request, response)=>{
+    let connection = null
+
+    try
+    {
+        connection = await connectToDB()
+        const [results, fields] = await connection.execute('select * from contEnemiesKilled')
+
+        console.log("QWERTY")
+        console.log(results)
+        response.json(results)
+    }
+    catch(error)
+    {
+        response.status(500)
+        response.json(error)
+        console.log(error)
+    }
+    finally
+    {
+        if(connection!==null) 
+        {
+            connection.end()
+            console.log("Connection closed succesfully!")
+        }
+    }
+})
+
+app.get('/api/damage', async (request, response)=>{
+    let connection = null
+
+    try
+    {
+        connection = await connectToDB()
+        const [results, fields] = await connection.execute('select * from usersDamage')
+
+        console.log("QWERTY")
+        console.log(results)
+        response.json(results)
+    }
+    catch(error)
+    {
+        response.status(500)
+        response.json(error)
+        console.log(error)
+    }
+    finally
+    {
+        if(connection!==null) 
+        {
+            connection.end()
+            console.log("Connection closed succesfully!")
+        }
+    }
+})
+
+app.get('/api/coins', async (request, response)=>{
+    let connection = null
+
+    try
+    {
+        connection = await connectToDB()
+        const [results, fields] = await connection.execute('select * from coinsUsername')
+
+        console.log("QWERTY")
+        console.log(results)
+        response.json(results)
+    }
+    catch(error)
+    {
+        response.status(500)
+        response.json(error)
+        console.log(error)
+    }
+    finally
+    {
+        if(connection!==null) 
+        {
+            connection.end()
+            console.log("Connection closed succesfully!")
+        }
+    }
+})
+
 app.post('/api/usuario', async (request, response)=>{
 
     let connection = null
@@ -234,7 +318,7 @@ app.put('/api/personajes', async (request, response)=>{
     try{
         connection = await connectToDB()
 
-        const [results, fields] = await connection.query('update personajes set energia = ?, xp = ?, velocidadMov = ?, velocidadDis = ?, vida = ?, resistencia = ?, recuperacionEn = ?, roboVida = ? WHERE idPartida = ?', [request.body['energia'], request.body['xp'], request.body['velocidadMov'], request.body['velocidadDis'], request.body['vida'], request.body['resistencia'], request.body['recuperacionEn'], request.body['roboVida'], request.body['idPartida']])
+        const [results, fields] = await connection.query('update personajes set energia = ?, xp = ?, velocidadMov = ?, velocidadDis = ?, vida = ?, resistencia = ?, recuperacionEn = ?, roboVida = ?, enemiesKilled = ? WHERE idPartida = ?', [request.body['energia'], request.body['xp'], request.body['velocidadMov'], request.body['velocidadDis'], request.body['vida'], request.body['resistencia'], request.body['recuperacionEn'], request.body['roboVida'], request.body['enemiesKilled'], request.body['idPartida']])
         
         response.json({'message': "Data updated correctly."})
     }

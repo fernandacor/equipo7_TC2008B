@@ -5,10 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class PortalBehavior : MonoBehaviour
 {
-    public bool switchScene = false;
+    public bool switchScene;
     public string sceneName;
 
-    public bool switchRoom = false;
+    public bool switchRoom;
     private bool playerDetected;
     [SerializeField] Transform posToGo;
     public GameObject player;
