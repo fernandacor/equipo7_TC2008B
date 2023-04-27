@@ -129,7 +129,8 @@ th
 
 .chartContainer canvas{
     flex-grow: 1;
-    max-width: 30%; 
+    max-width: 40%; 
     max-height: 600px;
     border: 1px solid black;
+    margin: 20px;
 }

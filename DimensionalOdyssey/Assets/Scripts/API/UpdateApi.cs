@@ -17,6 +17,7 @@ public class PersonajeAPI
     public int resistencia;
     public int recuperacionEn;
     public int roboVida; 
+    public int enemiesKilled;
 }
 
 public class UpdateApi : MonoBehaviour
@@ -34,6 +35,7 @@ public class UpdateApi : MonoBehaviour
     [SerializeField] TMP_InputField resistenciaInput;
     [SerializeField] TMP_InputField recuperacionInput;
     [SerializeField] TMP_InputField roboInput;
+    [SerializeField] TMP_InputField enemiesInput;
     [SerializeField] Button updateButton;
 
     void Start()
@@ -52,6 +54,7 @@ public class UpdateApi : MonoBehaviour
         characterToUpdate.resistencia = int.Parse(resistenciaInput.text);
         characterToUpdate.recuperacionEn = int.Parse(recuperacionInput.text);
         characterToUpdate.roboVida = int.Parse(roboInput.text);
+        characterToUpdate.enemiesKilled = int.Parse(enemiesInput.text);
         characterToUpdate.idPartida = int.Parse(partidaInput.text);
 
         string jsonData = JsonUtility.ToJson(characterToUpdate);
