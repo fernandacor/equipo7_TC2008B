@@ -3,12 +3,19 @@
 import express from 'express'
 import mysql from 'mysql2/promise'
 import fs from 'fs'
+import compression from 'compression';
+import expressStaticGzip from 'express-static-gzip'
 
 const app = express()
+
+
 const port = 5235
 
+app.use(compression())
 app.use(express.json())
+//app.use(expressStaticGzip('./public'))
 app.use(express.static('./public'))
+
 
 async function connectToDB()
 {
@@ -19,6 +26,13 @@ async function connectToDB()
         database:'dimensionalodyssey'
     })
 }
+
+app.get('*.br', (req, res, next) => {
+    // Set the content-encoding header
+    res.set('Content-Encoding', 'br');
+    // Call the next middleware function
+    next();
+  });
 
 app.get('/', (request,response)=>{
     fs.readFile('./public/html/index.html', 'utf8', (err, html)=>{
