@@ -80,3 +80,16 @@ CREATE TABLE tokens(
     PRIMARY KEY (idToken),
     CONSTRAINT `fk_personaje_tokens` FOREIGN KEY (idPersonaje) REFERENCES personajes(idPersonaje) ON DELETE RESTRICT ON UPDATE CASCADE
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Table structure for table 'Items'
+--
+
+CREATE TABLE items(
+    idItem SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    nombrePocion VARCHAR(20) NOT NULL,
+    valor BOOLEAN NOT NULL,
+    idPersonaje SMALLINT UNSIGNED NOT NULL,
+    PRIMARY KEY (idItem),
+    CONSTRAINT `fk_personaje_items` FOREIGN KEY (idItem) REFERENCES personajes(idPersonaje) ON DELETE CASCADE ON UPDATE CASCADE
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
