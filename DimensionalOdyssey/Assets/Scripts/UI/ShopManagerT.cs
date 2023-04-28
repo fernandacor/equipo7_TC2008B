@@ -4,23 +4,23 @@
 // using UnityEngine.UI;
 // using TMPro;
 
-<<<<<<< HEAD
-public class ShopManagerT : MonoBehaviour
-{
-    int   coins = 100;
-    int quantity = 0;
-    public ShopItem[] shopItem;
-    public ShopTemplate[] shopPanel;
-    public GameObject[] shopPanelGO;
-    public Button[] myPurchaseBtn;
-=======
+//<<<<<<< HEAD
+//public class ShopManagerT : MonoBehaviour
+//{
+//    int   coins = 100;
+//    int quantity = 0;
+//    public ShopItem[] shopItem;
+//    public ShopTemplate[] shopPanel;
+//    public GameObject[] shopPanelGO;
+//    public Button[] myPurchaseBtn;
+//=======
 // public class ShopManagerT : MonoBehaviour
 // {
 //     public ShopItem[] shopItem;
 //     public ShopTemplate[] shopPanel;
 //     public GameObject[] shopPanelGO;
 //     public Button[] myPurchaseBtn;
->>>>>>> main
+//>>>>>>> main
 
 //     void Start()
 //     {
@@ -45,15 +45,15 @@ public class ShopManagerT : MonoBehaviour
 //         }
 //     }
 
-<<<<<<< HEAD
-    public void PurchaseItem(int btnNo){
-        if (coins >= shopItem[btnNo].basePrice){
-            coins -= shopItem[btnNo].basePrice;
-            //shopItem[btnNo].quantity++;
-            CheckPurchasable();
-        }
-    }
-=======
+//<<<<<<< HEAD
+//    public void PurchaseItem(int btnNo){
+//        if (coins >= shopItem[btnNo].basePrice){
+//            coins -= shopItem[btnNo].basePrice;
+//            //shopItem[btnNo].quantity++;
+//            CheckPurchasable();
+//       }
+//    }
+//=======
 //     public void PurchaseItem(int btnNo){
 //         if (coins >= shopItem[btnNo].basePrice){
 //             coins -= shopItem[btnNo].basePrice;
@@ -61,7 +61,7 @@ public class ShopManagerT : MonoBehaviour
 //             CheckPurchasable();
 //         }
 //     }
->>>>>>> main
+//>>>>>>> main
 
 //     public void LoadPanels()
 //     {
