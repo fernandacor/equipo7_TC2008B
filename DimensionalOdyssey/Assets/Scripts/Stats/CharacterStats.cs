@@ -8,7 +8,7 @@ public class CharacterStats : MonoBehaviour
     private ExperienceBar experienceBar;
     public float maxExperience;
     public float currentExperience;
-    public int level = 1;
+    public int level;
 
     private HealthBar healthBar;
     public float maxHealth;
@@ -25,9 +25,10 @@ public class CharacterStats : MonoBehaviour
 
     public float resistencia; 
     public float velocidadDisparo;
+    public float dañoInfligido;
 
     public float enemigosMatados; //counter de cuantos enemigos mata
-    public float dañoInfligido; //contador de daño hecho a enemigos
+    public float dañoInfligidoContador; //contador de daño hecho a enemigos
     public float dañoRecibido; // contador de daño recibido
     public float monedasTiene; //cuantas monedas tiene
 
@@ -36,15 +37,18 @@ public class CharacterStats : MonoBehaviour
 
     public void Start()
     {
-        if (level == 0)
+        level = 1;
+
+        if (level == 1)
         {
-            maxHealth = 50;
-            maxMana = 50;
-            maxExperience = 50;
-            resistencia = 0;
-            velocidadDisparo = 3;
-            velocidadMovimiento = 17;
-            recoverEnergy = 10;
+            maxHealth = 30; //salud maxima
+            maxMana = 30; //energia maxima
+            maxExperience = 30; //cuanta experiencia necesitas para subir de nivel
+            resistencia = 0; //resistencia a daño 
+            velocidadDisparo = 3; //que tan rapido disparas (creo?)
+            velocidadMovimiento = 7; //que tan rapido caminas
+            recoverEnergy = 3; //cuanta energia recuperas por segundo
+            dañoInfligido = 2; //cuanto daño haces
         }
 
         animator = GetComponent<Animator>();
@@ -61,7 +65,9 @@ public class CharacterStats : MonoBehaviour
 
         //Experience Bar
         experienceBar = GameObject.FindGameObjectWithTag("ExperienceBar").GetComponent<ExperienceBar>();
+        experienceBar.SetMaxExp(maxExperience);
         experienceBar.SetExp(currentExperience);
+
 
         StartCoroutine(ManaRecovery());
     }
@@ -70,14 +76,16 @@ public class CharacterStats : MonoBehaviour
     {
         Debug.Log("Level Up:");
             currentExperience -= maxExperience;
+            experienceBar.SetMaxExp(maxExperience);
             experienceBar.SetExp(currentExperience);
             level += 1;
-            maxHealth += 5;
-            maxMana += 5;
+            maxHealth += 10;
+            maxMana += 10;
             resistencia += 2;
             velocidadDisparo += 2;
             velocidadMovimiento += 2;
-            maxExperience += 20;
+            maxExperience += 10;
+            dañoInfligido += 2;
             Debug.Log("Level Up stats changed");
     }
 

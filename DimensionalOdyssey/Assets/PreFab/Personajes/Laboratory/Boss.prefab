@@ -176,12 +176,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 865200163a9152945876bf73a2e24aad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterStats: {fileID: 0}
   activeEnemy: 1
   player: {fileID: 0}
   velocidad: 10
   animator: {fileID: 2935489702203481046}
   currentHealth: 0
-  maxHealth: 100
+  maxHealth: 50
   dropItems: 1
   droppedItem: {fileID: 0}
   isBoss: 1
