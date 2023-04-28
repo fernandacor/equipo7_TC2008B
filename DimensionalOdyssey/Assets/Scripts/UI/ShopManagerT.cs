@@ -6,6 +6,8 @@ using TMPro;
 
 public class ShopManagerT : MonoBehaviour
 {
+    int   coins = 100;
+    int quantity = 0;
     public ShopItem[] shopItem;
     public ShopTemplate[] shopPanel;
     public GameObject[] shopPanelGO;
@@ -37,7 +39,7 @@ public class ShopManagerT : MonoBehaviour
     public void PurchaseItem(int btnNo){
         if (coins >= shopItem[btnNo].basePrice){
             coins -= shopItem[btnNo].basePrice;
-            shopItem[btnNo].quantity++;
+            //shopItem[btnNo].quantity++;
             CheckPurchasable();
         }
     }
