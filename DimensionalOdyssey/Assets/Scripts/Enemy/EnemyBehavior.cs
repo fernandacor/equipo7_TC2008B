@@ -82,7 +82,7 @@ public class EnemyBehavior : MonoBehaviour
 
      void OnTriggerEnter2D(Collider2D collision)
      {
-        if (collision.CompareTag("Player") || collision.CompareTag("Players Bullet"))
+        if (collision.CompareTag("Players Bullet"))
         {
             TakeDamage(10);
             characterStats.dañoInfligido += 10;
