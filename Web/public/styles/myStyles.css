@@ -7,38 +7,69 @@
     box-sizing: border-box;
 }
 
+::-webkit-scrollbar {
+    width: 0.5rem;
+}
+
+::-webkit-scrollbar-track {
+    margin-block: 3rem;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--color-2);
+    border-radius: 320px;
+}
+
 body {
     background-color: var(--color-1);
     font-family: 'Ubuntu', sans-serif;
 }
 
-#main-background {
+#background-image {
     background-size: cover;
     background-position: bottom center;
-    filter: brightness(0.3);
+    /* filter: brightness(0.5); */
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    height: 100svh;
+    width: 100%;
+}
+
+#background-container {
+    background-color: #000000;
+    opacity: 0.75;
+    border-radius: 50px;
 
     position: absolute;
     top: 2.5vh;
     left: 2.5%;
     height: 95vh;
-    height: 95svh;
+    /* height: 95svh; */
     width: 95%;
-    border-radius: 50px;
 }
 
-
-main {
+.main-container {
     position: relative;
     height: 100vh;
-    height: 100svh;
+    /* height: 100svh; */
     width: 100%;
-    padding: 5vh 2.5%;
+
     margin: 0;
+    padding: 5vh 2.5%;
 }
 
-main .main-container {
-    height: 100%;
-    /* overflow: scroll; */
+main {
+    height: 90%;
+    overflow-y: scroll;
+    margin: 1vh 0;
+    padding: 2vh 2.5%;
+}
+
+.container-fluid {
+    padding: 1rem 2.5%;
 }
 
 /* * Index */
@@ -46,10 +77,6 @@ main .main-container {
 #logo {
     max-width: 50%;
     margin: 0;
-}
-
-.container-fluid {
-    padding: 1rem 2.5%;
 }
 
 #info {
@@ -132,19 +159,20 @@ th
 }
 */
 
-.space{
+.space {
     height: 80px;
 }
-.chartContainer{
+
+.chartContainer {
     border: 0;
     justify-content: center;
     display: flex;
     width: 100%;
 }
 
-.chartContainer canvas{
+.chartContainer canvas {
     flex-grow: 1;
-    max-width: 40%; 
+    max-width: 40%;
     max-height: 600px;
     border: 1px solid black;
     margin: 20px;
