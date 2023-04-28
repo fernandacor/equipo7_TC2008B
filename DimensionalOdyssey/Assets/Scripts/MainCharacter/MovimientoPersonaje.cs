@@ -20,21 +20,28 @@ public class MovimientoPersonaje : MonoBehaviour
     // Comportamiento de los cuartos
     private GameObject cuartoActual;
 
+    // Menú de pausa
+    private PauseMenu pauseMenu;
+
     private void Awake()
     {
         characterStats = GetComponent<CharacterStats>();
         playerAnimator = GetComponent<Animator>();
         firePoint = transform.Find("Fire Point").gameObject;
         playerInput = GetComponent<PlayerInput>();
+        pauseMenu = FindObjectOfType<PauseMenu>();
     }
 
     void Update()
     {
-        movimiento = playerInput.actions["Move"].ReadValue<Vector2>().normalized;
+        if (!PauseMenu.GameIsPaused){
+            movimiento = playerInput.actions["Move"].ReadValue<Vector2>().normalized;
 
-        playerAnimator.SetFloat("Horizontal", movimiento.x);
-        playerAnimator.SetFloat("Vertical", movimiento.y);
-        playerAnimator.SetFloat("Speed", movimiento.sqrMagnitude);
+            playerAnimator.SetFloat("Horizontal", movimiento.x);
+            playerAnimator.SetFloat("Vertical", movimiento.y);
+            playerAnimator.SetFloat("Speed", movimiento.sqrMagnitude);
+            Debug.Log(movimiento);
+        }
     }
 
     void FixedUpdate()
