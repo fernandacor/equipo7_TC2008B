@@ -45,15 +45,6 @@ public class ShopManagerT : MonoBehaviour
 //         }
 //     }
 
-<<<<<<< HEAD
-    public void PurchaseItem(int btnNo){
-        if (coins >= shopItem[btnNo].basePrice){
-            coins -= shopItem[btnNo].basePrice;
-            //shopItem[btnNo].quantity++;
-            CheckPurchasable();
-        }
-    }
-=======
 //     public void PurchaseItem(int btnNo){
 //         if (coins >= shopItem[btnNo].basePrice){
 //             coins -= shopItem[btnNo].basePrice;
@@ -61,7 +52,6 @@ public class ShopManagerT : MonoBehaviour
 //             CheckPurchasable();
 //         }
 //     }
->>>>>>> main
 
 //     public void LoadPanels()
 //     {
