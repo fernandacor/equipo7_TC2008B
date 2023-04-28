@@ -2335,16 +2335,6 @@ Tilemap:
   m_GameObject: {fileID: 7429525762246780449}
   m_Enabled: 1
   m_Tiles:
-  - first: {x: 2, y: -15, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 9
-      m_TileSpriteIndex: 4
-      m_TileMatrixIndex: 1
-      m_TileColorIndex: 6
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
   - first: {x: -31, y: -9, z: 0}
     second:
       serializedVersion: 2
@@ -4845,8 +4835,8 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 1
-    m_Data: {fileID: 11400000, guid: cabe0ba8911fc4d49a54e56b37035567, type: 2}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 62
     m_Data: {fileID: 11400000, guid: 91bed48898988fa4582f5411c715f94b, type: 2}
   - m_RefCount: 0
@@ -4862,8 +4852,8 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 1
-    m_Data: {fileID: 778282390, guid: 302a7b5943504449e99ba7d5d1035cc7, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 62
     m_Data: {fileID: 967094054, guid: 2e9cfe7a2c3a309448f54dd845eede63, type: 3}
   - m_RefCount: 0
@@ -4889,7 +4879,7 @@ Tilemap:
       e31: 0
       e32: 0
       e33: 1
-  - m_RefCount: 63
+  - m_RefCount: 62
     m_Data:
       e00: 1
       e01: 0
@@ -4920,7 +4910,7 @@ Tilemap:
     m_Data: {r: 5.3185e-41, g: 5.3185e-41, b: 5.3185e-41, a: 5.3185e-41}
   - m_RefCount: 0
     m_Data: {r: NaN, g: NaN, b: NaN, a: NaN}
-  - m_RefCount: 249
+  - m_RefCount: 248
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -5076,14 +5066,6 @@ CompositeCollider2D:
         Y: -90000000
       - X: 310000000
         Y: -90000000
-    - - X: 31282052
-        Y: -139500592
-      - X: 20341880
-        Y: -139500592
-      - X: 20341880
-        Y: -149757008
-      - X: 31282052
-        Y: -149757008
   m_CompositePaths:
     m_Paths:
     - - {x: 31.128176, y: 5.0164857}
@@ -5098,10 +5080,6 @@ CompositeCollider2D:
       - {x: 30.999971, y: -7}
       - {x: -31, y: -7.0000296}
       - {x: -30.999971, y: -9}
-    - - {x: 3.128176, y: -14.975701}
-      - {x: 3.128176, y: -13.950059}
-      - {x: 2.034188, y: -13.9500885}
-      - {x: 2.0342171, y: -14.975701}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
 --- !u!1 &7687354882026692365
