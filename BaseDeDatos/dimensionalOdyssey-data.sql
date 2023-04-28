@@ -8,7 +8,10 @@ SELECT * FROM dimensionalOdyssey.usuario;
 SELECT * FROM dimensionalOdyssey.armas;
 SELECT * FROM dimensionalOdyssey.partida;
 SELECT * FROM dimensionalOdyssey.tokens;
+SELECT * FROM dimensionalOdyssey.items;
 SELECT * FROM dimensionalOdyssey.personajes;
+SELECT * FROM dimensionalOdyssey.newToken;
+SELECT * FROM dimensionalOdyssey.newItems;
 
 INSERT INTO dimensionalOdyssey.usuario VALUES ('samacesan_sam','chami', 'a01026893@tec.mx','Samuel Roberto','Acevedo'), 
 ('JpAbuelo', 'jpUwU123', 'a01374091@tec.mx', 'Juan pablo', 'Moreno'), ('fernandacor','ferGameMaster0987','A01782232@tec.mx', 'Fernanda', 'Cantú'),
@@ -32,8 +35,20 @@ INSERT INTO dimensionalOdyssey.tokens (nombreToken, valor, idPersonaje) VALUES (
             ('Multidisparo', 0, 5), ('Disparo doble', 0, 5), ('Disparo trasero', 0, 5), ('Disparo Rebote', 0, 5),
             ('Multidisparo', 1, 6), ('Disparo doble', 1, 6), ('Disparo trasero', 1, 6), ('Disparo Rebote', 1, 6);
 
+INSERT INTO dimensionalOdyssey.newToken (idPersonaje, multiDoble, multiTriple, multiCuadriple, disDoble, disTriple, rebote, autoDir) VALUES (1, 0, 0, 0, 0, 0, 0, 0),
+			(2, 0, 0, 0, 0, 0, 0, 0), (3, 0, 0, 0, 0, 0, 0, 0), (4, 0, 0, 0, 0, 0, 0, 0), (5, 0, 0, 0, 0, 0, 0, 0), (6, 0, 0, 0, 0, 0, 0, 0);
+
+INSERT INTO dimensionalOdyssey.newItems (idPersonaje, velocidad, energia, vida, superVida, superEnergia, inmunidad, mystery) VALUES (1, 0, 0, 0, 0, 0, 0, 0),
+			(2, 0, 0, 0, 0, 0, 0, 0), (3, 0, 0, 0, 0, 0, 0, 0), (4, 0, 0, 0, 0, 0, 0, 0), (5, 0, 0, 0, 0, 0, 0, 0), (6, 0, 0, 0, 0, 0, 0, 0);
+
 INSERT INTO dimensionalOdyssey.partida (username, fecha) VALUES ('sebas21mg', NOW());
-INSERT INTO dimensionalOdyssey.personajes (energia, xp, idArma, idPartida, velocidadMov, velocidadDis, vida, resistencia, recuperacionEn, roboVida) VALUES (100, 3500, 2, LAST_INSERT_ID(), 10, 0, 100, 60, 25, 10);
+
+INSERT INTO dimensionalOdyssey.personajes (energia, xp, idArma, idPartida, velocidadMov, velocidadDis, vida, resistencia, recuperacionEn, enemiesKilled, damageDealt, coinsTaken) 
+VALUES (100, 3500, 2, LAST_INSERT_ID(), 10, 0, 100, 60, 25, 10);
+
+--
+-- Ejemplo de como hacer update a las estadísticas
+--
 
 UPDATE personajes
 SET energia = 85,
