@@ -34,13 +34,13 @@ public class MovimientoPersonaje : MonoBehaviour
 
     void Update()
     {
-        if (!PauseMenu.GameIsPaused){
+        if (!PauseMenu.GameIsPaused)
+        {
             movimiento = playerInput.actions["Move"].ReadValue<Vector2>().normalized;
 
             playerAnimator.SetFloat("Horizontal", movimiento.x);
             playerAnimator.SetFloat("Vertical", movimiento.y);
             playerAnimator.SetFloat("Speed", movimiento.sqrMagnitude);
-            Debug.Log(movimiento);
         }
     }
 

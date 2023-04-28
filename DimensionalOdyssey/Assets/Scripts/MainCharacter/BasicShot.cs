@@ -37,6 +37,14 @@ public class BasicShot : MonoBehaviour
     {
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
 
+        if (HasRequiredItem(reqItem1, reqItem2, reqItem3) == true)
+        {
+            canShoot = true;
+            Debug.Log("canShoot = true porque tienes el item requerido");
+            Apuntador.SetActive(true);
+            Debug.Log("apuntador activado");
+        }
+
         if (playerInput.actions["BasicShot"].IsPressed())
         {
             if (entreDisparos > 0f)
