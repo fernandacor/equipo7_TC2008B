@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Audio;
 
-public class MainMenuScript : MonoBehaviour
+public class MenuJP : MonoBehaviour
 {
 public void PlayGame()
 {
