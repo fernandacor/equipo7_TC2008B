@@ -7,11 +7,15 @@ public class PocionBehavior : MonoBehaviour
     [SerializeField] InventoryManager.Pociones tipoPocion;
     private GameObject player;
     private CharacterStats characterStats;
+    private HealthBar healthBar;
+    private ManaBar manaBar;
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         characterStats = player.GetComponent<CharacterStats>();
+        healthBar = GameObject.FindGameObjectWithTag("HealthBar").GetComponent<HealthBar>();
+        manaBar = GameObject.FindGameObjectWithTag("ManaBar").GetComponent<ManaBar>();
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -31,20 +35,32 @@ public class PocionBehavior : MonoBehaviour
             case InventoryManager.Pociones.pocionVelocidad:
                 characterStats.velocidadMovimiento += 3;
                 break;
-            case InventoryManager.Pociones.pocionEnergia:
-                characterStats.currentMana += 10;
-                break;
-            case InventoryManager.Pociones.pocionSuperEnergia:
-                characterStats.currentMana = characterStats.maxMana;
-                break;
-            case InventoryManager.Pociones.pocionVida:
-                characterStats.currentHealth += 10;
-                break;
-            case InventoryManager.Pociones.pocionSuperVida:
-                characterStats.currentHealth = characterStats.maxHealth;
-                break;
-            default:
-                break;
+        }
+
+        if (characterStats.currentMana < characterStats.maxMana)
+        {
+            switch (tipoPocion)
+            {
+                case InventoryManager.Pociones.pocionEnergia:
+                    characterStats.currentMana += 10;
+                    break;
+                case InventoryManager.Pociones.pocionSuperEnergia:
+                    characterStats.currentMana = characterStats.maxMana;
+                    break;
+            }
+        }
+
+        if (characterStats.currentHealth < characterStats.maxHealth)
+        {
+            switch(tipoPocion)
+            {
+                case InventoryManager.Pociones.pocionVida:
+                    characterStats.currentHealth += 10;
+                    break;
+                case InventoryManager.Pociones.pocionSuperVida:
+                    characterStats.currentHealth = characterStats.maxHealth;
+                    break;
+            }
         }
     }
 }
