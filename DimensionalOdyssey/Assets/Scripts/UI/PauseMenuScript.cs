@@ -2,23 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PauseMenu : MonoBehaviour
+public class PauseMenuScript : MonoBehaviour
 {
-    public static bool GameIsPaused = false;//variable para saber si el juego esta pausado
+    [HideInInspector] public bool gameIsPaused = false;//variable para saber si el juego esta pausado
 
-    public GameObject pauseMenu;//menu de pausa
+    private GameObject pauseMenu;//menu de pausa
+
+    void Start()
+    {
+        pauseMenu = GameObject.Find("PauseMenu").gameObject;
+        pauseMenu.SetActive(false);
+    }
+
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))//si se presiona escape
         {
-            if (GameIsPaused)//si el juego esta pausado
+            if (gameIsPaused)//si el juego esta pausado
             {
-                 Resume();//se reanuda el juego
+                Resume();//se reanuda el juego
             }
             else
             {
-                 Pause();//se pausa el juego
+                Pause();//se pausa el juego
             }
         }
     }
@@ -27,13 +34,13 @@ public class PauseMenu : MonoBehaviour
     {
         pauseMenu.SetActive(false);//se desactiva el menu de pausa
         Time.timeScale = 1f;//se reanuda el tiempo
-        GameIsPaused = false;//se cambia el estado del juego
+        gameIsPaused = false;//se cambia el estado del juego
     }
 
     void Pause()//funcion para pausar el juego
     {
         pauseMenu.SetActive(true);//se activa el menu de pausa
         Time.timeScale = 0f;//se pausa el tiempo
-        GameIsPaused = true;//se cambia el estado del juego
+        gameIsPaused = true;//se cambia el estado del juego
     }
 }

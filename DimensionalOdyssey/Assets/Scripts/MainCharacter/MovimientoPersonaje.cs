@@ -21,7 +21,7 @@ public class MovimientoPersonaje : MonoBehaviour
     private GameObject cuartoActual;
 
     // Menú de pausa
-    private PauseMenu pauseMenu;
+    private PauseMenuScript pauseMenu;
 
     private void Awake()
     {
@@ -29,12 +29,12 @@ public class MovimientoPersonaje : MonoBehaviour
         playerAnimator = GetComponent<Animator>();
         firePoint = transform.Find("Fire Point").gameObject;
         playerInput = GetComponent<PlayerInput>();
-        pauseMenu = FindObjectOfType<PauseMenu>();
+        pauseMenu = GameObject.Find("Canvas").GetComponent<PauseMenuScript>();
     }
 
     void Update()
     {
-        if (!PauseMenu.GameIsPaused)
+        if (!pauseMenu.gameIsPaused)
         {
             movimiento = playerInput.actions["Move"].ReadValue<Vector2>().normalized;
 
