@@ -6,23 +6,24 @@ using UnityEngine.UI;
 public class CharacterStats : MonoBehaviour
 {
     private ExperienceBar experienceBar;
-    public int level;
-    public int experiencePoints;
+    public float maxExperience;
+    public float currentExperience;
+    public int level = 1;
 
     private HealthBar healthBar;
-    public float maxHealth = 100;
+    public float maxHealth;
     public float currentHealth;
 
     private ManaBar manaBar;
-    public float maxMana = 100;
+    public float maxMana;
     public float currentMana;
     public float useMana;
-    public float recoverEnergy = 30;
+    public float recoverEnergy;
 
     //public MovimientoPersonaje movimientoPersonaje;
-    public float velocidadMovimiento = 20;
+    public float velocidadMovimiento;
 
-    public float resistencia; //
+    public float resistencia; 
     public float velocidadDisparo;
 
     public float enemigosMatados; //counter de cuantos enemigos mata
@@ -35,6 +36,17 @@ public class CharacterStats : MonoBehaviour
 
     public void Start()
     {
+        if (level == 0)
+        {
+            maxHealth = 50;
+            maxMana = 50;
+            maxExperience = 50;
+            resistencia = 0;
+            velocidadDisparo = 3;
+            velocidadMovimiento = 17;
+            recoverEnergy = 10;
+        }
+
         animator = GetComponent<Animator>();
 
         //Health Bar
@@ -49,8 +61,24 @@ public class CharacterStats : MonoBehaviour
 
         //Experience Bar
         experienceBar = GameObject.FindGameObjectWithTag("ExperienceBar").GetComponent<ExperienceBar>();
+        experienceBar.SetExp(currentExperience);
 
         StartCoroutine(ManaRecovery());
+    }
+
+    public void levelUp()
+    {
+        Debug.Log("Level Up:");
+            currentExperience -= maxExperience;
+            experienceBar.SetExp(currentExperience);
+            level += 1;
+            maxHealth += 5;
+            maxMana += 5;
+            resistencia += 2;
+            velocidadDisparo += 2;
+            velocidadMovimiento += 2;
+            maxExperience += 20;
+            Debug.Log("Level Up stats changed");
     }
 
     public void TakeDamage(float damage)
@@ -76,31 +104,38 @@ public class CharacterStats : MonoBehaviour
     public void MatarEnemigos(int cantidad)
     {
         enemigosMatados += cantidad;
-    }
-
-    public void ExperienceBehavior()
-    {
-        return;
+        currentExperience += 10;
     }
 
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Y))
-        {
-            LoseEnergy(10);
-        }
+        // if (Input.GetKeyDown(KeyCode.Y))
+        // {
+        //     LoseEnergy(10);
+        // }
 
-        if (Input.GetKeyDown(KeyCode.U))
-        {
-            RecoverEnergy(10);
-        }
+        // if (Input.GetKeyDown(KeyCode.U))
+        // {
+        //     RecoverEnergy(10);
+        // }
 
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            TakeDamage(10);
-        }
+        // if (Input.GetKeyDown(KeyCode.I))
+        // {
+        //     TakeDamage(10);
+        // }
+
+        experienceBar.SetExp(currentExperience);
 
         animator.SetFloat("Health", currentHealth);
+        // animator.SetBool("LevelUp", levelUp);
+
+        if (currentExperience >= maxExperience)
+        {
+            experienceBar.SetMaxExp(maxExperience);
+            Debug.Log("Experience reached max");
+            levelUp();
+            Debug.Log("Call levelUp function");
+        }
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
@@ -118,6 +153,7 @@ public class CharacterStats : MonoBehaviour
         if (collision.CompareTag("Coin"))
         {
             monedasTiene += 1;
+            currentExperience += 1;
         }
     }
 

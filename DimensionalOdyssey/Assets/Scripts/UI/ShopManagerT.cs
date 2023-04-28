@@ -4,23 +4,13 @@
 // using UnityEngine.UI;
 // using TMPro;
 
-<<<<<<< HEAD
-public class ShopManagerT : MonoBehaviour
-{
-    int   coins = 100;
-    int quantity = 0;
-    public ShopItem[] shopItem;
-    public ShopTemplate[] shopPanel;
-    public GameObject[] shopPanelGO;
-    public Button[] myPurchaseBtn;
-=======
 // public class ShopManagerT : MonoBehaviour
 // {
+//     public int coins=100;
 //     public ShopItem[] shopItem;
 //     public ShopTemplate[] shopPanel;
 //     public GameObject[] shopPanelGO;
 //     public Button[] myPurchaseBtn;
->>>>>>> main
 
 //     void Start()
 //     {
