@@ -47,14 +47,16 @@ body {
     top: 2.5vh;
     left: 2.5%;
     height: 95vh;
-    /* height: 95svh; */
+    height: 95svh;
     width: 95%;
+
+    /* box-shadow: 0 0 4px 5px #181027; */
 }
 
 .main-container {
     position: relative;
     height: 100vh;
-    /* height: 100svh; */
+    height: 100svh;
     width: 100%;
 
     margin: 0;
