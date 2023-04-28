@@ -20,6 +20,7 @@ public class PocionBehavior : MonoBehaviour
         {
             Debug.Log("player detected");
             PickUp(collision);
+            Destroy(gameObject);
         }
     }
 
@@ -34,18 +35,16 @@ public class PocionBehavior : MonoBehaviour
                 characterStats.currentMana += 10;
                 break;
             case InventoryManager.Pociones.pocionSuperEnergia:
-                characterStats.currentMana += 20;
+                characterStats.currentMana = characterStats.maxMana;
                 break;
             case InventoryManager.Pociones.pocionVida:
                 characterStats.currentHealth += 10;
                 break;
             case InventoryManager.Pociones.pocionSuperVida:
-                characterStats.currentHealth += 20;
+                characterStats.currentHealth = characterStats.maxHealth;
                 break;
             default:
                 break;
         }
-
-        Destroy(gameObject);
     }
 }
