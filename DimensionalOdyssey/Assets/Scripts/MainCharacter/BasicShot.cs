@@ -6,7 +6,6 @@ using UnityEngine.InputSystem;
 public class BasicShot : MonoBehaviour
 {
     [SerializeField] InventoryManager.AllItems reqItem1, reqItem2, reqItem3;
-    private ManaBar manaBar;
     public GameObject bulletPrefab;
     public float bulletSpeed = 20f;
 
@@ -15,7 +14,7 @@ public class BasicShot : MonoBehaviour
     private PlayerInput playerInput;
     private Vector2 mousePos;
     private Camera cam;
-    public GameObject Apuntador;
+    private GameObject apuntador;
 
     private bool canShoot;
 
@@ -30,7 +29,12 @@ public class BasicShot : MonoBehaviour
         characterStats = player.GetComponent<CharacterStats>();
         playerInput = player.GetComponent<PlayerInput>();
         cam = GameObject.Find("Main Camera").gameObject.GetComponent<Camera>();
-        Apuntador.SetActive(false);
+        apuntador = transform.parent.transform.Find("Apuntador").gameObject;
+    }
+
+    void Start()
+    {
+        apuntador.SetActive(false);
     }
 
     void Update()
@@ -40,44 +44,18 @@ public class BasicShot : MonoBehaviour
         if (HasRequiredItem(reqItem1, reqItem2, reqItem3) == true)
         {
             canShoot = true;
-            Debug.Log("canShoot = true porque tienes el item requerido");
-            Apuntador.SetActive(true);
-            Debug.Log("apuntador activado");
+            apuntador.SetActive(true);
         }
 
         if (playerInput.actions["BasicShot"].IsPressed())
         {
             if (entreDisparos > 0f)
                 entreDisparos -= Time.deltaTime;
-            else
+            else if (canShoot)
             {
                 entreDisparos = characterStats.velocidadDisparo;
                 Shoot();
             }
-        }
-
-        if (HasRequiredItem(reqItem1, reqItem2, reqItem3) == true)
-        {
-            canShoot = true;
-            Debug.Log("canShoot = true porque tienes el item requerido");
-            Apuntador.SetActive(true);
-            Debug.Log("apuntador activado");
-        }
-
-        if (characterStats.currentMana <= 0)
-        {
-            canShoot = false;
-            Debug.Log("cannot shoot, no mana left");
-        }
-
-        if (playerInput.actions["BasicShot"].WasPressedThisFrame() && canShoot == true)
-        {
-            Shoot();
-        }
-
-        if (playerInput.actions["BasicShot"].WasPressedThisFrame() && canShoot == false)
-        {
-            Debug.Log("cannot shoot, no item");
         }
     }
 
@@ -95,7 +73,6 @@ public class BasicShot : MonoBehaviour
 
     public void Shoot()
     {
-        characterStats.LoseEnergy(10);
         Quaternion shotRotation = Quaternion.Euler(0f, 0f, gunAngle + 90f);
         GameObject bullet = Instantiate(bulletPrefab, transform.position, shotRotation);
         bullet.GetComponent<Rigidbody2D>().AddForce(lookingDirection.normalized * bulletSpeed, ForceMode2D.Impulse);
