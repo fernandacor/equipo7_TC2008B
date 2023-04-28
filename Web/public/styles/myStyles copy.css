@@ -7,28 +7,15 @@
     box-sizing: border-box;
 }
 
-::-webkit-scrollbar {
-    width: 0.5rem;
-}
-
-::-webkit-scrollbar-track {
-    margin-block: 3rem;
-}
-
-::-webkit-scrollbar-thumb {
-    background-color: var(--color-2);
-    border-radius: 320px;
-}
-
 body {
     background-color: var(--color-1);
     font-family: 'Ubuntu', sans-serif;
 }
 
-#background-image {
+#main-background {
     background-size: cover;
     background-position: bottom center;
-    /* filter: brightness(0.5); */
+    /* filter: brightness(0.3); */
 
     position: absolute;
     top: 0;
@@ -38,38 +25,31 @@ body {
     width: 100%;
 }
 
-#background-container {
-    background-color: #000000;
+#morado {
+    background-color: black;
     opacity: 0.75;
-    border-radius: 50px;
 
     position: absolute;
     top: 2.5vh;
     left: 2.5%;
     height: 95vh;
-    /* height: 95svh; */
+    height: 95svh;
     width: 95%;
-}
-
-.main-container {
-    position: relative;
-    height: 100vh;
-    /* height: 100svh; */
-    width: 100%;
-
-    margin: 0;
-    padding: 5vh 2.5%;
+    border-radius: 50px;
 }
 
 main {
-    height: 90%;
-    overflow-y: scroll;
-    margin: 1vh 0;
-    padding: 2vh 2.5%;
+    position: relative;
+    height: 100vh;
+    height: 100svh;
+    width: 100%;
+    padding: 5vh 2.5%;
+    margin: 0;
 }
 
-.container-fluid {
-    padding: 1rem 2.5%;
+main .main-container {
+    height: 100%;
+    /* overflow: scroll; */
 }
 
 /* * Index */
@@ -77,6 +57,10 @@ main {
 #logo {
     max-width: 50%;
     margin: 0;
+}
+
+.container-fluid {
+    padding: 1rem 2.5%;
 }
 
 #info {
