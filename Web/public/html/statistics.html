@@ -18,26 +18,36 @@
         crossorigin="anonymous"></script>
     <script src="../js/htmlManagement.js"></script>
     <script type="module" defer src="../js/stadistics.js"></script>
-    <script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.2.1/chart.umd.js" integrity="sha512-vCUbejtS+HcWYtDHRF2T5B0BKwVG/CLeuew5uT2AiX4SJ2Wff52+kfgONvtdATqkqQMC9Ye5K+Td0OTaz+P7cw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.2.1/chart.umd.js"
+        integrity="sha512-vCUbejtS+HcWYtDHRF2T5B0BKwVG/CLeuew5uT2AiX4SJ2Wff52+kfgONvtdATqkqQMC9Ye5K+Td0OTaz+P7cw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 </head>
 
 <body>
 
-    <!-- Navigation-->
-    <nav></nav>    
+    <img src="../assets/img/titleBackground.gif" alt="" id="background-image">
+    <div id="background-container"></div>
 
-    <div class="space"></div>
+    <div class="main-container">
+        <nav></nav>
 
-    <div class="chartContainer">
-        <canvas id="apiChart1" width="600" height="300"></canvas>
-        <canvas id="apiChart2" width="600" height="300"></canvas>
+        <!-- <main class="d-flex align-items-center justify-content-center"> -->
+        <main>
+            <div class="chartContainer">
+                <canvas id="apiChart1" style="width: 80%;"></canvas>
+                <canvas id="apiChart2" style="width: 80%;"></canvas>
+            </div>
+
+            <div class="chartContainer">
+                <canvas id="apiChart3" width="600" height="300"></canvas>
+                <canvas id="apiChart4" width="600" height="300"></canvas>
+            </div>
+        </main>
     </div>
 
-    <div class="chartContainer">
-        <canvas id="apiChart3" width="600" height="300"></canvas>
-        <canvas id="apiChart4" width="600" height="300"></canvas>
-    </div>
+    <!-- <div class="space"></div> -->
+
 
 </body>
 

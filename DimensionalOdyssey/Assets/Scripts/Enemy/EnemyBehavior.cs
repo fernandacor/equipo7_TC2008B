@@ -11,8 +11,8 @@ public class EnemyBehavior : MonoBehaviour
     private Vector2 movimiento;
     public float velocidad = 5f;
     public Animator animator;
-    public int currentHealth;
-    public int maxHealth = 100;
+    public float currentHealth;
+    public float maxHealth = 100;
     public bool dropItems;
     public GameObject droppedItem;
     public bool isBoss = false;
@@ -62,7 +62,7 @@ public class EnemyBehavior : MonoBehaviour
         enemy.MovePosition((Vector2)transform.position + (direction * velocidad * Time.deltaTime));
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
            currentHealth -= damage;
 
@@ -82,10 +82,10 @@ public class EnemyBehavior : MonoBehaviour
 
      void OnTriggerEnter2D(Collider2D collision)
      {
-        if (collision.CompareTag("Player") || collision.CompareTag("Players Bullet"))
+        if (collision.CompareTag("Players Bullet"))
         {
-            TakeDamage(10);
-            characterStats.dañoInfligido += 10;
+            TakeDamage(characterStats.dañoInfligido);
+            characterStats.dañoInfligidoContador += characterStats.dañoInfligido;
         }
      }
 }
