@@ -7,18 +7,15 @@
     box-sizing: border-box;
 }
 
-::-webkit-scrollbar {
-    width: 2rem;
-}
-
 body {
     background-color: var(--color-1);
     font-family: 'Ubuntu', sans-serif;
 }
 
-#background-image {
+#main-background {
     background-size: cover;
     background-position: bottom center;
+    /* filter: brightness(0.3); */
 
     position: absolute;
     top: 0;
@@ -28,10 +25,9 @@ body {
     width: 100%;
 }
 
-#background-container {
+#morado {
     background-color: black;
     opacity: 0.75;
-    border-radius: 50px;
 
     position: absolute;
     top: 2.5vh;
@@ -39,9 +35,10 @@ body {
     height: 95vh;
     height: 95svh;
     width: 95%;
+    border-radius: 50px;
 }
 
-.main-container {
+main {
     position: relative;
     height: 100vh;
     height: 100svh;
@@ -50,13 +47,9 @@ body {
     margin: 0;
 }
 
-main {
+main .main-container {
     height: 100%;
-    overflow-y: scroll;
-}
-
-.container-fluid {
-    padding: 1rem 2.5%;
+    /* overflow: scroll; */
 }
 
 /* * Index */
@@ -64,6 +57,10 @@ main {
 #logo {
     max-width: 50%;
     margin: 0;
+}
+
+.container-fluid {
+    padding: 1rem 2.5%;
 }
 
 #info {
