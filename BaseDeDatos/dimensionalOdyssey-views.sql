@@ -26,3 +26,6 @@ ON a.idPartida=b.idPartida;
 CREATE VIEW coinsUsername AS SELECT a.username, b.coinstaken
 FROM dimensionalOdyssey.partida as a INNER JOIN dimensionalOdyssey.personajes as b
 ON a.idPartida=b.idPartida;
+
+CREATE VIEW usersList AS 
+SELECT username, nombre, apellido FROM dimensionalOdyssey.usuario;

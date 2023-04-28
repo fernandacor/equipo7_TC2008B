@@ -6,6 +6,7 @@
 
 // public class ShopManagerT : MonoBehaviour
 // {
+//     public int coins=100;
 //     public ShopItem[] shopItem;
 //     public ShopTemplate[] shopPanel;
 //     public GameObject[] shopPanelGO;
