@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 3679623891063516581}
   - component: {fileID: 2678722763711690644}
   - component: {fileID: 6938884261592494400}
-  - component: {fileID: 216728383911568793}
   m_Layer: 3
   m_Name: Fire Point
   m_TagString: Untagged
@@ -104,7 +103,6 @@ MonoBehaviour:
   reqItem3: 2
   bulletPrefab: {fileID: 8276870004398191856, guid: c378bd37172feeb4eb7438440654aec0, type: 3}
   bulletSpeed: 20
-  Apuntador: {fileID: 8493305836932898433}
 --- !u!114 &6938884261592494400
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,31 +110,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3493362602427475957}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5db425bfb8f986b44a1795cb21758b5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 8276870004398191856, guid: c378bd37172feeb4eb7438440654aec0, type: 3}
   bulletSpeed: 20
---- !u!114 &216728383911568793
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3493362602427475957}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b689abbd201c42e1bc51ad145a8658f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  reqItem1: 0
-  reqItem2: 1
-  reqItem3: 2
-  bulletPrefab: {fileID: 8276870004398191856, guid: c378bd37172feeb4eb7438440654aec0, type: 3}
-  bulletForce: 20
-  Apuntador: {fileID: 8493305836932898433}
 --- !u!1 &4874639488000069736
 GameObject:
   m_ObjectHideFlags: 0
@@ -169,7 +149,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4874639488000069736}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -26, y: 10.2, z: 0}
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_ConstrainProportionsScale: 1
@@ -322,17 +302,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 594b912710d126445aeae68ef2a34641, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxExperience: 0
+  currentExperience: 0
+  level: 0
+  maxHealth: 0
   currentHealth: 0
-  maxMana: 100
+  maxMana: 0
   currentMana: 0
-  useMana: 5
-  recuperacionMana: 0
-  velocidadMovimiento: 18
+  useMana: 0
+  recoverEnergy: 0
+  velocidadMovimiento: 0
   resistencia: 0
-  velocidadDisparo: 10
-  enemigosMatados: 0
+  velocidadDisparo: 0
   "da\xF1oInfligido": 0
+  enemigosMatados: 0
+  "da\xF1oInfligidoContador": 0
   "da\xF1oRecibido": 0
   monedasTiene: 0
 --- !u!61 &6762539736743511270
@@ -348,7 +332,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.0018883944}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
