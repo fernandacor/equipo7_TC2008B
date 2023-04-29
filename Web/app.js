@@ -56,6 +56,36 @@ app.get('/api/usuario', async (request, response) => {
     }
 })
 
+app.post('/api/login', async (request, response) => {
+    const { username, password } = request.body
+    let connection = null
+
+    try {
+        connection = await connectToDB()
+        const [results, fields] = await connection.execute('select * from usuario where username = ?', [username])
+
+        if (results.length > 0) {
+            const user = results[0]
+
+            if (bcrypt.compareSync(password, user.contrasena)) {
+                response.json({ success: true })
+            } else {
+                response.json({ success: false, message: 'Contraseña incorrecta' })
+            }
+        } else {
+            response.json({ success: false, message: 'Usuario no encontrado' })
+        }
+    } catch (error) {
+        response.status(500)
+        response.json(error)
+        console.log(error)
+    } finally {
+        if (connection !== null) {
+            connection.end()
+            console.log("Conexión cerrada exitosamente!")
+        }
+    }
+})
 
 app.get('/api/usuario/:id', async (request, response) => {
     let connection = null
