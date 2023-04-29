@@ -12,10 +12,6 @@
     width: 0.5rem;
 }
 
-::-webkit-scrollbar-track {
-    margin-block: 3rem;
-}
-
 ::-webkit-scrollbar-thumb {
     background-color: var(--text);
     border-radius: 320px;
@@ -45,7 +41,7 @@ body {
 #background-container {
     background-color: #000000;
     opacity: 0.75;
-    border-radius: 50px;
+    border-radius: 32px;
 
     position: absolute;
     top: 2.5vh;
@@ -64,18 +60,18 @@ body {
     width: 100%;
 
     margin: 0;
-    padding: 5vh 2.5%;
+    padding: 2.5vh 2.5%;
 }
 
 main {
-    height: 90%;
+    height: 85%;
     overflow-y: scroll;
-    margin: 1vh 0;
-    padding: 2vh 2.5%;
+    /* margin-top: 1%; */
+    padding: 0 2.5%;
 }
 
 .container-fluid {
-    padding: 1rem 2.5%;
+    padding: 1vh 2.5%;
 }
 
 /* * Index */
