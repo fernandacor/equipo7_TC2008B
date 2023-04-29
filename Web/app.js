@@ -4,6 +4,7 @@ import compression from 'compression';
 import express from 'express';
 import fs from 'fs';
 import mysql from 'mysql2/promise';
+import session from 'express-session';
 
 const app = express()
 
@@ -23,6 +24,12 @@ async function connectToDB() {
         database: 'dimensionalodyssey'
     })
 }
+
+app.use(session({
+    secret: '!hJZb3k?S^tN9M=+', // Una clave secreta para firmar la cookie de sesión
+    resave: false, // Evita que se vuelva a guardar la sesión si no ha sido modificada
+    saveUninitialized: false, // Evita que se cree una sesión para las solicitudes que no la tienen
+  }));
 
 app.get('/', (request, response) => {
     fs.readFile('./public/html/index.html', 'utf8', (err, html) => {
@@ -56,36 +63,38 @@ app.get('/api/usuario', async (request, response) => {
     }
 })
 
-app.post('/api/login', async (request, response) => {
-    const { username, password } = request.body
+app.post('/api/login', async (req, res) => {
+    const { username, password } = req.body;
     let connection = null
 
-    try {
-        connection = await connectToDB()
-        const [results, fields] = await connection.execute('select * from usuario where username = ?', [username])
+  try {
+    connection = await connectToDB()
+    const [rows] = await connection.execute('select * from usuario where username = ?', [username]);
+    console.log('rows:', rows);
 
-        if (results.length > 0) {
-            const user = results[0]
-
-            if (bcrypt.compareSync(password, user.contrasena)) {
-                response.json({ success: true })
-            } else {
-                response.json({ success: false, message: 'Contraseña incorrecta' })
-            }
-        } else {
-            response.json({ success: false, message: 'Usuario no encontrado' })
-        }
-    } catch (error) {
-        response.status(500)
-        response.json(error)
-        console.log(error)
-    } finally {
-        if (connection !== null) {
-            connection.end()
-            console.log("Conexión cerrada exitosamente!")
-        }
+    if (rows.length === 0) {
+      // El usuario no existe
+      return res.status(401).json({ message: 'El usuario no existe' });
     }
-})
+
+    const user = rows[0];
+    console.log('Contraseña introducida:', password);
+    console.log('Contraseña almacenada:', user.contrasena);
+    if (password !== user.contrasena) {
+      // La contraseña es incorrecta
+      return res.status(401).json({ message: 'La contraseña es incorrecta' });
+    }
+
+    req.session.username = user.username; // Guarda el nombre de usuario en la sesión
+
+    return res.json({ message: 'Inicio de sesión exitoso' });
+
+    return res.json({ token });
+  } catch (err) {
+    console.log(err);
+    return res.status(500).json({ message: 'Error de servidor' });
+  }
+  });
 
 app.get('/api/usuario/:id', async (request, response) => {
     let connection = null

@@ -18,9 +18,11 @@
   },
   "homepage": "https://github.com/fernandacor/equipo7_TC2008B#readme",
   "dependencies": {
+    "bcrypt": "^5.1.0",
     "brotli": "^1.3.3",
     "compression": "^1.7.4",
     "express": "^4.18.2",
+    "express-session": "^1.17.3",
     "express-static-gzip": "^2.1.7",
     "fs": "^0.0.1-security",
     "mysql": "^2.18.1",
