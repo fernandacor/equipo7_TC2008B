@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class EnemyStats : MonoBehaviour
 {
+    // Referencia al script de estadisticas del jugador
+    private CharacterStats characterStats;
+
     // Variables de salud maxima y salud actual
-    public int maxHealth = 100;
-    public int currentHealth;
+    public float maxHealth = 100;
+    public float currentHealth;
 
     // Variables para velocidad de movimiento
     public float velocidadMovimiento;
@@ -18,9 +21,12 @@ public class EnemyStats : MonoBehaviour
     {
         // Se define la salud inicial como la salud maxima
         currentHealth = maxHealth;
+
+        // Se busca el script de estadisticas del jugador
+        characterStats = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterStats>();
     }
 
-    void TakeDamage(int damage)
+    void TakeDamage(float damage)
     {
         // Se le resta el daño a la salud del enemigo
         currentHealth -= damage;
