@@ -41,6 +41,7 @@ public class InventoryManager : MonoBehaviour
         llaveTurquesa,
         llaveCafe,
         llaveNaranja,
+        llaveOficina,
 
         //Traje
         trajeInicial,
