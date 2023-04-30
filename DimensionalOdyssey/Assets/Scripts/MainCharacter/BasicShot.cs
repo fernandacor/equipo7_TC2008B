@@ -47,15 +47,13 @@ public class BasicShot : MonoBehaviour
             apuntador.SetActive(true);
         }
 
-        if (playerInput.actions["BasicShot"].IsPressed())
+        if (entreDisparos > 0f)
+            entreDisparos -= Time.deltaTime;
+
+        if (playerInput.actions["BasicShot"].IsPressed() && entreDisparos <= 0f && canShoot)
         {
-            if (entreDisparos > 0f)
-                entreDisparos -= Time.deltaTime;
-            else if (canShoot)
-            {
-                entreDisparos = characterStats.velocidadDisparo;
-                Shoot();
-            }
+            entreDisparos = characterStats.velocidadDisparo;
+            Shoot();
         }
     }
 
