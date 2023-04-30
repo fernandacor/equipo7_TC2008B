@@ -76,55 +76,6 @@ async function main() {
   
 main();*/
 
-
-document.addEventListener('DOMContentLoaded', async () => {
-    const form = document.getElementById('formInput');
-    if (form) {
-        form.onsubmit = async (e) => {
-        e.preventDefault();
-
-        const data = new FormData(e.target);
-        const dataObj = Object.fromEntries(data.entries());
-
-        let response = await fetch('/api/login', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(dataObj)
-        });
-
-        if (response.ok) {
-            let results = await response.json();
-            console.log(results);
-            window.location.href = results.redirect;
-        } else {
-            console.log(response.status);
-        }
-        };
-    }
-});
-
-window.addEventListener('load', async () => {
-    // Verificar si el usuario ha iniciado sesión en el backend
-    let response = await fetch('/api/session');
-    if (response.ok) {
-        let user = await response.json();
-        // Si el usuario ha iniciado sesión, mostrar el enlace de "Hola" en lugar del enlace de inicio de sesión
-        const userLink = document.getElementById('user-link');
-        const userName = document.getElementById('user-name');
-        userName.textContent = user.username;
-        userLink.href = '/profile';
-        document.getElementById('loginLink').style.display = 'none';
-        document.getElementById('user-info').style.display = 'block';
-    } else {
-        // Si el usuario no ha iniciado sesión, mostrar el enlace de inicio de sesión en lugar del enlace de "Hola"
-        const loginLink = document.getElementById('loginLink');
-        const userInfo = document.getElementById('user-info');
-        loginLink.style.display = 'block';
-        userInfo.style.display = 'none';
-    }
-  });
-
-
 try
 {
     const levels_response = await fetch('http://127.0.0.1:5235/api/contpartidas',{
