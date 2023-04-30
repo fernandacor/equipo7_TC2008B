@@ -134,30 +134,7 @@ main {
     background: linear-gradient(hsla(270, 60%, 85%, 0.8), hsla(270, 60%, 85%, 0.2)), url("imagen-de-fondo.jpg");
 }
 
-#loader {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #333;
-    z-index: 9999;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .hide-loader {
-    animation: fadeOut 1s;
-    animation-fill-mode: forwards;
-  }
-  
-  @keyframes fadeOut {
-    0% {
-      opacity: 1;
-    }
-    100% {
-      opacity: 0;
-      visibility: hidden;
-    }
-  }
+
+#login-error {
+    display: block;
+}
