@@ -1,17 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PauseMenuScript : MonoBehaviour
 {
-    [HideInInspector] public bool gameIsPaused = false;//variable para saber si el juego esta pausado
+    public bool gameIsPaused = false;//variable para saber si el juego esta pausado
 
-    private GameObject pauseMenu;//menu de pausa
+    public GameObject pauseMenu;//menu de pausa
+
+    private GameManager gameManager;
 
     void Start()
     {
-        pauseMenu = GameObject.Find("PauseMenu").gameObject;
+
         pauseMenu.SetActive(false);
+
+    }
+
+    void Awake()
+    {
+        gameManager = GameManager.instance;
     }
 
     // Update is called once per frame
@@ -19,28 +25,31 @@ public class PauseMenuScript : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))//si se presiona escape
         {
+            pauseMenu.SetActive(!pauseMenu.activeSelf);//se activa o desactiva el menu de pausa
+            gameIsPaused = pauseMenu.activeSelf;//se cambia el estado del juego
             if (gameIsPaused)//si el juego esta pausado
             {
-                Resume();//se reanuda el juego
+                gameManager.SetGameState(GameState.Playing);//se cambia el estado del juego
             }
             else
             {
-                Pause();//se pausa el juego
+                gameManager.SetGameState(GameState.Paused);//se cambia el estado del juego
             }
+            gameIsPaused = !gameIsPaused;//se cambia el estado del juego
         }
     }
 
-    public void Resume()//funcion para reanudar el juego
-    {
-        pauseMenu.SetActive(false);//se desactiva el menu de pausa
-        Time.timeScale = 1f;//se reanuda el tiempo
-        gameIsPaused = false;//se cambia el estado del juego
-    }
+    // public void Resume()//funcion para reanudar el juego
+    // {
+    //     pauseMenu.SetActive(false);//se desactiva el menu de pausa
+    //     Time.timeScale = 1f;//se reanuda el tiempo
+    //     gameIsPaused = false;//se cambia el estado del juego
+    // }
 
-    void Pause()//funcion para pausar el juego
-    {
-        pauseMenu.SetActive(true);//se activa el menu de pausa
-        Time.timeScale = 0f;//se pausa el tiempo
-        gameIsPaused = true;//se cambia el estado del juego
-    }
+    // void Pause()//funcion para pausar el juego
+    // {
+    //     pauseMenu.SetActive(true);//se activa el menu de pausa
+    //     Time.timeScale = 0f;//se pausa el tiempo
+    //     gameIsPaused = true;//se cambia el estado del juego
+    // }
 }

@@ -25,6 +25,8 @@ public class MovimientoPersonaje : MonoBehaviour
 
     private InventoryUI inventoryUI;
 
+    private GameManager gameManager;
+
     private void Awake()
     {
         characterStats = GetComponent<CharacterStats>();
@@ -33,11 +35,13 @@ public class MovimientoPersonaje : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
         pauseMenu = GameObject.Find("Canvas").GetComponent<PauseMenuScript>();
         inventoryUI = GameObject.Find("Canvas").GetComponent<InventoryUI>();
+
+        gameManager = GameManager.instance;
     }
 
     void Update()
     {
-        if (!pauseMenu.gameIsPaused || !inventoryUI.isInventoryOpen)
+        if (!pauseMenu.gameIsPaused)
         {
             movimiento = playerInput.actions["Move"].ReadValue<Vector2>().normalized;
 

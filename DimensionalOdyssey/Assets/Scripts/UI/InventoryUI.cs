@@ -5,39 +5,35 @@ public class InventoryUI : MonoBehaviour
     public Transform itemsParent;
     public GameObject inventoryUI;
     
-    public bool isInventoryOpen = false;
+    public bool isInventoryOpen = false;//variable to check if the inventory is open or not
 
+    private GameManager gameManager;
     // Start is called before the first frame update
     void Start()
     {
         inventoryUI.SetActive(false);
     }
 
+    void Awake()
+    {
+        gameManager = GameManager.instance;
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q) || Input.GetKey(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Q))
         {
             inventoryUI.SetActive(!inventoryUI.activeSelf);
             isInventoryOpen = inventoryUI.activeSelf;
             if (isInventoryOpen)
             {
-                Pause();
+                gameManager.SetGameState(GameState.AbrirInventario);
             }
             else
             {
-                Resume();
+                gameManager.SetGameState(GameState.Playing);
             }
         }
-    }
-
-    void Resume() // function to resume the game
-    {
-        Time.timeScale = 1f;
-    }
-
-    void Pause() // function to pause the game
-    {
-        Time.timeScale = 0f;
     }
 }
