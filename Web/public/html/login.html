@@ -35,18 +35,19 @@
         <nav></nav>
 
         <main class="d-flex align-items-center justify-content-center">
-            <form>
+            <form id="formInput">
                 <div class="mb-3">
                     <label for="userLogin" class="form-label">Usuario</label>
-                    <input type="text" class="form-control" id="userLogin">
+                    <input type="text" class="form-control" id="userLogin" name="username">
                 </div>
                 <div class="mb-4">
                     <label for="passwordLogin" class="form-label">Contraseña</label>
-                    <input type="password" class="form-control" id="passwordLogin">
+                    <input type="password" class="form-control" id="passwordLogin" name="password">
                 </div>
                 <div class="d-flex justify-content-center">
-                    <button type="submit" class="btn btn-outline-light">Submit</button>
+                    <input type="submit" class="btn btn-outline-light" value="Submit">
                 </div>
+                <div id="postResults" class="d-flex align-items-center justify-content-center"></div>
             </form>
         </main>
     </div>
