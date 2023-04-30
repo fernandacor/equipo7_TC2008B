@@ -4,9 +4,9 @@ public class InventoryUI : MonoBehaviour
 {
     public Transform itemsParent;
     public GameObject inventoryUI;
-    
+
     //InventoryManager inventoryManager;
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,10 +21,10 @@ public class InventoryUI : MonoBehaviour
         {
             inventoryUI.SetActive(!inventoryUI.activeSelf);
         }
-    
+
     }
 
-    void UpdateUI ()
+    void UpdateUI()
     {
         Debug.Log("Updating UI");
     }
