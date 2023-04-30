@@ -7,9 +7,14 @@ using UnityEngine.UI;
 public class ToolBarItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     [Header("UI")]
-    public Image image;
+    private Image image;
 
     [HideInInspector] public Transform parentAfterDrag;
+
+    void Start()
+    {
+        GetComponent<Image>();
+    }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
