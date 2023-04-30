@@ -9,7 +9,8 @@ public enum GameState
     Paused,
     OpeningChest,
     AbrirInventario,
-    BuyingFromShop
+    BuyingFromShop,
+    chooseWeapon
 }
 
 public class GameManager : MonoBehaviour
@@ -60,6 +61,9 @@ public class GameManager : MonoBehaviour
                 break;
             
             case GameState.Death:
+                break;
+            
+            case GameState.chooseWeapon:
                 break;
         }
     }
