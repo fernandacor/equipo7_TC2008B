@@ -23,6 +23,10 @@ public class MovimientoPersonaje : MonoBehaviour
     // Menú de pausa
     private PauseMenuScript pauseMenu;
 
+    private InventoryUI inventoryUI;
+
+    private GameManager gameManager;
+
     private void Awake()
     {
         characterStats = GetComponent<CharacterStats>();
@@ -30,6 +34,9 @@ public class MovimientoPersonaje : MonoBehaviour
         firePoint = transform.Find("Fire Point").gameObject;
         playerInput = GetComponent<PlayerInput>();
         pauseMenu = GameObject.Find("Canvas").GetComponent<PauseMenuScript>();
+        inventoryUI = GameObject.Find("Canvas").GetComponent<InventoryUI>();
+
+        gameManager = GameManager.instance;
     }
 
     void Update()
