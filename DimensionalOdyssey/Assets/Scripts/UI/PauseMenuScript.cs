@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PauseMenuScript : MonoBehaviour
 {
-    public bool gameIsPaused = false;//variable para saber si el juego esta pausado
+    [HideInInspector] public bool gameIsPaused = false;//variable para saber si el juego esta pausado
 
     public GameObject pauseMenu;//menu de pausa
 
@@ -12,11 +12,6 @@ public class PauseMenuScript : MonoBehaviour
     {
 
         pauseMenu.SetActive(false);
-
-    }
-
-    void Awake()
-    {
         gameManager = GameManager.instance;
     }
 
@@ -29,13 +24,12 @@ public class PauseMenuScript : MonoBehaviour
             gameIsPaused = pauseMenu.activeSelf;//se cambia el estado del juego
             if (gameIsPaused)//si el juego esta pausado
             {
-                gameManager.SetGameState(GameState.Playing);//se cambia el estado del juego
+                gameManager.SetGameState(GameState.Paused);//se cambia el estado del juego
             }
             else
             {
-                gameManager.SetGameState(GameState.Paused);//se cambia el estado del juego
+                gameManager.SetGameState(GameState.Playing);//se cambia el estado del juego
             }
-            gameIsPaused = !gameIsPaused;//se cambia el estado del juego
         }
     }
 
