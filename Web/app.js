@@ -86,6 +86,7 @@ app.post('/api/login', async (req, res) => {
         }
         
         req.session.username = user.username; // Guarda el nombre de usuario en la sesión
+
         return res.status(200).json({ message: 'Inicio de sesión exitoso', redirect: '/html/index.html' });
 
     } catch (err) {
@@ -133,7 +134,7 @@ app.get('/api/usuario/:id', async (request, response) => {
     }
 })
 
-app.get('/api/partidas', async (request, response) => {
+app.get('/api/contpartidas', async (request, response) => {
     let connection = null
 
     try {
@@ -141,7 +142,6 @@ app.get('/api/partidas', async (request, response) => {
         const [results, fields] = await connection.execute('select * from contPartidas_usuarios')
 
         console.log("QWERTY")
-        console.log(results)
         response.json(results)
     }
     catch (error) {
@@ -382,5 +382,5 @@ app.put('/api/personajes', async (request, response) => {
 
 
 app.listen(port, () => {
-    console.log(`App listening at http://127.0.0.1:${port}/html/index.html`)
+    console.log(`App listening at http://127.0.0.1:${port}`)
 })
