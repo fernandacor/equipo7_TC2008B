@@ -369,5 +369,5 @@ app.put('/api/personajes', async (request, response) => {
 
 
 app.listen(port, () => {
-    console.log(`App listening at http://127.0.0.1:${port}/html`)
+    console.log(`App listening at http://127.0.0.1:${port}/html/index.html`)
 })
