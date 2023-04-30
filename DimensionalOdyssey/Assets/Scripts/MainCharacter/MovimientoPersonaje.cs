@@ -23,6 +23,8 @@ public class MovimientoPersonaje : MonoBehaviour
     // Menú de pausa
     private PauseMenuScript pauseMenu;
 
+    private InventoryUI inventoryUI;
+
     private void Awake()
     {
         characterStats = GetComponent<CharacterStats>();
@@ -30,11 +32,12 @@ public class MovimientoPersonaje : MonoBehaviour
         firePoint = transform.Find("Fire Point").gameObject;
         playerInput = GetComponent<PlayerInput>();
         pauseMenu = GameObject.Find("Canvas").GetComponent<PauseMenuScript>();
+        inventoryUI = GameObject.Find("Canvas").GetComponent<InventoryUI>();
     }
 
     void Update()
     {
-        if (!pauseMenu.gameIsPaused)
+        if (!pauseMenu.gameIsPaused || !inventoryUI.isInventoryOpen)
         {
             movimiento = playerInput.actions["Move"].ReadValue<Vector2>().normalized;
 

@@ -4,14 +4,13 @@ public class InventoryUI : MonoBehaviour
 {
     public Transform itemsParent;
     public GameObject inventoryUI;
-
-    //InventoryManager inventoryManager;
+    
+    public bool isInventoryOpen = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        //InventoryManager = InventoryManager.instance;
-        //inventoryManager.onItemChangedCallback += UpdateUI;
+        inventoryUI.SetActive(false);
     }
 
     // Update is called once per frame
@@ -20,12 +19,25 @@ public class InventoryUI : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q) || Input.GetKey(KeyCode.Escape))
         {
             inventoryUI.SetActive(!inventoryUI.activeSelf);
+            isInventoryOpen = inventoryUI.activeSelf;
+            if (isInventoryOpen)
+            {
+                Pause();
+            }
+            else
+            {
+                Resume();
+            }
         }
-
     }
 
-    void UpdateUI()
+    void Resume() // function to resume the game
     {
-        Debug.Log("Updating UI");
+        Time.timeScale = 1f;
+    }
+
+    void Pause() // function to pause the game
+    {
+        Time.timeScale = 0f;
     }
 }
