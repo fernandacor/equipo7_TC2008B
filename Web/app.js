@@ -4,6 +4,7 @@ import compression from 'compression';
 import express from 'express';
 import fs from 'fs';
 import mysql from 'mysql2/promise';
+import session from 'express-session';
 
 const app = express()
 
@@ -23,6 +24,12 @@ async function connectToDB() {
         database: 'dimensionalodyssey'
     })
 }
+
+app.use(session({
+    secret: '!hJZb3k?S^tN9M=+', // Una clave secreta para firmar la cookie de sesión
+    resave: false, // Evita que se vuelva a guardar la sesión si no ha sido modificada
+    saveUninitialized: false, // Evita que se cree una sesión para las solicitudes que no la tienen
+  }));
 
 app.get('/', (request, response) => {
     fs.readFile('./public/html/index.html', 'utf8', (err, html) => {
@@ -56,6 +63,52 @@ app.get('/api/usuario', async (request, response) => {
     }
 })
 
+app.post('/api/login', async (req, res) => {
+    const { username, password } = req.body;
+    let connection = null
+
+    try {
+        connection = await connectToDB()
+        const [rows] = await connection.execute('select * from usuario where username = ?', [username]);
+        console.log('rows:', rows);
+
+        if (rows.length === 0) {
+        // El usuario no existe
+        return res.status(401).json({ message: 'El usuario no existe' });
+        }
+
+        const user = rows[0];
+        console.log('Contraseña introducida:', password);
+        console.log('Contraseña almacenada:', user.contrasena);
+        if (password !== user.contrasena) {
+        // La contraseña es incorrecta
+        return res.status(401).json({ message: 'La contraseña es incorrecta' });
+        }
+        
+        req.session.username = user.username; // Guarda el nombre de usuario en la sesión
+
+        return res.status(200).json({ message: 'Inicio de sesión exitoso', redirect: '/html/index.html' });
+
+    } catch (err) {
+        console.log(err);
+        return res.status(500).json({ message: 'Error de servidor' });
+    }
+  });
+
+  app.get('/api/session', (req, res) => {
+    if (req.session.username) {
+      // La sesión ha sido iniciada
+      res.json({
+        loggedIn: true,
+        username: req.session.username
+      });
+    } else {
+      // La sesión no ha sido iniciada
+      res.json({
+        loggedIn: false
+      });
+    }
+  });
 
 app.get('/api/usuario/:id', async (request, response) => {
     let connection = null
@@ -81,7 +134,7 @@ app.get('/api/usuario/:id', async (request, response) => {
     }
 })
 
-app.get('/api/partidas', async (request, response) => {
+app.get('/api/contpartidas', async (request, response) => {
     let connection = null
 
     try {
@@ -89,7 +142,6 @@ app.get('/api/partidas', async (request, response) => {
         const [results, fields] = await connection.execute('select * from contPartidas_usuarios')
 
         console.log("QWERTY")
-        console.log(results)
         response.json(results)
     }
     catch (error) {
@@ -330,5 +382,5 @@ app.put('/api/personajes', async (request, response) => {
 
 
 app.listen(port, () => {
-    console.log(`App listening at http://127.0.0.1:${port}/html/index.html`)
+    console.log(`App listening at http://127.0.0.1:${port}`)
 })

@@ -112,54 +112,6 @@ main {
     border: 0px;
 }
 
-/*
-.section {
-    margin: 1em;
-    padding: 1em;
-    border: 1px solid black;
-
-    display: flex;
-
-    font-family: 'OCR A Extended', monospace;
-    color: var(--text);
-    font-weight: bolder;
-}
-
-
-.formInput,
-.resultDisplay {
-    flex: 2;
-}
-
-.section form {
-    padding: 1em;
-    display: flex;
-    flex-direction: column;
-}
-
-.section form input {
-    margin: 0.2em;
-    max-width: 90%;
-}
-
-.resultDisplay p {
-    margin: 1em;
-}
-
-table,
-th,
-td {
-    border: solid 1px #DDD;
-    border-collapse: collapse;
-    padding: 2px 3px;
-    text-align: center;
-}
-
-th 
-{
-    font-weight:bold;
-}
-*/
 
 .space {
     height: 80px;
@@ -180,4 +132,9 @@ th
     margin: 20px;
     background-color: var(--background-1);
     background: linear-gradient(hsla(270, 60%, 85%, 0.8), hsla(270, 60%, 85%, 0.2)), url("imagen-de-fondo.jpg");
+}
+
+
+#login-error {
+    display: block;
 }

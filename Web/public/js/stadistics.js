@@ -12,100 +12,73 @@
     } while (g > r * 0.8 && g > b * 0.8);
     return `rgba(${r}, ${g}, ${b}, ${alpha})`;
 }
-
+/*
 async function main()
 {
-    /*
-    document.getElementById('formSelectUser').onsubmit = async (e) =>
-    {
-        e.preventDefault()
-
-        const data = new FormData(formSelectUser)
-        const dataObj = Object.fromEntries(data.entries())
-
-        let response = await fetch(`http://127.0.0.1:5235/api/usuario/${dataObj['username']}`,{
-            method: 'GET'
-        })
-        
-        if(response.ok)
-        {
-            let results = await response.json()
-        
-            if(results.length > 0)
-            {
-                const headers = Object.keys(results[0])
-                const values = Object.values(results)
+    document.getElementById('formInput').onsubmit = async (e) => {
+        e.preventDefault();
     
-                let table = document.createElement("table")
+        const data = new FormData(e.target);
+        const dataObj = Object.fromEntries(data.entries());
     
-                let tr = table.insertRow(-1)                  
-    
-                for(const header of headers)
-                {
-                    let th = document.createElement("th")     
-                    th.innerHTML = header
-                    tr.appendChild(th)
-                }
-    
-                for(const row of values)
-                {
-                    let tr = table.insertRow(-1)
-    
-                    for(const key of Object.keys(row))
-                    {
-                        let tabCell = tr.insertCell(-1)
-                        tabCell.innerHTML = row[key]
-                    }
-                }
-    
-                const container = document.getElementById('getResultsID')
-                container.innerHTML = ''
-                container.appendChild(table)
-            }
-            else
-            {
-                const container = document.getElementById('getResultsID')
-                container.innerHTML = 'No results to show.'
-            }
-        }
-        else{
-            getResults.innerHTML = response.status
-        }
-    }
-    */
-
-    document.getElementById('formInsert').onsubmit = async(e)=>
-    {
-        e.preventDefault()
-
-        const data = new FormData(formInsert)
-        const dataObj = Object.fromEntries(data.entries())
-
-        let response = await fetch('http://127.0.0.1:5235/api/usuario',{
+        let response = await fetch('http://127.0.0.1:5235/api/login', {
             method: 'POST',
-            headers: {'Content-Type': 'application/json'},
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(dataObj)
-        })
-        
-        if(response.ok)
-        {
-            let results = await response.json()
-        
-            console.log(results)
-            postResults.innerHTML = results.message
-        }
-        else{
-            postResults.innerHTML = response.status
-        }
-    }
-
+        });
+    
+        if (response.ok) {
+            let results = await response.json();
+            console.log(results.message); // muestra el mensaje de inicio de sesión exitoso
+            window.location.href = '/html/index.html'; // redirige a la página index.html
+          } else {
+            console.log(response.status);
+          }
+    };
 }
 
-main()
+main() */
+/*
+async function main() {
+    const form = document.getElementById('formInput');
+    if (form) {
+      form.onsubmit = async (e) => {
+        e.preventDefault();
+  
+        const data = new FormData(e.target);
+        const dataObj = Object.fromEntries(data.entries());
+  
+        let response = await fetch('/api/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(dataObj)
+        });
+  
+        if (response.ok) {
+            let results = await response.json();
+            console.log(results);
+    
+            // Actualizar el enlace de "Hola" con el nombre de usuario y mostrarlo
+            const userLink = document.getElementById('user-link');
+            const userName = document.getElementById('user-name');
+            userName.textContent = results.username;
+            userLink.href = results.redirect;
+            document.getElementById('loginLink').style.display = 'none';
+            document.getElementById('user-info').style.display = 'block';
+    
+            window.location.href = results.redirect;
+        } else {
+          console.log(response.status);
+        }
+      };
+    }
+  }
+  
+main();*/
 
 try
 {
-    const levels_response = await fetch('http://127.0.0.1:5235/api/partidas',{
+    const levels_response = await fetch('http://127.0.0.1:5235/api/contpartidas',{
         method: 'GET'
     })
 
