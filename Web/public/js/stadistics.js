@@ -101,9 +101,9 @@ try {
         const values = Object.values(results)
 
         // In this case, we just separate the data into different arrays using the map method of the values array. This creates new arrays that hold only the data that we need.
-        const level_names = values.map(e => e['username'])
-        const level_colors = values.map(e => random_color())
-        // const level_borders = values.map(e => 'rgba(0, 0, 0, 1)')
+        const username = values.map(e => e['username'])
+        const bordersColor = values.map(e => random_color(1))
+        const backgroundsColor = bordersColor.map(b => b.slice(0, -2) + '0.6)')
         const level_completion = values.map(e => e['COUNT(idPartida)'])
 
 
@@ -112,25 +112,29 @@ try {
             {
                 type: 'bar',
                 data: {
-                    labels: level_names,
+                    labels: username,
                     datasets: [
                         {
                             // label: 'Cantidad de partidas',
-                            backgroundColor: level_colors,
-                            borderColor: 'black',
+                            backgroundColor: backgroundsColor,
+                            borderColor: bordersColor,
                             borderWidth: 2,
                             data: level_completion,
                         }
                     ]
                 },
                 options: {
+                    responsive: true,
                     indexAxis: 'y',
                     plugins: {
                         legend: {
                             display: false,
+                        },
+                        title: {
+                            display: false,
                         }
-                    }
-                }
+                    },
+                },
             })
     }
 
@@ -152,9 +156,9 @@ try {
 
         // In this case, we just separate the data into different arrays using the map method of the values array. This creates new arrays that hold only the data that we need.
         const username = values.map(e => e['username'])
-        const level_colors = values.map(e => random_color(0.8))
-        const level_borders = values.map(e => 'rgba(0, 0, 0, 1.0)')
-        const EnemiesKilled = values.map(e => e['enemiesKilled'])
+        const bordersColor = values.map(e => random_color(1))
+        const backgroundsColor = bordersColor.map(b => b.slice(0, -2) + '0.6)')
+        const enemiesKilled = values.map(e => e['enemiesKilled'])
 
 
         const ctx_levels = document.getElementById('apiChart2').getContext('2d');
@@ -166,19 +170,19 @@ try {
                     datasets: [
                         {
                             // label: 'Enemigos matados',
-                            backgroundColor: level_colors,
-                            borderColor: level_borders,
-                            borderWidth: 2,
-                            data: EnemiesKilled
+                            backgroundColor: backgroundsColor,
+                            borderColor: bordersColor,
+                            borderWidth: 3,
+                            data: enemiesKilled
                         }
                     ]
                 },
                 options: {
                     responsive: true,
+                    indexAxis: 'y',
                     plugins: {
                         legend: {
-                            display: true,
-                            position: "bottom",
+                            display: false,
                         },
                         title: {
                             display: false,
@@ -205,8 +209,8 @@ try {
         const values = Object.values(resultsDamageByUser)
 
         const username = values.map(e => e['username'])
-        const level_colors = values.map(e => random_color(0.8))
-        const level_borders = values.map(e => 'rgba(0, 0, 0, 1.0)')
+        const bordersColor = values.map(e => random_color(1))
+        const backgroundsColor = bordersColor.map(b => b.slice(0, -2) + '0.6)')
         const damageDealt = values.map(e => e['damageDealt'])
 
         const ctx_damage = document.getElementById('apiChart3').getContext('2d');
@@ -217,35 +221,26 @@ try {
                     labels: username,
                     datasets: [
                         {
-                            label: 'Daño infligido',
-                            backgroundColor: level_colors,
-                            borderColor: level_borders,
+                            // label: 'Daño infligido',
+                            backgroundColor: backgroundsColor,
+                            borderColor: bordersColor,
+                            borderWidth: 2,
                             data: damageDealt,
-                            family: "'OCR A Extended', monospace"
                         }
                     ]
                 },
                 options: {
-                    indexAxis: 'y',
-                    // Elements options apply to all of the options unless overridden in a dataset
-                    // In this case, we are setting the border of each horizontal bar to be 2px wide
-                    elements: {
-                        bar: {
-                            borderWidth: 2,
-                        }
-                    },
                     responsive: true,
+                    indexAxis: 'y',
                     plugins: {
                         legend: {
-                            position: 'right',
+                            display: false,
                         },
                         title: {
-                            display: true,
-                            text: 'Daño infligido',
-                            family: "'OCR A Extended', monospace"
+                            display: false,
                         }
-                    }
-                }
+                    },
+                },
             })
     }
 
@@ -265,44 +260,41 @@ try {
 
         const values = Object.values(resultsCoinsByUser)
 
-        const username2 = values.map(e => e['username'])
-        const level_colors = values.map(e => random_color(0.8))
-        //const level_borders = values.map(e => 'rgba(0, 0, 0, 1.0)')
+        const username = values.map(e => e['username'])
+        const bordersColor = values.map(e => random_color(1))
+        const backgroundsColor = bordersColor.map(b => b.slice(0, -2) + '0.6)')
         const coinsTaken = values.map(e => e['coinstaken'])
 
         const ctx_coins = document.getElementById('apiChart4').getContext('2d');
         const coinsChart = new Chart(ctx_coins,
             {
-                type: 'line',
+                type: 'bar',
                 data: {
-                    labels: username2,
+                    labels: username,
                     datasets: [
                         {
-                            label: 'Usuarios con más monedas',
-                            backgroundColor: level_colors,
-                            pointRadius: 10,
-                            data: coinsTaken
+                            // label: 'Usuarios con más monedas',
+                            backgroundColor: backgroundsColor,
+                            borderColor: bordersColor,
+                            borderWidth: 2,
+                            data: coinsTaken,
                         }
                     ]
                 },
                 options: {
                     responsive: true,
+                    indexAxis: 'y',
                     plugins: {
-                        title: {
-                            display: true,
-                            text: 'Coins taken by users'
-                        },
                         legend: {
-                            labels: {
-                                // This more specific font property overrides the global property
-                                font: {
-                                    family: "'OCR A Extended', monospace"
-                                }
-                            }
+                            display: false,
+                        },
+                        title: {
+                            display: false,
                         }
                     },
-                }
+                },
             })
+
     }
 }
 catch (error) {
