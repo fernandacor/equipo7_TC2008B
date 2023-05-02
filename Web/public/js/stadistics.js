@@ -103,7 +103,7 @@ try {
         // In this case, we just separate the data into different arrays using the map method of the values array. This creates new arrays that hold only the data that we need.
         const level_names = values.map(e => e['username'])
         const level_colors = values.map(e => random_color())
-        const level_borders = values.map(e => 'rgba(0, 0, 0, 1)')
+        // const level_borders = values.map(e => 'rgba(0, 0, 0, 1)')
         const level_completion = values.map(e => e['COUNT(idPartida)'])
 
 
@@ -115,9 +115,9 @@ try {
                     labels: level_names,
                     datasets: [
                         {
-                            label: 'Cantidad de partidas',
+                            // label: 'Cantidad de partidas',
                             backgroundColor: level_colors,
-                            borderColor: level_borders,
+                            borderColor: 'black',
                             borderWidth: 2,
                             data: level_completion,
                         }
@@ -125,6 +125,11 @@ try {
                 },
                 options: {
                     indexAxis: 'y',
+                    plugins: {
+                        legend: {
+                            display: false,
+                        }
+                    }
                 }
             })
     }
