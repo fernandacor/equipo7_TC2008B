@@ -2,7 +2,7 @@
  * @param {number} alpha Indicated the transparency of the color
  * @returns {string} A string of the form 'rgba(240, 50, 123, 1.0)' that represents a color
  */
- function random_color(alpha = 1.0) {
+function random_color(alpha = 1.0) {
     const r_c = () => Math.round(Math.random() * 255);
     let r, g, b;
     do {
@@ -12,6 +12,9 @@
     } while (g > r * 0.8 && g > b * 0.8);
     return `rgba(${r}, ${g}, ${b}, ${alpha})`;
 }
+
+const PORT = 5235
+
 /*
 async function main()
 {
@@ -76,64 +79,70 @@ async function main() {
   
 main();*/
 
-try
-{
-    const levels_response = await fetch('http://127.0.0.1:5235/api/contpartidas',{
+try {
+    const levels_response = await fetch(`http://127.0.0.1:${PORT}/api/contpartidas`, {
         method: 'GET'
     })
 
     console.log('Got a response correctly')
+    Chart.defaults.color = '#fff';
+    Chart.defaults.font.size = 16;
+    Chart.defaults.font.family = "'Ubuntu', sans-serif";
+    Chart.defaults.borderColor = 'rgba(255, 255, 255, 0.3)';
 
-    if(levels_response.ok){
+    if (levels_response.ok) {
         console.log('Response is ok. Converting to JSON.')
 
         let results = await levels_response.json()
 
         console.log(results)
         console.log('Data converted correctly. Plotting chart.')
-            
+
         const values = Object.values(results)
 
         // In this case, we just separate the data into different arrays using the map method of the values array. This creates new arrays that hold only the data that we need.
         const level_names = values.map(e => e['username'])
-        const level_colors = values.map(e => random_color(0.8))
-        const level_borders = values.map(e => 'rgba(0, 0, 0, 1.0)')
+        const level_colors = values.map(e => random_color())
+        const level_borders = values.map(e => 'rgba(0, 0, 0, 1)')
         const level_completion = values.map(e => e['COUNT(idPartida)'])
 
-        
-        const ctx_levels2 = document.getElementById('apiChart2').getContext('2d');
-        const levelChart2 = new Chart(ctx_levels2, 
-        {
-            type: 'polarArea',
-            data: {
-                labels: level_names,
-                datasets: [
-                    {
-                        label: 'Usuarios con más partidas',
-                        backgroundColor: level_colors,
-                        borderColor: level_borders,
-                        borderWidth: 2,
-                        data: level_completion
-                    }
-                ]
-            }
-        })
+
+        const ctx_levels2 = document.getElementById('apiChart1').getContext('2d');
+        const levelChart2 = new Chart(ctx_levels2,
+            {
+                type: 'bar',
+                data: {
+                    labels: level_names,
+                    datasets: [
+                        {
+                            label: 'Cantidad de partidas',
+                            backgroundColor: level_colors,
+                            borderColor: level_borders,
+                            borderWidth: 2,
+                            data: level_completion,
+                        }
+                    ]
+                },
+                options: {
+                    indexAxis: 'y',
+                }
+            })
     }
 
-    const estadisticasEnemigosMatados = await fetch('http://127.0.0.1:5235/api/enemigos',{
+    const estadisticasEnemigosMatados = await fetch(`http://127.0.0.1:${PORT}/api/enemigos`, {
         method: 'GET'
     })
 
     console.log('Got a response correctly')
 
-    if(estadisticasEnemigosMatados.ok){
+    if (estadisticasEnemigosMatados.ok) {
         console.log('Response is ok. Converting to JSON.')
 
         let resultsEnemiesKilled = await estadisticasEnemigosMatados.json()
 
         console.log(resultsEnemiesKilled)
         console.log('Data converted correctly. Plotting chart.')
-            
+
         const values = Object.values(resultsEnemiesKilled)
 
         // In this case, we just separate the data into different arrays using the map method of the values array. This creates new arrays that hold only the data that we need.
@@ -142,33 +151,45 @@ try
         const level_borders = values.map(e => 'rgba(0, 0, 0, 1.0)')
         const EnemiesKilled = values.map(e => e['enemiesKilled'])
 
-        
-        const ctx_levels = document.getElementById('apiChart1').getContext('2d');
+
+        const ctx_levels = document.getElementById('apiChart2').getContext('2d');
         const EnemiesChart = new Chart(ctx_levels,
-        {
-            type: 'pie',
-            data: {
-                labels: username,
-                datasets: [
-                    {
-                        label: 'Usuarios con más enemigos matados',
-                        backgroundColor: level_colors,
-                        borderColor: level_borders,
-                        borderWidth: 2,
-                        data: EnemiesKilled
-                    }
-                ]
-            }
-        })
+            {
+                type: 'bar',
+                data: {
+                    labels: username,
+                    datasets: [
+                        {
+                            // label: 'Enemigos matados',
+                            backgroundColor: level_colors,
+                            borderColor: level_borders,
+                            borderWidth: 2,
+                            data: EnemiesKilled
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: "bottom",
+                        },
+                        title: {
+                            display: false,
+                        }
+                    },
+                },
+            })
     }
 
-    const damageDealtByUser = await fetch('http://127.0.0.1:5235/api/damage',{
+    const damageDealtByUser = await fetch(`http://127.0.0.1:${PORT}/api/damage`, {
         method: 'GET'
     })
 
     console.log('Got a response correctly')
 
-    if(damageDealtByUser.ok){
+    if (damageDealtByUser.ok) {
         console.log('Response is ok. Converting to JSON.')
 
         let resultsDamageByUser = await damageDealtByUser.json()
@@ -185,51 +206,51 @@ try
 
         const ctx_damage = document.getElementById('apiChart3').getContext('2d');
         const DamageChart = new Chart(ctx_damage,
-        {
-            type: 'bar',
-            data: {
-                labels: username,
-                datasets: [
-                    {
-                        label: 'Daño infligido',
-                        backgroundColor: level_colors,
-                        borderColor: level_borders,
-                        data: damageDealt,
-                        family: "'OCR A Extended', monospace"
-                    }
-                ]
-            },
-            options: {
-                indexAxis: 'y',
-                // Elements options apply to all of the options unless overridden in a dataset
-                // In this case, we are setting the border of each horizontal bar to be 2px wide
-                elements: {
-                  bar: {
-                    borderWidth: 2,
-                  }
+            {
+                type: 'bar',
+                data: {
+                    labels: username,
+                    datasets: [
+                        {
+                            label: 'Daño infligido',
+                            backgroundColor: level_colors,
+                            borderColor: level_borders,
+                            data: damageDealt,
+                            family: "'OCR A Extended', monospace"
+                        }
+                    ]
                 },
-                responsive: true,
-                plugins: {
-                  legend: {
-                    position: 'right',
-                  },
-                  title: {
-                    display: true,
-                    text: 'Daño infligido',
-                    family: "'OCR A Extended', monospace"
-                  }
+                options: {
+                    indexAxis: 'y',
+                    // Elements options apply to all of the options unless overridden in a dataset
+                    // In this case, we are setting the border of each horizontal bar to be 2px wide
+                    elements: {
+                        bar: {
+                            borderWidth: 2,
+                        }
+                    },
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                        },
+                        title: {
+                            display: true,
+                            text: 'Daño infligido',
+                            family: "'OCR A Extended', monospace"
+                        }
+                    }
                 }
-            }
-        })
+            })
     }
 
-    const coinsByUser = await fetch('http://127.0.0.1:5235/api/coins',{
+    const coinsByUser = await fetch(`http://127.0.0.1:${PORT}/api/coins`, {
         method: 'GET'
     })
 
     console.log('Got a response correctly')
 
-    if(coinsByUser.ok){
+    if (coinsByUser.ok) {
         console.log('Response is ok. Converting to JSON.')
 
         let resultsCoinsByUser = await coinsByUser.json()
@@ -246,40 +267,39 @@ try
 
         const ctx_coins = document.getElementById('apiChart4').getContext('2d');
         const coinsChart = new Chart(ctx_coins,
-        {
-            type: 'line',
-            data: {
-                labels: username2,
-                datasets: [
-                    {
-                        label: 'Usuarios con más monedas',
-                        backgroundColor: level_colors,
-                        pointRadius: 10,
-                        data: coinsTaken
-                    }
-                ]
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                  title: {
-                    display: true,
-                    text: 'Coins taken by users'
-                  },
-                  legend: {
-                    labels: {
-                        // This more specific font property overrides the global property
-                        font: {
-                            family: "'OCR A Extended', monospace"
+            {
+                type: 'line',
+                data: {
+                    labels: username2,
+                    datasets: [
+                        {
+                            label: 'Usuarios con más monedas',
+                            backgroundColor: level_colors,
+                            pointRadius: 10,
+                            data: coinsTaken
                         }
-                    }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Coins taken by users'
+                        },
+                        legend: {
+                            labels: {
+                                // This more specific font property overrides the global property
+                                font: {
+                                    family: "'OCR A Extended', monospace"
+                                }
+                            }
+                        }
+                    },
                 }
-                },  
-            } 
-        })
+            })
     }
 }
-catch(error)
-{
+catch (error) {
     console.log(error)
 }

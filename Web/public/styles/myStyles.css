@@ -39,9 +39,10 @@ body {
 }
 
 #background-container {
-    background-color: #000000;
-    opacity: 0.75;
+    /* background-color: #000000;
+    opacity: 0.1; */
     border-radius: 32px;
+    /* border: 1px black solid; */
 
     position: absolute;
     top: 2.5vh;
@@ -50,7 +51,7 @@ body {
     height: 95svh;
     width: 95%;
 
-    /* box-shadow: 0 0 4px 5px #181027; */
+    box-shadow: 0 0 4px 5px #000000;
 }
 
 .main-container {
@@ -128,10 +129,13 @@ main {
     flex-grow: 1;
     max-width: 40%;
     max-height: 600px;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     margin: 20px;
-    background-color: var(--background-1);
-    background: linear-gradient(hsla(270, 60%, 85%, 0.8), hsla(270, 60%, 85%, 0.2)), url("imagen-de-fondo.jpg");
+    /* background-color: rgba(85, 21, 181, 1); */
+    background-color: rgba(170, 21, 181, 0.8);
+    border-radius: 24px;
+    padding: 1rem;
+    /* background: linear-gradient(hsla(270, 60%, 85%, 0.8), hsla(270, 60%, 85%, 0.2)), url("imagen-de-fondo.jpg"); */
 }
 
 
