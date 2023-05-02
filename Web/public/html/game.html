@@ -28,31 +28,26 @@
 
 <body>
 
-    <img src="../assets/img/titleBackground.gif" alt="" id="background-image">
-    <div id="background-container"></div>
+    <img src="../assets/img/background.gif" alt="" id="background-image">
+    <nav></nav>
 
-    <div class="main-container">
-        <nav></nav>
-
-        <main class="d-flex align-items-center justify-content-center">
-            <div id="unity-container" class="unity-desktop">
-                <div class="space"></div>
-                <canvas id="unity-canvas" width=960 height=600></canvas>
-                <div id="unity-loading-bar">
-                    <div id="unity-logo"></div>
-                    <div id="unity-progress-bar-empty">
-                        <div id="unity-progress-bar-full"></div>
-                    </div>
-                </div>
-                <div id="unity-warning"> </div>
-                <div id="unity-footer">
-                    <div id="unity-webgl-logo"></div>
-                    <div id="unity-fullscreen-button"></div>
-                    <div id="unity-build-title">DimensionalOdyssey</div>
+    <main class="d-flex align-items-center justify-content-center bg-black bg-opacity-75 rounded-5 mx-5">
+        <div id="unity-container" class="unity-desktop">
+            <canvas id="unity-canvas" width=960 height=600></canvas>
+            <div id="unity-loading-bar">
+                <div id="unity-logo"></div>
+                <div id="unity-progress-bar-empty">
+                    <div id="unity-progress-bar-full"></div>
                 </div>
             </div>
-        </main>
-    </div>
+            <div id="unity-warning"> </div>
+            <div id="unity-footer">
+                <!-- <div id="unity-webgl-logo"></div> -->
+                <div id="unity-fullscreen-button"></div>
+                <!-- <div id="unity-build-title">DimensionalOdyssey</div> -->
+            </div>
+        </div>
+    </main>
 
     <script>
         var container = document.querySelector("#unity-container");

@@ -45,7 +45,7 @@ public class CharacterStats : MonoBehaviour
             maxMana = 30; //energia maxima
             maxExperience = 30; //cuanta experiencia necesitas para subir de nivel
             resistencia = 0; //resistencia a daño 
-            velocidadDisparo = 3; //que tan rapido disparas (creo?)
+            velocidadDisparo = 0.5f; //que tan rapido disparas (creo?)
             velocidadMovimiento = 30; //que tan rapido caminas
             recoverEnergy = 3; //cuanta energia recuperas por segundo
             dañoInfligido = 2; //cuanto daño haces
