@@ -23,12 +23,12 @@ public class GameManager : MonoBehaviour
     {
         if (instance == null)
         {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
+            instance = this;//se crea la instancia
+            DontDestroyOnLoad(gameObject);//no se destruye el objeto
         }
         else
         {
-            Destroy(gameObject);
+            Destroy(gameObject);//se destruye el objeto
         }
     }
 
@@ -68,12 +68,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void SetGameState(GameState newState)
+    public void SetGameState(GameState newState)//funcion para cambiar el estado del juego
     {
-        gameState = newState;
+        gameState = newState;//se cambia el estado del juego
 
-        if (newState == GameState.Paused || newState == GameState.OpeningChest || 
-        newState == GameState.BuyingFromShop || newState == GameState.AbrirInventario)
+        if (newState == GameState.Paused || newState == GameState.OpeningChest || //si el estado es pausado, abriendo cofre o comprando en la tienda
+        newState == GameState.BuyingFromShop || newState == GameState.AbrirInventario)//se pausa el juego
         {
             Time.timeScale = 0f;
         }
