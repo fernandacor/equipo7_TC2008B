@@ -36,9 +36,9 @@ private void update()
     isInChaseRange = Physics2D.OverlapCircle(transform.position, checkRadius, WhatIsPlayer);
     isInAttackRange = Physics2D.OverlapCircle(transform.position, attackRadius, WhatIsPlayer);
 
-    dir = taget.position - transform.position;
+    dir = target.position - transform.position;
     float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-    dir.Nomalize();
+    dir.Normalize();
     movement = dir;
     if(shouldRotate)
     {
