@@ -400,9 +400,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 1973787877}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8f4a69f377254afc9afe628751c08a6, type: 3}
+  m_Script: {fileID: 11500000, guid: ca78081c75f35634bb5f2aa019c7de1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  url: http://127.0.0.1:5235
+  getUsersEP: /api/usuarios
+  errorText: {fileID: 0}
+  usernameInput: {fileID: 0}
+  passwordInput: {fileID: 0}
+  emailInput: {fileID: 0}
+  nameInput: {fileID: 0}
+  lastNameInput: {fileID: 0}
+  addButton: {fileID: 0}
+  getUsersButton: {fileID: 0}
 --- !u!1001 &3593391526457122826
 PrefabInstance:
   m_ObjectHideFlags: 0

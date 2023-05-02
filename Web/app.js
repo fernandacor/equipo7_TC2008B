@@ -15,6 +15,8 @@ app.use(compression())
 app.use(express.json())
 app.use(express.static('./public'))
 
+let active_session = null;
+
 
 async function connectToDB() {
     return await mysql.createConnection({
@@ -30,6 +32,14 @@ app.use(session({
     resave: false, // Evita que se vuelva a guardar la sesión si no ha sido modificada
     saveUninitialized: false, // Evita que se cree una sesión para las solicitudes que no la tienen
   }));
+
+app.use((req, res, next) => {
+    const { username } = req.session;
+    if (username) {
+      res.setHeader('Set-Cookie', `username=${username}; Path=/`);
+    }
+    next();
+});
 
 app.get('/', (request, response) => {
     fs.readFile('./public/html/index.html', 'utf8', (err, html) => {
@@ -66,7 +76,6 @@ app.get('/api/usuario', async (request, response) => {
 app.post('/api/login', async (req, res) => {
     const { username, password } = req.body;
     let connection = null
-
     try {
         connection = await connectToDB()
         const [rows] = await connection.execute('select * from usuario where username = ?', [username]);
@@ -84,11 +93,11 @@ app.post('/api/login', async (req, res) => {
         // La contraseña es incorrecta
         return res.status(401).json({ message: 'La contraseña es incorrecta' });
         }
-        
-        req.session.username = user.username; // Guarda el nombre de usuario en la sesión
+        active_session = user.username;
+        req.session.username = active_session; // Guarda el nombre de usuario en la sesión
 
         // Si las credenciales son válidas, crear una cookie y establecer su valor como el nombre de usuario
-        res.cookie('username', user.username, { path: '/' });
+        res.setHeader('Set-Cookie', `username=${user.username}; Path=/`);
         console.log("Cookie establecida:", user.username);
 
         return res.status(200).json({ message: 'Inicio de sesión exitoso', redirect: '/html/index.html' });
@@ -282,34 +291,10 @@ app.get('/api/personajes', async (request, response) => {
         }
     }
 })
-/*
-app.get('/api/partida', async (request, response) => {
-    let connection = null
-
-    try {
-        connection = await connectToDB()
-        const [results, fields] = await connection.execute('select * from partida')
-
-        console.log("QWERTY")
-        console.log(results)
-        response.json(results)
-    }
-    catch (error) {
-        response.status(500)
-        response.json(error)
-        console.log(error)
-    }
-    finally {
-        if (connection !== null) {
-            connection.end()
-            console.log("Connection closed succesfully!")
-        }
-    }
-})*/
 
 app.get('/api/partida', async (request, response) => {
     let connection = null;
-    const username = request.session.username;
+    const username = active_session;
   
     try {
       connection = await connectToDB();
@@ -331,6 +316,60 @@ app.get('/api/partida', async (request, response) => {
     }
   });
 
+  app.post('/api/partida', async (request, response) => {
+
+    let connection = null;
+    const username = active_session;
+
+    try {
+        connection = await connectToDB()
+
+        const [results, fields] = await connection.query('insert into partida (username, fecha) values (?, NOW())', [username])
+
+        response.json({ 'message': "Data inserted correctly." })
+    }
+    catch (error) {
+        response.status(500)
+        response.json(error)
+        console.log(error)
+    }
+    finally {
+        if (connection !== null) {
+            connection.end()
+            console.log("Connection closed succesfully!")
+        }
+    }
+})
+
+app.post('/api/addEstadisticas', async (request, response) => {
+
+    let connection = null;
+    const username = active_session;
+
+    try {
+        connection = await connectToDB()
+        let [rows, fields] = await connection.query('select max(idPartida) as max_idPartida FROM partida');
+        let max_idPartida = rows[0].max_idPartida;
+        //const [results, fields2] = await connection.query('insert into personajes (energia, xp, idArma, idPartida, velocidadMov, velocidadDis, vida, resistencia, recuperacionEn, enemiesKilled, damageDealt, coinsTaken) values (?, ?, 1, ?, ?, ?, ?, ?, ?, ?, ?, ?)', request.body['energia'], request.body['xp'], max_idPartida, request.body['velocidadMov'], request.body['velocidadDis'], request.body['vida'], request.body['resistencia'], request.body['recuperacionEn'], request.body['enemiesKilled'], request.body['damageDealt'], request.body['coinsTaken'])
+        const results = await connection.query('insert into personajes (idPartida, idArma, energia, xp, velocidadMov, velocidadDis, vida, resistencia, recuperacionEn, enemiesKilled, damageDealt, coinsTaken) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [[max_idPartida], request.body.idArma, request.body.energia, request.body.xp, request.body.velocidadMov, request.body.velocidadDis, request.body.vida, request.body.resistencia, request.body.recuperacionEn, request.body.enemiesKilled, request.body.damageDealt, request.body.coinsTaken]);
+
+        console.log(max_idPartida)
+        response.json({ 'message': "Data inserted correctly." })
+    }
+    catch (error) {
+        response.status(500)
+        response.json(error)
+        console.log(error)
+    }
+    finally {
+        if (connection !== null) {
+            connection.end()
+            console.log("Connection closed succesfully!")
+        }
+    }
+})
+
+  /*
 app.post('/api/partida', async (request, response) => {
 
     let connection = null
@@ -353,9 +392,7 @@ app.post('/api/partida', async (request, response) => {
             console.log("Connection closed succesfully!")
         }
     }
-})
-
-/*
+}) 
 app.put('/api/usuario', async (request, response)=>{
 
     let connection = null
