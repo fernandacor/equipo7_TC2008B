@@ -1,11 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 using UnityEngine.UI;
 using UnityEngine.Networking;
 using System;
-using System.Text;
+using TMPro;
 
 
 [System.Serializable]
@@ -52,7 +51,7 @@ public class SaveSlot : MonoBehaviour
         saveSlotButton = this.GetComponent<Button>();
         StartCoroutine(UpdateLastPlayedDate());
     }
-
+/*
     public void SetData(GameData data) 
     {
         // there's no data for this profileId
@@ -72,37 +71,6 @@ public class SaveSlot : MonoBehaviour
         }
     }
 
-    private IEnumerator GetUsernameFromSession()
-    {
-        // Crear la solicitud GET para el punto final de sesión
-        UnityWebRequest request = UnityWebRequest.Get("http://127.0.0.1:5235/api/session");
-
-        // Agregar la cookie a la solicitud
-        request.SetRequestHeader("Cookie", receivedCookie);
-
-        // Enviar la solicitud y esperar la respuesta
-        yield return request.SendWebRequest();
-
-        // Comprobar si la solicitud fue exitosa
-        if (request.result != UnityWebRequest.Result.Success)
-        {
-            Debug.LogError(request.error);
-            yield break;
-        }
-
-        // Analizar la respuesta JSON y extraer el nombre de usuario
-        string jsonResponse = request.downloadHandler.text;
-        SessionAPIResponse sessionAPIResponse = JsonUtility.FromJson<SessionAPIResponse>(jsonResponse);
-        string username = sessionAPIResponse.username;
-
-        // Utilizar el nombre de usuario como sea necesario
-        Debug.Log("Nombre de usuario: " + username);
-
-        // Asignar el valor de la cookie recibida a receivedCookie
-        string cookie = request.GetResponseHeader("Set-Cookie");
-        receivedCookie = cookie.Substring(0, cookie.IndexOf(";"));
-
-    }
 
     private IEnumerator UpdateLastPlayedDate()
     {
@@ -114,12 +82,21 @@ public class SaveSlot : MonoBehaviour
             if (www.result == UnityWebRequest.Result.Success)
             {
                 Debug.Log("Response: " + www.downloadHandler.text);
-                string jsonResult = www.downloadHandler.text;
-                PartidaAPIList partidaAPIList = JsonUtility.FromJson<PartidaAPIList>(jsonResult);
+                string jsonString = "{\"partidas\":" + www.downloadHandler.text + "}";
+                Debug.Log(jsonString);
+                partidaAPIList = JsonUtility.FromJson<PartidaAPIList>(jsonString);
 
                 if (partidaAPIList.partidas.Count > 0)
                 {
-                    DateTime lastPlayedDateTime = DateTime.Parse(partidaAPIList.partidas[partidaAPIList.partidas.Count - 1].fecha);
+                    DateTime lastPlayedDateTime = DateTime.MinValue;
+                    foreach (PartidaAPI partida in partidaAPIList.partidas)
+                    {
+                        DateTime partidaDateTime = DateTime.Parse(partida.fecha);
+                        if (partidaDateTime > lastPlayedDateTime)
+                        {
+                            lastPlayedDateTime = partidaDateTime;
+                        }
+                    }
                     lastPlayedDate = "Last Played: " + lastPlayedDateTime.ToString("yyyy/MM/dd");
                 }
                 else
@@ -135,13 +112,82 @@ public class SaveSlot : MonoBehaviour
             // Actualizar los textos de los objetos una vez que se han obtenido los datos
             UpdateTexts();
         }
-    }
+    }*/
+
+
 
 
     private void UpdateTexts()
     {
         percentageCompleteText.text = lastPlayedDate;
         deathCountText.text = "";
+    }
+
+    private IEnumerator UpdateLastPlayedDate()
+    {
+        for (int i = 1; i <= 4; i++)
+        {
+            using (UnityWebRequest www = UnityWebRequest.Get(url + EP + "/" + i))
+            {
+                www.SetRequestHeader("Cookie", receivedCookie);
+                yield return www.SendWebRequest();
+
+                if (www.result == UnityWebRequest.Result.Success)
+                {
+                    Debug.Log("Response: " + www.downloadHandler.text);
+                    string jsonString = "{\"partidas\":" + www.downloadHandler.text + "}";
+                    Debug.Log(jsonString);
+                    partidaAPIList = JsonUtility.FromJson<PartidaAPIList>(jsonString);
+
+                    if (partidaAPIList.partidas.Count > 0)
+                    {
+                        DateTime lastPlayedDateTime = DateTime.MinValue;
+                        foreach (PartidaAPI partida in partidaAPIList.partidas)
+                        {
+                            DateTime partidaDateTime = DateTime.Parse(partida.fecha);
+                            if (partidaDateTime > lastPlayedDateTime)
+                            {
+                                lastPlayedDateTime = partidaDateTime;
+                            }
+                        }
+                        // Agregar la fecha de la última partida a la lista lastPlayedDate
+                        lastPlayedDate.Add(lastPlayedDateTime.ToString("yyyy/MM/dd"));
+                    }
+                    else
+                    {
+                        // Agregar "Empty" a la lista lastPlayedDate si no hay partidas
+                        lastPlayedDate.Add("Empty");
+                    }
+                }
+                else
+                {
+                    Debug.LogError(www.error);
+                    // Agregar "Error" a la lista lastPlayedDate si hay un error en la solicitud
+                    lastPlayedDate.Add("Error");
+                }
+            }
+        }
+        
+        // Actualizar los textos de los objetos una vez que se han obtenido los datos
+        UpdateTexts();
+    }
+
+    public void SetData(GameData data) 
+    {
+        if (lastPlayedDate.Count == 0 || lastPlayedDate.All(s => s == "Empty"))
+        {
+            noDataContent.SetActive(true);
+            hasDataContent.SetActive(false);
+            percentageCompleteText.text = "Empty";
+            deathCountText.text = "";
+        }
+        else
+        {
+            noDataContent.SetActive(false);
+            hasDataContent.SetActive(true);
+            percentageCompleteText.text = "Last Played: " + lastPlayedDate.Last();
+            deathCountText.text = "";
+        }
     }
 
     public string GetProfileId() 
