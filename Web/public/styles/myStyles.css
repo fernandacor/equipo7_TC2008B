@@ -78,6 +78,9 @@ main {
 
 .container-fluid {
     padding: 5vh 2.5%;
+}
+
+.row {
     margin: 0;
     margin-bottom: 5vh;
 }
