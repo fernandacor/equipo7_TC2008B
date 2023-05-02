@@ -348,10 +348,12 @@ app.post('/api/addEstadisticas', async (request, response) => {
 
     try {
         connection = await connectToDB()
+        let [rows, fields] = await connection.query('select max(idPartida) as max_idPartida FROM partida');
+        let max_idPartida = rows[0].max_idPartida;
+        //const [results, fields2] = await connection.query('insert into personajes (energia, xp, idArma, idPartida, velocidadMov, velocidadDis, vida, resistencia, recuperacionEn, enemiesKilled, damageDealt, coinsTaken) values (?, ?, 1, ?, ?, ?, ?, ?, ?, ?, ?, ?)', request.body['energia'], request.body['xp'], max_idPartida, request.body['velocidadMov'], request.body['velocidadDis'], request.body['vida'], request.body['resistencia'], request.body['recuperacionEn'], request.body['enemiesKilled'], request.body['damageDealt'], request.body['coinsTaken'])
+        const results = await connection.query('insert into personajes (idPartida, idArma, energia, xp, velocidadMov, velocidadDis, vida, resistencia, recuperacionEn, enemiesKilled, damageDealt, coinsTaken) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [[max_idPartida], request.body.idArma, request.body.energia, request.body.xp, request.body.velocidadMov, request.body.velocidadDis, request.body.vida, request.body.resistencia, request.body.recuperacionEn, request.body.enemiesKilled, request.body.damageDealt, request.body.coinsTaken]);
 
-        const [results, fields] = await connection.query('insert into personaje (energia, xp, idArma, idPartida, velocidadMov, velocidadDis, vida, resistencia, recuperacionEn, enemiesKilled, damageDealt, coinsTaken) values (?, ?, null, LAST_INSERT_ID(), ?, ?, ?, ?, ?, ?, ?, ?)', 
-        request.body['energia'], request.body['xp'], request.body['velocidadMov'], request.body['velocidadDis'], request.body['vida'], request.body['resistencia'], request.body['recuperacionEn'], request.body['enemiesKilled'], request.body['damageDealt'], request.body['coinsTaken'])
-
+        console.log(max_idPartida)
         response.json({ 'message': "Data inserted correctly." })
     }
     catch (error) {

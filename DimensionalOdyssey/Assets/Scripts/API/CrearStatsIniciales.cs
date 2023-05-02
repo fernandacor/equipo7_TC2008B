@@ -7,6 +7,7 @@ using TMPro;
 
 public class StatsIniciales
 {
+    public int idArma;
     public float energia;
     public float xp;
     public float velocidadMov;
@@ -51,19 +52,22 @@ public class CrearStatsIniciales : MonoBehaviour
     {
         StatsIniciales newStatsIniciales = new StatsIniciales();
         // aqui falta agregar los valores de las stats iniciales.
-        newStatsIniciales.energia = characterStats.maxMana;
-        newStatsIniciales.xp = characterStats.currentExperience;
-        newStatsIniciales.velocidadMov = characterStats.velocidadMovimiento;
-        newStatsIniciales.velocidadDis = characterStats.velocidadDisparo;
-        newStatsIniciales.vida = characterStats.currentHealth;
-        newStatsIniciales.resistencia = characterStats.resistencia;
-        newStatsIniciales.recuperacionEn = characterStats.recoverEnergy;
-        newStatsIniciales.enemiesKilled = characterStats.enemigosMatados;
-        newStatsIniciales.damageDealt = characterStats.dañoInfligidoContador;
-        newStatsIniciales.coinsTaken = characterStats.monedasTiene;
+        newStatsIniciales.idArma = 1;
+        newStatsIniciales.energia = 30;
+        newStatsIniciales.xp = 0;
+        newStatsIniciales.velocidadMov = 30;
+        newStatsIniciales.velocidadDis = 3;
+        newStatsIniciales.vida = 30;
+        newStatsIniciales.resistencia = 0;
+        newStatsIniciales.recuperacionEn = 3;
+        newStatsIniciales.enemiesKilled = 0;
+        newStatsIniciales.damageDealt = 0;
+        newStatsIniciales.coinsTaken = 0;
         string jsonData = JsonUtility.ToJson(newStatsIniciales);
+        Debug.Log(jsonData);
         StartCoroutine(AddStats(jsonData));
     }
+
 
     IEnumerator AddStats(string jsonData)
     {
