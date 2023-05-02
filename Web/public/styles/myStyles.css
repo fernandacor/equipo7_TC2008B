@@ -71,11 +71,18 @@ main {
     padding: 1rem;
 }
 
-.container-fluid {
-    padding: 1vh 2.5%;
+.title-background {
+    height: 80svh;
+    height: 80vh;
 }
 
-.bg-2 {
+.container-fluid {
+    padding: 5vh 2.5%;
+    margin: 0;
+    margin-bottom: 5vh;
+}
+
+.bg-nav {
     background-color: rgba(85, 21, 181, 0.75);
 }
 
@@ -86,11 +93,9 @@ main {
     margin: 0;
 }
 
-#info {
-    height: 90%;
-    margin: 0;
+.card-img {
+    height: 40vh;
 }
-
 
 .bg-main {
     background-color: var(--background-1);
@@ -102,47 +107,10 @@ main {
     font-weight: bold;
 }
 
-/* 
-.nav-row,
-.row {
-    margin: 0;
-} */
-
-/* .row {
-    margin-top: 5%;
-    margin-bottom: 5%;
-} */
-
 .card {
     background-color: transparent;
     border: 0px;
 }
-
-
-.space {
-    height: 80px;
-}
-
-.chart-container {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-}
-
-/* .chart-container canvas {
-    flex-grow: 1;
-    max-width: 48%;
-    max-height: 70vh;
-    margin: 2vh 1%; */
-/* border: 1px solid black; */
-/* background-color: rgba(85, 21, 181, 1); */
-/* background-color: rgba(170, 21, 181, 0.8); */
-/* border-radius: 24px;
-    padding: 1rem; */
-/* background: linear-gradient(hsla(270, 60%, 85%, 0.8), hsla(270, 60%, 85%, 0.2)), url("imagen-de-fondo.jpg"); */
-/* } */
-
-
 
 #login-error {
     display: block;
