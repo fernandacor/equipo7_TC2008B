@@ -10,9 +10,12 @@ public class CrearPartida : MonoBehaviour
     [SerializeField] Button addButton;
     public string url = "http://127.0.0.1:5235";
     public string EP = "/api/partida";
+
+    [SerializeField] private CrearStatsIniciales crearStatsIniciales;
     // Start is called before the first frame update
     void Start()
     {
+        crearStatsIniciales = FindObjectOfType<CrearStatsIniciales>();
         addButton.onClick.AddListener(InsertNewPartida);
     }
 
@@ -34,6 +37,7 @@ public class CrearPartida : MonoBehaviour
                 Debug.Log("Response: " + www.downloadHandler.text);
                 Debug.Log("Se ha creado la partida de manera exitosa.");
                 //if (errorText != null) errorText.text = "Se ha creado la partida exitosamente";
+                crearStatsIniciales.InsertStatsIniciales();
             } else {
                 Debug.Log("Error: " + www.error);
                 //if (errorText != null) errorText.text = "Error: " + www.error;
