@@ -37,12 +37,12 @@
 
         <!-- TÍTULO -->
         <section
-            class="title-background d-flex align-items-center justify-content-center bg-black bg-opacity-75 rounded-5 container-fluid row">
+            class="title-background d-flex align-items-center justify-content-center bg-black bg-opacity-75 rounded-5 container-fluid row m-0 mb-5">
             <img id="logo" src="../assets/img/logo.png" alt="Logo">
         </section>
 
         <!-- HISTORIA -->
-        <section class="container-fluid row bg-black bg-opacity-75 rounded-5">
+        <section class="container-fluid row bg-black bg-opacity-75 rounded-5 m-0 mb-5">
 
             <div class="col">
                 <h1 class="h text-center mb-5">Descubre qué te ocurrió</h1>
@@ -57,8 +57,8 @@
         </section>
 
         <!-- PROMOCIÓN -->
-        <section class="container-fluid bg-black bg-opacity-75 rounded-5">
-            <div class="row">
+        <section class="container-fluid bg-black bg-opacity-75 rounded-5 m-0 mb-5">
+            <div class="row m-0 mb-3">
                 <h1 class="h text-center">¿Estás listo para esta aventura entre dimensiones?</h1>
             </div>
 
@@ -106,14 +106,17 @@
             </div>
         </section>
 
-        <section class="container-fluid bg-black bg-opacity-75 rounded-5">
-            <div class="row">
+        <!-- COMO JUGAR -->
+        <section class="container-fluid bg-black bg-opacity-75 rounded-5 m-0">
+            <div class="row m-0 mb-3">
                 <h1 class="h text-center">¿Cómo jugar?</h1>
             </div>
-            <div class="row">
+            <div class="row m-0 mb-3">
                 <div class="col">
                     <div class="card text-light">
-                        <img src="../assets/img/wasd.png" class="card-img-top rounded-5 card-img" alt="...">
+                        <div class="pb-2 card-img-top d-flex justify-content-center align-items-center">
+                            <img src="../assets/img/wasd.png" class="card-img-sm" alt="...">
+                        </div>
                         <div class="card-body">
                             <h5 class="card-title h">Movimiento</h5>
                             <p class="card-text">
@@ -125,7 +128,9 @@
 
                 <div class="col">
                     <div class="card text-light">
-                        <img src="../assets/img/leftClick.png" class="card-img-top rounded-5 card-img" alt="...">
+                        <div class="pb-2 card-img-top d-flex justify-content-center align-items-center">
+                            <img src="../assets/img/leftClick.png" class="card-img-sm" alt="...">
+                        </div>
                         <div class="card-body">
                             <h5 class="card-title h">Disparo básico</h5>
                             <p class="card-text">
@@ -137,26 +142,58 @@
 
                 <div class="col">
                     <div class="card text-light">
-                        <img src="../assets/img/rightClick.png" class="card-img-top rounded-5 card-img" alt="...">
+                        <div class="pb-2 card-img-top d-flex justify-content-center align-items-center">
+                            <img src="../assets/img/rightClick.png" class="card-img-sm" alt="...">
+                        </div>
                         <div class="card-body">
                             <h5 class="card-title h">Disparo especial</h5>
                             <p class="card-text">
                                 Haz el disparo especial dejando presionado el click derecho. Vas a usar los
-                                modificadores de tu
-                                arma, pero vas a gastar energía.
+                                modificadores de tu arma, pero vas a gastar energía.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card text-light">
+                        <div class="pb-2 card-img-top d-flex justify-content-center align-items-center">
+                            <img src="../assets/img/spaceKey.png" class="card-img-sm" alt="...">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title h">Hablar con NPCs</h5>
+                            <p class="card-text">
+                                Usa la barra espaciadora para hablar con los NPCs cuando aparezca un signo de
+                                exclamación
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row m-0">
+                <div class="col-3"></div>
+                <div class="col-3">
+                    <div class="card text-light">
+                        <div class="pb-2 card-img-top d-flex justify-content-center align-items-center">
+                            <img src="../assets/img/eKey.png" class="card-img-sm" alt="...">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title h">Interactuar con objetos</h5>
+                            <p class="card-text">
+                                Para abrir cofres y recoger objetos presiona la tecla E
                             </p>
                         </div>
                     </div>
                 </div>
 
-                <div class="col">
+                <div class="col-3">
                     <div class="card text-light">
-                        <img src="../assets/img/chooseWeapon.png" class="card-img-top rounded-5 card-img" alt="...">
+                        <div class="pb-2 card-img-top d-flex justify-content-center align-items-center">
+                            <img src="../assets/img/qKey.png" class="card-img-sm" alt="...">
+                        </div>
                         <div class="card-body">
-                            <h5 class="card-title h">Elige tu arma favorita</h5>
+                            <h5 class="card-title h">Abrir el inventario</h5>
                             <p class="card-text">
-                                Descubre las diferentes opciones de armas y elige la que más vaya contigo y tu estilo.
-                                Mejora tus armas y crea una experiencia única.
+                                Presiona la tecla Q para abrir tu inventario
                             </p>
                         </div>
                     </div>

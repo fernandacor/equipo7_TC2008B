@@ -68,7 +68,7 @@ main {
     height: 84vh;
     overflow-y: scroll;
     margin: 2.5vh 2.5%;
-    padding: 1rem;
+    padding: 0 1rem;
 }
 
 .title-background {
@@ -78,13 +78,13 @@ main {
 
 .container-fluid {
     padding: 5vh 2.5%;
-    margin-bottom: 5vh;
+    /* margin-bottom: 5vh; */
 }
 
-.row {
+/* .row {
     margin: 0;
     margin-bottom: 5vh;
-}
+} */
 
 .bg-nav {
     background-color: rgba(85, 21, 181, 0.75);
@@ -99,6 +99,10 @@ main {
 
 .card-img {
     height: 40vh;
+}
+
+.card-img-sm {
+    height: 20vh;
 }
 
 .bg-main {
