@@ -45,8 +45,8 @@ public class CharacterStats : MonoBehaviour
             maxMana = 30; //energia maxima
             maxExperience = 30; //cuanta experiencia necesitas para subir de nivel
             resistencia = 0; //resistencia a daño 
-            velocidadDisparo = 3; //que tan rapido disparas (creo?)
-            velocidadMovimiento = 7; //que tan rapido caminas
+            velocidadDisparo = 0.5f; //que tan rapido disparas (creo?)
+            velocidadMovimiento = 20; //que tan rapido caminas
             recoverEnergy = 3; //cuanta energia recuperas por segundo
             dañoInfligido = 2; //cuanto daño haces
         }
@@ -82,7 +82,7 @@ public class CharacterStats : MonoBehaviour
             maxHealth += 10;
             maxMana += 10;
             resistencia += 2;
-            velocidadDisparo += 2;
+            velocidadDisparo += 0.2f;
             velocidadMovimiento += 2;
             maxExperience += 10;
             dañoInfligido += 2;
@@ -162,6 +162,12 @@ public class CharacterStats : MonoBehaviour
         {
             monedasTiene += 1;
             currentExperience += 1;
+        }
+
+        if(collision.CompareTag("XP"))
+        {
+            currentExperience += 10;
+            experienceBar.SetExp(currentExperience);
         }
     }
 
