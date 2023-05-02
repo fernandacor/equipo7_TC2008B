@@ -32,10 +32,10 @@ async function main()
     
         if (response.ok) {
             let results = await response.json();
-            console.log(results.message); // muestra el mensaje de inicio de sesión exitoso
+            // console.log(results.message); // muestra el mensaje de inicio de sesión exitoso
             window.location.href = '/html/index.html'; // redirige a la página index.html
           } else {
-            console.log(response.status);
+            // console.log(response.status);
           }
     };
 }
@@ -59,7 +59,7 @@ async function main() {
   
         if (response.ok) {
             let results = await response.json();
-            console.log(results);
+            // console.log(results);
     
             // Actualizar el enlace de "Hola" con el nombre de usuario y mostrarlo
             const userLink = document.getElementById('user-link');
@@ -71,7 +71,7 @@ async function main() {
     
             window.location.href = results.redirect;
         } else {
-          console.log(response.status);
+        //   console.log(response.status);
         }
       };
     }
@@ -84,19 +84,19 @@ try {
         method: 'GET'
     })
 
-    console.log('Got a response correctly')
+    // console.log('Got a response correctly')
     Chart.defaults.color = '#fff';
     Chart.defaults.font.size = 16;
     Chart.defaults.font.family = "'Ubuntu', sans-serif";
     Chart.defaults.borderColor = 'rgba(255, 255, 255, 0.3)';
 
     if (levels_response.ok) {
-        console.log('Response is ok. Converting to JSON.')
+        // console.log('Response is ok. Converting to JSON.')
 
         let results = await levels_response.json()
 
-        console.log(results)
-        console.log('Data converted correctly. Plotting chart.')
+        // console.log(results)
+        // console.log('Data converted correctly. Plotting chart.')
 
         const values = Object.values(results)
 
@@ -108,49 +108,60 @@ try {
 
 
         const ctx_levels2 = document.getElementById('apiChart1').getContext('2d');
-        const levelChart2 = new Chart(ctx_levels2,
-            {
-                type: 'bar',
-                data: {
-                    labels: username,
-                    datasets: [
-                        {
-                            // label: 'Cantidad de partidas',
-                            backgroundColor: backgroundsColor,
-                            borderColor: bordersColor,
-                            borderWidth: 2,
-                            data: level_completion,
-                        }
-                    ]
-                },
-                options: {
-                    responsive: true,
-                    indexAxis: 'y',
-                    plugins: {
-                        legend: {
-                            display: false,
-                        },
-                        title: {
-                            display: false,
-                        }
+        const levelChart2 = new Chart(ctx_levels2, {
+            type: 'bar',
+            data: {
+                labels: username,
+                datasets: [{
+                    // label: 'Cantidad de partidas',
+                    backgroundColor: backgroundsColor,
+                    borderColor: bordersColor,
+                    borderWidth: 2,
+                    data: level_completion,
+                }]
+            },
+            options: {
+                responsive: true,
+                indexAxis: 'y',
+                plugins: {
+                    legend: {
+                        display: false,
+                    },
+                    title: {
+                        display: false,
                     },
                 },
-            })
+                scales: {
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Usuarios'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Cantidad de partidas jugadas'
+                        }
+                    }
+                }
+            },
+        })
     }
 
     const estadisticasEnemigosMatados = await fetch(`http://127.0.0.1:${PORT}/api/enemigos`, {
         method: 'GET'
     })
 
-    console.log('Got a response correctly')
+    // console.log('Got a response correctly')
 
     if (estadisticasEnemigosMatados.ok) {
-        console.log('Response is ok. Converting to JSON.')
+        // console.log('Response is ok. Converting to JSON.')
 
         let resultsEnemiesKilled = await estadisticasEnemigosMatados.json()
 
-        console.log(resultsEnemiesKilled)
-        console.log('Data converted correctly. Plotting chart.')
+        // console.log(resultsEnemiesKilled)
+        // console.log('Data converted correctly. Plotting chart.')
 
         const values = Object.values(resultsEnemiesKilled)
 
@@ -188,6 +199,20 @@ try {
                             display: false,
                         }
                     },
+                    scales: {
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'Usuarios'
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Cantidad de enemigos derrotados'
+                            }
+                        }
+                    }
                 },
             })
     }
@@ -196,15 +221,15 @@ try {
         method: 'GET'
     })
 
-    console.log('Got a response correctly')
+    // console.log('Got a response correctly')
 
     if (damageDealtByUser.ok) {
-        console.log('Response is ok. Converting to JSON.')
+        // console.log('Response is ok. Converting to JSON.')
 
         let resultsDamageByUser = await damageDealtByUser.json()
 
-        console.log(resultsDamageByUser)
-        console.log('Data converted correctly. Plotting chart.')
+        // console.log(resultsDamageByUser)
+        // console.log('Data converted correctly. Plotting chart.')
 
         const values = Object.values(resultsDamageByUser)
 
@@ -219,15 +244,13 @@ try {
                 type: 'bar',
                 data: {
                     labels: username,
-                    datasets: [
-                        {
-                            // label: 'Daño infligido',
-                            backgroundColor: backgroundsColor,
-                            borderColor: bordersColor,
-                            borderWidth: 2,
-                            data: damageDealt,
-                        }
-                    ]
+                    datasets: [{
+                        // label: 'Daño infligido',
+                        backgroundColor: backgroundsColor,
+                        borderColor: bordersColor,
+                        borderWidth: 2,
+                        data: damageDealt,
+                    }]
                 },
                 options: {
                     responsive: true,
@@ -240,6 +263,20 @@ try {
                             display: false,
                         }
                     },
+                    scales: {
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'Usuarios'
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Cantidad de daño inflingido'
+                            }
+                        }
+                    }
                 },
             })
     }
@@ -248,15 +285,15 @@ try {
         method: 'GET'
     })
 
-    console.log('Got a response correctly')
+    // console.log('Got a response correctly')
 
     if (coinsByUser.ok) {
-        console.log('Response is ok. Converting to JSON.')
+        // console.log('Response is ok. Converting to JSON.')
 
         let resultsCoinsByUser = await coinsByUser.json()
 
-        console.log(resultsCoinsByUser)
-        console.log('Data converted correctly. Plotting chart.')
+        // console.log(resultsCoinsByUser)
+        // console.log('Data converted correctly. Plotting chart.')
 
         const values = Object.values(resultsCoinsByUser)
 
@@ -292,11 +329,25 @@ try {
                             display: false,
                         }
                     },
+                    scales: {
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'Usuarios'
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Cantidad de monedas recolectadas'
+                            }
+                        }
+                    }
                 },
             })
 
     }
 }
 catch (error) {
-    console.log(error)
+    // console.log(error)
 }
