@@ -23,11 +23,12 @@
 
 body {
     font-family: 'Ubuntu', sans-serif;
+    background-image: url(../assets/img/background.gif);
+    background-size: cover;
+    background-position: bottom center;
 }
 
 #background-image {
-    background-size: cover;
-    background-position: bottom center;
     /* filter: brightness(0.5); */
 
     position: absolute;
@@ -55,20 +56,19 @@ body {
 }
 
 .main-container {
-    position: relative;
     height: 100vh;
     height: 100svh;
     width: 100%;
 
-    margin: 0;
-    padding: 2.5vh 2.5%;
 }
 
 main {
-    height: 85%;
+    position: relative;
+    height: 84svh;
+    height: 84vh;
     overflow-y: scroll;
-    /* margin-top: 1%; */
-    padding: 0 2.5%;
+    margin: 2.5vh 2.5%;
+    padding: 1rem;
 }
 
 .container-fluid {
