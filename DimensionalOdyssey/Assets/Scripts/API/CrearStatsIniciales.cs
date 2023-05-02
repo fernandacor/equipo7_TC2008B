@@ -42,11 +42,12 @@ public class CrearStatsIniciales : MonoBehaviour
     public string url = "http://127.0.0.1:5235";
     public string EP = "/api/addEstadisticas";
     // Start is called before the first frame update
+    /*
     void Start()
     {
         characterStats = FindObjectOfType<CharacterStats>();
         addButton.onClick.AddListener(InsertStatsIniciales);
-    }
+    } */
 
     public void InsertStatsIniciales()
     {
