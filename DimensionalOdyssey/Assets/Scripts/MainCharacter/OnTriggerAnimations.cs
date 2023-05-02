@@ -11,6 +11,8 @@ public class OnTriggerAnimations : MonoBehaviour
 
     private GameManager gameManager;
 
+    [SerializeField] private AudioSource muerteSFX;
+
     void Start()
     {
         // Se buscan los elementos
@@ -55,6 +57,7 @@ public class OnTriggerAnimations : MonoBehaviour
         {
             animator.SetBool("Death", true);
             gameManager.SetGameState(GameState.Death);
+            muerteSFX.Play();
         }
         else{
             gameManager.SetGameState(GameState.Playing);

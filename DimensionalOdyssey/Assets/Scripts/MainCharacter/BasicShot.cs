@@ -22,6 +22,9 @@ public class BasicShot : MonoBehaviour
     private float entreDisparos = 0f;
     Vector2 lookingDirection;
 
+    //SFX variable
+    [SerializeField] private AudioSource shootSFX;
+
     void Awake()
     {
         canShoot = false;
@@ -74,6 +77,7 @@ public class BasicShot : MonoBehaviour
         Quaternion shotRotation = Quaternion.Euler(0f, 0f, gunAngle + 90f);
         GameObject bullet = Instantiate(bulletPrefab, transform.position, shotRotation);
         bullet.GetComponent<Rigidbody2D>().AddForce(lookingDirection.normalized * bulletSpeed, ForceMode2D.Impulse);
+        shootSFX.Play(); //SFX
     }
 
     void FixedUpdate()
