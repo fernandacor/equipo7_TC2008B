@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.Networking;
 using System;
 using TMPro;
+using System.Linq;
 
 
 [System.Serializable]
@@ -37,6 +38,7 @@ public class SaveSlot : MonoBehaviour
     [SerializeField] private TextMeshProUGUI deathCountText;
 
     private Button saveSlotButton;
+    //private List<string> lastPlayedDate = new List<string>();
     private string lastPlayedDate = "";
     private string receivedCookie = "";
 
@@ -51,7 +53,7 @@ public class SaveSlot : MonoBehaviour
         saveSlotButton = this.GetComponent<Button>();
         StartCoroutine(UpdateLastPlayedDate());
     }
-/*
+
     public void SetData(GameData data) 
     {
         // there's no data for this profileId
@@ -112,18 +114,18 @@ public class SaveSlot : MonoBehaviour
             // Actualizar los textos de los objetos una vez que se han obtenido los datos
             UpdateTexts();
         }
-    }*/
+    }
 
 
 
 
     private void UpdateTexts()
     {
-        percentageCompleteText.text = lastPlayedDate;
+        percentageCompleteText.text = string.Join(", ", lastPlayedDate);
         deathCountText.text = "";
     }
 
-    private IEnumerator UpdateLastPlayedDate()
+   /*private IEnumerator UpdateLastPlayedDate()
     {
         for (int i = 1; i <= 4; i++)
         {
@@ -188,7 +190,7 @@ public class SaveSlot : MonoBehaviour
             percentageCompleteText.text = "Last Played: " + lastPlayedDate.Last();
             deathCountText.text = "";
         }
-    }
+    }*/
 
     public string GetProfileId() 
     {
