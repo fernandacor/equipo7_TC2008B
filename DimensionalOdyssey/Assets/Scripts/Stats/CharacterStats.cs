@@ -23,7 +23,7 @@ public class CharacterStats : MonoBehaviour
     //public MovimientoPersonaje movimientoPersonaje;
     public float velocidadMovimiento;
 
-    public float resistencia; 
+    public float resistencia;
     public float velocidadDisparo;
     public float dañoInfligido;
 
@@ -46,7 +46,7 @@ public class CharacterStats : MonoBehaviour
             maxExperience = 30; //cuanta experiencia necesitas para subir de nivel
             resistencia = 0; //resistencia a daño 
             velocidadDisparo = 3; //que tan rapido disparas (creo?)
-            velocidadMovimiento = 7; //que tan rapido caminas
+            velocidadMovimiento = 30; //que tan rapido caminas
             recoverEnergy = 3; //cuanta energia recuperas por segundo
             dañoInfligido = 2; //cuanto daño haces
         }
@@ -75,18 +75,18 @@ public class CharacterStats : MonoBehaviour
     public void levelUp()
     {
         Debug.Log("Level Up:");
-            currentExperience -= maxExperience;
-            experienceBar.SetMaxExp(maxExperience);
-            experienceBar.SetExp(currentExperience);
-            level += 1;
-            maxHealth += 10;
-            maxMana += 10;
-            resistencia += 2;
-            velocidadDisparo += 2;
-            velocidadMovimiento += 2;
-            maxExperience += 10;
-            dañoInfligido += 2;
-            Debug.Log("Level Up stats changed");
+        currentExperience -= maxExperience;
+        experienceBar.SetMaxExp(maxExperience);
+        experienceBar.SetExp(currentExperience);
+        level += 1;
+        maxHealth += 10;
+        maxMana += 10;
+        resistencia += 2;
+        velocidadDisparo += 2;
+        velocidadMovimiento += 2;
+        maxExperience += 10;
+        dañoInfligido += 2;
+        Debug.Log("Level Up stats changed");
     }
 
     public void TakeDamage(float damage)
