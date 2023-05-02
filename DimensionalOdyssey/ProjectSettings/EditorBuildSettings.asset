@@ -24,6 +24,30 @@ EditorBuildSettings:
     path: Assets/Scenes/prototipo.unity
     guid: e6fb0a92edaa5064daee35284dc39ec6
   - enabled: 1
+    path: Assets/Scenes/BancoD1.unity
+    guid: f017a3b51bfb24fe199892c1b1a56f84
+  - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: 21c4dfc7e7ef29946a579ff2b6741049
+  - enabled: 1
+    path: Assets/Scenes/Overworld postapocaliptico.unity
+    guid: 738cf53bd0db1324485defa84e10f34f
+  - enabled: 1
+    path: Assets/Scenes/PoliciasD1.unity
+    guid: 49209ff709595449b93e1f8f13b8933b
+  - enabled: 1
+    path: Assets/Scenes/PruebaAPI.unity
+    guid: e5de342f484313046b7f9fcbc21bd978
+  - enabled: 1
+    path: Assets/Scenes/PruebaAPIUpdates.unity
+    guid: db37d4e6000c1f64987c9d2979ed9b52
+  - enabled: 1
+    path: Assets/Scenes/Tienda.unity
+    guid: 9b76e2764848c42a3adf9a6b0e2225b8
+  - enabled: 1
+    path: Assets/Scenes/Tokens.unity
+    guid: 30b74124b62272947bceb5afc7e90919
+  - enabled: 1
     path: Assets/Scenes/prototipo.unity
     guid: e6fb0a92edaa5064daee35284dc39ec6
   m_configObjects: {}
