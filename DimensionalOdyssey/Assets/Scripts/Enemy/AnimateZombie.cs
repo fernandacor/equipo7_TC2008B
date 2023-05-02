@@ -17,7 +17,7 @@ public class AnimateZombie : MonoBehaviour
  private Rigidbody2D rb;
  private Animator anim;
  private Vector2 movement;
-    public Vector3 dir;
+public Vector3 dir;
 
 private bool isInChaseRange;
 private bool isInAttackRange;
@@ -26,7 +26,7 @@ private void start()
 {
     rb = GetComponent<Rigidbody2D>();
     anim = GetComponent<Animator>();
-    target = GameObject.FindWithTag("Player").transform;
+    target = GameObject.Find("Player").transform;
 
 }
 private void update()
