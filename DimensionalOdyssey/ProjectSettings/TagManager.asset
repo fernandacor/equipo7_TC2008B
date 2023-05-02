@@ -21,6 +21,7 @@ TagManager:
   - HealthBar
   - ManaBar
   - ExperienceBar
+  - Zombie
   layers:
   - Default
   - TransparentFX
