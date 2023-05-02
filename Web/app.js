@@ -316,6 +316,31 @@ app.get('/api/partida', async (request, response) => {
     }
   });
 
+  app.post('/api/partida', async (request, response) => {
+
+    let connection = null;
+    const username = active_session;
+
+    try {
+        connection = await connectToDB()
+
+        const [results, fields] = await connection.query('insert into partida (username, fecha) values (?, NOW())', [username])
+
+        response.json({ 'message': "Data inserted correctly." })
+    }
+    catch (error) {
+        response.status(500)
+        response.json(error)
+        console.log(error)
+    }
+    finally {
+        if (connection !== null) {
+            connection.end()
+            console.log("Connection closed succesfully!")
+        }
+    }
+})
+
   /*
 app.post('/api/partida', async (request, response) => {
 
