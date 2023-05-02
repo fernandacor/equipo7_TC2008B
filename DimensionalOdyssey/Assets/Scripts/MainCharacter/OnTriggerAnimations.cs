@@ -9,12 +9,18 @@ public class OnTriggerAnimations : MonoBehaviour
     private CharacterStats characterStats;
     private GameObject trajeInicial;
 
+    private GameManager gameManager;
+
+    [SerializeField] private AudioSource muerteSFX;
+
     void Start()
     {
         // Se buscan los elementos
         animator = GetComponent<Animator>();
         characterStats = GetComponent<CharacterStats>();
         trajeInicial = GameObject.FindGameObjectWithTag("Traje");
+
+        gameManager = GameManager.instance;
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -50,6 +56,11 @@ public class OnTriggerAnimations : MonoBehaviour
         if (characterStats.currentHealth <= 0)
         {
             animator.SetBool("Death", true);
+            gameManager.SetGameState(GameState.Death);
+            muerteSFX.Play();
+        }
+        else{
+            gameManager.SetGameState(GameState.Playing);
         }
     }
 }

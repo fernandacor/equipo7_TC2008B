@@ -9,11 +9,15 @@ public class ElegirArma : MonoBehaviour
     public GameObject escopeta;
     public GameObject metralladora;
 
+    private GameManager gameManager;
+
     void Start()
     {
         pistola.SetActive(false);
         escopeta.SetActive(false);
         metralladora.SetActive(false);
+
+        gameManager = GameManager.instance;
     }
 
     public void Update()
@@ -25,6 +29,8 @@ public class ElegirArma : MonoBehaviour
             escopeta.SetActive(false);
             metralladora.SetActive(false);
             Debug.Log("Escogiste la pistola");
+
+            gameManager.SetGameState(GameState.chooseWeapon);
         }
 
         if(Input.GetKeyDown(KeyCode.Alpha2))
@@ -34,6 +40,8 @@ public class ElegirArma : MonoBehaviour
             escopeta.SetActive(true);
             metralladora.SetActive(false);
             Debug.Log("Escogiste la escopeta");
+
+            gameManager.SetGameState(GameState.chooseWeapon);
         }
 
         if(Input.GetKeyDown(KeyCode.Alpha3))
@@ -43,6 +51,12 @@ public class ElegirArma : MonoBehaviour
             escopeta.SetActive(false);
             metralladora.SetActive(true);
             Debug.Log("Escogiste la metralladora");
+
+            gameManager.SetGameState(GameState.chooseWeapon);
+        }
+
+        else{
+            gameManager.SetGameState(GameState.Playing);
         }
     }
 }

@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 public class PocionBehavior : MonoBehaviour
 {
     [SerializeField] InventoryManager.Pociones tipoPocion;
@@ -9,7 +11,8 @@ public class PocionBehavior : MonoBehaviour
     private CharacterStats characterStats;
     private HealthBar healthBar;
     private ManaBar manaBar;
-
+    [SerializeField] private AudioSource potionSFX;
+    
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");

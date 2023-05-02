@@ -33,17 +33,4 @@ public class PauseMenuScript : MonoBehaviour
         }
     }
 
-    // public void Resume()//funcion para reanudar el juego
-    // {
-    //     pauseMenu.SetActive(false);//se desactiva el menu de pausa
-    //     Time.timeScale = 1f;//se reanuda el tiempo
-    //     gameIsPaused = false;//se cambia el estado del juego
-    // }
-
-    // void Pause()//funcion para pausar el juego
-    // {
-    //     pauseMenu.SetActive(true);//se activa el menu de pausa
-    //     Time.timeScale = 0f;//se pausa el tiempo
-    //     gameIsPaused = true;//se cambia el estado del juego
-    // }
 }
