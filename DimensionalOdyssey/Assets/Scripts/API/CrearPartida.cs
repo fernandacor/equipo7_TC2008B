@@ -5,14 +5,6 @@ using UnityEngine.UI;
 using UnityEngine.Networking; 
 using TMPro;
 
-[System.Serializable]
-public class Partida
-{
-    public int idPartida;
-    public string username;
-    public string fecha;
-}
-
 public class CrearPartida : MonoBehaviour
 {
     [SerializeField] Button addButton;
