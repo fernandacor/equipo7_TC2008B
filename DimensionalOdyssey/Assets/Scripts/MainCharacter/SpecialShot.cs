@@ -26,7 +26,7 @@ public class SpecialShot : MonoBehaviour
     private float gunAngle = 0f;
     private float tiempoEntreDisparos = 0f;
     private float initialBulletSpeed;
-    private int repeat = 0;
+    public int repeat = 0;
     private int shotsAmount = 0;
     private bool useMultiShot = false;
     private int initialCantidadDisparos;
@@ -41,7 +41,7 @@ public class SpecialShot : MonoBehaviour
         initialBulletSpeed = bulletSpeed;
         manaBar = GameObject.Find("ManaBar").GetComponent<ManaBar>();
 
-        RepeatShot(2);
+        RepeatShot(1);
         PowerShot(0);
         UseMultiShot(false, 4, 60);
     }
@@ -75,8 +75,18 @@ public class SpecialShot : MonoBehaviour
 
         if (playerInput.actions["SpecialShot"].IsPressed() && tiempoEntreDisparos <= 0f && canShoot)
         {
-            tiempoEntreDisparos = characterStats.velocidadDisparo;
             Shoot();
+            if (repeat > 0)
+            {
+                tiempoEntreDisparos = 0.1f;
+                repeat -= 1;
+            }
+            else
+            {
+                characterStats.LoseEnergy(10);
+                tiempoEntreDisparos = characterStats.velocidadDisparo;
+                repeat = shotsAmount - 1;
+            }
         }
 
     }
@@ -109,8 +119,8 @@ public class SpecialShot : MonoBehaviour
     {
         if (shotsAmount_ != shotsAmount)
         {
-            shotsAmount = shotsAmount_ - 1;
-            repeat = shotsAmount;
+            shotsAmount = shotsAmount_;
+            repeat = shotsAmount - 1;
         }
     }
 
@@ -136,7 +146,6 @@ public class SpecialShot : MonoBehaviour
     void MultiShot()
     {
         characterStats.LoseEnergy(10);
-
         Quaternion shotRotation;
         float shotAngle;
         Vector2 shotDirection;
