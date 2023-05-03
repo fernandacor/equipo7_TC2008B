@@ -95,10 +95,10 @@ public class CharacterStats : MonoBehaviour
     {
         // Debug.Log("Level Up:");
         currentExperience -= maxExperience;
+        maxExperience *= 1.5f;
+        level += 1;
         experienceBar.SetMaxExp(maxExperience);
         experienceBar.SetExp(currentExperience);
-        level += 1;
-        maxExperience *= 1.5f;
         // Debug.Log("Level Up stats changed");
         AgregarPunto(true, true, true, true, true, true);
     }
@@ -106,9 +106,19 @@ public class CharacterStats : MonoBehaviour
     public void AgregarPunto(bool health_, bool mana_, bool resistance_, bool shootVel_, bool movementVel_, bool damage_)
     {
         if (health_)
+        {
             maxHealth *= 1.1f;
+            healthBar.SetMaxHealth(maxHealth);
+            currentHealth = maxHealth;
+            healthBar.SetHealth(currentHealth);
+        }
         if (mana_)
+        {
             maxMana *= 1.1f;
+            manaBar.SetMaxEnergy(maxMana);
+            currentMana = maxMana;
+            manaBar.SetEnergy(currentMana);
+        }
         if (resistance_)
             resistencia += 0.5f;
         if (shootVel_)
@@ -122,7 +132,15 @@ public class CharacterStats : MonoBehaviour
     public void AgregarPunto(float health_, float mana_, float resistance_, float shootVel_, float movementVel_, float damage_)
     {
         maxHealth += health_;
+        healthBar.SetMaxHealth(maxHealth);
+        currentHealth = maxHealth;
+        healthBar.SetHealth(currentHealth);
+
         maxMana += mana_;
+        manaBar.SetMaxEnergy(maxMana);
+        currentMana = maxMana;
+        manaBar.SetEnergy(currentMana);
+
         resistencia += resistance_;
         velocidadDisparo -= shootVel_;
         velocidadMovimiento += movementVel_;

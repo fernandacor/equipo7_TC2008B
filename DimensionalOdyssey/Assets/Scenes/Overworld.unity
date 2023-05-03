@@ -226,7 +226,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1327594768406920469, guid: fd8fe64b8caa00046828ef5c56c70293, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1327594768406920469, guid: fd8fe64b8caa00046828ef5c56c70293, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1156,6 +1156,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4874639488000069736, guid: 5f1677c34fed95d4ba52a81d20c47102, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f1677c34fed95d4ba52a81d20c47102, type: 3}
 --- !u!1 &1150032358
@@ -1712,7 +1716,7 @@ Transform:
   - {fileID: 1150032359}
   - {fileID: 890046099}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1961027893
 PrefabInstance:
