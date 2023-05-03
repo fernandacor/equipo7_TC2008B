@@ -13,6 +13,8 @@ public class PortalBehavior : MonoBehaviour
     private GameObject player; // Referencia al jugador
     [SerializeField] private AudioSource portalSFX; // SFX de portal
 
+    [SerializeField] private UpdateApi updateApi;
+
 
     void Start()
     {
@@ -39,16 +41,22 @@ public class PortalBehavior : MonoBehaviour
         // Si el jugador entra en el trigger y se quiere cambiar de escena:
         if (collision.gameObject.CompareTag("Player") && switchScene)
         {
+            // portalSFX.Play(); // Se reproduce el SFX de portal
+            Debug.Log("UpdateApi: ");
             SceneManager.LoadScene(sceneName); // Se cambia de escena
-            portalSFX.Play(); // Se reproduce el SFX de portal
+            UpdateApi updateApi = GetComponent<UpdateApi>();
+            updateApi.UpdateCharacter();
         }
         // Si no se quiere cambiar de escena:
         else if (collision.gameObject.CompareTag("Player") && !switchScene)
         {
+            UpdateApi updateApi = GetComponent<UpdateApi>();
+            updateApi.UpdateCharacter();
             playerDetected = true; // Se detecta al jugador
             player = collision.gameObject; // Se guarda una referencia al jugador
             portalSFX.Play(); // Se reproduce el SFX de portal
         }
+
     }
 
     void OnTriggerExit2D(Collider2D collision)
