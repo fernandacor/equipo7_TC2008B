@@ -8,9 +8,9 @@ public class ItemBehavior : MonoBehaviour
 {
     // Se busca el inventario y la lista de todo 
     [SerializeField] InventoryManager.AllItems itemType;
-    
+
     // Booleano que detecta si el objeto puede ser recogido o no
-    public bool pickUp = false;
+    [HideInInspector] public bool pickUp = false;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

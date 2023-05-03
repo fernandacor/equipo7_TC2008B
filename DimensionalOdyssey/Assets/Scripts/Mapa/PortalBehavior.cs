@@ -5,12 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class PortalBehavior : MonoBehaviour
 {
-    public bool switchScene;
+    public bool switchScene; 
     public string sceneName;
 
     private bool playerDetected;
     [SerializeField] Transform posToGo;
     private GameObject player;
+    [SerializeField] private AudioSource portalSFX;
 
 
     void Start()
@@ -35,11 +36,13 @@ public class PortalBehavior : MonoBehaviour
         if (collision.gameObject.CompareTag("Player") && switchScene)
         {
             SceneManager.LoadScene(sceneName);
+            portalSFX.Play();
         }
         else if (collision.gameObject.CompareTag("Player") && !switchScene)
         {
             playerDetected = true;
             player = collision.gameObject;
+            portalSFX.Play();
         }
     }
 
