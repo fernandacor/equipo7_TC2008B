@@ -28,6 +28,7 @@ public class CharacterStats : MonoBehaviour
     public float dañoInfligido;
 
     public float enemigosMatados; //counter de cuantos enemigos mata
+
     public float dañoInfligidoContador; //contador de daño hecho a enemigos
     public float dañoRecibido; // contador de daño recibido
     public float monedasTiene; //cuantas monedas tiene
@@ -41,14 +42,26 @@ public class CharacterStats : MonoBehaviour
 
         if (level == 1)
         {
-            maxHealth = 30; //salud maxima
-            maxMana = 30; //energia maxima
-            maxExperience = 30; //cuanta experiencia necesitas para subir de nivel
-            resistencia = 0; //resistencia a daño 
-            velocidadDisparo = 0.5f; //que tan rapido disparas (creo?)
-            velocidadMovimiento = 30; //que tan rapido caminas
-            recoverEnergy = 3; //cuanta energia recuperas por segundo
-            dañoInfligido = 2; //cuanto daño haces
+            PlayerPrefs.SetFloat("Vida", 30);
+            maxHealth = PlayerPrefs.GetFloat("Vida"); //salud maxima
+            PlayerPrefs.SetFloat("Mana", 30);
+            maxMana = PlayerPrefs.GetFloat("Mana"); //energia maxima
+            PlayerPrefs.SetFloat("Experience", 30);
+            maxExperience = PlayerPrefs.GetFloat("Experience"); //cuanta experiencia necesitas para subir de nivel
+            PlayerPrefs.SetFloat("Resistance", 0);
+            resistencia = PlayerPrefs.GetFloat("Resistence"); //resistencia a daño 
+            PlayerPrefs.SetFloat("VelDis", 0.5f);
+            velocidadDisparo = PlayerPrefs.GetFloat("VelDis"); //que tan rapido disparas (creo?)
+            PlayerPrefs.SetFloat("VelMov", 30);
+            velocidadMovimiento = PlayerPrefs.GetFloat("VelMov"); //que tan rapido caminas
+            PlayerPrefs.SetFloat("RecovEne", 3);
+            recoverEnergy = PlayerPrefs.GetFloat("RecovEne"); //cuanta energia recuperas por segundo
+            PlayerPrefs.SetFloat("damaDealt", 2);
+            dañoInfligido = PlayerPrefs.GetFloat("damaDealt"); //cuanto daño haces
+            PlayerPrefs.SetFloat("DañoCont", 0);
+            dañoInfligidoContador = PlayerPrefs.GetFloat("DañoCont");
+            PlayerPrefs.SetFloat("ContMoney", 0);
+            monedasTiene = PlayerPrefs.GetFloat("ContMoney");
         }
 
         animator = GetComponent<Animator>();
@@ -91,6 +104,7 @@ public class CharacterStats : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        PlayerPrefs.SetFloat("Damage", damage);
         damage = damage - resistencia;
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
@@ -111,6 +125,8 @@ public class CharacterStats : MonoBehaviour
 
     public void MatarEnemigos(int cantidad)
     {
+        PlayerPrefs.SetFloat("EnemiesKilled", 0);
+        enemigosMatados = PlayerPrefs.GetFloat("EnemiesKilled");
         enemigosMatados += cantidad;
         currentExperience += 10;
     }
