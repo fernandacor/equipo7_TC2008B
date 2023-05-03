@@ -8,7 +8,10 @@ public class StatsInterface : MonoBehaviour
     public CharacterStats characterStats;
     [SerializeField] public GameObject velocidad;
     [SerializeField] public GameObject vida;
-
+    [SerializeField] public GameObject mana;
+    [SerializeField] public GameObject experiencia;
+    [SerializeField] public GameObject dañoHecho;
+    [SerializeField] public GameObject resistencia;
     public Slider slider;
     public Gradient gradient;
     public Image fill;
@@ -20,6 +23,12 @@ public class StatsInterface : MonoBehaviour
         characterStats = player.GetComponent<CharacterStats>();
         velocidad = GameObject.FindGameObjectWithTag("Velocidad").GetComponent<GameObject>();
         vida = GameObject.FindGameObjectWithTag("Vida").GetComponent<GameObject>();
+        mana = GameObject.FindGameObjectWithTag("Mana").GetComponent<GameObject>();
+        experiencia = GameObject.FindGameObjectWithTag("Experiencie").GetComponent<GameObject>();
+        dañoHecho = GameObject.FindGameObjectWithTag("damaDealt").GetComponent<GameObject>();
+        resistencia = GameObject.FindGameObjectWithTag("Resistance").GetComponent<GameObject>();
+        
+
 
         //velocidad, vida, mana, daño hecho, resistencia , velocidad de ataque, regeneración de mana
         // enemigos matados, daño infligido, 

@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;//se crea la instancia
-            DontDestroyOnLoad(gameObject);//no se destruye el objeto
+            // DontDestroyOnLoad(gameObject);//no se destruye el objeto
         }
         else
         {
@@ -55,14 +55,14 @@ public class GameManager : MonoBehaviour
             default:
                 // Handle unexpected state
                 break;
-            
+
             case GameState.AbrirInventario:
                 // Player is opening inventory, pause game and handle inventory behavior
                 break;
-            
+
             case GameState.Death:
                 break;
-            
+
             case GameState.chooseWeapon:
                 break;
         }

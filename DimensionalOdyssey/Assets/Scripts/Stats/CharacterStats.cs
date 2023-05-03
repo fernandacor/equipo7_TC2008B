@@ -33,6 +33,12 @@ public class CharacterStats : MonoBehaviour
     public float dañoRecibido; // contador de daño recibido
     public float monedasTiene; //cuantas monedas tiene
 
+    private float tiempoEntreAcciones = 0.5f;
+
+    // Comportamiento de los cuartos
+    private GameObject cuartoActual;
+
+
     // Animación de muerte
     private Animator animator;
 
@@ -48,15 +54,15 @@ public class CharacterStats : MonoBehaviour
             maxMana = PlayerPrefs.GetFloat("Mana"); //energia maxima
             PlayerPrefs.SetFloat("Experience", 30);
             maxExperience = PlayerPrefs.GetFloat("Experience"); //cuanta experiencia necesitas para subir de nivel
-            PlayerPrefs.SetFloat("Resistance", 0);
+            PlayerPrefs.SetFloat("Resistance", 2);
             resistencia = PlayerPrefs.GetFloat("Resistence"); //resistencia a daño 
-            PlayerPrefs.SetFloat("VelDis", 0.5f);
+            PlayerPrefs.SetFloat("VelDis", 1.25f);
             velocidadDisparo = PlayerPrefs.GetFloat("VelDis"); //que tan rapido disparas (creo?)
-            PlayerPrefs.SetFloat("VelMov", 30);
+            PlayerPrefs.SetFloat("VelMov", 20);
             velocidadMovimiento = PlayerPrefs.GetFloat("VelMov"); //que tan rapido caminas
             PlayerPrefs.SetFloat("RecovEne", 3);
             recoverEnergy = PlayerPrefs.GetFloat("RecovEne"); //cuanta energia recuperas por segundo
-            PlayerPrefs.SetFloat("damaDealt", 2);
+            PlayerPrefs.SetFloat("damaDealt", 6);
             dañoInfligido = PlayerPrefs.GetFloat("damaDealt"); //cuanto daño haces
             PlayerPrefs.SetFloat("DañoCont", 0);
             dañoInfligidoContador = PlayerPrefs.GetFloat("DañoCont");
@@ -87,30 +93,30 @@ public class CharacterStats : MonoBehaviour
 
     public void levelUp()
     {
-        Debug.Log("Level Up:");
+        // Debug.Log("Level Up:");
         currentExperience -= maxExperience;
         experienceBar.SetMaxExp(maxExperience);
         experienceBar.SetExp(currentExperience);
         level += 1;
-        maxExperience += 10;
-        Debug.Log("Level Up stats changed");
+        maxExperience *= 1.5f;
+        // Debug.Log("Level Up stats changed");
         AgregarPunto(true, true, true, true, true, true);
     }
 
     public void AgregarPunto(bool health_, bool mana_, bool resistance_, bool shootVel_, bool movementVel_, bool damage_)
     {
         if (health_)
-            maxHealth += 10;
+            maxHealth *= 1.1f;
         if (mana_)
-            maxMana += 10;
+            maxMana *= 1.1f;
         if (resistance_)
-            resistencia += 2;
+            resistencia += 0.5f;
         if (shootVel_)
-            velocidadDisparo -= 0.2f;
+            velocidadDisparo -= 0.01f;
         if (movementVel_)
-            velocidadMovimiento += 2;
+            velocidadMovimiento += 0.5f;
         if (damage_)
-            dañoInfligido += 2;
+            dañoInfligido += 0.5f;
     }
 
     public void AgregarPunto(float health_, float mana_, float resistance_, float shootVel_, float movementVel_, float damage_)
@@ -181,31 +187,52 @@ public class CharacterStats : MonoBehaviour
             levelUp();
             Debug.Log("Call levelUp function");
         }
+
+        if (tiempoEntreAcciones > 0)
+            tiempoEntreAcciones -= Time.deltaTime;
     }
 
-    public void OnTriggerEnter2D(Collider2D collision)
+    public void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collision.CompareTag("Enemys Bullet"))
+        if (tiempoEntreAcciones <= 0)
         {
-            TakeDamage(10);
+            if (collider.CompareTag("Enemys Bullet"))
+            {
+                TakeDamage(10);
+            }
+
+            if (collider.CompareTag("Enemy") || collider.CompareTag("Boss"))
+            {
+                TakeDamage(collider.gameObject.GetComponent<EnemyBehavior>().damage);
+            }
+
+            if (collider.CompareTag("Coin"))
+            {
+                monedasTiene += 1;
+                currentExperience += 1;
+            }
+
+            if (collider.CompareTag("XP"))
+            {
+                currentExperience += 10;
+                experienceBar.SetExp(currentExperience);
+            }
+
+            tiempoEntreAcciones = 0.5f;
         }
 
-        if (collision.CompareTag("Enemy"))
+        CuartoScript cuartoScript;
+        if (collider.CompareTag("Room"))
         {
-            TakeDamage(5);
+            cuartoActual = collider.gameObject;
+            cuartoScript = cuartoActual.GetComponent<CuartoScript>();
+            if (!cuartoScript.descubierto)
+            {
+                cuartoScript.descubierto = true;
+                cuartoScript.CerrarCuarto();
+            }
         }
 
-        if (collision.CompareTag("Coin"))
-        {
-            monedasTiene += 1;
-            currentExperience += 1;
-        }
-
-        if (collision.CompareTag("XP"))
-        {
-            currentExperience += 10;
-            experienceBar.SetExp(currentExperience);
-        }
     }
 
     public IEnumerator ManaRecovery()
