@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: PocionSuperVida
   m_EditorClassIdentifier: 
   name: New Item
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 9f8390d45569f8645983521854c31f6d, type: 3}
   isDefaultItem: 0
   stackable: 1

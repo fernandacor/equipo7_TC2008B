@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Networking; 
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class StatsIniciales
 {
@@ -80,6 +81,7 @@ public class CrearStatsIniciales : MonoBehaviour
 
             if (www.result == UnityWebRequest.Result.Success) {
                 Debug.Log("Response: " + www.downloadHandler.text);
+                loadNewScene();
                 //if (errorText != null) errorText.text = "Se han insertado las stats correctamente";
             } else {
                 Debug.Log("Error: " + www.error);
@@ -87,4 +89,9 @@ public class CrearStatsIniciales : MonoBehaviour
             }
         }
     }
+
+    void loadNewScene(){
+        SceneManager.LoadScene("Laboratory");
+    }
+
 }
