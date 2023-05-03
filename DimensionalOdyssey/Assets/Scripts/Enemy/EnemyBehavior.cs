@@ -30,8 +30,11 @@ public class EnemyBehavior : MonoBehaviour
         enemy = GetComponent<Rigidbody2D>();
         player = GameObject.Find("Player").transform;
 
-        if (gameObject.name == "BossLab")
+        if (gameObject.CompareTag("Boss"))
+        {
             droppedItem = GameObject.FindGameObjectWithTag("PortalDropped");
+            Debug.Log("Apareción el boss");
+        }
 
         // Definir la salud actual del enemigo como la salud maxima
         currentHealth = maxHealth;

@@ -36,7 +36,16 @@ public class CuartoScript : MonoBehaviour
     void Update()
     {
         int enemiesAmount_ = GameObject.FindGameObjectsWithTag("Enemy").Length;
+        int bossesAmount_ = GameObject.FindGameObjectsWithTag("Boss").Length;
 
+        if (enemiesAmount_ >= bossesAmount_)
+            CheckEnemiesInRoom(enemiesAmount_);
+        else
+            CheckEnemiesInRoom(bossesAmount_);
+    }
+
+    void CheckEnemiesInRoom(int enemiesAmount_)
+    {
         if (enemiesAmount_ != enemiesAmount)
         {
             if (enemiesAmount == 0)
