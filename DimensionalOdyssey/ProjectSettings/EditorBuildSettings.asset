@@ -29,13 +29,13 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Casa.unity
     guid: 3e8b1bf5d25964f48886013d5e0636f6
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/BancoD1.unity
     guid: f017a3b51bfb24fe199892c1b1a56f84
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/PoliciasD1.unity
     guid: 49209ff709595449b93e1f8f13b8933b
   - enabled: 0

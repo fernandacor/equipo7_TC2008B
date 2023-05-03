@@ -36,6 +36,13 @@ public class PortalBehavior : MonoBehaviour
         }
     }
 
+    IEnumerator LoadSceneDelayed(string sceneName, float delayTime)
+    {
+        yield return new WaitForSeconds(delayTime);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
+    }
+
+
     void OnTriggerEnter2D(Collider2D collision)
     {
         // Si el jugador entra en el trigger y se quiere cambiar de escena:
@@ -43,15 +50,16 @@ public class PortalBehavior : MonoBehaviour
         {
             // portalSFX.Play(); // Se reproduce el SFX de portal
             Debug.Log("UpdateApi: ");
-            SceneManager.LoadScene(sceneName); // Se cambia de escena
-            UpdateApi updateApi = GetComponent<UpdateApi>();
-            updateApi.UpdateCharacter();
+            StartCoroutine(LoadSceneDelayed(sceneName, 1.5f));
+            //SceneManager.LoadScene(sceneName); // Se cambia de escena
+            // UpdateApi updateApi = GetComponent<UpdateApi>();
+            // updateApi.UpdateCharacter();
         }
         // Si no se quiere cambiar de escena:
         else if (collision.gameObject.CompareTag("Player") && !switchScene)
         {
-            UpdateApi updateApi = GetComponent<UpdateApi>();
-            updateApi.UpdateCharacter();
+            // UpdateApi updateApi = GetComponent<UpdateApi>();
+            // updateApi.UpdateCharacter();
             playerDetected = true; // Se detecta al jugador
             player = collision.gameObject; // Se guarda una referencia al jugador
             portalSFX.Play(); // Se reproduce el SFX de portal
