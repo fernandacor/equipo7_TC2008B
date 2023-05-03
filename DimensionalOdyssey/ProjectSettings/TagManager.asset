@@ -22,6 +22,9 @@ TagManager:
   - ManaBar
   - ExperienceBar
   - Zombie
+  - XP
+  - Dialogue
+  - Sonido
   layers:
   - Default
   - TransparentFX
