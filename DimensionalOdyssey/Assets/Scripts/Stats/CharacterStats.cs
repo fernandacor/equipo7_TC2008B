@@ -33,6 +33,12 @@ public class CharacterStats : MonoBehaviour
     public float dañoRecibido; // contador de daño recibido
     public float monedasTiene; //cuantas monedas tiene
 
+    private float tiempoEntreAcciones = 0.5f;
+
+    // Comportamiento de los cuartos
+    private GameObject cuartoActual;
+
+
     // Animación de muerte
     private Animator animator;
 
@@ -181,31 +187,52 @@ public class CharacterStats : MonoBehaviour
             levelUp();
             Debug.Log("Call levelUp function");
         }
+
+        if (tiempoEntreAcciones > 0)
+            tiempoEntreAcciones -= Time.deltaTime;
     }
 
-    public void OnTriggerEnter2D(Collider2D collision)
+    public void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collision.CompareTag("Enemys Bullet"))
+        if (tiempoEntreAcciones <= 0)
         {
-            TakeDamage(10);
+            if (collider.CompareTag("Enemys Bullet"))
+            {
+                TakeDamage(10);
+            }
+
+            if (collider.CompareTag("Enemy") || collider.CompareTag("Boss"))
+            {
+                TakeDamage(collider.gameObject.GetComponent<EnemyBehavior>().damage);
+            }
+
+            if (collider.CompareTag("Coin"))
+            {
+                monedasTiene += 1;
+                currentExperience += 1;
+            }
+
+            if (collider.CompareTag("XP"))
+            {
+                currentExperience += 10;
+                experienceBar.SetExp(currentExperience);
+            }
+
+            tiempoEntreAcciones = 0.5f;
         }
 
-        if (collision.CompareTag("Enemy"))
+        CuartoScript cuartoScript;
+        if (collider.CompareTag("Room"))
         {
-            TakeDamage(5);
+            cuartoActual = collider.gameObject;
+            cuartoScript = cuartoActual.GetComponent<CuartoScript>();
+            if (!cuartoScript.descubierto)
+            {
+                cuartoScript.descubierto = true;
+                cuartoScript.CerrarCuarto();
+            }
         }
 
-        if (collision.CompareTag("Coin"))
-        {
-            monedasTiene += 1;
-            currentExperience += 1;
-        }
-
-        if (collision.CompareTag("XP"))
-        {
-            currentExperience += 10;
-            experienceBar.SetExp(currentExperience);
-        }
     }
 
     public IEnumerator ManaRecovery()

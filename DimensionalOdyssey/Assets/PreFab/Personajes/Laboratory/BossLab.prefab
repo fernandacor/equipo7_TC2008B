@@ -153,6 +153,7 @@ MonoBehaviour:
   velocidad: 10
   currentHealth: 0
   maxHealth: 50
+  damage: 10
   dropItems: 1
   droppedItem: {fileID: 0}
   isBoss: 1

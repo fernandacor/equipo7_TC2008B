@@ -19,6 +19,7 @@ public class EnemyBehavior : MonoBehaviour
     public float velocidad = 5f; // velocidad del enemigo
     public float currentHealth; // salud actual del enemigo
     public float maxHealth = 100; //salud maxima del enemigo
+    public float damage;
     public bool dropItems; // booleano que define si el enemigo tira un item al ser vencido
     public GameObject droppedItem; // objeto que tira el enemigo
     public bool isBoss = false; // booleano para indicar si el enemigo es un jefe o no
@@ -31,10 +32,7 @@ public class EnemyBehavior : MonoBehaviour
         player = GameObject.Find("Player").transform;
 
         if (gameObject.CompareTag("Boss"))
-        {
             droppedItem = GameObject.FindGameObjectWithTag("PortalDropped");
-            Debug.Log("Apareción el boss");
-        }
 
         // Definir la salud actual del enemigo como la salud maxima
         currentHealth = maxHealth;

@@ -68,24 +68,4 @@ public class MovimientoPersonaje : MonoBehaviour
         else
             firePoint.GetComponent<Renderer>().sortingOrder = playerRenderer.sortingOrder + 1;
     }
-
-    private void OnTriggerEnter2D(Collider2D collider)
-    {
-        CuartoScript cuartoScript;
-        if (collider.CompareTag("Room"))
-        {
-            cuartoActual = collider.gameObject;
-            cuartoScript = cuartoActual.GetComponent<CuartoScript>();
-            if (!cuartoScript.descubierto)
-            {
-                cuartoScript.descubierto = true;
-                cuartoScript.CerrarCuarto();
-            }
-        }
-        else if (collider.CompareTag("Boton"))
-        {
-            cuartoScript = cuartoActual.GetComponent<CuartoScript>();
-            cuartoScript.AbrirCuarto();
-        }
-    }
 }
