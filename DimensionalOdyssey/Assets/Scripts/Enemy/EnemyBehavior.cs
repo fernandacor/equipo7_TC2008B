@@ -10,7 +10,7 @@ public class EnemyBehavior : MonoBehaviour
     // Elementos a buscar
     private CharacterStats characterStats;
     private Rigidbody2D enemy;
-    public Transform player;
+    private Transform player;
     public Animator animator;
 
     // Variables
@@ -30,14 +30,15 @@ public class EnemyBehavior : MonoBehaviour
         enemy = GetComponent<Rigidbody2D>();
         player = GameObject.Find("Player").transform;
 
+        if (gameObject.name == "BossLab")
+            droppedItem = GameObject.FindGameObjectWithTag("PortalDropped");
+
         // Definir la salud actual del enemigo como la salud maxima
         currentHealth = maxHealth;
 
         // Si el enemigo tira un item, desactivar el objeto para que no sea visible
-        if (dropItems == true)
-        {
+        if (dropItems)
             droppedItem.SetActive(false);
-        }
     }
 
     void Update()
@@ -74,28 +75,28 @@ public class EnemyBehavior : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-            // Se le resta el daño hecho a la salud del enemigo
-           currentHealth -= damage;
+        // Se le resta el daño hecho a la salud del enemigo
+        currentHealth -= damage;
 
-            // Si la salud del enemigo es menor a 0:
-           if (currentHealth <= 0)
-           {
-                characterStats.MatarEnemigos(1); // Se suma uno al contador de enemigos matados del jugador
-                Debug.Log("Enemigo muerto");
+        // Si la salud del enemigo es menor a 0:
+        if (currentHealth <= 0)
+        {
+            characterStats.MatarEnemigos(1); // Se suma uno al contador de enemigos matados del jugador
+            Debug.Log("Enemigo muerto");
 
-                // Si el enemigo tira un item, se activa el objeto
-               if(dropItems == true)
-               {
+            // Si el enemigo tira un item, se activa el objeto
+            if (dropItems == true)
+            {
                 droppedItem.SetActive(true);
-               }
+            }
 
-                // Se destruye el enemigo
-                Destroy(gameObject);
-           }
+            // Se destruye el enemigo
+            Destroy(gameObject);
+        }
     }
 
-     void OnTriggerEnter2D(Collider2D collision)
-     {
+    void OnTriggerEnter2D(Collider2D collision)
+    {
         // Si una bala del jugador le pega al enemigo, el enemigo recibe daño y el daño hecho
         // se añade al contador de daño infligido del jugador
         if (collision.CompareTag("Player"))
@@ -103,5 +104,5 @@ public class EnemyBehavior : MonoBehaviour
             TakeDamage(characterStats.dañoInfligido);
             characterStats.dañoInfligidoContador += characterStats.dañoInfligido;
         }
-     }
+    }
 }

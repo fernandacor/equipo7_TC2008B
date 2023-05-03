@@ -12,12 +12,11 @@ GameObject:
   - component: {fileID: 2935489702203481042}
   - component: {fileID: 2935489702203481043}
   - component: {fileID: 2935489702203481052}
-  - component: {fileID: 2935489702203481053}
   - component: {fileID: 2935489702203481047}
   - component: {fileID: 2935489702203481046}
   - component: {fileID: 898459994008709024}
   m_Layer: 0
-  m_Name: Boss
+  m_Name: BossLab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +29,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2935489702203481054}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 44.5, y: 50.5, z: -0.039324224}
   m_LocalScale: {x: 7, y: 7, z: 7}
   m_ConstrainProportionsScale: 1
@@ -137,33 +136,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.56, y: 0.98}
   m_EdgeRadius: 0
---- !u!114 &2935489702203481053
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2935489702203481054}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c7b46d4aeec64349aa02ae41c7a4e12, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  action:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2935489702203481054}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &2935489702203481047
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,9 +148,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 865200163a9152945876bf73a2e24aad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
   animator: {fileID: 2935489702203481046}
-  activeEnemy: 0
+  activeEnemy: 1
   velocidad: 10
   currentHealth: 0
   maxHealth: 50
@@ -193,7 +164,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2935489702203481054}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 51e0c204e66f445419fefbbe43965881, type: 2}
   m_CullingMode: 0
