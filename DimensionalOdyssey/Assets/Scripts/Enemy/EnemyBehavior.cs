@@ -104,5 +104,10 @@ public class EnemyBehavior : MonoBehaviour
             TakeDamage(characterStats.dañoInfligido);
             characterStats.dañoInfligidoContador += characterStats.dañoInfligido;
         }
+        else if (collision.CompareTag("Players Bullet"))
+        {
+            TakeDamage(characterStats.dañoInfligido);
+            characterStats.dañoInfligidoContador += characterStats.dañoInfligido;
+        }
     }
 }
