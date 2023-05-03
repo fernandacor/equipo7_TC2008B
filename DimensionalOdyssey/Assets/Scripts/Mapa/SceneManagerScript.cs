@@ -2,19 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.SceneManagement;
 
 public class SceneManagerScript : MonoBehaviour
 {
 
-    public TileBase tileParedArriba;
-    public TileBase tileParedDerecha;
-    public TileBase tileParedAbajo;
-    public TileBase tileParedIzquierda;
-    public TileBase tileEsquinaArribaDerecha;
-    public TileBase tileEsquinaArribaIzquierda;
-    public TileBase tileEsquinaAbajoDerecha;
-    public TileBase tileEsquinaAbajoIzquierda;
-    public TileBase tilePiso;
-    public TileBase tileFondo;
+    private CharacterStats characterStats;
+
+    private void Update()
+    {
+        if (characterStats.currentHealth <= 0)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+    }
 
 }
