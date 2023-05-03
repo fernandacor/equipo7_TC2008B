@@ -932,6 +932,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8837243931204346052, guid: fd8fe64b8caa00046828ef5c56c70293, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd8fe64b8caa00046828ef5c56c70293, type: 3}
 --- !u!1 &622762970
@@ -993,6 +997,7 @@ MonoBehaviour:
   switchScene: 1
   sceneName: Casa
   posToGo: {fileID: 0}
+  portalSFX: {fileID: 0}
 --- !u!4 &622762973
 Transform:
   m_ObjectHideFlags: 0
@@ -1083,6 +1088,7 @@ MonoBehaviour:
   switchScene: 1
   sceneName: BancoD1
   posToGo: {fileID: 0}
+  portalSFX: {fileID: 0}
 --- !u!1001 &1035727932
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1227,6 +1233,7 @@ MonoBehaviour:
   switchScene: 1
   sceneName: PoliciasD1
   posToGo: {fileID: 0}
+  portalSFX: {fileID: 0}
 --- !u!1001 &1242620563
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1528,6 +1535,7 @@ MonoBehaviour:
   switchScene: 1
   sceneName: Laboratory
   posToGo: {fileID: 0}
+  portalSFX: {fileID: 0}
 --- !u!61 &1424775094
 BoxCollider2D:
   m_ObjectHideFlags: 0
