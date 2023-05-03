@@ -15,6 +15,8 @@ public class AbrirCofres : MonoBehaviour
 
     public GameObject itemEscupido; // Objeto que sale cuando se abre el cofre
 
+    [SerializeField] private AudioSource openChestSFX; // SFX de abrir cofre
+
     void Start()
     {
         //Inicialmente, el cofre esta cerrado
@@ -45,6 +47,7 @@ public class AbrirCofres : MonoBehaviour
         if (collision.gameObject.tag == "Player") // Si el jugador entra en el trigger, se activa la variable isOpen
         {
             isOpen = true;
+            openChestSFX.Play();
         }
     }
 

@@ -25,29 +25,34 @@
 
 </head>
 
-<body>
+<body class="text-light">
 
-    <img src="../assets/img/titleBackground.gif" alt="" id="background-image">
-    <div id="background-container"></div>
+    <img src="../assets/img/background.gif" alt="" id="background-image">
+    <nav></nav>
 
-    <div class="main-container">
-        <nav></nav>
-
-        <!-- <main class="d-flex align-items-center justify-content-center"> -->
-        <main>
-            <div class="chartContainer">
-                <canvas id="apiChart1" style="width: 80%;"></canvas>
-                <canvas id="apiChart2" style="width: 80%;"></canvas>
+    <main>
+        <div class="row m-0">
+            <div class="col bg-black bg-opacity-75 rounded-5 p-4 mx-2 mt-3">
+                <h1 class="h1 h text-center mb-2">Partidas jugadas</h1>
+                <canvas id="apiChart1"></canvas>
             </div>
-
-            <div class="chartContainer">
-                <canvas id="apiChart3" width="600" height="300"></canvas>
-                <canvas id="apiChart4" width="600" height="300"></canvas>
+            <div class="col bg-black bg-opacity-75 rounded-5 p-4 mx-2 mt-3">
+                <h1 class="h1 h text-center mb-2">Enemigos derrotados</h1>
+                <canvas id="apiChart2"></canvas>
             </div>
-        </main>
-    </div>
+        </div>
+        <div class="row m-0">
+            <div class="col bg-black bg-opacity-75 rounded-5 p-4 mx-2 mt-3">
+                <h1 class="h1 h text-center mb-2">Daño inflingido</h1>
+                <canvas id="apiChart3"></canvas>
+            </div>
+            <div class="col bg-black bg-opacity-75 rounded-5 p-4 mx-2 mt-3">
+                <h1 class="h1 h text-center mb-2">Monedas recolectadas</h1>
+                <canvas id="apiChart4"></canvas>
+            </div>
+        </div>
 
-    <!-- <div class="space"></div> -->
+    </main>
 
 
 </body>

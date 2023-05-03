@@ -2,19 +2,22 @@
 
 import compression from 'compression';
 import express from 'express';
+import session from 'express-session';
 import fs from 'fs';
 import mysql from 'mysql2/promise';
-import session from 'express-session';
 
 const app = express()
-
-
 const port = 5235
 
 app.use(compression())
 app.use(express.json())
 app.use(express.static('./public'))
 
+app.listen(
+    port,
+    () => { console.log(`App listening at http://127.0.0.1:${port}/html/index.html`) }
+)
+let active_session = null;
 
 async function connectToDB() {
     return await mysql.createConnection({
@@ -29,7 +32,15 @@ app.use(session({
     secret: '!hJZb3k?S^tN9M=+', // Una clave secreta para firmar la cookie de sesión
     resave: false, // Evita que se vuelva a guardar la sesión si no ha sido modificada
     saveUninitialized: false, // Evita que se cree una sesión para las solicitudes que no la tienen
-  }));
+}));
+
+app.use((req, res, next) => {
+    const { username } = req.session;
+    if (username) {
+        res.setHeader('Set-Cookie', `username=${username}; Path=/`);
+    }
+    next();
+});
 
 app.get('/', (request, response) => {
     fs.readFile('./public/html/index.html', 'utf8', (err, html) => {
@@ -66,29 +77,28 @@ app.get('/api/usuario', async (request, response) => {
 app.post('/api/login', async (req, res) => {
     const { username, password } = req.body;
     let connection = null
-
     try {
         connection = await connectToDB()
         const [rows] = await connection.execute('select * from usuario where username = ?', [username]);
         console.log('rows:', rows);
 
         if (rows.length === 0) {
-        // El usuario no existe
-        return res.status(401).json({ message: 'El usuario no existe' });
+            // El usuario no existe
+            return res.status(401).json({ message: 'El usuario no existe' });
         }
 
         const user = rows[0];
         console.log('Contraseña introducida:', password);
         console.log('Contraseña almacenada:', user.contrasena);
         if (password !== user.contrasena) {
-        // La contraseña es incorrecta
-        return res.status(401).json({ message: 'La contraseña es incorrecta' });
+            // La contraseña es incorrecta
+            return res.status(401).json({ message: 'La contraseña es incorrecta' });
         }
-        
-        req.session.username = user.username; // Guarda el nombre de usuario en la sesión
+        active_session = user.username;
+        req.session.username = active_session; // Guarda el nombre de usuario en la sesión
 
         // Si las credenciales son válidas, crear una cookie y establecer su valor como el nombre de usuario
-        res.cookie('username', user.username, { path: '/' });
+        res.setHeader('Set-Cookie', `username=${user.username}; Path=/`);
         console.log("Cookie establecida:", user.username);
 
         return res.status(200).json({ message: 'Inicio de sesión exitoso', redirect: '/html/index.html' });
@@ -97,22 +107,22 @@ app.post('/api/login', async (req, res) => {
         console.log(err);
         return res.status(500).json({ message: 'Error de servidor' });
     }
-  });
+});
 
-  app.get('/api/session', (req, res) => {
+app.get('/api/session', (req, res) => {
     if (req.session.username) {
-      // La sesión ha sido iniciada
-      res.json({
-        loggedIn: true,
-        username: req.session.username
-      });
+        // La sesión ha sido iniciada
+        res.json({
+            loggedIn: true,
+            username: req.session.username
+        });
     } else {
-      // La sesión no ha sido iniciada
-      res.json({
-        loggedIn: false
-      });
+        // La sesión no ha sido iniciada
+        res.json({
+            loggedIn: false
+        });
     }
-  });
+});
 
 app.get('/api/usuario/:id', async (request, response) => {
     let connection = null
@@ -282,63 +292,40 @@ app.get('/api/personajes', async (request, response) => {
         }
     }
 })
-/*
-app.get('/api/partida', async (request, response) => {
-    let connection = null
-
-    try {
-        connection = await connectToDB()
-        const [results, fields] = await connection.execute('select * from partida')
-
-        console.log("QWERTY")
-        console.log(results)
-        response.json(results)
-    }
-    catch (error) {
-        response.status(500)
-        response.json(error)
-        console.log(error)
-    }
-    finally {
-        if (connection !== null) {
-            connection.end()
-            console.log("Connection closed succesfully!")
-        }
-    }
-})*/
 
 app.get('/api/partida', async (request, response) => {
     let connection = null;
-    const username = request.session.username;
-  
+    const username = active_session;
+
     try {
-      connection = await connectToDB();
-      const [results, fields] = await connection.execute(
-        `select * from partida where username = ?`, [username]
-      );
-  
-      console.log(results);
-      response.json(results);
+        connection = await connectToDB();
+        const [results, fields] = await connection.execute(
+            `select * from partida where username = ?`, [username]
+        );
+
+        console.log(results);
+        response.json(results);
     } catch (error) {
-      response.status(500);
-      response.json(error);
-      console.log(error);
+        response.status(500);
+        response.json(error);
+        console.log(error);
     } finally {
-      if (connection !== null) {
-        connection.end();
-        console.log('Connection closed succesfully!');
-      }
+        if (connection !== null) {
+            connection.end();
+            console.log('Connection closed succesfully!');
+        }
     }
-  });
+});
 
 app.post('/api/partida', async (request, response) => {
 
-    let connection = null
+    let connection = null;
+    const username = active_session;
 
     try {
         connection = await connectToDB()
 
-        const [results, fields] = await connection.query('insert into partida (username, fecha) values (?, NOW())', request.body['username'])
+        const [results, fields] = await connection.query('insert into partida (username, fecha) values (?, NOW())', [username])
 
         response.json({ 'message': "Data inserted correctly." })
     }
@@ -355,32 +342,83 @@ app.post('/api/partida', async (request, response) => {
     }
 })
 
-/*
-app.put('/api/usuario', async (request, response)=>{
+app.post('/api/addEstadisticas', async (request, response) => {
 
-    let connection = null
+    let connection = null;
+    const username = active_session;
 
-    try{
+    try {
         connection = await connectToDB()
+        let [rows, fields] = await connection.query('select max(idPartida) as max_idPartida FROM partida');
+        let max_idPartida = rows[0].max_idPartida;
+        //const [results, fields2] = await connection.query('insert into personajes (energia, xp, idArma, idPartida, velocidadMov, velocidadDis, vida, resistencia, recuperacionEn, enemiesKilled, damageDealt, coinsTaken) values (?, ?, 1, ?, ?, ?, ?, ?, ?, ?, ?, ?)', request.body['energia'], request.body['xp'], max_idPartida, request.body['velocidadMov'], request.body['velocidadDis'], request.body['vida'], request.body['resistencia'], request.body['recuperacionEn'], request.body['enemiesKilled'], request.body['damageDealt'], request.body['coinsTaken'])
+        const results = await connection.query('insert into personajes (idPartida, idArma, energia, xp, velocidadMov, velocidadDis, vida, resistencia, recuperacionEn, enemiesKilled, damageDealt, coinsTaken) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [[max_idPartida], request.body.idArma, request.body.energia, request.body.xp, request.body.velocidadMov, request.body.velocidadDis, request.body.vida, request.body.resistencia, request.body.recuperacionEn, request.body.enemiesKilled, request.body.damageDealt, request.body.coinsTaken]);
 
-        const [results, fields] = await connection.query('update usuario set nombre = ?, apellido = ?, contrasena = ?, correo = ?, where username = ?', [request.body['nombre'], request.body['apellido'], request.body['contrasena'], request.body['email'], request.body['username']])
-        
-        response.json({'message': "Data updated correctly."})
+        console.log(max_idPartida)
+        response.json({ 'message': "Data inserted correctly." })
     }
-    catch(error)
-    {
+    catch (error) {
         response.status(500)
         response.json(error)
         console.log(error)
     }
-    finally
-    {
-        if(connection!==null) 
-        {
+    finally {
+        if (connection !== null) {
             connection.end()
             console.log("Connection closed succesfully!")
         }
     }
+})
+
+/*
+app.post('/api/partida', async (request, response) => {
+
+  let connection = null
+
+  try {
+      connection = await connectToDB()
+
+      const [results, fields] = await connection.query('insert into partida (username, fecha) values (?, NOW())', request.body['username'])
+
+      response.json({ 'message': "Data inserted correctly." })
+  }
+  catch (error) {
+      response.status(500)
+      response.json(error)
+      console.log(error)
+  }
+  finally {
+      if (connection !== null) {
+          connection.end()
+          console.log("Connection closed succesfully!")
+      }
+  }
+}) 
+app.put('/api/usuario', async (request, response)=>{
+
+  let connection = null
+
+  try{
+      connection = await connectToDB()
+
+      const [results, fields] = await connection.query('update usuario set nombre = ?, apellido = ?, contrasena = ?, correo = ?, where username = ?', [request.body['nombre'], request.body['apellido'], request.body['contrasena'], request.body['email'], request.body['username']])
+      
+      response.json({'message': "Data updated correctly."})
+  }
+  catch(error)
+  {
+      response.status(500)
+      response.json(error)
+      console.log(error)
+  }
+  finally
+  {
+      if(connection!==null) 
+      {
+          connection.end()
+          console.log("Connection closed succesfully!")
+      }
+  }
 })
 */
 
@@ -408,7 +446,3 @@ app.put('/api/personajes', async (request, response) => {
     }
 })
 
-
-app.listen(port, () => {
-    console.log(`App listening at http://127.0.0.1:${port}`)
-})
