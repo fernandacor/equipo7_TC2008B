@@ -13,6 +13,7 @@ public class WeaponSelection : MonoBehaviour
     private CharacterStats characterStats;
     private SpecialShot specialShot;
     private BasicShot basicShot;
+    [HideInInspector] public int idArma = 0;
 
     void Start()
     {
@@ -28,11 +29,13 @@ public class WeaponSelection : MonoBehaviour
             if (HasRequiredItem(pistola))
             {
                 AsignarSprite(pistolaSprite);
+                idArma = 1;
             }
             else if (HasRequiredItem(metralleta))
             {
                 AsignarSprite(metralletaSprite);
                 characterStats.AgregarPunto(0, 0, 0, 1f, 0, -5f);
+                idArma = 2;
             }
             else if (HasRequiredItem(escopeta))
             {
@@ -40,6 +43,7 @@ public class WeaponSelection : MonoBehaviour
                 characterStats.AgregarPunto(0, 0, 0, -1.25f, -6, -2f);
                 specialShot.UseMultiShot(true, 3, 60);
                 basicShot.UseMultiShot(true, 3, 60);
+                idArma = 3;
             }
         }
     }
