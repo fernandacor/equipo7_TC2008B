@@ -35,6 +35,9 @@ public class PocionBehavior : MonoBehaviour
             case InventoryManager.Pociones.pocionVelocidad:
                 characterStats.velocidadMovimiento += 3;
                 break;
+            case InventoryManager.Pociones.xpBoost:
+                characterStats.currentExperience += 10;
+                break;
         }
 
         if (characterStats.currentMana < characterStats.maxMana)
