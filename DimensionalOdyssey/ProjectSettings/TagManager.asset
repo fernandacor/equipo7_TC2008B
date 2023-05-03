@@ -22,6 +22,8 @@ TagManager:
   - ManaBar
   - ExperienceBar
   - Zombie
+  - XP
+  - Dialogue
   layers:
   - Default
   - TransparentFX
