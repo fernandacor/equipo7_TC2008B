@@ -25,7 +25,7 @@ public class CharacterStats : MonoBehaviour
 
     public float resistencia;
     public float velocidadDisparo;
-    public float damage;
+    public float dañoInfligido;
 
     public float enemigosMatados; //counter de cuantos enemigos mata
 
@@ -57,7 +57,7 @@ public class CharacterStats : MonoBehaviour
             PlayerPrefs.SetFloat("RecovEne", 3);
             recoverEnergy = PlayerPrefs.GetFloat("RecovEne"); //cuanta energia recuperas por segundo
             PlayerPrefs.SetFloat("damaDealt", 2);
-            damage = PlayerPrefs.GetFloat("damaDealt"); //cuanto daño haces
+            dañoInfligido = PlayerPrefs.GetFloat("damaDealt"); //cuanto daño haces
             PlayerPrefs.SetFloat("DañoCont", 0);
             dañoInfligidoContador = PlayerPrefs.GetFloat("DañoCont");
             PlayerPrefs.SetFloat("ContMoney", 0);
@@ -110,16 +110,26 @@ public class CharacterStats : MonoBehaviour
         if (movementVel_)
             velocidadMovimiento += 2;
         if (damage_)
-            damage += 2;
+            dañoInfligido += 2;
     }
 
-    public void TakeDamage(float damage)
+    public void AgregarPunto(float health_, float mana_, float resistance_, float shootVel_, float movementVel_, float damage_)
     {
-        PlayerPrefs.SetFloat("Damage", damage);
-        damage = damage - resistencia;
-        currentHealth -= damage;
+        maxHealth += health_;
+        maxMana += mana_;
+        resistencia += resistance_;
+        velocidadDisparo -= shootVel_;
+        velocidadMovimiento += movementVel_;
+        dañoInfligido += damage_;
+    }
+
+    public void TakeDamage(float dañoInfligido)
+    {
+        PlayerPrefs.SetFloat("Damage", dañoInfligido);
+        dañoInfligido = dañoInfligido - resistencia;
+        currentHealth -= dañoInfligido;
         healthBar.SetHealth(currentHealth);
-        dañoRecibido += damage;
+        dañoRecibido += dañoInfligido;
     }
 
     public void LoseEnergy(float lostEnergy)

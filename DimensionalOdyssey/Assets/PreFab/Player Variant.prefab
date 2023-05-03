@@ -294,7 +294,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1225039119
+--- !u!114 &6640961586736938729
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -303,7 +303,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1824631651858653262}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8235f4077c6acce42b1d4a52299f0cec, type: 3}
+  m_Script: {fileID: 11500000, guid: b0e2b2740099fc24ab8108546d0de948, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pistola: 0
