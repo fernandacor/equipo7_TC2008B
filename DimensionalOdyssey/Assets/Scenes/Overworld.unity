@@ -135,13 +135,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6709687959689108204, guid: 3a4961fceb52092478dfe6e8105795f2, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6709687959689108205, guid: 3a4961fceb52092478dfe6e8105795f2, type: 3}
       propertyPath: m_Name
       value: Main Camera
       objectReference: {fileID: 0}
     - target: {fileID: 6709687959689108205, guid: 3a4961fceb52092478dfe6e8105795f2, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6709687959689108206, guid: 3a4961fceb52092478dfe6e8105795f2, type: 3}
       propertyPath: m_RootOrder
@@ -332,6 +336,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2217423874745378917, guid: fd8fe64b8caa00046828ef5c56c70293, type: 3}
+      propertyPath: levelNumber
+      value: 
+      objectReference: {fileID: 1983470109}
     - target: {fileID: 2293857198873387183, guid: fd8fe64b8caa00046828ef5c56c70293, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -998,6 +1006,7 @@ MonoBehaviour:
   sceneName: Casa
   posToGo: {fileID: 0}
   portalSFX: {fileID: 0}
+  updateApi: {fileID: 0}
 --- !u!4 &622762973
 Transform:
   m_ObjectHideFlags: 0
@@ -1089,6 +1098,7 @@ MonoBehaviour:
   sceneName: BancoD1
   posToGo: {fileID: 0}
   portalSFX: {fileID: 0}
+  updateApi: {fileID: 0}
 --- !u!1001 &1035727932
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1150,6 +1160,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3218082468970174282, guid: 5f1677c34fed95d4ba52a81d20c47102, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3493362602427475957, guid: 5f1677c34fed95d4ba52a81d20c47102, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4874639488000069736, guid: 5f1677c34fed95d4ba52a81d20c47102, type: 3}
@@ -1238,83 +1252,7 @@ MonoBehaviour:
   sceneName: PoliciasD1
   posToGo: {fileID: 0}
   portalSFX: {fileID: 0}
---- !u!1001 &1242620563
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 9130601394781250601, guid: 4c9b1218ec7d58145b8cf56ff184e5d2, type: 3}
-      propertyPath: m_Name
-      value: Cinemachine
-      objectReference: {fileID: 0}
-    - target: {fileID: 9130601394781250601, guid: 4c9b1218ec7d58145b8cf56ff184e5d2, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9130601394781250606, guid: 4c9b1218ec7d58145b8cf56ff184e5d2, type: 3}
-      propertyPath: m_Follow
-      value: 
-      objectReference: {fileID: 2019624649}
-    - target: {fileID: 9130601394781250606, guid: 4c9b1218ec7d58145b8cf56ff184e5d2, type: 3}
-      propertyPath: m_Lens.OrthographicSize
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 9130601394781250607, guid: 4c9b1218ec7d58145b8cf56ff184e5d2, type: 3}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 9130601394781250607, guid: 4c9b1218ec7d58145b8cf56ff184e5d2, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -16.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 9130601394781250607, guid: 4c9b1218ec7d58145b8cf56ff184e5d2, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -13.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 9130601394781250607, guid: 4c9b1218ec7d58145b8cf56ff184e5d2, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -10
-      objectReference: {fileID: 0}
-    - target: {fileID: 9130601394781250607, guid: 4c9b1218ec7d58145b8cf56ff184e5d2, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9130601394781250607, guid: 4c9b1218ec7d58145b8cf56ff184e5d2, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9130601394781250607, guid: 4c9b1218ec7d58145b8cf56ff184e5d2, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9130601394781250607, guid: 4c9b1218ec7d58145b8cf56ff184e5d2, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9130601394781250607, guid: 4c9b1218ec7d58145b8cf56ff184e5d2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9130601394781250607, guid: 4c9b1218ec7d58145b8cf56ff184e5d2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9130601394781250607, guid: 4c9b1218ec7d58145b8cf56ff184e5d2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9130601396009815907, guid: 4c9b1218ec7d58145b8cf56ff184e5d2, type: 3}
-      propertyPath: m_DeadZoneWidth
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9130601396009815907, guid: 4c9b1218ec7d58145b8cf56ff184e5d2, type: 3}
-      propertyPath: m_DeadZoneHeight
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 4c9b1218ec7d58145b8cf56ff184e5d2, type: 3}
+  updateApi: {fileID: 0}
 --- !u!1001 &1283075194
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1540,6 +1478,7 @@ MonoBehaviour:
   sceneName: Laboratory
   posToGo: {fileID: 0}
   portalSFX: {fileID: 0}
+  updateApi: {fileID: 0}
 --- !u!61 &1424775094
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1737,6 +1676,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chest
       objectReference: {fileID: 0}
+    - target: {fileID: 7694209136900971428, guid: e7d8540f8b0a3704baa86d3f909a3b41, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7694209136900971431, guid: e7d8540f8b0a3704baa86d3f909a3b41, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -1799,6 +1742,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7d8540f8b0a3704baa86d3f909a3b41, type: 3}
+--- !u!114 &1983470109 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2632004138103612649, guid: fd8fe64b8caa00046828ef5c56c70293, type: 3}
+  m_PrefabInstance: {fileID: 557023774}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &2019624649 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3218082468970174282, guid: 5f1677c34fed95d4ba52a81d20c47102, type: 3}
@@ -11003,3 +10957,4 @@ MonoBehaviour:
   sceneName: Overworld postapocaliptico
   posToGo: {fileID: 0}
   portalSFX: {fileID: 0}
+  updateApi: {fileID: 0}
