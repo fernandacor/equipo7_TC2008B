@@ -1,5 +1,5 @@
 :root {
-    --text: #da76ff;
+    --text: #DA76FF;
     --background-1: #5515b5;
     --background-2: #ab15b5;
 }
@@ -23,6 +23,7 @@
 
 body {
     font-family: 'Ubuntu', sans-serif;
+    /* background-image: url(../assets/img/background.gif); */
 }
 
 #background-image {
@@ -39,9 +40,10 @@ body {
 }
 
 #background-container {
-    background-color: #000000;
-    opacity: 0.75;
+    /* background-color: #000000;
+    opacity: 0.1; */
     border-radius: 32px;
+    /* border: 1px black solid; */
 
     position: absolute;
     top: 2.5vh;
@@ -50,28 +52,42 @@ body {
     height: 95svh;
     width: 95%;
 
-    /* box-shadow: 0 0 4px 5px #181027; */
+    box-shadow: 0 0 4px 5px #000000;
 }
 
 .main-container {
-    position: relative;
     height: 100vh;
     height: 100svh;
     width: 100%;
 
-    margin: 0;
-    padding: 2.5vh 2.5%;
 }
 
 main {
-    height: 85%;
+    position: relative;
+    height: 84svh;
+    height: 84vh;
     overflow-y: scroll;
-    /* margin-top: 1%; */
-    padding: 0 2.5%;
+    margin: 2.5vh 2.5%;
+    padding: 0 1rem;
+}
+
+.title-background {
+    height: 80svh;
+    height: 80vh;
 }
 
 .container-fluid {
-    padding: 1vh 2.5%;
+    padding: 5vh 2.5%;
+    /* margin-bottom: 5vh; */
+}
+
+/* .row {
+    margin: 0;
+    margin-bottom: 5vh;
+} */
+
+.bg-nav {
+    background-color: rgba(85, 21, 181, 0.75);
 }
 
 /* * Index */
@@ -81,11 +97,13 @@ main {
     margin: 0;
 }
 
-#info {
-    height: 90%;
-    margin: 0;
+.card-img {
+    height: 40vh;
 }
 
+.card-img-sm {
+    height: 20vh;
+}
 
 .bg-main {
     background-color: var(--background-1);
@@ -94,46 +112,13 @@ main {
 .h {
     font-family: 'OCR A Extended', monospace;
     color: var(--text);
-    font-weight: bolder;
+    font-weight: bold;
 }
-
-.nav-row,
-.row {
-    margin: 0;
-}
-
-/* .row {
-    margin-top: 5%;
-    margin-bottom: 5%;
-} */
 
 .card {
     background-color: transparent;
     border: 0px;
 }
-
-
-.space {
-    height: 80px;
-}
-
-.chartContainer {
-    border: 0;
-    justify-content: center;
-    display: flex;
-    width: 100%;
-}
-
-.chartContainer canvas {
-    flex-grow: 1;
-    max-width: 40%;
-    max-height: 600px;
-    border: 1px solid black;
-    margin: 20px;
-    background-color: var(--background-1);
-    background: linear-gradient(hsla(270, 60%, 85%, 0.8), hsla(270, 60%, 85%, 0.2)), url("imagen-de-fondo.jpg");
-}
-
 
 #login-error {
     display: block;

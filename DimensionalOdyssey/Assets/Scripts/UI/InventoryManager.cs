@@ -42,6 +42,8 @@ public class InventoryManager : MonoBehaviour
         llaveCafe,
         llaveNaranja,
         llaveOficina,
+        llaveBanco,
+        llavePolicias,
 
         //Traje
         trajeInicial,
@@ -65,7 +67,8 @@ public class InventoryManager : MonoBehaviour
         pocionInmunidad,
         pocionProteccion,
         pocionIman,
-        pocionMystery
+        pocionMystery,
+        xpBoost
     }
 
     public enum Tokens
@@ -90,7 +93,8 @@ public class InventoryManager : MonoBehaviour
         pocionInmunidad,
         pocionProteccion,
         pocionIman,
-        pocionMystery
+        pocionMystery,
+        xpBoost
     }
 
     public enum Llaves
@@ -98,6 +102,9 @@ public class InventoryManager : MonoBehaviour
         llaveRosa,
         llaveTurquesa,
         llaveCafe,
-        llaveNaranja
+        llaveNaranja,
+        llaveOficina,
+        llaveBanco,
+        llavePolicias
     }
 }
