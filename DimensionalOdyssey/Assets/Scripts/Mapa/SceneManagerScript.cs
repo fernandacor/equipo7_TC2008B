@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class SceneManagerScript : MonoBehaviour
 {
 
-    public CharacterStats characterStats;
+    private CharacterStats characterStats;
 
     private void Update()
     {
