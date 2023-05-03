@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: PocionEnergia
   m_EditorClassIdentifier: 
   name: New Item
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 1776184f7af1c0f4a989cdaa2e48bef9, type: 3}
   isDefaultItem: 0
   stackable: 1
