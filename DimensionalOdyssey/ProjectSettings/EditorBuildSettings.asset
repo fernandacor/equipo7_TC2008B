@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/mainMenu.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
+    path: Assets/Scenes/Laboratory.unity
+    guid: ffebf2153d914cd47a772c8649a4a2a9
+  - enabled: 1
     path: Assets/Cutscenes/LABCUTSCENE.unity
     guid: f1b3001f9475247ac964135c0481aab8
   - enabled: 1
