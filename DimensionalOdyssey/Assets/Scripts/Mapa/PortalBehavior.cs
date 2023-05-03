@@ -5,26 +5,29 @@ using UnityEngine.SceneManagement;
 
 public class PortalBehavior : MonoBehaviour
 {
-    public bool switchScene; 
-    public string sceneName;
+    public bool switchScene; // Booleano que indica si el portal cambia de escena. Si no, cambia de cuarto
+    public string sceneName; // Nombre de la escena a la que se cambia
 
-    private bool playerDetected;
-    [SerializeField] Transform posToGo;
-    private GameObject player;
-    [SerializeField] private AudioSource portalSFX;
+    private bool playerDetected; // Booleano que indica si el jugador está en el portal
+    [SerializeField] Transform posToGo; // Posicion a la que se mueve el jugador
+    private GameObject player; // Referencia al jugador
+    [SerializeField] private AudioSource portalSFX; // SFX de portal
 
 
     void Start()
     {
+        // Inicialmente, el jugador no se detecta
         playerDetected = false;
     }
 
     void Update()
     {
+        // Si el jugador se detecta, no se quiere cambiar de escena, y se pica la tecla E:
         if (playerDetected && !switchScene)
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
+                // Se mueve al jugador a la posición indicada, y se desconoce al jugador
                 player.transform.position = posToGo.position;
                 playerDetected = false;
             }
@@ -33,21 +36,24 @@ public class PortalBehavior : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
+        // Si el jugador entra en el trigger y se quiere cambiar de escena:
         if (collision.gameObject.CompareTag("Player") && switchScene)
         {
-            SceneManager.LoadScene(sceneName);
-            portalSFX.Play();
+            SceneManager.LoadScene(sceneName); // Se cambia de escena
+            portalSFX.Play(); // Se reproduce el SFX de portal
         }
+        // Si no se quiere cambiar de escena:
         else if (collision.gameObject.CompareTag("Player") && !switchScene)
         {
-            playerDetected = true;
-            player = collision.gameObject;
-            portalSFX.Play();
+            playerDetected = true; // Se detecta al jugador
+            player = collision.gameObject; // Se guarda una referencia al jugador
+            portalSFX.Play(); // Se reproduce el SFX de portal
         }
     }
 
     void OnTriggerExit2D(Collider2D collision)
     {
+        // Si el jugador sale del trigger del portal, se desconoce al jugador
         if (collision.gameObject.tag == "Player")
         {
             playerDetected = false;
