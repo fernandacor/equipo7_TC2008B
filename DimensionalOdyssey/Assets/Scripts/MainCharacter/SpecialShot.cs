@@ -129,6 +129,11 @@ public class SpecialShot : MonoBehaviour
         bulletSpeed = initialBulletSpeed + (initialBulletSpeed * porcentajeMejora * 0.01f);
     }
 
+    public void UseMultiShot(bool useMultiShot_)
+    {
+        useMultiShot = useMultiShot_;
+    }
+
     public void UseMultiShot(bool useMultiShot_, int initialCantidadDisparos_, int rangoAngulos_)
     {
         useMultiShot = useMultiShot_;
