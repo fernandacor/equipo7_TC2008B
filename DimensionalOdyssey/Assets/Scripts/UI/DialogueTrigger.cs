@@ -7,6 +7,8 @@ public class DialogueTrigger : MonoBehaviour
     public Dialogue dialogueScript;
     private bool playerDetected;
 
+    [SerializeField] private AudioSource dialogueSFX;
+
     //Detect trigger with player
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -16,6 +18,7 @@ public class DialogueTrigger : MonoBehaviour
             //If detected, show indicator
             playerDetected = true;
             dialogueScript.ToggleIndicator(playerDetected);
+            dialogueSFX.Play();
         }
     }
 
