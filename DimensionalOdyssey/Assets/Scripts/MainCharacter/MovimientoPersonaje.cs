@@ -69,12 +69,12 @@ public class MovimientoPersonaje : MonoBehaviour
             firePoint.GetComponent<Renderer>().sortingOrder = playerRenderer.sortingOrder + 1;
     }
 
-    private void OnTriggerEnter2D(Collider2D trigger)
+    private void OnTriggerEnter2D(Collider2D collider)
     {
         CuartoScript cuartoScript;
-        if (trigger.CompareTag("Room"))
+        if (collider.CompareTag("Room"))
         {
-            cuartoActual = trigger.gameObject;
+            cuartoActual = collider.gameObject;
             cuartoScript = cuartoActual.GetComponent<CuartoScript>();
             if (!cuartoScript.descubierto)
             {
@@ -82,22 +82,10 @@ public class MovimientoPersonaje : MonoBehaviour
                 cuartoScript.CerrarCuarto();
             }
         }
-        else if (trigger.CompareTag("Boton"))
+        else if (collider.CompareTag("Boton"))
         {
             cuartoScript = cuartoActual.GetComponent<CuartoScript>();
             cuartoScript.AbrirCuarto();
-        }
-        else if (trigger.name == "Multishot Button")
-        {
-            firePoint.GetComponent<SpecialShot>().UseMultiShot(true, 4, 60);
-        }
-        else if (trigger.name == "Repeatshot Button")
-        {
-            firePoint.GetComponent<SpecialShot>().RepeatShot(3);
-        }
-        else if (trigger.name == "Powershot Button")
-        {
-            firePoint.GetComponent<SpecialShot>().PowerShot(100);
         }
     }
 }

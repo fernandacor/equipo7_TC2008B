@@ -17,6 +17,8 @@ public class CuartoScript : MonoBehaviour
     public GameObject pasilloRight;
     public GameObject pasilloLeft;
 
+    private int enemiesAmount = 0;
+
     public bool descubierto;
 
     void Start()
@@ -29,6 +31,25 @@ public class CuartoScript : MonoBehaviour
         salidaLeft = transform.Find("Salida Left").gameObject;
 
         AbrirCuarto();
+    }
+
+    void Update()
+    {
+        int enemiesAmount_ = GameObject.FindGameObjectsWithTag("Enemy").Length;
+
+        if (enemiesAmount_ != enemiesAmount)
+        {
+            if (enemiesAmount == 0)
+                enemiesAmount = enemiesAmount_;
+            else
+            {
+                if (enemiesAmount_ == 0)
+                {
+                    AbrirCuarto();
+                    enemiesAmount = 0;
+                }
+            }
+        }
     }
 
     public void AbrirCuarto()

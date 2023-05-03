@@ -25,6 +25,7 @@ TagManager:
   - XP
   - Dialogue
   - Sonido
+  - PortalDropped
   layers:
   - Default
   - TransparentFX

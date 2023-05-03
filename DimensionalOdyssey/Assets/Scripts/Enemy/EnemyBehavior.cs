@@ -82,7 +82,7 @@ public class EnemyBehavior : MonoBehaviour
         if (currentHealth <= 0)
         {
             characterStats.MatarEnemigos(1); // Se suma uno al contador de enemigos matados del jugador
-            Debug.Log("Enemigo muerto");
+            // Debug.Log("Enemigo muerto");
 
             // Si el enemigo tira un item, se activa el objeto
             if (dropItems == true)
