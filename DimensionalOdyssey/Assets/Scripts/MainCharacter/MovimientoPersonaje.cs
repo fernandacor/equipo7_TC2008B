@@ -23,28 +23,32 @@ public class MovimientoPersonaje : MonoBehaviour
     // Menú de pausa
     private PauseMenuScript pauseMenu;
 
+    // Interfaz inventario
     private InventoryUI inventoryUI;
 
+    // Game manager
     private GameManager gameManager;
 
     private void Awake()
     {
-        characterStats = GetComponent<CharacterStats>();
-        playerAnimator = GetComponent<Animator>();
-        firePoint = transform.Find("Fire Point").gameObject;
-        playerInput = GetComponent<PlayerInput>();
-        pauseMenu = GameObject.Find("Canvas").GetComponent<PauseMenuScript>();
-        inventoryUI = GameObject.Find("Canvas").GetComponent<InventoryUI>();
-
-        gameManager = GameManager.instance;
+        // Se buscan los elementos necesarios
+        characterStats = GetComponent<CharacterStats>(); // script de stats del jugador
+        playerAnimator = GetComponent<Animator>(); // animador del personaje
+        firePoint = transform.Find("Fire Point").gameObject; // punto de disparo
+        playerInput = GetComponent<PlayerInput>(); // sistema de input
+        pauseMenu = GameObject.Find("Canvas").GetComponent<PauseMenuScript>(); // menu de pausa
+        inventoryUI = GameObject.Find("Canvas").GetComponent<InventoryUI>(); //interfaz de inventario
+        gameManager = GameManager.instance; // game manager
     }
 
     void Update()
     {
+        // Si el juego no está en pausa:
         if (!pauseMenu.gameIsPaused)
         {
-            movimiento = playerInput.actions["Move"].ReadValue<Vector2>().normalized;
+            movimiento = playerInput.actions["Move"].ReadValue<Vector2>().normalized; // Se lee el input de movimiento
 
+            // Si el jugador está en movimiento, se activa la animación de movimiento
             playerAnimator.SetFloat("Horizontal", movimiento.x);
             playerAnimator.SetFloat("Vertical", movimiento.y);
             playerAnimator.SetFloat("Speed", movimiento.sqrMagnitude);
@@ -53,9 +57,11 @@ public class MovimientoPersonaje : MonoBehaviour
 
     void FixedUpdate()
     {
+        // Se busca el RigidBody del jugador y se le aplica la velocidad de movimiento
         Rigidbody2D playerRB = GetComponent<Rigidbody2D>();
         playerRB.MovePosition(playerRB.position + movimiento * characterStats.velocidadMovimiento * Time.fixedDeltaTime);
 
+        // Se busca el renderer del punto de disparo y se le aplica una posición
         Renderer playerRenderer = GetComponent<Renderer>();
         if (movimiento.y > 0)
             firePoint.GetComponent<Renderer>().sortingOrder = playerRenderer.sortingOrder - 1;

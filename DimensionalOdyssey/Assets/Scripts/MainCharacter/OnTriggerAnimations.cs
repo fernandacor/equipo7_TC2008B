@@ -8,24 +8,23 @@ public class OnTriggerAnimations : MonoBehaviour
     private Animator animator;
     private CharacterStats characterStats;
     private GameObject trajeInicial;
-
     private GameManager gameManager;
 
-    [SerializeField] private AudioSource muerteSFX;
+    [SerializeField] private AudioSource muerteSFX; // Espacio para efecto de sonido
 
     void Start()
     {
         // Se buscan los elementos
-        animator = GetComponent<Animator>();
-        characterStats = GetComponent<CharacterStats>();
-        trajeInicial = GameObject.FindGameObjectWithTag("Traje");
+        animator = GetComponent<Animator>(); // animador
+        characterStats = GetComponent<CharacterStats>(); // script de stats del jugador
+        trajeInicial = GameObject.FindGameObjectWithTag("Traje"); // traje inicial
 
-        gameManager = GameManager.instance;
+        gameManager = GameManager.instance; // game manager
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        // Si el jugador choca con el objeto "Traje", se activa la animación de cambio de outfit
+        // Si el jugador choca con el objeto "Traje", se activa la animación de cambio de outfit, y se destruye el traje
         if (collision.gameObject.tag == "Traje")
         {
             Debug.Log("Traje encontrado");
@@ -37,15 +36,16 @@ public class OnTriggerAnimations : MonoBehaviour
 
     void Update()
     {
-        // Si la salud del jugador es igual o menor a cero, se activa la animación de muerte
+        // Si la salud del jugador es igual o menor a cero, se activa la animación y el sonido de muerte
         if (characterStats.currentHealth <= 0)
         {
             animator.SetBool("Death", true);
             gameManager.SetGameState(GameState.Death);
             muerteSFX.Play();
         }
-        else{
-            gameManager.SetGameState(GameState.Playing);
+        else
+        {
+            gameManager.SetGameState(GameState.Playing); // Si el jugador sigue vivo, el juego sigue corriendo
         }
     }
 }
