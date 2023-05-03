@@ -4290,7 +4290,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1697051813}
-  - component: {fileID: 1697051812}
+  - component: {fileID: 1697051814}
   m_Layer: 0
   m_Name: API
   m_TagString: Untagged
@@ -4298,31 +4298,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1697051812
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1697051811}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fecf15bf51e9456f9c00abce3028c33, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  url: http://127.0.0.1:5235
-  updatePersonajeEP: /api/personajes
-  errorText: {fileID: 256678756}
-  energiaInput: {fileID: 305171838}
-  xpInput: {fileID: 1541936256}
-  partidaInput: {fileID: 1238822347}
-  movInput: {fileID: 1120550571}
-  disInput: {fileID: 158452243}
-  vidaInput: {fileID: 2036040054}
-  resistenciaInput: {fileID: 1831541191}
-  recuperacionInput: {fileID: 1035610670}
-  roboInput: {fileID: 1303585195}
-  updateButton: {fileID: 1787189016}
 --- !u!4 &1697051813
 Transform:
   m_ObjectHideFlags: 0
@@ -4338,6 +4313,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1697051814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1697051811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89eeb86c37e4ce446a9b5efbe90d6010, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  url: http://127.0.0.1:5235
+  updatePersonajeEP: /api/personajes
+  updateButton: {fileID: 1787189016}
 --- !u!1 &1775300822
 GameObject:
   m_ObjectHideFlags: 0
