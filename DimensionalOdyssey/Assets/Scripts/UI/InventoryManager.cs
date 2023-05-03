@@ -54,6 +54,7 @@ public class InventoryManager : MonoBehaviour
         tokenMultidisparoCuadruple,
         tokenDisparoDoble,
         tokenDisparoTriple,
+        tokenPowerShot,
         tokenReboteBalas,
         tokenCombo,
         tokenAtaqueDirigido,

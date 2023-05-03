@@ -5,16 +5,23 @@ using UnityEngine.InputSystem;
 
 public class SpecialShot : MonoBehaviour
 {
-    public GameObject bulletPrefab;
-    public float bulletSpeed = 20f;
-    Vector2 lookingDirection;
+    [SerializeField] InventoryManager.AllItems reqItem1, reqItem2, reqItem3;
+    [SerializeField] InventoryManager.AllItems multishotToken, repeatedshotToken, powershotToken;
     private ManaBar manaBar;
-
-    private GameObject player;
     private CharacterStats characterStats;
+    public GameObject bulletPrefab;
+    public float bulletForce = 20f;
     private PlayerInput playerInput;
+    public GameObject Apuntador;
+
+    private bool canShoot;
+
     private Vector2 mousePos;
     private Camera cam;
+    private GameObject player;
+    private float shotAngle = 0f;
+    public float bulletSpeed = 20f;
+    Vector2 lookingDirection;
 
     private float gunAngle = 0f;
     private float tiempoEntreDisparos = 0f;
@@ -34,7 +41,7 @@ public class SpecialShot : MonoBehaviour
         initialBulletSpeed = bulletSpeed;
         manaBar = GameObject.Find("ManaBar").GetComponent<ManaBar>();
 
-        RepeatShot(1);
+        RepeatShot(2);
         PowerShot(0);
         UseMultiShot(false, 4, 60);
     }
@@ -43,26 +50,51 @@ public class SpecialShot : MonoBehaviour
     {
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
 
-        if (playerInput.actions["SpecialShot"].IsPressed())
+        if (HasRequiredItem(reqItem1, reqItem2, reqItem3))
         {
-            if (tiempoEntreDisparos > 0f)
-                tiempoEntreDisparos -= Time.deltaTime;
-            else
-            {
-                Shoot();
-                if (repeat > 0)
-                {
-                    tiempoEntreDisparos = 0.1f;
-                    repeat -= 1;
-                }
-                else
-                {
-                    tiempoEntreDisparos = characterStats.velocidadDisparo;
-                    repeat = shotsAmount;
-                }
-
-            }
+            canShoot = true;
+            Debug.Log("canShoot = true porque tienes el item requerido");
+            Apuntador.SetActive(true);
+            Debug.Log("apuntador activado");
         }
+
+        if (HasRequiredToken(multishotToken))
+            UseMultiShot(true, 3, 60);
+
+        if (HasRequiredToken(repeatedshotToken))
+            RepeatShot(2);
+
+        if (HasRequiredToken(powershotToken))
+            PowerShot(100);
+
+        if (tiempoEntreDisparos > 0f)
+            tiempoEntreDisparos -= Time.deltaTime;
+
+        if (characterStats.currentMana <= 0)
+            canShoot = false;
+
+        if (playerInput.actions["SpecialShot"].IsPressed() && tiempoEntreDisparos <= 0f && canShoot)
+        {
+            tiempoEntreDisparos = characterStats.velocidadDisparo;
+            Shoot();
+        }
+
+    }
+
+    public bool HasRequiredItem(InventoryManager.AllItems reqItem1, InventoryManager.AllItems reqItem2, InventoryManager.AllItems reqItem3)
+    {
+        if (InventoryManager.Instance._inventoryItems.Contains(reqItem1) || InventoryManager.Instance._inventoryItems.Contains(reqItem2) || InventoryManager.Instance._inventoryItems.Contains(reqItem3))
+            return true;
+        else
+            return false;
+    }
+
+    public bool HasRequiredToken(InventoryManager.AllItems reqItem)
+    {
+        if (InventoryManager.Instance._inventoryItems.Contains(reqItem))
+            return true;
+        else
+            return false;
     }
 
     void Shoot()
@@ -103,6 +135,8 @@ public class SpecialShot : MonoBehaviour
 
     void MultiShot()
     {
+        characterStats.LoseEnergy(10);
+
         Quaternion shotRotation;
         float shotAngle;
         Vector2 shotDirection;
