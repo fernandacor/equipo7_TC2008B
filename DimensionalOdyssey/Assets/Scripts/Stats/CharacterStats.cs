@@ -10,7 +10,7 @@ public class CharacterStats : MonoBehaviour
     public float currentExperience;
     public int level;
 
-    private HealthBar healthBar;
+    public HealthBar healthBar;
     public float maxHealth;
     public float currentHealth;
 
@@ -23,7 +23,7 @@ public class CharacterStats : MonoBehaviour
     //public MovimientoPersonaje movimientoPersonaje;
     public float velocidadMovimiento;
 
-    public float resistencia; 
+    public float resistencia;
     public float velocidadDisparo;
     public float dañoInfligido;
 
@@ -88,27 +88,48 @@ public class CharacterStats : MonoBehaviour
     public void levelUp()
     {
         Debug.Log("Level Up:");
-            currentExperience -= maxExperience;
-            experienceBar.SetMaxExp(maxExperience);
-            experienceBar.SetExp(currentExperience);
-            level += 1;
-            maxHealth += 10;
-            maxMana += 10;
-            resistencia += 2;
-            velocidadDisparo += 0.2f;
-            velocidadMovimiento += 2;
-            maxExperience += 10;
-            dañoInfligido += 2;
-            Debug.Log("Level Up stats changed");
+        currentExperience -= maxExperience;
+        experienceBar.SetMaxExp(maxExperience);
+        experienceBar.SetExp(currentExperience);
+        level += 1;
+        maxExperience += 10;
+        Debug.Log("Level Up stats changed");
+        AgregarPunto(true, true, true, true, true, true);
     }
 
-    public void TakeDamage(float damage)
+    public void AgregarPunto(bool health_, bool mana_, bool resistance_, bool shootVel_, bool movementVel_, bool damage_)
     {
-        PlayerPrefs.SetFloat("Damage", damage);
-        damage = damage - resistencia;
-        currentHealth -= damage;
+        if (health_)
+            maxHealth += 10;
+        if (mana_)
+            maxMana += 10;
+        if (resistance_)
+            resistencia += 2;
+        if (shootVel_)
+            velocidadDisparo -= 0.2f;
+        if (movementVel_)
+            velocidadMovimiento += 2;
+        if (damage_)
+            dañoInfligido += 2;
+    }
+
+    public void AgregarPunto(float health_, float mana_, float resistance_, float shootVel_, float movementVel_, float damage_)
+    {
+        maxHealth += health_;
+        maxMana += mana_;
+        resistencia += resistance_;
+        velocidadDisparo -= shootVel_;
+        velocidadMovimiento += movementVel_;
+        dañoInfligido += damage_;
+    }
+
+    public void TakeDamage(float dañoInfligido)
+    {
+        PlayerPrefs.SetFloat("Damage", dañoInfligido);
+        dañoInfligido = dañoInfligido - resistencia;
+        currentHealth -= dañoInfligido;
         healthBar.SetHealth(currentHealth);
-        dañoRecibido += damage;
+        dañoRecibido += dañoInfligido;
     }
 
     public void LoseEnergy(float lostEnergy)
@@ -180,7 +201,7 @@ public class CharacterStats : MonoBehaviour
             currentExperience += 1;
         }
 
-        if(collision.CompareTag("XP"))
+        if (collision.CompareTag("XP"))
         {
             currentExperience += 10;
             experienceBar.SetExp(currentExperience);

@@ -7884,6 +7884,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ElegirArma
       objectReference: {fileID: 0}
+    - target: {fileID: 6060346147974924050, guid: a3681dc8205b82a42a3ad48cd8c86293, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7570807962880560933, guid: a3681dc8205b82a42a3ad48cd8c86293, type: 3}
       propertyPath: m_RootOrder
       value: 6

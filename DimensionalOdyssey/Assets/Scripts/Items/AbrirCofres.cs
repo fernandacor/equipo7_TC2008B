@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+// Script que define el funcionamiento de los cofres
 
 public class AbrirCofres : MonoBehaviour
 {
@@ -36,25 +37,28 @@ public class AbrirCofres : MonoBehaviour
         };
     }
 
-    private void AbrirCaja() // Función que activa la imagen de cofre abierto y desactiva el cofre cerrado
+    private void AbrirCaja() 
     {
+    // Función que activa la imagen de cofre abierto y desactiva el cofre cerrado
         cajaAbierta.SetActive(true);
         cajaCerrada.SetActive(false);
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player") // Si el jugador entra en el trigger, se activa la variable isOpen
+        if (collision.gameObject.tag == "Player") 
         {
+            // Si el jugador entra en el trigger, se activa la variable isOpen y suena el SFX de abrir cofre
             isOpen = true;
-            openChestSFX.Play();
+            openChestSFX.Play(); 
         }
     }
 
     void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player") // Si el jugador sale del trigger, se desactiva la variable isOpen
+        if (collision.gameObject.tag == "Player") 
         {
+            // Si el jugador sale del trigger, se desactiva la variable isOpen
             isOpen = false;
         }
     }

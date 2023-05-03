@@ -1,9 +1,11 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class InventoryUI : MonoBehaviour
 {
     public Transform itemsParent;
     public GameObject inventoryUI;
+    private PlayerInput playerInput;
     
     [HideInInspector]public bool isInventoryOpen = false;//variable to check if the inventory is open or not
 
@@ -13,9 +15,17 @@ public class InventoryUI : MonoBehaviour
     {
         inventoryUI.SetActive(false);
         gameManager = GameManager.instance;
+        playerInput = GetComponent<PlayerInput>();
     }
 
+    private void OnEnable()
+    {
+        playerInput.actions["SwitchMap"].performed += SwitchActionMap;
+    }
 
+    private void SwitchActionMap(InputAction.CallbackContext context){
+        playerInput.SwitchCurrentActionMap("Inventory");
+    }
     // Update is called once per frame
     void Update()
     {
@@ -26,6 +36,7 @@ public class InventoryUI : MonoBehaviour
             if (isInventoryOpen)
             {
                 gameManager.SetGameState(GameState.AbrirInventario);
+                playerInput.SwitchCurrentActionMap("Inventory");
             }
             else
             {

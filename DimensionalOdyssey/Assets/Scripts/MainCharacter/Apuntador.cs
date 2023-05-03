@@ -2,14 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Script que cambia el cursos del mouse por el apuntador de la pistola
+
 public class Apuntador : MonoBehaviour
 {
-
+    // Elementos camara y posición del mouse
     private Camera cam;
     private Vector2 mousePos;
 
     void Start()
     {
+        // Se busca la cámara principal
         cam = GameObject.Find("Main Camera").gameObject.GetComponent<Camera>();
 
         // Oculta el cursor del mouse
@@ -19,6 +22,7 @@ public class Apuntador : MonoBehaviour
 
     void Update()
     {
+        // Se busca y se actualiza la posición del mouse
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
         transform.position = new Vector3(mousePos.x, mousePos.y, 0f);
     }
