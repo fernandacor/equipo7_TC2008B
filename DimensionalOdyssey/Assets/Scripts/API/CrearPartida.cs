@@ -5,11 +5,25 @@ using UnityEngine.UI;
 using UnityEngine.Networking; 
 using TMPro;
 
+[System.Serializable]
+public class Partidas
+{
+    public int idPartida;
+    public string username;
+    public string fecha;
+}
+
+public class PartidaList 
+{
+    public List<Partidas> partidas;
+}
+
 public class CrearPartida : MonoBehaviour
 {
     [SerializeField] Button addButton;
     public string url = "http://127.0.0.1:5235";
     public string EP = "/api/partida";
+    public PartidaList partidas;
 
     [SerializeField] private CrearStatsIniciales crearStatsIniciales;
     // Start is called before the first frame update
@@ -42,6 +56,28 @@ public class CrearPartida : MonoBehaviour
                 Debug.Log("Error: " + www.error);
                 //if (errorText != null) errorText.text = "Error: " + www.error;
             }
+        }
+    }
+
+    private IEnumerator GetPartida()
+    {
+        using (UnityWebRequest www = UnityWebRequest.Get(url + EP))
+        {
+            yield return www.SendWebRequest();
+
+            if (www.result == UnityWebRequest.Result.Success)
+            {
+                Debug.Log("Response: " + www.downloadHandler.text);
+                string jsonString = "{\"partidas\":" + www.downloadHandler.text + "}";
+                Debug.Log(jsonString);
+                partidas = JsonUtility.FromJson<PartidaList>(jsonString);
+
+            }
+            else
+            {
+                Debug.LogError(www.error);
+            }
+            // Actualizar los textos de los objetos una vez que se han obtenido los datos
         }
     }
 }
