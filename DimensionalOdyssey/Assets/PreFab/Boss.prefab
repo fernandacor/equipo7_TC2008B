@@ -176,15 +176,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 865200163a9152945876bf73a2e24aad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeEnemy: 0
   player: {fileID: 0}
-  velocidad: 5
   animator: {fileID: 126931506410305467}
+  activeEnemy: 0
+  velocidad: 5
   currentHealth: 0
   maxHealth: 100
   dropItems: 1
   droppedItem: {fileID: 0}
-  isBoss: 0
+  isBoss: 1
 --- !u!95 &126931506410305467
 Animator:
   serializedVersion: 5
