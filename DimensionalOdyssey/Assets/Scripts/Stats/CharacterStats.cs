@@ -23,9 +23,9 @@ public class CharacterStats : MonoBehaviour
     //public MovimientoPersonaje movimientoPersonaje;
     public float velocidadMovimiento;
 
-    public float resistencia; 
+    public float resistencia;
     public float velocidadDisparo;
-    public float dañoInfligido;
+    public float damage;
 
     public float enemigosMatados; //counter de cuantos enemigos mata
 
@@ -57,7 +57,7 @@ public class CharacterStats : MonoBehaviour
             PlayerPrefs.SetFloat("RecovEne", 3);
             recoverEnergy = PlayerPrefs.GetFloat("RecovEne"); //cuanta energia recuperas por segundo
             PlayerPrefs.SetFloat("damaDealt", 2);
-            dañoInfligido = PlayerPrefs.GetFloat("damaDealt"); //cuanto daño haces
+            damage = PlayerPrefs.GetFloat("damaDealt"); //cuanto daño haces
             PlayerPrefs.SetFloat("DañoCont", 0);
             dañoInfligidoContador = PlayerPrefs.GetFloat("DañoCont");
             PlayerPrefs.SetFloat("ContMoney", 0);
@@ -88,18 +88,29 @@ public class CharacterStats : MonoBehaviour
     public void levelUp()
     {
         Debug.Log("Level Up:");
-            currentExperience -= maxExperience;
-            experienceBar.SetMaxExp(maxExperience);
-            experienceBar.SetExp(currentExperience);
-            level += 1;
+        currentExperience -= maxExperience;
+        experienceBar.SetMaxExp(maxExperience);
+        experienceBar.SetExp(currentExperience);
+        level += 1;
+        maxExperience += 10;
+        Debug.Log("Level Up stats changed");
+        AgregarPunto(true, true, true, true, true, true);
+    }
+
+    public void AgregarPunto(bool health_, bool mana_, bool resistance_, bool shootVel_, bool movementVel_, bool damage_)
+    {
+        if (health_)
             maxHealth += 10;
+        if (mana_)
             maxMana += 10;
+        if (resistance_)
             resistencia += 2;
-            velocidadDisparo += 0.2f;
+        if (shootVel_)
+            velocidadDisparo -= 0.2f;
+        if (movementVel_)
             velocidadMovimiento += 2;
-            maxExperience += 10;
-            dañoInfligido += 2;
-            Debug.Log("Level Up stats changed");
+        if (damage_)
+            damage += 2;
     }
 
     public void TakeDamage(float damage)
@@ -180,7 +191,7 @@ public class CharacterStats : MonoBehaviour
             currentExperience += 1;
         }
 
-        if(collision.CompareTag("XP"))
+        if (collision.CompareTag("XP"))
         {
             currentExperience += 10;
             experienceBar.SetExp(currentExperience);
