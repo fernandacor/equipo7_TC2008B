@@ -6,15 +6,20 @@ using UnityEngine.UI;
 
 public class ToolBarItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
+    public Item item;
+    
     [Header("UI")]
     private Image image;
 
     [HideInInspector] public Transform parentAfterDrag;
 
-    void Start()
-    {
-        GetComponent<Image>();
+    private void Start(){
+        //IntialiseItem(item);    
     }
+
+    // public void IntialiseItem(Item newItem){
+    //     image.sprite = newItem.icon;
+    // }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
