@@ -6,8 +6,8 @@ public class InventoryUI : MonoBehaviour
     public Transform itemsParent;
     public GameObject inventoryUI;
     private PlayerInput playerInput;
-    
-    [HideInInspector]public bool isInventoryOpen = false;//variable to check if the inventory is open or not
+
+    [HideInInspector] public bool isInventoryOpen = false;//variable to check if the inventory is open or not
 
     private GameManager gameManager;
     // Start is called before the first frame update
@@ -18,12 +18,13 @@ public class InventoryUI : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
     }
 
-    private void OnEnable()
-    {
-        playerInput.actions["SwitchMap"].performed += SwitchActionMap;
-    }
+    // private void OnEnable()
+    // {
+    //     playerInput.actions["SwitchMap"].performed += SwitchActionMap;
+    // }
 
-    private void SwitchActionMap(InputAction.CallbackContext context){
+    private void SwitchActionMap(InputAction.CallbackContext context)
+    {
         playerInput.SwitchCurrentActionMap("Inventory");
     }
     // Update is called once per frame
