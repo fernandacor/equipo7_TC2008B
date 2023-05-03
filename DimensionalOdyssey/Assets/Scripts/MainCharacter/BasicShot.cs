@@ -44,7 +44,7 @@ public class BasicShot : MonoBehaviour
     {
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
 
-        if (HasRequiredItem(reqItem1, reqItem2, reqItem3) == true)
+        if (HasRequiredItem(reqItem1, reqItem2, reqItem3))
         {
             canShoot = true;
             apuntador.SetActive(true);
