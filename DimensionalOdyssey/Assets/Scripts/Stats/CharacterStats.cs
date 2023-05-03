@@ -23,7 +23,7 @@ public class CharacterStats : MonoBehaviour
     //public MovimientoPersonaje movimientoPersonaje;
     public float velocidadMovimiento;
 
-    public float resistencia;
+    public float resistencia; 
     public float velocidadDisparo;
     public float dañoInfligido;
 
@@ -42,6 +42,7 @@ public class CharacterStats : MonoBehaviour
 
         if (level == 1)
         {
+<<<<<<< HEAD
             PlayerPrefs.SetFloat("Vida", 30);
             maxHealth = PlayerPrefs.GetFloat("Vida"); //salud maxima
             PlayerPrefs.SetFloat("Mana", 30);
@@ -62,6 +63,16 @@ public class CharacterStats : MonoBehaviour
             dañoInfligidoContador = PlayerPrefs.GetFloat("DañoCont");
             PlayerPrefs.SetFloat("ContMoney", 0);
             monedasTiene = PlayerPrefs.GetFloat("ContMoney");
+=======
+            maxHealth = 30; //salud maxima
+            maxMana = 30; //energia maxima
+            maxExperience = 30; //cuanta experiencia necesitas para subir de nivel
+            resistencia = 0; //resistencia a daño 
+            velocidadDisparo = 0.5f; //que tan rapido disparas (creo?)
+            velocidadMovimiento = 20; //que tan rapido caminas
+            recoverEnergy = 3; //cuanta energia recuperas por segundo
+            dañoInfligido = 2; //cuanto daño haces
+>>>>>>> main
         }
 
         animator = GetComponent<Animator>();
@@ -88,18 +99,18 @@ public class CharacterStats : MonoBehaviour
     public void levelUp()
     {
         Debug.Log("Level Up:");
-        currentExperience -= maxExperience;
-        experienceBar.SetMaxExp(maxExperience);
-        experienceBar.SetExp(currentExperience);
-        level += 1;
-        maxHealth += 10;
-        maxMana += 10;
-        resistencia += 2;
-        velocidadDisparo += 2;
-        velocidadMovimiento += 2;
-        maxExperience += 10;
-        dañoInfligido += 2;
-        Debug.Log("Level Up stats changed");
+            currentExperience -= maxExperience;
+            experienceBar.SetMaxExp(maxExperience);
+            experienceBar.SetExp(currentExperience);
+            level += 1;
+            maxHealth += 10;
+            maxMana += 10;
+            resistencia += 2;
+            velocidadDisparo += 0.2f;
+            velocidadMovimiento += 2;
+            maxExperience += 10;
+            dañoInfligido += 2;
+            Debug.Log("Level Up stats changed");
     }
 
     public void TakeDamage(float damage)
@@ -178,6 +189,12 @@ public class CharacterStats : MonoBehaviour
         {
             monedasTiene += 1;
             currentExperience += 1;
+        }
+
+        if(collision.CompareTag("XP"))
+        {
+            currentExperience += 10;
+            experienceBar.SetExp(currentExperience);
         }
     }
 
