@@ -167,6 +167,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Inventory",
+            "id": "c19bb06d-5cc2-4a57-8e7a-54821bc8a4c0",
+            "actions": [
+                {
+                    "name": "SwitchMap",
+                    "type": "Button",
+                    "id": "858a6d22-d896-461a-819f-0813c3a95c64",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "e0493cfb-a96f-4440-8c65-cd5dfadf3b31",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SwitchMap",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []
