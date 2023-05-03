@@ -28,26 +28,11 @@ public class OnTriggerAnimations : MonoBehaviour
         // Si el jugador choca con el objeto "Traje", se activa la animación de cambio de outfit
         if (collision.gameObject.tag == "Traje")
         {
-            Destroy(trajeInicial);
-            Debug.Log("Traje destruido");
+            Debug.Log("Traje encontrado");
             animator.SetBool("CambioOutfit", true);
+            Debug.Log("Animación de cambio de outfit activada");
+            Destroy(trajeInicial);
         }
-
-        // Dependiendo de que pistola se tenga, se cambia la animación
-        // if(collision.gameObject.tag == "Pistola")
-        // {
-        //     animator.SetBool("Pistola", true);
-        // }
-
-        // if(collision.gameObject.tag == "Escopeta")
-        // {
-        //     animator.SetBool("Escopeta", true);
-        // }
-
-        // if(collision.gameObject.tag == "Metralleta")
-        // {
-        //     animator.SetBool("Metralleta", true);
-        // }
     }
 
     void Update()

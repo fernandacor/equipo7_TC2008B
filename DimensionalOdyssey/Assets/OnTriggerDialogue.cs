@@ -11,6 +11,8 @@ public class OnTriggerDialogue : MonoBehaviour
     public GameObject item;
     public GameObject item2;
 
+    [SerializeField] private AudioSource muerteSFX;
+
     void Start()
     {
         Dialogue.SetActive(false);
@@ -42,6 +44,12 @@ public class OnTriggerDialogue : MonoBehaviour
             Dialogue.SetActive(true);
             Debug.Log("Dialogue is active");
             canInteract = true;  
+        }
+
+        if (collision.gameObject.tag == "Sonido")
+        {
+            muerteSFX.Play();
+            // muerteSFX.Stop();
         }
     }
 
