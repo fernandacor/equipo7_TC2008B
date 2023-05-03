@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DoorBehavior : MonoBehaviour
 {
-    
+
     [SerializeField] InventoryManager.AllItems requiredItem;
 
     // Booleanos que definen caracteristicas de la puerta
@@ -27,7 +27,7 @@ public class DoorBehavior : MonoBehaviour
         // Si la puerta es horizontal, se desplaza sobre el eje x
         if (doorHorizontal == true)
         {
-            doorOpenPos = new Vector3(transform.position.x + 9f, transform.position.y, transform.position.z);
+            doorOpenPos = new Vector3(transform.position.x + 15f, transform.position.y, transform.position.z);
         }
         // Si la puerta es vertical, se desplaza sobre el eje y
         else if (doorVertical == true)
