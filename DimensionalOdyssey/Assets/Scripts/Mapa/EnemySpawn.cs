@@ -25,8 +25,8 @@ public class EnemySpawn : MonoBehaviour
         // Se obtiene el tamaño del cuarto y se genera un enemigo en una posición random dentro del cuarto
         Tilemap cuarto = gameObject.GetComponent<Tilemap>();
 
-        float xMax = cuarto.cellBounds.xMax - 2;
-        float yMax = cuarto.cellBounds.yMax - 2;
+        float xMax = cuarto.cellBounds.xMax - 5;
+        float yMax = cuarto.cellBounds.yMax - 5;
 
         float randomPosX = Random.Range(transform.position.x - xMax, transform.position.x + xMax);
         float randomPosY = Random.Range(transform.position.y - yMax, transform.position.y + yMax);

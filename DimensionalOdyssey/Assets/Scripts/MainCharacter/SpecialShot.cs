@@ -19,7 +19,6 @@ public class SpecialShot : MonoBehaviour
     private Vector2 mousePos;
     private Camera cam;
     private GameObject player;
-    private float shotAngle = 0f;
     public float bulletSpeed = 20f;
     Vector2 lookingDirection;
 
@@ -43,7 +42,7 @@ public class SpecialShot : MonoBehaviour
 
         RepeatShot(1);
         PowerShot(0);
-        UseMultiShot(false, 4, 60);
+        UseMultiShot(false);
     }
 
     void Update()
@@ -53,9 +52,7 @@ public class SpecialShot : MonoBehaviour
         if (HasRequiredItem(reqItem1, reqItem2, reqItem3))
         {
             canShoot = true;
-            Debug.Log("canShoot = true porque tienes el item requerido");
             Apuntador.SetActive(true);
-            Debug.Log("apuntador activado");
         }
 
         if (HasRequiredToken(multishotToken))
@@ -127,6 +124,11 @@ public class SpecialShot : MonoBehaviour
     public void PowerShot(int porcentajeMejora)
     {
         bulletSpeed = initialBulletSpeed + (initialBulletSpeed * porcentajeMejora * 0.01f);
+    }
+
+    public void UseMultiShot(bool useMultiShot_)
+    {
+        useMultiShot = useMultiShot_;
     }
 
     public void UseMultiShot(bool useMultiShot_, int initialCantidadDisparos_, int rangoAngulos_)
