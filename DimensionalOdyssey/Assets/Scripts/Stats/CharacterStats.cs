@@ -10,7 +10,7 @@ public class CharacterStats : MonoBehaviour
     public float currentExperience;
     public int level;
 
-    private HealthBar healthBar;
+    public HealthBar healthBar;
     public float maxHealth;
     public float currentHealth;
 
