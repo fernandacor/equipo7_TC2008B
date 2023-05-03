@@ -32,14 +32,14 @@ public class WeaponSelection : MonoBehaviour
             else if (HasRequiredItem(metralleta))
             {
                 AsignarSprite(metralletaSprite);
-                characterStats.AgregarPunto(0, 0, 0, 0.35f, 0, -1.5f);
+                characterStats.AgregarPunto(0, 0, 0, 1f, 0, -5f);
             }
             else if (HasRequiredItem(escopeta))
             {
                 AsignarSprite(escopetaSprite);
-                characterStats.AgregarPunto(0, 0, 0, -2.5f, -3, 6);
-                specialShot.UseMultiShot(true, 3, 90);
-                basicShot.UseMultiShot(true, 3, 90);
+                characterStats.AgregarPunto(0, 0, 0, -1.25f, -6, -2f);
+                specialShot.UseMultiShot(true, 3, 60);
+                basicShot.UseMultiShot(true, 3, 60);
             }
         }
     }

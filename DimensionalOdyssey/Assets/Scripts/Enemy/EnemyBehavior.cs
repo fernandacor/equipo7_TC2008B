@@ -100,12 +100,7 @@ public class EnemyBehavior : MonoBehaviour
     {
         // Si una bala del jugador le pega al enemigo, el enemigo recibe daño y el daño hecho
         // se añade al contador de daño infligido del jugador
-        if (collision.CompareTag("Player"))
-        {
-            TakeDamage(characterStats.dañoInfligido);
-            characterStats.dañoInfligidoContador += characterStats.dañoInfligido;
-        }
-        else if (collision.CompareTag("Players Bullet"))
+        if (collision.CompareTag("Players Bullet"))
         {
             TakeDamage(characterStats.dañoInfligido);
             characterStats.dañoInfligidoContador += characterStats.dañoInfligido;
