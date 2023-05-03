@@ -9,7 +9,7 @@ public class MovimientoPersonaje : MonoBehaviour
     // Mover al personaje
     private CharacterStats characterStats;
     private Vector2 movimiento;
-    private PlayerInput playerInput;
+    [HideInInspector] public PlayerInput playerInput;
 
     // Apuntar
     private GameObject firePoint;
