@@ -91,7 +91,7 @@ public class CrearStatsIniciales : MonoBehaviour
     }
 
     void loadNewScene(){
-        SceneManager.LoadScene("Laboratory");
+        SceneManager.LoadScene("LABCUTSCENE");
     }
 
 }
