@@ -24,6 +24,7 @@ TagManager:
   - Zombie
   - XP
   - Dialogue
+  - Sonido
   layers:
   - Default
   - TransparentFX
