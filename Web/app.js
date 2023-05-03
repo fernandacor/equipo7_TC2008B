@@ -370,6 +370,7 @@ app.post('/api/addEstadisticas', async (request, response) => {
     }
 })
 
+
 /*
 app.post('/api/partida', async (request, response) => {
 
@@ -429,7 +430,7 @@ app.put('/api/personajes', async (request, response) => {
     try {
         connection = await connectToDB()
 
-        const [results, fields] = await connection.query('update personajes set energia = ?, xp = ?, velocidadMov = ?, velocidadDis = ?, vida = ?, resistencia = ?, recuperacionEn = ?, roboVida = ?, enemiesKilled = ? WHERE idPartida = ?', [request.body['energia'], request.body['xp'], request.body['velocidadMov'], request.body['velocidadDis'], request.body['vida'], request.body['resistencia'], request.body['recuperacionEn'], request.body['roboVida'], request.body['enemiesKilled'], request.body['idPartida']])
+        const [results, fields] = await connection.query('update personajes set idArma = ?, energia = ?, xp = ?, velocidadMov = ?, velocidadDis = ?, vida = ?, resistencia = ?, recuperacionEn = ?, roboVida = ?, enemiesKilled = ?, damageDealt = ?, coinsTaken = ? WHERE idPartida = ?', [request.body['energia'], request.body['xp'], request.body['velocidadMov'], request.body['velocidadDis'], request.body['vida'], request.body['resistencia'], request.body['recuperacionEn'], request.body['roboVida'], request.body['enemiesKilled'], request.body['idPartida']])
 
         response.json({ 'message': "Data updated correctly." })
     }
