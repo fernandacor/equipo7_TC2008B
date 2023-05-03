@@ -3,13 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
+// Script que genera enemigos en posiciones random dentro de un cuarto
+
 public class EnemySpawn : MonoBehaviour
 {
+    // Cantidad de enemigos y objeto del enemigo que se quiere generar
     public int cantidadEnemigos;
     public GameObject enemigo;
 
     public void GenerarEnemigos()
     {
+        // Se llama la funcion GenerarEnemigo en base a la cantidad de enemigos
         for (int i = 0; i < cantidadEnemigos; i++)
         {
             GenerarEnemigo();
@@ -18,6 +22,7 @@ public class EnemySpawn : MonoBehaviour
 
     void GenerarEnemigo()
     {
+        // Se obtiene el tamaño del cuarto y se genera un enemigo en una posición random dentro del cuarto
         Tilemap cuarto = gameObject.GetComponent<Tilemap>();
 
         float xMax = cuarto.cellBounds.xMax - 2;

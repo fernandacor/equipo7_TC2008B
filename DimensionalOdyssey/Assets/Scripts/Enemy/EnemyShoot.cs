@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Script que maneja los disparos de los enemigos
+
 public class EnemyShoot : MonoBehaviour
 {
     // Elementos a buscar
@@ -11,7 +13,7 @@ public class EnemyShoot : MonoBehaviour
     
     // Definir fuerza de las balas y velocidad de disparo
     public float bulletForce = 20f;
-    public float fireRate = 1f;
+    public float fireRate = 2f;
 
 
     void Start()

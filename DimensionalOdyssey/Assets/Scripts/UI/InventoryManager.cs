@@ -2,34 +2,40 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Script para definir los items del inventario
+
 public class InventoryManager : MonoBehaviour
 {
+    // 
     public static InventoryManager Instance;
 
-    public List<AllItems> _inventoryItems = new List<AllItems>(); //Our inventory items
+    public List<AllItems> _inventoryItems = new List<AllItems>(); // Referencia a la lista de todos los items del inventario
 
     private void Awake()
     {
         Instance = this;
     }
 
-    public void AddItem(AllItems item) //Add item to inventory
+    // Función para añadir items al inventario
+    public void AddItem(AllItems item) 
     {
-        if (!_inventoryItems.Contains(item)) //Check if item is not already in inventory
+        if (!_inventoryItems.Contains(item)) // Checar si el item no está en el inventario
         {
             _inventoryItems.Add(item);
         }
     }
 
-    public void RemoveItem(AllItems item) //Remove item from inventory
+    // Función para quitar items del inventario
+    public void RemoveItem(AllItems item)
     {
-        if (_inventoryItems.Contains(item)) //Check if item is in inventory
+        if (_inventoryItems.Contains(item)) //Checar si el item está en el inventario
         {
             _inventoryItems.Remove(item);
         }
     }
 
-    public enum AllItems //All available inventory items in game
+    // Lista de todos los items que pueden estar en el inventario
+    public enum AllItems
     {
         //Armas
         pistolaInicial,
@@ -54,6 +60,7 @@ public class InventoryManager : MonoBehaviour
         tokenMultidisparoCuadruple,
         tokenDisparoDoble,
         tokenDisparoTriple,
+        tokenPowerShot,
         tokenReboteBalas,
         tokenCombo,
         tokenAtaqueDirigido,
@@ -71,6 +78,7 @@ public class InventoryManager : MonoBehaviour
         xpBoost
     }
 
+    // Lista individual de los tokens
     public enum Tokens
     {
         tokenMultidisparoDoble,
@@ -83,6 +91,7 @@ public class InventoryManager : MonoBehaviour
         tokenAtaqueDirigido
     }
 
+    // Lista individual de las pociones
     public enum Pociones
     {
         pocionVelocidad,
@@ -97,6 +106,7 @@ public class InventoryManager : MonoBehaviour
         xpBoost
     }
 
+    // Lista individual de las llaves
     public enum Llaves
     {
         llaveRosa,

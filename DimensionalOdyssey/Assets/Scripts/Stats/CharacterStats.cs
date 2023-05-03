@@ -23,11 +23,12 @@ public class CharacterStats : MonoBehaviour
     //public MovimientoPersonaje movimientoPersonaje;
     public float velocidadMovimiento;
 
-    public float resistencia; 
+    public float resistencia;
     public float velocidadDisparo;
     public float dañoInfligido;
 
     public float enemigosMatados; //counter de cuantos enemigos mata
+
     public float dañoInfligidoContador; //contador de daño hecho a enemigos
     public float dañoRecibido; // contador de daño recibido
     public float monedasTiene; //cuantas monedas tiene
@@ -41,14 +42,26 @@ public class CharacterStats : MonoBehaviour
 
         if (level == 1)
         {
-            maxHealth = 30; //salud maxima
-            maxMana = 30; //energia maxima
-            maxExperience = 30; //cuanta experiencia necesitas para subir de nivel
-            resistencia = 0; //resistencia a daño 
-            velocidadDisparo = 0.5f; //que tan rapido disparas (creo?)
-            velocidadMovimiento = 20; //que tan rapido caminas
-            recoverEnergy = 3; //cuanta energia recuperas por segundo
-            dañoInfligido = 2; //cuanto daño haces
+            PlayerPrefs.SetFloat("Vida", 30);
+            maxHealth = PlayerPrefs.GetFloat("Vida"); //salud maxima
+            PlayerPrefs.SetFloat("Mana", 30);
+            maxMana = PlayerPrefs.GetFloat("Mana"); //energia maxima
+            PlayerPrefs.SetFloat("Experience", 30);
+            maxExperience = PlayerPrefs.GetFloat("Experience"); //cuanta experiencia necesitas para subir de nivel
+            PlayerPrefs.SetFloat("Resistance", 0);
+            resistencia = PlayerPrefs.GetFloat("Resistence"); //resistencia a daño 
+            PlayerPrefs.SetFloat("VelDis", 0.5f);
+            velocidadDisparo = PlayerPrefs.GetFloat("VelDis"); //que tan rapido disparas (creo?)
+            PlayerPrefs.SetFloat("VelMov", 30);
+            velocidadMovimiento = PlayerPrefs.GetFloat("VelMov"); //que tan rapido caminas
+            PlayerPrefs.SetFloat("RecovEne", 3);
+            recoverEnergy = PlayerPrefs.GetFloat("RecovEne"); //cuanta energia recuperas por segundo
+            PlayerPrefs.SetFloat("damaDealt", 2);
+            dañoInfligido = PlayerPrefs.GetFloat("damaDealt"); //cuanto daño haces
+            PlayerPrefs.SetFloat("DañoCont", 0);
+            dañoInfligidoContador = PlayerPrefs.GetFloat("DañoCont");
+            PlayerPrefs.SetFloat("ContMoney", 0);
+            monedasTiene = PlayerPrefs.GetFloat("ContMoney");
         }
 
         animator = GetComponent<Animator>();
@@ -75,26 +88,48 @@ public class CharacterStats : MonoBehaviour
     public void levelUp()
     {
         Debug.Log("Level Up:");
-            currentExperience -= maxExperience;
-            experienceBar.SetMaxExp(maxExperience);
-            experienceBar.SetExp(currentExperience);
-            level += 1;
-            maxHealth += 10;
-            maxMana += 10;
-            resistencia += 2;
-            velocidadDisparo += 0.2f;
-            velocidadMovimiento += 2;
-            maxExperience += 10;
-            dañoInfligido += 2;
-            Debug.Log("Level Up stats changed");
+        currentExperience -= maxExperience;
+        experienceBar.SetMaxExp(maxExperience);
+        experienceBar.SetExp(currentExperience);
+        level += 1;
+        maxExperience += 10;
+        Debug.Log("Level Up stats changed");
+        AgregarPunto(true, true, true, true, true, true);
     }
 
-    public void TakeDamage(float damage)
+    public void AgregarPunto(bool health_, bool mana_, bool resistance_, bool shootVel_, bool movementVel_, bool damage_)
     {
-        damage = damage - resistencia;
-        currentHealth -= damage;
+        if (health_)
+            maxHealth += 10;
+        if (mana_)
+            maxMana += 10;
+        if (resistance_)
+            resistencia += 2;
+        if (shootVel_)
+            velocidadDisparo -= 0.2f;
+        if (movementVel_)
+            velocidadMovimiento += 2;
+        if (damage_)
+            dañoInfligido += 2;
+    }
+
+    public void AgregarPunto(float health_, float mana_, float resistance_, float shootVel_, float movementVel_, float damage_)
+    {
+        maxHealth += health_;
+        maxMana += mana_;
+        resistencia += resistance_;
+        velocidadDisparo -= shootVel_;
+        velocidadMovimiento += movementVel_;
+        dañoInfligido += damage_;
+    }
+
+    public void TakeDamage(float dañoInfligido)
+    {
+        PlayerPrefs.SetFloat("Damage", dañoInfligido);
+        dañoInfligido = dañoInfligido - resistencia;
+        currentHealth -= dañoInfligido;
         healthBar.SetHealth(currentHealth);
-        dañoRecibido += damage;
+        dañoRecibido += dañoInfligido;
     }
 
     public void LoseEnergy(float lostEnergy)
@@ -111,6 +146,8 @@ public class CharacterStats : MonoBehaviour
 
     public void MatarEnemigos(int cantidad)
     {
+        PlayerPrefs.SetFloat("EnemiesKilled", 0);
+        enemigosMatados = PlayerPrefs.GetFloat("EnemiesKilled");
         enemigosMatados += cantidad;
         currentExperience += 10;
     }
@@ -164,7 +201,7 @@ public class CharacterStats : MonoBehaviour
             currentExperience += 1;
         }
 
-        if(collision.CompareTag("XP"))
+        if (collision.CompareTag("XP"))
         {
             currentExperience += 10;
             experienceBar.SetExp(currentExperience);
