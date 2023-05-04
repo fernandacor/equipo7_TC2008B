@@ -48,12 +48,12 @@ public class PortalBehavior : MonoBehaviour
         // Si el jugador entra en el trigger y se quiere cambiar de escena:
         if (collision.gameObject.CompareTag("Player") && switchScene)
         {
-            // portalSFX.Play(); // Se reproduce el SFX de portal
+            //portalSFX.Play(); // Se reproduce el SFX de portal
             Debug.Log("UpdateApi: ");
             StartCoroutine(LoadSceneDelayed(sceneName, 1.5f));
             //SceneManager.LoadScene(sceneName); // Se cambia de escena
-            // UpdateApi updateApi = GetComponent<UpdateApi>();
-            // updateApi.UpdateCharacter();
+            UpdateApi updateApi = GetComponent<UpdateApi>();
+            updateApi.UpdateCharacter();
         }
         // Si no se quiere cambiar de escena:
         else if (collision.gameObject.CompareTag("Player") && !switchScene)
