@@ -31,6 +31,7 @@ public class UpdateApi : MonoBehaviour
     
 
     [SerializeField] private CharacterStats characterStats;
+    [SerializeField] private WeaponSelection weaponSelection;
 
     void Start()
     {
@@ -42,7 +43,7 @@ public class UpdateApi : MonoBehaviour
     {
         PersonajeAPI characterToUpdate = new PersonajeAPI();
 
-        characterToUpdate.idArma = 2;
+        characterToUpdate.idArma = weaponSelection.idArma;
         characterToUpdate.energia = characterStats.currentMana;
         characterToUpdate.xp = characterStats.currentExperience;
         characterToUpdate.velocidadMov = characterStats.velocidadMovimiento;
