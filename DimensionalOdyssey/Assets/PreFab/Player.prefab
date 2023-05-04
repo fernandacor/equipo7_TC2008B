@@ -145,7 +145,6 @@ GameObject:
   - component: {fileID: 6762539736743511270}
   - component: {fileID: 7071329716943892938}
   - component: {fileID: 266604003003505880}
-  - component: {fileID: 986847845225218945}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -401,18 +400,6 @@ MonoBehaviour:
   m_DefaultActionMap: Dungeons
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &986847845225218945
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4874639488000069736}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5942fd00eba944408d54b15d46308a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8493305836932898433
 GameObject:
   m_ObjectHideFlags: 0
