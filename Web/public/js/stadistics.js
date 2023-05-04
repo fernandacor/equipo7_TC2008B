@@ -169,7 +169,7 @@ try {
         const username = values.map(e => e['username'])
         const bordersColor = values.map(e => random_color(1))
         const backgroundsColor = bordersColor.map(b => b.slice(0, -2) + '0.6)')
-        const enemiesKilled = values.map(e => e['enemiesKilled'])
+        const enemiesKilled = values.map(e => e['totalEnemiesKilled'])
 
 
         const ctx_levels = document.getElementById('apiChart2').getContext('2d');
@@ -236,7 +236,7 @@ try {
         const username = values.map(e => e['username'])
         const bordersColor = values.map(e => random_color(1))
         const backgroundsColor = bordersColor.map(b => b.slice(0, -2) + '0.6)')
-        const damageDealt = values.map(e => e['damageDealt'])
+        const damageDealt = values.map(e => e['totalDamageDealt'])
 
         const ctx_damage = document.getElementById('apiChart3').getContext('2d');
         const DamageChart = new Chart(ctx_damage,
@@ -300,7 +300,7 @@ try {
         const username = values.map(e => e['username'])
         const bordersColor = values.map(e => random_color(1))
         const backgroundsColor = bordersColor.map(b => b.slice(0, -2) + '0.6)')
-        const coinsTaken = values.map(e => e['coinstaken'])
+        const coinsTaken = values.map(e => e['totalCoinsTaken'])
 
         const ctx_coins = document.getElementById('apiChart4').getContext('2d');
         const coinsChart = new Chart(ctx_coins,

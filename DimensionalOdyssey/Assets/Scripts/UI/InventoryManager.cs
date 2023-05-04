@@ -17,7 +17,7 @@ public class InventoryManager : MonoBehaviour
     }
 
     // Función para añadir items al inventario
-    public void AddItem(AllItems item) 
+    public void AddItem(AllItems item)
     {
         if (!_inventoryItems.Contains(item)) // Checar si el item no está en el inventario
         {
@@ -71,8 +71,8 @@ public class InventoryManager : MonoBehaviour
         pocionSuperEnergia,
         pocionVida,
         pocionSuperVida,
-        pocionInmunidad,
-        pocionProteccion,
+        pocionResistencia,
+        pocionFuerza,
         pocionIman,
         pocionMystery,
         xpBoost
@@ -99,8 +99,8 @@ public class InventoryManager : MonoBehaviour
         pocionSuperEnergia,
         pocionVida,
         pocionSuperVida,
-        pocionInmunidad,
-        pocionProteccion,
+        pocionResistencia,
+        pocionFuerza,
         pocionIman,
         pocionMystery,
         xpBoost

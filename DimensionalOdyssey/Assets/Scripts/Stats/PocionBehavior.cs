@@ -2,8 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-
 public class PocionBehavior : MonoBehaviour
 {
     [SerializeField] InventoryManager.Pociones tipoPocion;
@@ -12,7 +10,7 @@ public class PocionBehavior : MonoBehaviour
     private HealthBar healthBar;
     private ManaBar manaBar;
     [SerializeField] private AudioSource potionSFX;
-    
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -25,7 +23,7 @@ public class PocionBehavior : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            Debug.Log("player detected");
+            // Debug.Log("player detected");
             PickUp(collision);
             Destroy(gameObject);
         }
@@ -36,37 +34,29 @@ public class PocionBehavior : MonoBehaviour
         switch (tipoPocion)
         {
             case InventoryManager.Pociones.pocionVelocidad:
-                characterStats.velocidadMovimiento += 3;
+                characterStats.velocidadMovimiento *= 1.2f;
                 break;
             case InventoryManager.Pociones.xpBoost:
-                characterStats.currentExperience += 10;
+                characterStats.currentExperience += characterStats.maxExperience * 0.5f;
                 break;
-        }
-
-        if (characterStats.currentMana < characterStats.maxMana)
-        {
-            switch (tipoPocion)
-            {
-                case InventoryManager.Pociones.pocionEnergia:
-                    characterStats.currentMana += 10;
-                    break;
-                case InventoryManager.Pociones.pocionSuperEnergia:
-                    characterStats.currentMana = characterStats.maxMana;
-                    break;
-            }
-        }
-
-        if (characterStats.currentHealth < characterStats.maxHealth)
-        {
-            switch(tipoPocion)
-            {
-                case InventoryManager.Pociones.pocionVida:
-                    characterStats.currentHealth += 10;
-                    break;
-                case InventoryManager.Pociones.pocionSuperVida:
-                    characterStats.currentHealth = characterStats.maxHealth;
-                    break;
-            }
+            case InventoryManager.Pociones.pocionEnergia:
+                characterStats.currentMana += characterStats.maxMana * 0.3f;
+                break;
+            case InventoryManager.Pociones.pocionSuperEnergia:
+                characterStats.currentMana += characterStats.maxMana * 0.8f;
+                break;
+            case InventoryManager.Pociones.pocionVida:
+                characterStats.currentHealth += characterStats.maxHealth * 0.3f;
+                break;
+            case InventoryManager.Pociones.pocionSuperVida:
+                characterStats.currentHealth += characterStats.maxHealth * 0.8f;
+                break;
+            case InventoryManager.Pociones.pocionResistencia:
+                characterStats.resistencia *= 1.4f;
+                break;
+            case InventoryManager.Pociones.pocionFuerza:
+                characterStats.dañoInfligido *= 1.5f;
+                break;
         }
     }
 }

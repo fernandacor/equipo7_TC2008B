@@ -7,14 +7,18 @@ using UnityEngine.SceneManagement;
 public class SceneManagerScript : MonoBehaviour
 {
 
-    public CharacterStats characterStats;
+    private CharacterStats characterStats;
 
+    void Awake()
+    {
+        characterStats = GameObject.Find("Player").GetComponent<CharacterStats>();
+    }
 
     private void Update()
     {
-         if (characterStats.currentHealth <= 0)
+        if (characterStats.currentHealth <= 0)
         {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 
