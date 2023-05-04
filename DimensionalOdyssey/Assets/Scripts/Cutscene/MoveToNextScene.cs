@@ -19,7 +19,7 @@ public class MoveToNextScene : MonoBehaviour
 
     IEnumerator NextScene()
     {
-        yield return new WaitForSeconds(60f);
+        yield return new WaitForSeconds(55.5f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
