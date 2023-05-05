@@ -68,13 +68,17 @@ Queremos que el jugador se sienta atraido por nuestras mecánicas y estilo de pe
    3. Créditos
 2. Juego
    1. Resumen del juego hasta el momento
-   2. Inventario
-   3. Elegir "Power up" al acabar una de las dimensiones
-   4. Transición de dimensiones
-   5. Pantalla de juego terminado
+   2. Elegir "Power up" al acabar una de las dimensiones
+   3. Transición de dimensiones
+   4. Pantalla de juego terminado
 3. End credits
 
 ### **Mechanics**
+<b>Roleplaying</b>
+- <b> Subir de nivel:</b> En este sistema, los jugadores comienzan en un nivel inicial y a medida que realizan acciones en el juego, como vencer a enemigos ganan puntos de experiencia (XP). Cuando acumulan suficientes puntos de experiencia, suben de nivel
+- <b>Mapa:</b> El mapa va a estar dividido en distintas salas y estas se van a mover aleatoriamente cada vez que se juegue el juego, haciendo que la velocidad con la que se termine el juego dependa de la suerte.
+- <b>Arma Mejorable:</b> Tu arma se va a poder mejorar con tokens que se hallan por el mapa. Pueden ser más proyectiles, que te aumentan tus disparos, la velocidad 
+   
 
 **Jugabilidad principal**
 
@@ -108,7 +112,6 @@ El personaje principal va a contar con los siguientes atributos:
 
   Cuando se acaben los puntos de vida el jugador muere y se reinicia el juego. La forma de conseguir puntos de vida es a través de:
 
-  - El atributo "robo de vida"
   - Pociones escondidas en los niveles
 
 - **Energía:**
@@ -116,7 +119,6 @@ El personaje principal va a contar con los siguientes atributos:
   Los puntos de energía servirán para poder hacer los disparos especiales, los cuales utilizan los atributos de los modificadores del arma. La forma de recuperar energía es a través de:
 
   - El atributo "recuperación de energía"
-  - Pociones escondidas en los niveles
 
 - **Velocidad de movimiento:**
 
@@ -126,9 +128,6 @@ El personaje principal va a contar con los siguientes atributos:
 
   Es la velocidad con la que se va a disparar el arma.
 
-- **Fuerza:**
-
-  Es el daño que se le va a influir a los enemigos
 
 - **Resistencia:**
 
@@ -138,9 +137,6 @@ El personaje principal va a contar con los siguientes atributos:
 
   Sirve para recuperar energía con el pasar del tiempo. Entre más recuperación de energía tenga el personaje, más energía recuperará por segundo.
 
-- **Robo de vida:**
-
-  Sirve para recuperar vida cada vez que se derrote a un enemigo. La cantidad de vida que se va a obtener es un porcentaje de vida del enemigo y entre más robo de vida tenga el personaje, más grande será ese porcentaje.
 
 **Arma principal**
 
@@ -152,9 +148,9 @@ El arma va a ser la misma que se elija al principio del run, pero por el mapa y 
 
   |                          | Pistola | Escopeta | Metralleta |
   | ------------------------ | ------- | -------- | ---------- |
-  | **Daño**                 | Medio   | Alto     | Bajo       |
+  | **Daño**                 | Bajo   | Alto     | Mediano      |
   | **Velocidad de disparo** | Medio   | Bajo     | Alto       |
-  | **Cantidad de disparos** | 1       | 3        | 1          |
+  | **Cadencia de disparos** | 1       | 1        | 3          |
 
 - **Atributos:**
 
@@ -163,7 +159,6 @@ El arma va a ser la misma que se elija al principio del run, pero por el mapa y 
   - Fuerza
   - Resistencia
   - Recuperación de energía
-  - Robo de vida
 
 - **Funcionalidades extras:**
 
@@ -183,10 +178,10 @@ El arma va a ser la misma que se elija al principio del run, pero por el mapa y 
 ### **Assets**
 
 1. Edificios
-   1. Casa del jugador
-   2. Base Militar
-   3. Laboratorio
-   4. Oxxo
+   1. Laboratorio
+   2. Estación de Policia
+   3. Banco 
+   4. Casa
 2. Objects
    1. _Ambient_
       1. Árboles
@@ -207,13 +202,12 @@ El arma va a ser la misma que se elija al principio del run, pero por el mapa y 
 
 ## _Imagenes/Sprites_
 ### Personaje Principal
-<img width ="60" src="../Videojuego/Images/Personaje.png">
 
 ### Boss de la dimensión 1 (mundo post apocalíptico) - Base militar
 <img width ="60" src="../Videojuego/Images/Boss%20Soldado.png">
 
 ### Boss de la dimensión 2 (mundo colorido) - Laboratorio
-<img width ="60" src="../Videojuego/Images/Boss%20Cientifico.png">
+![Boss laboratorio](../DimensionalOdyssey/Assets/Sprites/Sprites%20Jp/Boss.gif)
 
 ### Boss de la dimensión 3 (mundo dorado) - Oxxo
 <img width ="60" src="../Videojuego/Images/Boss%20Triangulo.png">
@@ -235,12 +229,10 @@ El arma va a ser la misma que se elija al principio del run, pero por el mapa y 
 
 ### **Abstract Classes / Components**
 
-- Clase del jugador
 - Movimiento del jugador
 - Clase de los enemigos
 - Movimiento de los enemigos
 - Aparición de los enemigos
-- Clase de los bosses (cada uno con su respectiva clase)
 - Movimiento de los bosses
 - Interacción con los NPCs
 - Interacción con objetos
