@@ -112,7 +112,6 @@ El personaje principal va a contar con los siguientes atributos:
 
   Cuando se acaben los puntos de vida el jugador muere y se reinicia el juego. La forma de conseguir puntos de vida es a través de:
 
-  - El atributo "robo de vida"
   - Pociones escondidas en los niveles
 
 - **Energía:**
@@ -120,7 +119,6 @@ El personaje principal va a contar con los siguientes atributos:
   Los puntos de energía servirán para poder hacer los disparos especiales, los cuales utilizan los atributos de los modificadores del arma. La forma de recuperar energía es a través de:
 
   - El atributo "recuperación de energía"
-  - Pociones escondidas en los niveles
 
 - **Velocidad de movimiento:**
 
@@ -130,9 +128,6 @@ El personaje principal va a contar con los siguientes atributos:
 
   Es la velocidad con la que se va a disparar el arma.
 
-- **Fuerza:**
-
-  Es el daño que se le va a influir a los enemigos
 
 - **Resistencia:**
 
@@ -153,9 +148,9 @@ El arma va a ser la misma que se elija al principio del run, pero por el mapa y 
 
   |                          | Pistola | Escopeta | Metralleta |
   | ------------------------ | ------- | -------- | ---------- |
-  | **Daño**                 | Medio   | Alto     | Bajo       |
+  | **Daño**                 | Bajo   | Alto     | Mediano      |
   | **Velocidad de disparo** | Medio   | Bajo     | Alto       |
-  | **Cantidad de disparos** | 1       | 3        | 1          |
+  | **Cadencia de disparos** | 1       | 1        | 3          |
 
 - **Atributos:**
 
@@ -164,7 +159,6 @@ El arma va a ser la misma que se elija al principio del run, pero por el mapa y 
   - Fuerza
   - Resistencia
   - Recuperación de energía
-  - Robo de vida
 
 - **Funcionalidades extras:**
 
