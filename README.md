@@ -17,6 +17,7 @@ Imagina que después de un largo día de trabajo vas a tu casa a descansar tiene
 Dimensiona Odyssey es un role-playing game top-down donde tu objetivo es explorar nuevos mundos para conectar fragmentos del sueño y entender que fue lo que realmente te sucedió.
 
 ### <u> Manual de Usuario <u>
+// https://rb.gy/dc9sc
 
 ### <u> Link Video </u>
 // https://youtu.be/0sdc2dgYHBU
