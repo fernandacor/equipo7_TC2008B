@@ -31,18 +31,18 @@ public class WeaponSelection : MonoBehaviour
                 AsignarSprite(pistolaSprite);
                 idArma = 1;
             }
-            else if (HasRequiredItem(metralleta))
-            {
-                AsignarSprite(metralletaSprite);
-                characterStats.AgregarPunto(0, 0, 0, 1f, 0, -5f);
-                idArma = 2;
-            }
             else if (HasRequiredItem(escopeta))
             {
                 AsignarSprite(escopetaSprite);
                 characterStats.AgregarPunto(0, 0, 0, -1.25f, -6, -2f);
                 specialShot.UseMultiShot(true, 3, 60);
                 basicShot.UseMultiShot(true, 3, 60);
+                idArma = 2;
+            }
+            else if (HasRequiredItem(metralleta))
+            {
+                AsignarSprite(metralletaSprite);
+                characterStats.AgregarPunto(0, 0, 0, 1f, 0, -5f);
                 idArma = 3;
             }
         }
