@@ -19,7 +19,7 @@ Dimensiona Odyssey es un role-playing game top-down donde tu objetivo es explora
 ### <u> Manual de Usuario <u>
 
 ### <u> Link Video </u>
-//
+// https://youtu.be/0sdc2dgYHBU
 
 ### <u> Link Notion </u>
 // https://www.notion.so/Bloque-videojuego-web-2d2e26d17f5b484ca2b07284dfc62c7c
